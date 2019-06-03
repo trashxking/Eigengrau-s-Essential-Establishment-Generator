@@ -16,8 +16,36 @@ $currentNPC.firstName is a <b><<tooltip $currentNPC.dndClass setup.townData.prof
   \<</if>>
 
 <<if def $currentNPC.note >>$currentNPC.note<</if>>
+\<<set _finances to {}>><<set 
+  _finances.grossIncome to Math.round($currentNPC.finances.grossIncome($town, $currentNPC)),
+  _finances.taxes to Math.round($currentNPC.finances.payableTaxes($town, $currentNPC)),
+  _finances.netIncome to Math.round($currentNPC.finances.netIncome($town, $currentNPC)),
+  _finances.livingStandard to $currentNPC.finances.livingStandard($town, $currentNPC),
+  _finances.miscExpenses to Math.round($currentNPC.finances.miscExpenses($town, $currentNPC)),
+  _finances.profit to Math.round($currentNPC.finances.profit($town, $currentNPC))>>
+$currentNPC.firstName currently earns <<money _finances.grossIncome>> per day.
 
-$currentNPC.firstName currently earns <<money $currentNPC.finances.grossIncome>> per day.
+<<nobr>><table>
+  <tr>
+    <th>Type</th>
+    <th>Amount</th>
+  </tr>
+  <tr><td>Gross Income</td>
+<td><<money _finances.grossIncome>></td></tr>
+  <tr><td>Taxes</td>
+<td><<money _finances.taxes>></td></tr>
+  <tr><td>Net Income</td>
+<td><<money _finances.netIncome>></td></tr>
+<tr><td>Living Standard (<<print _finances.livingStandard[1]>>)</td>
+<td><<money _finances.livingStandard[0]>></td></tr>
+<tr><td>Misc Expenses</td>
+<td><<money _finances.miscExpenses>></td></tr>
+  <tr><td>Profit</td>
+<td><<money _finances.profit>></td></tr>
+</table>
+<</nobr>>
+
+breadwinner: <<print setup.determineBreadwinner($town, $currentNPC)>>
 
 <<linkreplace "Early Life">><div class='descriptive'>I was born $currentNPC.birthplace, and was raised by $currentNPC.familyUnit<<if $currentNPC.siblingNumber == 0>> as an only child.<<elseif $currentNPC.siblingNumber == 1>> with my brother.<<else>>, along with my $currentNPC.siblingNumber siblings.<</if>> I had a $currentNPC.familyLifestyle upbringing in $currentNPC.familyHome. <<if $currentNPC.knewParents is false>>I didn't know my parents growing up.<</if>><<if $currentNPC.parentalLineage>>$currentNPC.parentalLineage.<</if>> $currentNPC.childhoodMemories.</div><</linkreplace>>
 

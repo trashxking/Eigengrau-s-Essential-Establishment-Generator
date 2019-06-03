@@ -2,10 +2,18 @@ setup.createNPC = function (town, base) {
   if (!town) {
     console.error('Town is not defined! NPC cannot be created. Please report this bug.')
   }
+  const data = setup.npcData
+  base.gender = base.gender || ['man', 'woman'].seededrandom()
+  base.race = base.race || setup.fetchRace(town)
+  base.firstName = base.firstName || data.raceTraits[base.race].genderTraits[base.gender].firstName.seededrandom().toUpperFirst()
+  base.lastName = base.lastName || data.raceTraits[base.race].lastName.seededrandom().toUpperFirst()
+  base.key = base.firstName + ' ' + base.lastName
+
+  console.groupCollapsed(base.firstName + ' ' + base.lastName)
   console.log('Base:')
   console.log({ base })
   // These are the very basic bits that need to be defined first- race, gender, and then names using those local variables.
-  const data = setup.npcData
+
   if (!base) {
     base = {
       isShallow: true
@@ -21,27 +29,25 @@ setup.createNPC = function (town, base) {
   if (base.canBeCustom === true && random(1, 100) > 99) {
     base = setup.objectArrayFetcher(setup.misc.patreonCharacters, town)
   }
-  const gender = base.gender || ['man', 'woman'].seededrandom()
-  const race = base.race || setup.fetchRace(town)
-  console.log('Loading profession:')
-  const profession = base.profession || setup.fetchProfessionChance(town, base)
-
-  const firstName = base.firstName || data.raceTraits[race].genderTraits[gender].firstName.seededrandom().toUpperFirst()
-  const lastName = base.lastName || data.raceTraits[race].lastName.seededrandom().toUpperFirst()
-  console.groupCollapsed(firstName + ' ' + lastName)
-  const ageStage = base.ageStage || ['young adult', 'young adult', 'young adult', 'young adult', 'settled adult', 'settled adult', 'settled adult', 'elderly'].seededrandom()
-  const dndClass = base.dndClass || data.dndClass.seededrandom()
   if (base.dndClass) {
     base.hasClass = true
   }
 
+  // console.log('Loading profession:')
+  // const profession = base.profession || setup.fetchProfessionChance(town, base)
+
+  const ageStage = base.ageStage || ['young adult', 'young adult', 'young adult', 'young adult', 'settled adult', 'settled adult', 'settled adult', 'elderly'].seededrandom()
+
+  const dndClass = base.dndClass || data.dndClass.seededrandom()
+
   // the local variables are then assigned to npc. We don't need to initialise npc to do the stuff that's race & gender dependent because we've got the local variables.
-  const npc = Object.assign({
+  // eslint-disable-next-line prefer-const
+  let npc = Object.assign({
     passageName: 'NPCProfile',
-    _gender: gender,
-    _race: race,
-    firstName,
-    lastName,
+    _gender: base.gender,
+    _race: base.race,
+    // firstName,
+    // lastName,
     get name () {
       return this.firstName + ' ' + this.lastName
     },
@@ -51,8 +57,8 @@ setup.createNPC = function (town, base) {
       this.lastName = words[1] || ''
     },
     ageStage,
-    ageYears: data.raceTraits[race].ageTraits[ageStage].baseAge + data.raceTraits[race].ageTraits[ageStage].ageModifier(),
-    muscleMass: data.raceTraits[race].muscleMass + dice(5, 4) - 12,
+    ageYears: data.raceTraits[base.race].ageTraits[ageStage].baseAge + data.raceTraits[base.race].ageTraits[ageStage].ageModifier(),
+    muscleMass: data.raceTraits[base.race].muscleMass + dice(5, 4) - 12,
     // demeanour: data.demeanour.seededrandom(),
     calmTrait: data.calmTrait.seededrandom(),
     stressTrait: data.stressTrait.seededrandom(),
@@ -65,8 +71,60 @@ setup.createNPC = function (town, base) {
     roll: {
 
     },
+    dependents: [],
     finances: {
-      dailyWage: ''
+      wageVariation: (dice(10, 10) - 55),
+      grossIncome (town, npc) {
+        console.groupCollapsed('getting ' + npc.name + "'s gross income...")
+        if (npc.isDependentOn) {
+          console.log(npc.name + ' is a dependent!')
+          return State.variables.npcs[npc.isDependentOn].finances.grossIncome(town, State.variables.npcs[npc.isDependentOn])
+        }
+        const profession = setup.findProfession(town, npc, npc.dndClass)
+        const townVariance = ((town.roll.wealth - 50) / 5)
+        const temp = profession.dailyWage + setup.calcPercentage(profession.dailyWage, npc.finances.wageVariation)
+        console.log({
+          profession,
+          townVariance,
+          temp
+        })
+        console.groupEnd()
+        return Math.round(temp + setup.calcPercentage(temp, townVariance))
+      },
+      netIncome (town, npc) {
+        console.groupCollapsed('getting ' + npc.name + "'s net income...")
+        const grossIncome = npc.finances.grossIncome(town, npc)
+        const result = grossIncome - npc.finances.payableTaxes(town, npc)
+        // const result = (grossIncome - setup.calcPercentage(grossIncome, town.taxRate(town)))
+        console.log('net income: ' + result)
+        console.groupEnd()
+        return result
+      },
+      payableTaxes (town, npc) {
+        console.groupCollapsed('getting ' + npc.name + "'s payable taxes...")
+        const grossIncome = npc.finances.grossIncome(town, npc)
+        const tax = (town.taxRate(town) / 100)
+        console.log({ grossIncome, tax })
+        if (npc.age < 14 && npc.ageStage === 'child') {
+          console.log(npc.name + ' is a child, and does not have to pay taxes (yet!)')
+          console.groupEnd()
+          return 0
+        } else {
+          console.groupEnd()
+          return (grossIncome * tax)
+        }
+      },
+      livingStandard (town, npc) {
+        return setup.livingStandards.find(function (desc) {
+          return desc[0] <= (npc.finances.netIncome(town, npc) - npc.finances.miscExpenses(town, npc))
+        })
+      },
+      miscExpenses (town, npc) {
+        return Math.round(npc.finances.grossIncome(town, npc) * 0.333)
+      },
+      profit (town, npc) {
+        return Math.round((npc.finances.netIncome(town, npc) - npc.finances.miscExpenses(town, npc)) - npc.finances.livingStandard(town, npc)[0])
+      }
     },
     // value: data.value.seededrandom(),
     // drive: data.drive.seededrandom(),
@@ -96,10 +154,10 @@ setup.createNPC = function (town, base) {
         console.log('Expected a string operand and received ' + description)
       }
     },
-    eyes: data.raceTraits[race].eyes.seededrandom(),
+    eyes: data.raceTraits[base.race].eyes.seededrandom(),
     skinColour: data.skinColour.seededrandom(),
     dndClass,
-    profession,
+    // profession: base.profession || setup.fetchProfessionChance(town, base),
     pockets: data.pockets.seededrandom(),
     wealth: dice(2, 50),
     trait: data.trait.seededrandom(),
@@ -128,30 +186,30 @@ setup.createNPC = function (town, base) {
         return data.raceTraits[this._race].raceWords.raceName
       }
     },
-    knownLanguages: data.raceTraits[race].knownLanguages,
+    knownLanguages: data.raceTraits[base.race].knownLanguages,
     reading: data.reading.seededrandom()
     // pubRumour: setup.createPubRumour()
   }, base)
 
   npc.gender = npc.gender || npc._gender
   npc.race = npc.race || npc._race
-  npc.key = npc.firstName + ' ' + npc.lastName
+  State.variables.npcs[npc.key] = npc
   Object.assign(npc, data.gender[npc.gender])
   Object.assign(npc.pronouns, data.gender[npc.gender])
 
   Object.assign(npc, data.raceTraits[npc.race].raceWords)
   npc.availableLanguages = [data.standardLanguages.concat(data.exoticLanguages) - npc.knownLanguages]
-
+  setup.createSexuality(npc)
   if (npc.hasClass === undefined) {
     if (random(100) > 70) {
       npc.hasClass = false
-      npc.dndClass = npc.profession
+      npc.dndClass = setup.fetchProfessionChance(town, base)
     } else {
       npc.adventure = data.adventure.seededrandom() || 'looking for work'
       npc.hasClass = true
     }
   } else if (!npc.hasClass) {
-    npc.dndClass = npc.profession
+    npc.dndClass = setup.fetchProfessionChance(town, base)
   } else if (npc.hasClass) {
     npc.adventure = data.adventure.seededrandom() || 'looking for work'
   }
@@ -190,9 +248,8 @@ setup.createNPC = function (town, base) {
     return '<<profile `$npcs[' + JSON.stringify(npc.key) + '] `' + JSON.stringify(base) + '>>'
   }
 
-  setup.createSexuality(npc)
   setup.createSocialClass(town, npc)
-  setup.createLivingStandards(town, npc)
+  // setup.createLivingStandards(town, npc)
 
   if (npc.hasHistory !== false) {
     setup.createHistory(town, npc)
