@@ -29,5 +29,5 @@ export function randomRange (min, max) {
  * @param {T[]} array
  */
 export function randomValue (array) {
-  return array[seeded.integerInRange(0, array.length - 1)]
+  return seeded.arrayItem(array)
 }
