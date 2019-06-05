@@ -13,15 +13,39 @@ export const pragma = (strings, ...values) => {
 }
 
 /**
- * Creates a link which silently executes its contents when clicked,
- * optionally forwarding the player to another passage.
+ * Creates a link, which leads to a new page that displays the provided content.
+ * Or alteratively, executed the content as a callback and goes to a new page
+ * to display the result.
+ *
+ * TODO: Implement linking.
  *
  * @param {React.ReactNode} title
- * @param {() => React.ReactNode} callback
+ * @param {React.ReactNode | (() => React.ReactNode)} callback
  */
 export const link = (title, callback) => () => {
+  // eslint-disable-next-line no-unused-vars
   const [content, setContent] = React.useState(null)
-  const handleClick = () => setContent(callback())
+
+  const handleClick = React.useCallback(() => {
+    setContent(typeof callback === 'function' ? callback() : callback)
+  }, [])
+
+  return <button onClick={handleClick}>{title}</button>
+}
+
+/**
+ * Creates a link which appends the content once clicked.
+ * Or alternatively, executes the content as a callback and appends the result.
+ *
+ * @param {React.ReactNode} title
+ * @param {React.ReactNode | (() => React.ReactNode)} callback
+ */
+export const linkAppend = (title, callback) => () => {
+  const [content, setContent] = React.useState(null)
+
+  const handleClick = React.useCallback(() => {
+    setContent(typeof callback === 'function' ? callback() : callback)
+  }, [])
 
   return (
     <React.Fragment>
