@@ -1,11 +1,23 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
+
+/**
+ * Converts a template literal into a react node array.
+ *
+ * @param {TemplateStringsArray} strings
+ * @param  {...React.ReactNode} values
+ * @return {React.ReactNodeArray}
+ */
+export const pragma = (strings, ...values) => {
+  return strings.reduce((children, string, i) => [...children, string, values[i]], [])
+}
 
 /**
  * Creates a link which silently executes its contents when clicked,
  * optionally forwarding the player to another passage.
  *
- * @param {string} title
- * @param {Function} callback
+ * @param {React.ReactNode} title
+ * @param {() => React.ReactNode} callback
  */
 export const link = (title, callback) => () => {
   const [content, setContent] = React.useState(null)
@@ -26,21 +38,28 @@ export const link = (title, callback) => () => {
  * Or alternatively, the result of the content callback.
  *
  * @param {string} selector
- * @param {Function|string} content
+ * @param {React.ReactNode | (() => React.ReactNode)} content
  */
-export const replace = (selector, content) => {
+export const replace = (selector, content) => () => {
   const element = document.querySelector(selector)
 
   if (element) {
-    element.innerHTML = typeof content === 'function' ? content() : content
-  } else {
-    throw Error(`No element matched the selector ${selector}.`)
+    return ReactDOM.createPortal(typeof content === 'function' ? content() : content, element)
   }
+
+  throw Error(`No element matched the selector ${selector}.`)
 }
 
-export const linkReplace = (title, callback) => () => {
-  const [content, setContent] = React.useState(null)
-  const handleClick = () => setContent(callback())
+/**
+ * @param {React.ReactNode} title
+ * @param {React.ReactNode | (() => React.ReactNode)} content
+ */
+export const linkReplace = (title, content) => () => {
+  const [replacement, setReplacement] = React.useState(null)
 
-  return content || <button onClick={handleClick}>{title}</button>
+  const handleClick = React.useCallback(() => {
+    setReplacement(typeof content === 'function' ? content() : content)
+  }, [])
+
+  return replacement || <button onClick={handleClick}>{title}</button>
 }
