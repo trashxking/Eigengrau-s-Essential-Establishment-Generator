@@ -31,3 +31,12 @@ export function randomRange (min, max) {
 export function randomValue (array) {
   return seeded.arrayItem(array)
 }
+
+/**
+ * Returns a random choice from the provided values.
+ * @template T
+ * @param {T[]} values
+ */
+export function either (...values) {
+  return seeded.arrayItem(values)
+}
