@@ -27,7 +27,7 @@ export function AlchemistOutput () {
   function generatePlothook () {
     const $chemistPlot = set('$chemistPlot', setup.alchemistMission($town))
 
-    replace('#chemistMission', () => {
+    return replace('#chemistMission', () => {
       return pragma`${randomValue([`When you say that you're adventurers, ${$chemist.hisher} ${$chemist.eyes} eyes light up, and ${$chemist.heshe} says`, `You chat for a while, and then ${$chemist.firstName} says `, `You discuss business, and when you talk about your adventures, ${$chemist.firstName} asks `])} ${$chemistPlot}`
     })
   }
