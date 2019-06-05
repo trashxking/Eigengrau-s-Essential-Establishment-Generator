@@ -4,7 +4,7 @@ import Randoma from 'randoma'
  * All functions use this pseudo-random number generation library.
  * @see https://www.npmjs.com/package/randoma
  */
-const seeded = new Randoma({ seed: Math.random() })
+const seeded = new Randoma({ seed: 0 })
 
 /**
  * Returns a random number between zero and the defined maximum value.
