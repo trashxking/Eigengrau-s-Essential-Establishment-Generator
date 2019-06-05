@@ -1,0 +1,40 @@
+#app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar,
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar {
+  flex-basis: 17.5em;
+  padding: 1.5em;
+  background: #eee;
+  border-right: 1px solid #bbb;
+  text-align: center;
+  overflow: auto;
+}
+
+.sidebar .title {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .title h1 {
+  margin: 0;
+  font-size: 1.65em;
+}
+
+.sidebar .author > * {
+  display: block;
+  margin: 1em 0;
+}
+
+.content {
+  flex: 1;
+  padding: 1.5em;
+  overflow: auto;
+}

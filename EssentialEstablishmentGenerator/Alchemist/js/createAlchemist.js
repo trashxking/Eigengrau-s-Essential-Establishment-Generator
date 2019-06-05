@@ -1,5 +1,4 @@
-
-setup.createAlchemist = function (town, opts) {
+export function createAlchemist (town, opts) {
   opts = opts || {}
   const alchemist = (opts['newBuilding'] || setup.createBuilding)(town, 'alchemist')
   console.groupCollapsed('Alchemist loading...')
