@@ -6,7 +6,9 @@
     "dice": true,
     "State": true,
     "randomFloat": true,
-    "clone": true
+    "clone": true,
+    "Util": true,
+    "settings": true
   },
   "rules": {
     "no-var": "warn",

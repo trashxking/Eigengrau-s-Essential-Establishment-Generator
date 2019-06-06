@@ -15,6 +15,14 @@ export function random (max) {
 }
 
 /**
+ * Returns a random floating point number between zero and the defined maximum value.
+ * @param {number} max
+ */
+export function randomFloat (max) {
+  return seeded.floatInRange(0, max)
+}
+
+/**
  * Returns a random number between the defined minimum and maximum value.
  * @param {number} min
  * @param {number} max

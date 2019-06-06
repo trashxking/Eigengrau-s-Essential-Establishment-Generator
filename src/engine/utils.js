@@ -82,3 +82,17 @@ export function clone (orig) {
 
   return copy
 }
+
+/**
+ * @copyright Copyright © 2013–2018 Thomas Michael Edwards
+ * Returns a lowercased and hyphen encoded version of the passed string.
+ *
+ * @param {string} str
+ */
+export function slugify (str) {
+  return String(str)
+    .trim()
+    .replace(/[^\w\s\u2013\u2014-]+/g, '')
+    .replace(/[_\s\u2013\u2014-]+/g, '-')
+    .toLocaleLowerCase()
+}
