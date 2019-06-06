@@ -18,7 +18,7 @@ export function get (name) {
     if (path in object) {
       object = object[path]
     } else {
-      throw new ReferenceError(`The variable ${name} does not exist.`)
+      return
     }
   }
 
@@ -51,6 +51,7 @@ export function set (name, value) {
 
 /**
  * Removes a value from the story.
+ * Returns true if successful.
  * @param {string} name
  */
 export function unset (name) {
@@ -61,7 +62,7 @@ export function unset (name) {
     const path = paths[i]
 
     if (!(path in object)) {
-      throw new ReferenceError(`The variable ${name} does not exist.`)
+      return false
     }
 
     object = object[path]
@@ -69,8 +70,9 @@ export function unset (name) {
 
   const path = paths[paths.length - 1]
   if (!(path in object)) {
-    throw new ReferenceError(`The variable ${name} does not exist.`)
+    return false
   }
 
   delete object[path]
+  return true
 }
