@@ -17,3 +17,12 @@ window.Setting = {
 }
 
 window.passages = {}
+
+window.State = {
+  temporary: {},
+  variables: {
+    npcs: {},
+    factions: [],
+    buildings: []
+  }
+}
