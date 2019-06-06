@@ -1,18 +1,29 @@
+import { createAlchemist } from '../../Alchemist/js/createAlchemist'
 
 setup.createStartBuildings = function (town) {
-  const buildingType = ['townSquare', 'tavern', 'alchemist', 'GeneralStore', 'smithy', 'market', 'temple', 'docks']
-
-  if (town.hasBrothel) {
-    buildingType.push('brothel')
+  const buildingTypes = {
+    townSquare: setup.createTownSquare,
+    tavern: setup.createTavern,
+    alchemist: createAlchemist,
+    GeneralStore: setup.createGeneralStore,
+    smithy: setup.createSmithy,
+    market: setup.createMarket,
+    temple: setup.createTemple,
+    docks: setup.createDocks
   }
 
-  buildingType.forEach(function (type) {
+  if (town.hasBrothel) {
+    buildingTypes.brothel = setup.createBrothel
+  }
+
+  for (const [type, createBuilding] of Object.entries(buildingTypes)) {
     if (!town.buildings[type]) {
       town.buildings[type] = {}
     }
-    const building = setup['create' + type.toUpperFirst()](town)
+    console.log(type)
+    const building = createBuilding(town)
     town.buildings[type][building.key] = building
-  })
+  }
 
   const bakery = setup.goodsAndServices.default.create(town, 'bakery')
   town.buildings.bakery[bakery.key] = bakery
