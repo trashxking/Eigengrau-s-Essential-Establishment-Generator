@@ -1,4 +1,4 @@
-import { pragma, image, replace, button, listBox, link } from '../../src/engine/html'
+import { pragma, image, replace, button, listBox, link, tip, fancyFirstLetter } from '../../src/engine/html'
 import { get, set } from '../../src/engine/story'
 import banner from '../Resources/Banner.png'
 
@@ -34,19 +34,22 @@ export function Start () {
     docks: 'Docks'
   }
 
-  return pragma`
-  <span id="body">${image(banner)}
+  return pragma`\
+${image(banner)}
 
-<span class="firstcharacter">W</span>elcome to Eigengrau's Essential Establishment Generator, v${$versionNumber}! This is still in active development.
+${fancyFirstLetter(`Welcome to Eigengrau's Essential Establishment Generator, v${$versionNumber}! This is still in active development.`)}
 
-<h3>Quick scenario generator</h3>${CreateScenario()}
+<h3>Quick scenario generator</h3>
+${CreateScenario()}
+
 <h3>The ${$town.type} of $town.name</h3>
-<span class="tip" title="Find the overview of the town and its sociopolitical structure here!">
-  ${link(`Description of ${$town.name}`, () => {
-    set('$currentPassage', $town)
-    goTo(TownOutput)
-  })}
-</span>
+${tip('Find the overview of the town and its sociopolitical structure here!',
+    link(`Description of ${$town.name}`, () => {
+      set('$currentPassage', $town)
+      goTo(TownOutput)
+    })
+  )}
+
 ${listBox(newBuildingsOptions, value => set('$newBuilding', value))} -- ${button('Create new building', createBuilding)}
 <span id="buildings">${BuildingsList()}</span>
 

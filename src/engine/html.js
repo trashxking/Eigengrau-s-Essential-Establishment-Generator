@@ -106,13 +106,14 @@ export const linkAppend = (title, callback) => () => {
  * Or alternatively, the result of the content callback.
  *
  * @param {string} selector
- * @param {React.ReactNode | (() => React.ReactNode)} content
+ * @param {React.ReactNode | (() => React.ReactNode)} callback
  */
-export const replace = (selector, content) => () => {
+export const replace = (selector, callback) => () => {
   const element = document.querySelector(selector)
+  const content = typeof callback === 'function' ? callback() : callback
 
   if (element) {
-    return ReactDOM.createPortal(typeof content === 'function' ? content() : content, element)
+    return ReactDOM.createPortal(content, element)
   }
 
   throw Error(`No element matched the selector ${selector}.`)
@@ -120,14 +121,37 @@ export const replace = (selector, content) => () => {
 
 /**
  * @param {React.ReactNode} title
- * @param {React.ReactNode | (() => React.ReactNode)} content
+ * @param {React.ReactNode | (() => React.ReactNode)} callback
  */
-export const linkReplace = (title, content) => () => {
-  const [replacement, setReplacement] = React.useState(null)
+export const linkReplace = (title, callback) => () => {
+  const [content, setContent] = React.useState(null)
 
   const handleClick = React.useCallback(() => {
-    setReplacement(typeof content === 'function' ? content() : content)
+    setContent(typeof callback === 'function' ? callback() : callback)
   }, [])
 
-  return replacement || <button onClick={handleClick}>{title}</button>
+  return content || <button onClick={handleClick}>{title}</button>
+}
+
+/**
+ * Displays a tooltip.
+ * @param {string} title
+ * @param {React.ReactNode | (() => React.ReactNode)} callback
+ */
+export const tip = (title, callback) => () => {
+  const content = typeof callback === 'function' ? callback() : callback
+  return <span className="tip" title={title}>{content}</span>
+}
+
+/**
+ * Makes the first latter in a string into a fansy schmancy letter.
+ * @param {string} content
+ */
+export const fancyFirstLetter = (content) => () => {
+  return (
+    <React.Fragment>
+      <span className="firstcharacter">{content.substring(0, 1)}</span>
+      {content.substring(1)}
+    </React.Fragment>
+  )
 }
