@@ -1,4 +1,4 @@
-setup.createTown = function (base) {
+export function createTown (base) {
   const type = ['hamlet', 'hamlet', 'village', 'village', 'village', 'town', 'town', 'town', 'city', 'city'].seededrandom()
   const terrain = ['temperate', 'temperate', 'temperate', 'tropical', 'polar', 'arid'].seededrandom()
   const season = ['summer', 'autumn', 'winter', 'spring']
