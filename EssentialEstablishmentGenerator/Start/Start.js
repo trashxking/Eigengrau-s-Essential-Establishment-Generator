@@ -1,10 +1,10 @@
 import { pragma, image, replace, button, listBox, link, tip, fancyFirstLetter } from '../../src/engine/html'
 import { get, set } from '../../src/engine/story'
+import { CreateScenario } from '../World/CreateScenario'
 import banner from '../Resources/Banner.png'
 import { Popup } from './Popup'
 
 const BuildingsList = () => {}
-const CreateScenario = () => {}
 const TownOutput = () => {}
 const goTo = (...args) => {}
 
