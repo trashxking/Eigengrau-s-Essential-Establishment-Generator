@@ -1,14 +1,34 @@
-import { set, get } from './story'
+import { set, get, unset } from './story'
 
 describe('story', () => {
-  it('gets and sets story variables', () => {
-    set('$variable', 10)
+  const createGet = name => () => {
+    get(name)
+  }
+
+  it('sets story variables', () => {
+    expect(set('$variable', 10)).toEqual(10)
+  })
+
+  it('gets story variables', () => {
     expect(get('$variable')).toEqual(10)
   })
 
+  it('unsets story variables', () => {
+    unset('$variable')
+    expect(createGet('$variable')).toThrow()
+  })
+
+  it('sets deep story variables', () => {
+    expect(set('$variable', {})).toEqual({})
+    expect(set('$variable.value', 10)).toEqual(10)
+  })
+
   it('gets and sets deep story variables', () => {
-    set('$variable', {})
-    set('$variable.value', 10)
     expect(get('$variable.value')).toEqual(10)
+  })
+
+  it('unsets deep story variables', () => {
+    unset('$variable.value')
+    expect(createGet('$variable.value')).toThrow()
   })
 })

@@ -44,8 +44,8 @@ export function set (name, value) {
     object = object[path]
   }
 
-  object[paths[paths.length - 1]] = value
-
+  const path = paths[paths.length - 1]
+  object[path] = value
   return value
 }
 
@@ -54,8 +54,23 @@ export function set (name, value) {
  * @param {string} name
  */
 export function unset (name) {
-  if (name in story) {
-    delete story[name]
+  const paths = name.split('.')
+  let object = story
+
+  for (let i = 0; i < paths.length - 1; i++) {
+    const path = paths[i]
+
+    if (!(path in object)) {
+      throw new ReferenceError(`The variable ${name} does not exist.`)
+    }
+
+    object = object[path]
   }
-  throw new ReferenceError(`The variable ${name} does not exist.`)
+
+  const path = paths[paths.length - 1]
+  if (!(path in object)) {
+    throw new ReferenceError(`The variable ${name} does not exist.`)
+  }
+
+  delete object[path]
 }
