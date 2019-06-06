@@ -1,9 +1,10 @@
+import { randomValue } from '../../../src/engine/rolls'
 
 export function createChemist (town) {
   const chemist = setup.createNPC(town, {
     associatedTown: town.name,
-    dndClass: ['wizard', 'wizard', 'druid', 'druid', 'cleric', 'warlock'].seededrandom(),
-    background: ['sage', 'sage', 'sage', 'guild artisan', 'guild artisan', 'guild artisan', 'commoner', 'commoner', 'commoner'].seededrandom(),
+    dndClass: randomValue(['wizard', 'wizard', 'druid', 'druid', 'cleric', 'warlock']),
+    background: randomValue(['sage', 'sage', 'sage', 'guild artisan', 'guild artisan', 'guild artisan', 'commoner', 'commoner', 'commoner']),
     profession: 'alchemist',
     idle: [
       'talking with a customer',
@@ -26,7 +27,7 @@ export function createChemist (town) {
       'sprinkling what looks like gold shavings into a large copper pot',
       'rearranging a shelf full of alchemical tomes',
       'restocking shelves with new potions'],
-    owner: [
+    owner: randomValue([
       'owner',
       'caretaker',
       'proud owner',
@@ -37,7 +38,7 @@ export function createChemist (town) {
       'chief researcher',
       'head alchemist',
       'sole owner',
-      'new owner'].seededrandom(),
+      'new owner']),
     ingredients: ['bloodgrass', 'chromus slime', 'ephedra', 'emetic wax', 'fennel silk', 'gengko bush', 'hyacinth nectar', 'lavender sprigs', 'mandrake root', 'wild sageroot', 'arctic creeper', 'amanita cap', 'basilisk breath', 'cactus juice', 'drakus flower', 'harrada leaf', 'quicksilver lichen', 'radiant synthseed', 'spineflower berries', 'wyrmtongue petals', 'arrow root', 'blue toadshade', 'cosmos glond', "Devil's bloodleaf", "fiend's ivy", 'hydrathistle', 'ironwood heart', 'luminous cap dust', 'mortflesh powder', 'nightshade berries', 'primordial balm', 'rock vine', 'scilia beans', 'silver hibiscus', 'tail leaf', 'verdant nettle', 'voidroot', 'wispstalks', 'wrackwort bulbs'],
     greeting: [
       'nods at you',
