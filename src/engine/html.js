@@ -39,8 +39,9 @@ export const button = (title, callback) => () => {
  *
  * @param {{[key: string]: any}} options
  * @param {(value: string) => void} onChange
+ * @param {string} [selected] - The default selection
  */
-export const listBox = (options, onChange) => () => {
+export const listBox = (options, onChange, selected) => () => {
   const entries = Object.entries(options)
 
   const handleChange = React.useCallback(event => {
@@ -48,9 +49,9 @@ export const listBox = (options, onChange) => () => {
   }, [])
 
   return (
-    <select onChange={handleChange}>
+    <select onChange={handleChange} selected={selected}>
       {entries.map(([key, value], i) => {
-        return <option key={i} value={key}>{value}</option>
+        return <option key={i} value={key} >{value}</option>
       })}
     </select>
   )
