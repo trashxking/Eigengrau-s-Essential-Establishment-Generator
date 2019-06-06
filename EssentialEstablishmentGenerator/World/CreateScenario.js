@@ -1,6 +1,23 @@
+import { get, set } from '../../src/engine/story'
+import { listBox } from '../../src/engine/html'
+
 export function CreateScenario () {
+  const $currentSeason = set('$currentSeason', get('$town.currentSeason'))
+
+  const selectSeason = value => {
+    set('$currentSeason', value)
+  }
+
+  const seasons = {
+    summer: 'Summer',
+    autumn: 'Autumn',
+    winter: 'Winter',
+    sprins: 'Spring',
+    null: 'No weather'
+  }
+
   return `\
-<<set $currentSeason to $town.currentSeason>><<listbox "$currentSeason" autoselect>><<option "Summer" "summer">><<option "Autumn" "autumn">><<option "Winter" "winter">><<option "Spring" "spring">><<option "No weather" "null">><</listbox>><<listbox "$scenarioType">><<option "Town Encounter" "town">><<option "Forest" "forest">><<option "Desert" "desert">><<option "Mountain" "mountain">><<option "Road" "road">><</listbox>><<button "Create scenario">>
+${listBox(seasons, selectSeason, $currentSeason)}<<listbox "$scenarioType">><<option "Town Encounter" "town">><<option "Forest" "forest">><<option "Desert" "desert">><<option "Mountain" "mountain">><<option "Road" "road">><</listbox>><<button "Create scenario">>
 <<if def _newNPC>>
   <<run delete $npcs[_newNPC.key]>>
 <</if>>
