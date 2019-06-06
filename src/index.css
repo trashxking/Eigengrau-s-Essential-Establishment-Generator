@@ -3,13 +3,9 @@
   height: 100vh;
 }
 
-.sidebar,
-.content {
+.sidebar {
   display: flex;
   justify-content: center;
-}
-
-.sidebar {
   flex-basis: 17.5em;
   padding: 1.5em;
   background: #eee;
