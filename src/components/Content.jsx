@@ -7,7 +7,7 @@ import { StoryInit } from '../../EssentialEstablishmentGenerator/Start/StoryInit
  * @type {React.FC}
  */
 const Content = () => {
-  React.useEffect(StoryInit, [])
+  StoryInit()
   return <main className="content">{Start()}</main>
 }
 
