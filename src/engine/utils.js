@@ -13,7 +13,9 @@
  *      equivalent objects; i.e. each reference will receive its own clone
  *      of the original object.
  *
- * @param {unknown} orig
+ * @template T
+ * @param {T} orig
+ * @returns {T}
  */
 export function clone (orig) {
   /*
