@@ -1,4 +1,4 @@
-export const alchemist = {
+export const alchemistData = {
   rollData: {
     wealth: [
       [95, 'kingly'],
