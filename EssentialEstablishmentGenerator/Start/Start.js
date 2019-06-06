@@ -1,0 +1,22 @@
+import { pragma } from '../../src/engine/html'
+
+export function Start () {
+  return pragma`
+  <span id="body">[img[Banner]]
+
+<span class="firstcharacter">W</span>elcome to Eigengrau's Essential Establishment Generator, v$versionNumber! This is still in active development.
+
+<h3>Quick scenario generator</h3><<include "CreateScenario">>
+<h3>The $town.type of $town.name</h3>
+<span class="tip" title="Find the overview of the town and its sociopolitical structure here!"><<link "Description of $town.name">><<set $currentPassage to $town>><<goto "TownOutput">><</link>></span>
+<<listbox "$newBuilding">>
+<<option "Tavern" "tavern">><<option "Alchemist" "alchemist">><<option "General Store" "GeneralStore">><<option "Blacksmith" "smithy">><<option "Market" "market">><<option "Temple" "temple">><<option "Brothel" "brothel">><<option "Docks" "docks">>
+<</listbox>> -- <<button "Create new building">>
+  <<run console.log('Creating a new ' + $newBuilding)>>
+  <<run setup.createNewBuilding($town, $newBuilding)>>
+  <<replace "#buildings">><<include "BuildingsList">><</replace>>
+<</button>>
+<span id="buildings"><<include "BuildingsList">></span>
+
+<<include "Popup">>`
+}
