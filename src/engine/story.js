@@ -9,10 +9,20 @@ const story = {}
  * @param {string} name
  */
 export function get (name) {
-  if (name in story) {
-    return story[name]
+  let object = story
+  const paths = name.split('.')
+
+  while (paths.length) {
+    const path = paths.shift()
+
+    if (path in object) {
+      object = object[path]
+    } else {
+      throw new ReferenceError(`The variable ${name} does not exist.`)
+    }
   }
-  throw new ReferenceError(`The variable ${name} does not exist.`)
+
+  return object
 }
 
 /**
@@ -21,7 +31,21 @@ export function get (name) {
  * @param {any} value
  */
 export function set (name, value) {
-  story[name] = value
+  const paths = name.split('.')
+  let object = story
+
+  for (let i = 0; i < paths.length - 1; i++) {
+    const path = paths[i]
+
+    if (!(path in object)) {
+      object[path] = {}
+    }
+
+    object = object[path]
+  }
+
+  object[paths[paths.length - 1]] = value
+
   return value
 }
 
