@@ -1,10 +1,6 @@
 import { set, get, unset } from './story'
 
 describe('story', () => {
-  const createGet = name => () => {
-    get(name)
-  }
-
   it('sets story variables', () => {
     expect(set('$variable', 10)).toEqual(10)
   })
@@ -15,7 +11,7 @@ describe('story', () => {
 
   it('unsets story variables', () => {
     unset('$variable')
-    expect(createGet('$variable')).toEqual(undefined)
+    expect(get('$variable')).toEqual(undefined)
   })
 
   it('sets deep story variables', () => {
@@ -29,6 +25,6 @@ describe('story', () => {
 
   it('unsets deep story variables', () => {
     unset('$variable.value')
-    expect(createGet('$variable.value')).toEqual(undefined)
+    expect(get('$variable.value')).toEqual(undefined)
   })
 })
