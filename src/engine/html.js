@@ -9,7 +9,20 @@ import ReactDOM from 'react-dom'
  * @return {React.ReactNodeArray}
  */
 export const pragma = (strings, ...values) => {
-  return strings.reduce((children, string, i) => [...children, string, values[i]], [])
+  return strings.reduce((children, string, i) => {
+    const value = values[i]
+    const child = typeof value === 'function' ? value() : value
+    return [...children, string, child]
+  }, [])
+}
+
+/**
+ * Displays an image.
+ * @param {string} url
+ * @param {string} [alt]
+ */
+export const image = (url, alt) => () => {
+  return <img src={url} alt={alt} />
 }
 
 /**
