@@ -18,11 +18,42 @@ export const pragma = (strings, ...values) => {
 
 /**
  * Displays an image.
+ *
  * @param {string} url
  * @param {string} [alt]
  */
 export const image = (url, alt) => () => {
   return <img src={url} alt={alt} />
+}
+
+/**
+ * @param {React.ReactNode} title
+ * @param {() => void} callback
+ */
+export const button = (title, callback) => () => {
+  return <button onClick={callback}>{title}</button>
+}
+
+/**
+ * Presents a dropdown list of choices.
+ *
+ * @param {{[key: string]: any}} options
+ * @param {(value: string) => void} onChange
+ */
+export const listBox = (options, onChange) => () => {
+  const entries = Object.entries(options)
+
+  const handleChange = React.useCallback(event => {
+    onChange(event.target.value)
+  }, [])
+
+  return (
+    <select onChange={handleChange}>
+      {entries.map(([key, value], i) => {
+        return <option key={i} value={key}>{value}</option>
+      })}
+    </select>
+  )
 }
 
 /**
