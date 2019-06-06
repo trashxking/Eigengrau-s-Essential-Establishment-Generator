@@ -1,3 +1,5 @@
+import { clone } from '../../../src/engine/utils'
+
 export function createTown (base) {
   const type = ['hamlet', 'hamlet', 'village', 'village', 'village', 'town', 'town', 'town', 'city', 'city'].seededrandom()
   const terrain = ['temperate', 'temperate', 'temperate', 'tropical', 'polar', 'arid'].seededrandom()
