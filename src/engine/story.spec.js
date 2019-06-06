@@ -15,7 +15,7 @@ describe('story', () => {
 
   it('unsets story variables', () => {
     unset('$variable')
-    expect(createGet('$variable')).toThrow()
+    expect(createGet('$variable')).toEqual(undefined)
   })
 
   it('sets deep story variables', () => {
@@ -29,6 +29,6 @@ describe('story', () => {
 
   it('unsets deep story variables', () => {
     unset('$variable.value')
-    expect(createGet('$variable.value')).toThrow()
+    expect(createGet('$variable.value')).toEqual(undefined)
   })
 })
