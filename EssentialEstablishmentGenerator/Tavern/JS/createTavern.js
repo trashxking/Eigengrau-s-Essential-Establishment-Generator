@@ -18,7 +18,7 @@ setup.createTavern = function (town, opts = {}) {
   Object.assign(tavern, {
     passageName: `TavernOutput`,
     initPassage: `InitTavern`,
-    BuildingType: `tavern`,
+    buildingType: `tavern`,
     wordNoun: [`tavern`, `tavern`, `tavern`, `tavern`, `pub`, `pub`, `pub`, `inn`, `inn`, `bar`, `bar`, `bar`, `watering hole`, `drinkery`].seededrandom(),
     shortages: [`wine`, `booze`, `grog`, `whiskey`, `mutton`, `lamb`, `carrots`, `mugs`, `forks`, `frogs`, `bread`, `mushrooms`, `salt`, `silver pieces`, `chairs`, `eggs`, `potatoes`],
     fun: setup.tavern.fun.seededrandom(),
