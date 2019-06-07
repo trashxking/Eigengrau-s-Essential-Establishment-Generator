@@ -1,5 +1,6 @@
 {
     "deepscan.enable": true,
     "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
     "javascript.implicitProjectConfig.checkJs": true
 }

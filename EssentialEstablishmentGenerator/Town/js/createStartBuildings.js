@@ -1,4 +1,5 @@
 import { createAlchemist } from '../../Alchemist/js/createAlchemist'
+import { createSmithy } from '../../Blacksmith/JS/createSmithy'
 
 setup.createStartBuildings = function (town) {
   const buildingTypes = {
@@ -6,7 +7,7 @@ setup.createStartBuildings = function (town) {
     tavern: setup.createTavern,
     alchemist: createAlchemist,
     GeneralStore: setup.createGeneralStore,
-    smithy: setup.createSmithy,
+    smithy: createSmithy,
     market: setup.createMarket,
     temple: setup.createTemple,
     docks: setup.createDocks
@@ -26,27 +27,27 @@ setup.createStartBuildings = function (town) {
   }
 
   if (town.population > 100 || town.roll.wealth > 40) {
-    const bakery = setup.goodsAndServices.default.create(town, 'bakery')
+    const bakery = setup.goodsAndServices.default.create(town, `bakery`)
     town.buildings.bakery[bakery.key] = bakery
   }
 
   if (town.population > 1000 || town.roll.wealth > 70) {
-    const florist = setup.goodsAndServices.default.create(town, 'florist')
+    const florist = setup.goodsAndServices.default.create(town, `florist`)
     town.buildings.florist[florist.key] = florist
   }
 
   if (town.population > 600 || town.roll.wealth > 60) {
-    const tailor = setup.goodsAndServices.default.create(town, 'tailor')
+    const tailor = setup.goodsAndServices.default.create(town, `tailor`)
     town.buildings.tailor[tailor.key] = tailor
   }
 
   if (town.population > 400 || town.roll.wealth > 40) {
-    const butcher = setup.goodsAndServices.default.create(town, 'butcher')
+    const butcher = setup.goodsAndServices.default.create(town, `butcher`)
     town.buildings.butcher[butcher.key] = butcher
   }
 
   if (town.population > 700 || town.roll.wealth > 60) {
-    const cobbler = setup.goodsAndServices.default.create(town, 'cobbler')
+    const cobbler = setup.goodsAndServices.default.create(town, `cobbler`)
     town.buildings.cobbler[cobbler.key] = cobbler
   }
 
