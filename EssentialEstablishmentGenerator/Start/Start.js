@@ -9,30 +9,30 @@ import { BuildingsList } from './buildingsList'
 const TownOutput = () => {}
 const goTo = (...args) => {}
 
-set('$town', {})
-set('$newBuilding', {})
-set('$versionNumber', '0.0.0')
+set(`$town`, {})
+set(`$newBuilding`, {})
+set(`$versionNumber`, `0.0.0`)
 
 export function Start () {
-  const $town = get('$town')
-  const $newBuilding = get('$newBuilding')
-  const $versionNumber = get('$versionNumber')
+  const $town = get(`$town`)
+  const $newBuilding = get(`$newBuilding`)
+  const $versionNumber = get(`$versionNumber`)
 
   const createBuilding = () => {
     console.log(`Creating a new ${$newBuilding}`)
     createNewBuilding($town, $newBuilding)
-    replace('#buildings', BuildingsList)
+    replace(`#buildings`, BuildingsList)
   }
 
   const newBuildingsOptions = {
-    tavern: 'Tavern',
-    alchemist: 'Alchemist',
-    GeneralStore: 'General Store',
-    smithy: 'Blacksmith',
-    market: 'Market',
-    temple: 'Temple',
-    brothel: 'Brothel',
-    docks: 'Docks'
+    tavern: `Tavern`,
+    alchemist: `Alchemist`,
+    GeneralStore: `General Store`,
+    smithy: `Blacksmith`,
+    market: `Market`,
+    temple: `Temple`,
+    brothel: `Brothel`,
+    docks: `Docks`
   }
 
   return pragma`\
@@ -44,14 +44,14 @@ ${fancyFirstLetter(`Welcome to Eigengrau's Essential Establishment Generator, v$
 ${CreateScenario()}
 
 <h3>The ${$town.type} of $town.name</h3>
-${tip('Find the overview of the town and its sociopolitical structure here!',
+${tip(`Find the overview of the town and its sociopolitical structure here!`,
     link(`Description of ${$town.name}`, () => {
-      set('$currentPassage', $town)
+      set(`$currentPassage`, $town)
       goTo(TownOutput)
     })
   )}
 
-${listBox(newBuildingsOptions, value => set('$newBuilding', value))} -- ${button('Create new building', createBuilding)}
+${listBox(newBuildingsOptions, value => set(`$newBuilding`, value))} -- ${button(`Create new building`, createBuilding)}
 <span id="buildings">${BuildingsList()}</span>
 
 ${Popup()}`

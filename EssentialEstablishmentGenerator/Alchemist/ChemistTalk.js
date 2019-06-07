@@ -3,8 +3,8 @@ import { pragma, linkAppend } from '../../src/engine/html'
 import { get } from '../../src/engine/story'
 
 export function ChemistTalk () {
-  const $chemist = get('$chemist')
-  const $brew = get('$brew')
+  const $chemist = get(`$chemist`)
+  const $brew = get(`$brew`)
 
   const inspectBrew = `Looking inside the ${$brew.vesselType}, you see a ${$brew.liquidDescription} bubbling away`
 

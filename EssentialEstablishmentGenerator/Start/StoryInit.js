@@ -9,19 +9,19 @@ import { ShitPlotHooks } from '../ShitPlotHooks'
 import { Newspaper } from '../Misc/Newspaper'
 
 export function StoryInit () {
-  set('$versionNumber', '2.2.1')
+  set(`$versionNumber`, `2.2.1`)
 
-  set('$towns', [])
-  set('$factions', [])
-  set('$buildings', [])
-  set('$npcs', {})
-  set('$throwawayNpcs', {})
+  set(`$towns`, [])
+  set(`$factions`, [])
+  set(`$buildings`, [])
+  set(`$npcs`, {})
+  set(`$throwawayNpcs`, {})
 
   Town()
 
-  set('$weather', {
-    season: randomValue(['winter', 'spring', 'summer', 'autumn']),
-    seasonPool: ['winter', 'spring', 'summer', 'autumn']
+  set(`$weather`, {
+    season: randomValue([`winter`, `spring`, `summer`, `autumn`]),
+    seasonPool: [`winter`, `spring`, `summer`, `autumn`]
   })
 
   /** FIXME */

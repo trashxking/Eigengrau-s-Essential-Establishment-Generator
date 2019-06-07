@@ -1,16 +1,16 @@
 import { clone } from '../../../src/engine/utils'
 
 export function createTown (base) {
-  const type = ['hamlet', 'hamlet', 'village', 'village', 'village', 'town', 'town', 'town', 'city', 'city'].seededrandom()
-  const terrain = ['temperate', 'temperate', 'temperate', 'tropical', 'polar', 'arid'].seededrandom()
-  const season = ['summer', 'autumn', 'winter', 'spring']
+  const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
+  const terrain = [`temperate`, `temperate`, `temperate`, `tropical`, `polar`, `arid`].seededrandom()
+  const season = [`summer`, `autumn`, `winter`, `spring`]
   const townName = setup.createTownName()
-  console.groupCollapsed(townName + ' is loading...')
+  console.groupCollapsed(`${townName} is loading...`)
   const economicIdeology = setup.townData.type[type].economicIdeology.seededrandom()
   const politicalSource = setup.townData.type[type].politicalSource.seededrandom()
   const politicalIdeology = setup.townData.politicalSource[politicalSource].politicalIdeology.seededrandom()
   const town = Object.assign({
-    passageName: 'TownOutput',
+    passageName: `TownOutput`,
     name: townName,
     taxes: {
       base: 7,
@@ -21,35 +21,35 @@ export function createTown (base) {
     taxRate (town) {
       let totalTax = 0
       Object.keys(town.taxes).forEach(function (tax) {
-        if (typeof town.taxes[tax] === 'number') {
+        if (typeof town.taxes[tax] === `number`) {
           totalTax += town.taxes[tax]
-        } else if (typeof town.taxes[tax] === 'function') {
+        } else if (typeof town.taxes[tax] === `function`) {
           const temp = town.taxes[tax](this)
           totalTax += temp
         } else {
-          console.log('non-integer tax! ' + town.taxes[tax])
+          console.log(`non-integer tax! ${town.taxes[tax]}`)
         }
       })
       return totalTax
     },
     get type () {
-      console.log('Getting town type.')
+      console.log(`Getting town type.`)
       if (this.population > 3000) {
-        return 'city'
+        return `city`
       } else if (this.population > 1000) {
-        return 'town'
+        return `town`
       } else if (this.population > 300) {
-        return 'village'
+        return `village`
       } else if (this.population > 30) {
-        return 'hamlet'
+        return `hamlet`
       } else if (this.population <= 30) {
-        console.log('Population is less than 30. Setting to 30.')
+        console.log(`Population is less than 30. Setting to 30.`)
         this.population = 30
-        return 'hamlet'
+        return `hamlet`
       }
     },
     set type (value) {
-      console.log('Setting town type.')
+      console.log(`Setting town type.`)
       this._type = value
     },
     // type: type,
@@ -65,11 +65,11 @@ export function createTown (base) {
     // Clone the raw demographic data for the town type.
     _baseDemographics: clone(setup.townData.type[type].demographic),
     get baseDemographics () {
-      console.log('Getting base demographics.')
+      console.log(`Getting base demographics.`)
       return this._baseDemographics
     },
     set baseDemographics (newDemographics) {
-      console.log('Setting base demographics.')
+      console.log(`Setting base demographics.`)
       Object.keys(newDemographics).forEach(function (byRace) {
         this._baseDemographics[byRace] = newDemographics[byRace]
       }, this)
@@ -97,35 +97,35 @@ export function createTown (base) {
     _politicalSource: politicalSource,
     _politicalIdeology: politicalIdeology,
     get economicIdeology () {
-      console.log('Getting town economic ideology.')
+      console.log(`Getting town economic ideology.`)
       return this._economicIdeology
     },
     set economicIdeology (value) {
-      console.log('Setting town economic ideology.')
+      console.log(`Setting town economic ideology.`)
       this._economicIdeology = value
       Object.assign(this, setup.townData.economicIdeology[this._economicIdeology].descriptors)
     },
     get politicalSource () {
-      console.log('Getting town political source.')
+      console.log(`Getting town political source.`)
       return this._politicalSource
     },
     set politicalSource (value) {
-      console.log('Setting town political source.')
+      console.log(`Setting town political source.`)
       this._politicalSource = value
     },
     get politicalIdeology () {
-      console.log('Getting town political ideology.')
+      console.log(`Getting town political ideology.`)
       return this._politicalIdeology
     },
     set politicalIdeology (value) {
-      console.log('Setting town political ideology.')
+      console.log(`Setting town political ideology.`)
       this._politicalIdeology = value
       Object.assign(this, setup.townData.politicalIdeology[this._politicalIdeology].data)
     },
     get politicalSourceDescription () {
-      console.log('Getting town political source description.')
-      if (this._politicalSource === 'absolute monarchy' || this._politicalSource === 'constitutional monarchy') {
-        if (this.politicalIdeology === 'autocracy') {
+      console.log(`Getting town political source description.`)
+      if (this._politicalSource === `absolute monarchy` || this._politicalSource === `constitutional monarchy`) {
+        if (this.politicalIdeology === `autocracy`) {
           return setup.townData.politicalSource[this._politicalSource].autocracy.politicalSourceDescription
         } else {
           return setup.townData.politicalSource[this._politicalSource].default.politicalSourceDescription
@@ -135,19 +135,19 @@ export function createTown (base) {
       }
     },
     get wealth () {
-      console.log('Getting town wealth.')
+      console.log(`Getting town wealth.`)
       let wealth = setup.townData.rollData.wealth.find(function (descriptor) {
         return descriptor[0] <= this.roll.wealth
       }, this)
       if (wealth === undefined) {
-        console.log('Could not find a wealthRoll descriptor that was appropriate for a roll of ' + this.roll.wealth + ' for ' + this.name)
+        console.log(`Could not find a wealthRoll descriptor that was appropriate for a roll of ${this.roll.wealth} for ${this.name}`)
         wealth = setup.townData.rollData.wealth[setup.townData.rollData.wealth.length - 1]
       }
       this._wealth = wealth[1]
       return this._wealth
     },
     set wealth (value) {
-      console.log('Setting town wealth.')
+      console.log(`Setting town wealth.`)
       this._wealth = value
     },
     roads: {},
@@ -185,14 +185,14 @@ export function createTown (base) {
     town.roll[roll].clamp(1, 100)
   })
 
-  console.log('Assigning town size modifiers (btw ' + town.name + ' is a ' + town.type + ')')
+  console.log(`Assigning town size modifiers (btw ${town.name} is a ${town.type})`)
   Object.keys(setup.townData.type[town.type].modifiers).forEach(function (modifier) {
     town.roll[modifier] = Math.fm(town.roll[modifier], setup.townData.type[town.type].modifiers[modifier])
   })
 
   town.guard = setup.createGuard(town)
 
-  console.log('Assigning economic modifiers (btw ' + town.name + ' is a ' + town.economicIdeology + ')')
+  console.log(`Assigning economic modifiers (btw ${town.name} is a ${town.economicIdeology})`)
   // economic ideology attribute modifiers
 
   Object.keys(setup.townData.economicIdeology[town.economicIdeology].modifiers).forEach(function (modifier) {
@@ -200,7 +200,7 @@ export function createTown (base) {
     town.roll[modifier] = Math.fm(town.roll[modifier], setup.townData.economicIdeology[town.economicIdeology].modifiers[modifier])
   })
   // political ideology modifiers
-  console.log('Assigning political ideology modifiers (btw ' + town.name + ' is a ' + town.politicalIdeology + ')')
+  console.log(`Assigning political ideology modifiers (btw ${town.name} is a ${town.politicalIdeology})`)
 
   Object.keys(setup.townData.politicalIdeology[town.politicalIdeology].modifiers).forEach(function (modifier) {
     console.log(modifier)
@@ -222,7 +222,7 @@ export function createTown (base) {
   console.log(town)
   console.groupEnd()
   // setup.createWeather(town)
-  console.log(town.name + ' has loaded.')
+  console.log(`${town.name} has loaded.`)
 
   return town
 }

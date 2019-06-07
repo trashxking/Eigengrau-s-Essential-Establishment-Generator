@@ -2,18 +2,18 @@ import { get, set } from '../../src/engine/story'
 import { listBox } from '../../src/engine/html'
 
 export function CreateScenario () {
-  const $currentSeason = set('$currentSeason', get('$town.currentSeason'))
+  const $currentSeason = set(`$currentSeason`, get(`$town.currentSeason`))
 
   const selectSeason = value => {
-    set('$currentSeason', value)
+    set(`$currentSeason`, value)
   }
 
   const seasons = {
-    summer: 'Summer',
-    autumn: 'Autumn',
-    winter: 'Winter',
-    sprins: 'Spring',
-    null: 'No weather'
+    summer: `Summer`,
+    autumn: `Autumn`,
+    winter: `Winter`,
+    sprins: `Spring`,
+    null: `No weather`
   }
 
   return `\
