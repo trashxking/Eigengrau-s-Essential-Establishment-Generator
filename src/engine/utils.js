@@ -21,7 +21,7 @@ export function clone (orig) {
   /*
     Immediately return the primitives and functions.
   */
-  if (typeof orig !== 'object' || orig === null) {
+  if (typeof orig !== `object` || orig === null) {
     return orig
   }
 
@@ -92,7 +92,18 @@ export function clone (orig) {
 export function slugify (str) {
   return String(str)
     .trim()
-    .replace(/[^\w\s\u2013\u2014-]+/g, '')
-    .replace(/[_\s\u2013\u2014-]+/g, '-')
+    .replace(/[^\w\s\u2013\u2014-]+/g, ``)
+    .replace(/[_\s\u2013\u2014-]+/g, `-`)
     .toLocaleLowerCase()
+}
+
+/**
+ * Limits a value within a specified range.
+ *
+ * @param {number} value
+ * @param {number} min
+ * @param {number} max
+ */
+export function clamp (value, min, max) {
+  return Math.min(Math.max(value, min), max)
 }
