@@ -1,4 +1,6 @@
 import { randomValue } from "../../../src/engine/rolls"
+import { createBuilding } from "../../Buildings/createBuilding"
+
 import { blacksmithData } from "./blacksmithData"
 import { createBlacksmith } from "./createBlacksmith"
 import { createSmithyName } from "./createSmithyName"
@@ -8,7 +10,7 @@ import { createSmithyName } from "./createSmithyName"
  * @param {object} [opts]
  */
 export function createSmithy (town, opts = {}) {
-  const smithy = (opts.newBuilding || setup.createBuilding)(town, `smithy`)
+  const smithy = (opts.newBuilding || createBuilding)(town, `smithy`)
   console.groupCollapsed(`Smithy loading...`)
   smithy.blacksmith = createBlacksmith(town, smithy)
   createSmithyName(town, smithy)

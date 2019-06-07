@@ -1,15 +1,15 @@
+import { createBuilding } from "../Buildings/createBuilding"
 
-setup.createMarket = function (town, opts) {
-  opts = opts || {}
-  const market = (opts['newBuilding'] || setup.createBuilding)(town, 'market')
+setup.createMarket = function (town, opts = {}) {
+  const market = (opts.newBuilding || createBuilding)(town, `market`)
 
   Object.assign(market, {
-    name: ['The Markets', 'The Markets of ' + town.name, 'The ' + town.name + ' Bazaar'].seededrandom(),
+    name: [`The Markets`, `The Markets of ${town.name}`, `The ${town.name} Bazaar`].seededrandom(),
     associatedTown: town.name,
-    initPassage: 'MarketOutput',
-    passageName: 'MarketOutput',
-    BuildingType: 'market',
-    wordNoun: 'market',
+    initPassage: `MarketOutput`,
+    passageName: `MarketOutput`,
+    BuildingType: `market`,
+    wordNoun: `market`,
     needsWordNoun: false,
     location: setup.market.location.seededrandom(),
     size: setup.market.size.seededrandom(),
