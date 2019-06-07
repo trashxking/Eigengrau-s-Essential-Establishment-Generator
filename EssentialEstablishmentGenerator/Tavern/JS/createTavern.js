@@ -1,4 +1,5 @@
 import { createBuilding } from "../../Buildings/createBuilding"
+import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 
 setup.createTavern = function (town, opts = {}) {
   const tavern = (opts.newBuilding || createBuilding)(town, `tavern`)
@@ -149,7 +150,7 @@ setup.createTavern = function (town, opts = {}) {
   var rollData = setup.tavern.rollData
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `roughness`, `reputation`]
   rollDataVariables.forEach(function (propName) {
-    setup.defineRollDataGetter(tavern, setup.tavern.rollData, propName)
+    defineRollDataGetter(tavern, setup.tavern.rollData, propName)
   })
   // setup.tavernRender(tavern)
   // setup.townBinder(town, tavern, 'tavern')

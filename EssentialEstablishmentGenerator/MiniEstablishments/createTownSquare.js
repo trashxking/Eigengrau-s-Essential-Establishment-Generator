@@ -1,4 +1,5 @@
 import { createBuilding } from "../Buildings/createBuilding"
+import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 
 setup.createTownSquare = function (town, opts) {
   console.groupCollapsed(`Creating townSquare function`)
@@ -19,7 +20,7 @@ setup.createTownSquare = function (town, opts) {
 
   const rollDataVariables = [`size`, `cleanliness`]
   rollDataVariables.forEach(function (propName) {
-    setup.defineRollDataGetter(townSquare, setup.townSquare.rollData, propName)
+    defineRollDataGetter(townSquare, setup.townSquare.rollData, propName)
   })
   townSquare.tippyDescription = `The town square, which is ${townSquare.size} and ${townSquare.cleanliness}`
   console.groupEnd()

@@ -1,4 +1,5 @@
 import { createBuilding } from "../Buildings/createBuilding"
+import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 
 setup.createBrothel = function (town, tavern) {
   console.log(`Creating a brothel...`)
@@ -29,7 +30,7 @@ setup.createBrothel = function (town, tavern) {
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`]
   rollDataVariables.forEach(function (propName) {
-    setup.defineRollDataGetter(brothel, setup.brothel.rollData, propName)
+    defineRollDataGetter(brothel, setup.brothel.rollData, propName)
   })
   // as title is already a value in npcData.js the title for the brothel owner appears as altTitle
   brothel.pimp = setup.createNPC(town, Object.assign(setup.brothel.pimp[brothel.owner]), {

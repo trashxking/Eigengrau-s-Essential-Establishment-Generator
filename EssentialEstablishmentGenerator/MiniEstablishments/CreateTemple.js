@@ -1,4 +1,5 @@
 import { createBuilding } from "../Buildings/createBuilding"
+import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 
 setup.createTemple = function (town, opts = {}) {
   console.log(`Creating a temple...`)
@@ -43,7 +44,7 @@ setup.createTemple = function (town, opts = {}) {
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`]
   rollDataVariables.forEach(function (propName) {
-    setup.defineRollDataGetter(temple, data.rollData, propName)
+    defineRollDataGetter(temple, data.rollData, propName)
   })
 
   // These are the full sentence printouts referenced within TempleOutput.twee

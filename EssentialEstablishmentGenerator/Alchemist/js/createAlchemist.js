@@ -1,5 +1,6 @@
 import { randomValue } from '../../../src/engine/rolls'
 import { createBuilding } from '../../Buildings/createBuilding'
+import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 
 import { alchemistData } from './alchemistData'
 import { alchemistModifiers } from './alchemistModifiers'
@@ -26,7 +27,7 @@ export function createAlchemist (town, opts = {}) {
   alchemist.expertise = ``
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `expertise`]
   rollDataVariables.forEach(function (propName) {
-    setup.defineRollDataGetter(alchemist, alchemistData.rollData, propName)
+    defineRollDataGetter(alchemist, alchemistData.rollData, propName)
   })
   alchemistModifiers(alchemist)
 

@@ -1,4 +1,5 @@
 import { createBuilding } from "../../Buildings/createBuilding"
+import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 
 setup.createGeneralStore = function (town, opts = {}) {
   const GeneralStore = (opts.newBuilding || createBuilding)(town, `GeneralStore`)
@@ -28,7 +29,7 @@ setup.createGeneralStore = function (town, opts = {}) {
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `expertise`]
   rollDataVariables.forEach(function (propName) {
-    setup.defineRollDataGetter(GeneralStore, setup.GeneralStore.rollData, propName)
+    defineRollDataGetter(GeneralStore, setup.GeneralStore.rollData, propName)
   })
   // setup.GeneralStoreRenders(GeneralStore)
   console.log(GeneralStore)

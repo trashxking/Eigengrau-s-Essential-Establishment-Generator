@@ -1,5 +1,6 @@
 import { randomValue } from "../../../src/engine/rolls"
 import { createBuilding } from "../../Buildings/createBuilding"
+import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 
 import { blacksmithData } from "./blacksmithData"
 import { createBlacksmith } from "./createBlacksmith"
@@ -31,7 +32,7 @@ export function createSmithy (town, opts = {}) {
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `expertise`, `activity`]
   for (const propName of rollDataVariables) {
-    setup.defineRollDataGetter(smithy, blacksmithData.rollData, propName)
+    defineRollDataGetter(smithy, blacksmithData.rollData, propName)
   }
 
   smithy.notableFeature = `its ${smithy.expertise} weapons and armour`
