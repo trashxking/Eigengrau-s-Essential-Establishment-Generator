@@ -7,6 +7,10 @@ import { alchemistModifiers } from './alchemistModifiers'
 import { createAlchemistName } from './createAlchemistName'
 import { createChemist } from './createChemist'
 
+/**
+ * @typedef {ReturnType<typeof createAlchemist>} Alchemist
+ */
+
 export function createAlchemist (town, opts = {}) {
   const alchemist = (opts.newBuilding || createBuilding)(town, `alchemist`)
   console.groupCollapsed(`Alchemist loading...`)
@@ -25,13 +29,14 @@ export function createAlchemist (town, opts = {}) {
   alchemist.cleanliness = ``
   alchemist.wealth = ``
   alchemist.expertise = ``
+
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `expertise`]
-  rollDataVariables.forEach(function (propName) {
+  for (const propName of rollDataVariables) {
     defineRollDataGetter(alchemist, alchemistData.rollData, propName)
-  })
+  }
+
   alchemistModifiers(alchemist)
 
-  // setup.townBinder(town, alchemist, 'alchemist')
   console.groupEnd()
   return alchemist
 }

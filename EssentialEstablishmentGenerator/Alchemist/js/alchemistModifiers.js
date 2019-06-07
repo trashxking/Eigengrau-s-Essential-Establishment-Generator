@@ -1,3 +1,6 @@
+/**
+ * @param {import('./createAlchemist').Alchemist} alchemist
+ */
 export function alchemistModifiers (alchemist) {
   if (alchemist.roll.size > 80) {
     alchemist.roll.activity -= 4
