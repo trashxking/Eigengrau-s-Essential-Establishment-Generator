@@ -1,7 +1,7 @@
 import { townData } from "../../js/townData"
 import { createWeather } from "./createWeather"
 
-setup.renderWeather = function (town, biome, weather) {
+export function renderWeather (town, biome, weather) {
   console.log(`Rendering weather...`)
   // console.log(weather)
 

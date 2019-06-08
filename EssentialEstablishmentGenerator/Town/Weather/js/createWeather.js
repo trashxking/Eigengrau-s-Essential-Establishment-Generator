@@ -1,4 +1,5 @@
 import { townData } from "../../js/townData"
+import { renderWeather } from "./renderWeather"
 
 export function createWeather (town, biome, weather, season, time) {
   console.groupCollapsed(`Creating weather...`)
@@ -59,7 +60,7 @@ export function createWeather (town, biome, weather, season, time) {
   weather.precipitationLevel.clamp(1, 4)
   weather.precipitationIntensity.clamp(1, 4)
 
-  setup.renderWeather(town, biome, weather)
+  renderWeather(town, biome, weather)
   // console.log('weather after render:')
   // console.log(weather)
   console.groupEnd()
