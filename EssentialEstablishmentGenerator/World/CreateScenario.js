@@ -17,7 +17,7 @@ export function CreateScenario () {
   }
 
   return `\
-${listBox(seasons, selectSeason, $currentSeason)}<<listbox "$scenarioType">><<option "Town Encounter" "town">><<option "Forest" "forest">><<option "Desert" "desert">><<option "Mountain" "mountain">><<option "Road" "road">><</listbox>><<button "Create scenario">>
+${listBox(seasons, selectSeason, $currentSeason)}<<listbox "$scenarioType">><<option "Town Encounter" "town">><<option "Forest" "forest">><<option "Desert" "desert">><<option "Mountain" "mountain">><<option "Road" "road">><</listbox>> -- <<button "Create scenario">>
 <<if def _newNPC>>
   <<run delete $npcs[_newNPC.key]>>
 <</if>>

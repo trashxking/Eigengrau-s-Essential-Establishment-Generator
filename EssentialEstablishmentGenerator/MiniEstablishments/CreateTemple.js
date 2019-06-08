@@ -5,7 +5,6 @@ setup.createTemple = function (town, opts = {}) {
   console.log(`Creating a temple...`)
   const temple = (opts[`newBuilding`] || createBuilding)(town, `temple`)
   const data = setup.temple
-
   Object.assign(temple, {
     passageName: `TempleOutput`,
     initPassage: `TempleOutput`,
@@ -29,7 +28,7 @@ setup.createTemple = function (town, opts = {}) {
     architect: data.architect.seededrandom()
 
   })
-
+  setup.structure.create(town, temple)
   temple.name = [
     `The ${data.name.adjective.seededrandom().toUpperFirst()} ${data.name.plural.seededrandom().toUpperFirst()}`,
     `The ${temple.wordNoun.toUpperFirst()} of ${data.name.soleNoun.seededrandom().toUpperFirst()}`,
