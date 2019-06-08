@@ -1,18 +1,19 @@
 import { createBuilding } from "../Buildings/createBuilding"
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
+import { docksData } from "./docks"
 
 export function createDocks (town, opts = {}) {
   const docks = (opts.newBuilding || createBuilding)(town, `docks`)
   Object.assign(docks, {
-    notableFeature: setup.docks.notableFeature.seededrandom(),
-    notice: setup.docks.notice.seededrandom(),
+    notableFeature: docksData.notableFeature.seededrandom(),
+    notice: docksData.notice.seededrandom(),
     passageName: `DocksOutput`,
     initPassage: `DocksOutput`,
     buildingType: `docks`,
     needsWordNoun: false,
     wordNoun: [`docks`, `pier`, `wharf`, `dockyard`, `shipyard`, `quay`, `staithe`, `marina`].seededrandom(),
     ships: {},
-    typePool: setup.docks.ships.typePool
+    typePool: docksData.ships.typePool
   })
 
   docks.name = [`the${[` Old `, ` New `, ` `, ` `, ` `].seededrandom()}${[`${town.name} `, `${town.name} `, ` `, ` `, ` `].seededrandom()}${docks.wordNoun.toUpperFirst()}`].seededrandom()
@@ -24,18 +25,18 @@ export function createDocks (town, opts = {}) {
 
   const rollDataVariables = [`size`, `cleanliness`, `activity`]
   rollDataVariables.forEach(function (propName) {
-    defineRollDataGetter(docks, setup.docks.rollData, propName)
+    defineRollDataGetter(docks, docksData.rollData, propName)
   })
 
   docks.sizeDescriptive = ``
   docks.cleanlinessDescriptive = ``
   docks.activityDescriptive = ``
 
-  defineRollDataGetter(docks, setup.docks.rollData, `sizeDescriptive`, `size`, 2)
-  defineRollDataGetter(docks, setup.docks.rollData, `cleanlinessDescriptive`, `cleanliness`, 2)
-  defineRollDataGetter(docks, setup.docks.rollData, `activityDescriptive`, `activity`, 2)
+  defineRollDataGetter(docks, docksData.rollData, `sizeDescriptive`, `size`, 2)
+  defineRollDataGetter(docks, docksData.rollData, `cleanlinessDescriptive`, `cleanliness`, 2)
+  defineRollDataGetter(docks, docksData.rollData, `activityDescriptive`, `activity`, 2)
 
-  setup.docks.ships.create(town, docks)
+  docksData.ships.create(town, docks)
 
   return docks
 }

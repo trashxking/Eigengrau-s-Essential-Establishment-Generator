@@ -1,5 +1,5 @@
 
-setup.docks = {
+export const docksData = {
   rollData: {
     cleanliness: [
       [80, `quite clean`, `spotless, save for a couple splashes of sea water`],
@@ -94,40 +94,40 @@ setup.docks = {
   ships: {
     create (town, docks, opts) {
       const ship = {
-        name: setup.docks.ships.name.seededrandom(),
+        name: docksData.ships.name.seededrandom(),
         type: docks.typePool.seededrandom(),
-        captainType: Object.keys(setup.docks.ships.captain).seededrandom(),
-        hull: setup.docks.ships.hullDesc.seededrandom(),
-        detail: setup.docks.ships.shipDetail.seededrandom(),
-        event: setup.docks.ships.eventDetail.seededrandom()
+        captainType: Object.keys(docksData.ships.captain).seededrandom(),
+        hull: docksData.ships.hullDesc.seededrandom(),
+        detail: docksData.ships.shipDetail.seededrandom(),
+        event: docksData.ships.eventDetail.seededrandom()
       }
-      Object.assign(ship, setup.docks.ships.type[ship.type])
-      ship.captain = setup.createNPC(town, setup.docks.ships.captain[ship.captainType])
+      Object.assign(ship, docksData.ships.type[ship.type])
+      ship.captain = setup.createNPC(town, docksData.ships.captain[ship.captainType])
       docks.ships[ship.name] = ship
       ship.size = ``
       ship.cleanliness = ``
 
       // var rollDataVariables = ['size', 'cleanliness']
       // rollDataVariables.forEach(function (propName) {
-      //   defineRollDataGetter(ship, setup.docks.ships.rollData, propName)
+      //   defineRollDataGetter(ship, docksData.ships.rollData, propName)
       // })
       return ship
     },
     crew: {
       create (town) {
-        const crewType = Object.keys(setup.docks.ships.crew.type).seededrandom()
+        const crewType = Object.keys(docksData.ships.crew.type).seededrandom()
 
         const readout = {
-          bodyFeature: setup.docks.ships.crew.bodyFeature.seededrandom(),
-          itemFeature: setup.docks.ships.crew.itemFeature.seededrandom(),
-          sailReason: setup.docks.ships.crew.sailing.seededrandom()
+          bodyFeature: docksData.ships.crew.bodyFeature.seededrandom(),
+          itemFeature: docksData.ships.crew.itemFeature.seededrandom(),
+          sailReason: docksData.ships.crew.sailing.seededrandom()
         }
         const crewTraits = Object.assign({
           isShallow: true,
           hasClass: false,
           profession: `sailor`
         })
-        Object.assign(crewTraits, setup.docks.ships.crew.type[crewType])
+        Object.assign(crewTraits, docksData.ships.crew.type[crewType])
         const crew = setup.createNPC(town, crewTraits)
         const heShe = crew.heshe
         const hisHer = crew.hisher
