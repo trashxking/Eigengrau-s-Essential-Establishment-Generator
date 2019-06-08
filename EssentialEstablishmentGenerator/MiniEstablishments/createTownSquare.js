@@ -1,7 +1,7 @@
 import { createBuilding } from "../Buildings/createBuilding"
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 
-setup.createTownSquare = function (town, opts = {}) {
+export function createTownSquare (town, opts = {}) {
   console.groupCollapsed(`Creating townSquare function`)
   const townSquare = (opts.newBuilding || createBuilding)(town, `townSquare`)
   Object.assign(townSquare, {

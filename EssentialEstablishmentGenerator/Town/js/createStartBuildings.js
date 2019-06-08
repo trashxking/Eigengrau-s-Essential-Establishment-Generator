@@ -1,3 +1,4 @@
+import { createTownSquare } from '../../MiniEstablishments/createTownSquare'
 import { createTavern } from '../../Tavern/JS/createTavern'
 import { createAlchemist } from '../../Alchemist/js/createAlchemist'
 import { createGeneralStore } from '../../GeneralStore/JS/createGeneralStore'
@@ -10,7 +11,7 @@ import { goodsAndServices } from '../../Buildings/goodsAndServices'
 
 export function createStartBuildings (town) {
   const buildingTypes = {
-    townSquare: setup.createTownSquare,
+    townSquare: createTownSquare,
     tavern: createTavern,
     alchemist: createAlchemist,
     GeneralStore: createGeneralStore,
