@@ -5,6 +5,7 @@ import { reputationFaction } from "./reputation"
 import { sizeFaction } from "./size"
 import { influenceFaction } from "./influence"
 import { resourcesFaction } from "./resources"
+import { stabilityFaction } from "./stability"
 import { leaderFaction } from "./leader"
 import { joinFaction } from "./joining"
 import { createAllies } from "./allies"
@@ -47,7 +48,7 @@ export function createFaction (town, opts = {}) {
 
   resourcesFaction(faction)
 
-  setup.stabilityFaction(faction)
+  stabilityFaction(faction)
 
   leaderFaction(town, faction)
 
