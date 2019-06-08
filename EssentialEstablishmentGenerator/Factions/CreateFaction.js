@@ -1,6 +1,7 @@
 import { factionData } from "./factionData"
 import { ageFaction } from "./age"
 import { influenceFaction } from "./influence"
+import { leaderFaction } from "./leader"
 import { joinFaction } from "./joining"
 import { createAllies } from "./allies"
 
@@ -42,7 +43,7 @@ export function createFaction (town, opts = {}) {
 
   setup.stabilityFaction(faction)
 
-  setup.leaderFaction(town, faction)
+  leaderFaction(town, faction)
 
   joinFaction(faction)
 

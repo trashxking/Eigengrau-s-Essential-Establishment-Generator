@@ -1,7 +1,7 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
 import { factionData } from "./factionData"
 
-setup.leaderFaction = function (town, faction) {
+export function leaderFaction (town, faction) {
   console.log(`determining leaders...`)
   faction.roll.leaderBribes = dice(2, 50)
   faction.roll.leaderCompetence = dice(2, 50)
