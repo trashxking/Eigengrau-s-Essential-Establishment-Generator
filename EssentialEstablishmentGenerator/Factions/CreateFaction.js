@@ -1,4 +1,5 @@
 import { factionData } from "./factionData"
+import { nameFaction } from "./names"
 import { ageFaction } from "./age"
 import { influenceFaction } from "./influence"
 import { leaderFaction } from "./leader"
@@ -29,7 +30,7 @@ export function createFaction (town, opts = {}) {
       resources: dice(2, 50)
     }
   }, opts))
-  faction.name = setup.nameFaction(town.name, faction.type)
+  faction.name = nameFaction(town.name, faction.type)
   console.groupCollapsed(`${faction.name} the ${faction.type} have loaded.`)
 
   ageFaction(faction)
