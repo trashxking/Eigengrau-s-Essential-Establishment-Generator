@@ -1,5 +1,8 @@
 /**
- * Clamps every value presented to the 1-100 range. Most useful for rolls.
+ * Clamps every value presented to the 1-100 range.
+ * Most useful for rolls.
+ *
+ * @param {Record<number, number>} rolls
  */
 export function clampRolls (rolls) {
   for (const [roll, result] of Object.entries(rolls)) {
