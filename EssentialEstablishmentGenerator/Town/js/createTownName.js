@@ -1,4 +1,6 @@
+import { random, randomValue } from "../../../src/engine/rolls"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
+import { linguisticDrift } from "./linguisticDrift"
 
 export function createTownName (town) {
   const prefix = [`Green`, `Elms`, `Oak`, `Fair`, `Farren`, `Tall`, `Nar`, `Alla`, `Lans`, `San`, `Col`, `Fri`, `Plain`, `Hon`, `Far`, `Barrow`, `Shi`, `Mel`, `Mal`, `Bon`, `Bie`, `Can`, `Pol`, `Pan`,
@@ -21,15 +23,15 @@ export function createTownName (town) {
     if (town) {
       const npc = createNPC(town)
       town.founder = npc.key
-      name = town.founder.lastName + suffix.seededrandom()
+      name = town.founder.lastName + randomValue(suffix)
     } else {
-      name = setup.npcData.raceTraits[`human`].lastName.seededrandom() + suffix.seededrandom()
+      name = randomValue(setup.npcData.raceTraits[`human`].lastName) + randomValue(suffix)
     }
   } else {
-    name = prefix.seededrandom() + suffix.seededrandom()
+    name = randomValue(prefix) + randomValue(suffix)
   }
 
   // linguisticDrift runs some RegEx on the names.
-  setup.linguisticDrift(name)
+  linguisticDrift(name)
   return name
 }
