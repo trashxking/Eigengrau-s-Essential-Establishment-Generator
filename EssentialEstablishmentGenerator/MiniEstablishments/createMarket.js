@@ -1,5 +1,5 @@
 import { createBuilding } from "../Buildings/createBuilding"
-import marketData from "./marketData"
+import { marketData } from "./marketData"
 
 export function createMarket (town, opts = {}) {
   const market = (opts.newBuilding || createBuilding)(town, `market`)
