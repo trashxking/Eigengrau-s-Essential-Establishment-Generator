@@ -1,182 +1,182 @@
-setup.bmiDescriptions = [
+export const bmiDescriptions = [
   { bmi: 40,
     muscleMass: 6,
-    weight: 'morbidly obese'
+    weight: `morbidly obese`
   },
   { bmi: 40,
     muscleMass: 10,
-    weight: 'built like a brick shithouse'
+    weight: `built like a brick shithouse`
   },
   { bmi: 40,
     muscleMass: 14,
-    weight: 'unbelievably large'
+    weight: `unbelievably large`
   },
   { bmi: 40,
     muscleMass: 18,
-    weight: 'impossibly muscular'
+    weight: `impossibly muscular`
   },
   { muscleMass: 6,
     bmi: 35,
-    weight: 'extremely obese'
+    weight: `extremely obese`
   },
   { muscleMass: 10,
     bmi: 35,
-    weight: 'quite large'
+    weight: `quite large`
   },
   { muscleMass: 14,
     bmi: 35,
-    weight: 'built like a wrestler'
+    weight: `built like a wrestler`
   },
   { muscleMass: 18,
     bmi: 35,
-    weight: 'built like a brick shithouse'
+    weight: `built like a brick shithouse`
   },
   { muscleMass: 6,
     bmi: 28,
-    weight: 'beer-bellied'
+    weight: `beer-bellied`
   },
   { muscleMass: 10,
     bmi: 28,
-    weight: 'pot-bellied'
+    weight: `pot-bellied`
   },
   { muscleMass: 14,
     bmi: 28,
-    weight: 'quite thick and muscular'
+    weight: `quite thick and muscular`
   },
   { muscleMass: 18,
     bmi: 28,
-    weight: 'extremely muscular'
+    weight: `extremely muscular`
   },
   { muscleMass: 6,
     bmi: 32,
-    weight: 'round'
+    weight: `round`
   },
   { muscleMass: 10,
     bmi: 32,
-    weight: 'rather round'
+    weight: `rather round`
   },
   { muscleMass: 14,
     bmi: 32,
-    weight: 'quite solidly built'
+    weight: `quite solidly built`
   },
   { muscleMass: 18,
     bmi: 32,
-    weight: 'built like a wrestler'
+    weight: `built like a wrestler`
   },
   { muscleMass: 6,
     bmi: 30,
-    weight: 'a ball of fat'
+    weight: `a ball of fat`
   },
   { muscleMass: 10,
     bmi: 30,
-    weight: 'obese'
+    weight: `obese`
   },
   { muscleMass: 14,
     bmi: 30,
-    weight: 'quite fat'
+    weight: `quite fat`
   },
   { muscleMass: 18,
     bmi: 30,
-    weight: 'fat, but muscular too'
+    weight: `fat, but muscular too`
   },
   { muscleMass: 6,
     bmi: 29,
-    weight: 'rather chubby'
+    weight: `rather chubby`
   },
   { muscleMass: 10,
     bmi: 29,
-    weight: 'chubby'
+    weight: `chubby`
   },
   { muscleMass: 14,
     bmi: 29,
-    weight: 'solidly built'
+    weight: `solidly built`
   },
   { muscleMass: 18,
     bmi: 29,
-    weight: 'built like a brick shithouse'
+    weight: `built like a brick shithouse`
   },
   { muscleMass: 6,
     bmi: 28,
-    weight: 'very fat'
+    weight: `very fat`
   },
   { muscleMass: 10,
     bmi: 28,
-    weight: 'fat'
+    weight: `fat`
   },
   { muscleMass: 14,
     bmi: 28,
-    weight: 'fat, but muscular'
+    weight: `fat, but muscular`
   },
   { muscleMass: 18,
     bmi: 28,
-    weight: 'fat, but muscular'
+    weight: `fat, but muscular`
   },
   { muscleMass: 6,
     bmi: 27,
-    weight: 'overweight'
+    weight: `overweight`
   },
   { muscleMass: 10,
     bmi: 27,
-    weight: 'overweight'
+    weight: `overweight`
   },
   { muscleMass: 14,
     bmi: 27,
-    weight: 'rather solidly built'
+    weight: `rather solidly built`
   },
   { muscleMass: 18,
     bmi: 27,
-    weight: 'wrestler-built'
+    weight: `wrestler-built`
   },
   { muscleMass: 6,
     bmi: 26,
-    weight: 'thick'
+    weight: `thick`
   },
   { muscleMass: 6,
     bmi: 25,
-    weight: 'chunky'
+    weight: `chunky`
   },
   { muscleMass: 6,
     bmi: 24,
-    weight: 'broad'
+    weight: `broad`
   },
   { muscleMass: 6,
     bmi: 23,
-    weight: 'healthy'
+    weight: `healthy`
   },
   { muscleMass: 6,
     bmi: 22,
-    weight: 'lean'
+    weight: `lean`
   },
   { muscleMass: 6,
     bmi: 21,
-    weight: 'thin'
+    weight: `thin`
   },
   { muscleMass: 6,
     bmi: 20,
-    weight: 'rather thin'
+    weight: `rather thin`
   },
   { muscleMass: 6,
     bmi: 19,
-    weight: 'skinny'
+    weight: `skinny`
   },
   { muscleMass: 6,
     bmi: 18,
-    weight: 'lithe'
+    weight: `lithe`
   },
   { muscleMass: 6,
     bmi: 17,
-    weight: 'scrawny'
+    weight: `scrawny`
   },
   { muscleMass: 6,
     bmi: 16,
-    weight: 'weedy'
+    weight: `weedy`
   },
   { muscleMass: 6,
     bmi: 15,
-    weight: 'gaunt'
+    weight: `gaunt`
   },
   { muscleMass: 6,
     bmi: 15,
-    weight: 'bony'
+    weight: `bony`
   }
 ]
