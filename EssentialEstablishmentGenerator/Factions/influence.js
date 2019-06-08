@@ -1,6 +1,6 @@
 
-setup.influenceFaction = function (faction) {
-  console.log('assigning influence...')
+export function influenceFaction (faction) {
+  console.log(`assigning influence...`)
   if (faction.roll.age > 95) {
     faction.roll.influence += Math.fm(faction.roll.influence, 15)
   } else if (faction.roll.age > 90) {
@@ -62,33 +62,33 @@ setup.influenceFaction = function (faction) {
   // }
 
   if (faction.roll.influence > 95) {
-    faction.influence = 'excellent'
+    faction.influence = `excellent`
   } else if (faction.roll.influence > 90) {
-    faction.influence = 'very good'
+    faction.influence = `very good`
   } else if (faction.roll.influence > 80) {
-    faction.influence = 'quite good'
+    faction.influence = `quite good`
   } else if (faction.roll.influence > 70) {
-    faction.influence = 'good'
+    faction.influence = `good`
   } else if (faction.roll.influence > 60) {
-    faction.influence = 'above average'
+    faction.influence = `above average`
   } else if (faction.roll.influence > 55) {
-    faction.influence = 'slightly above average'
+    faction.influence = `slightly above average`
   } else if (faction.roll.influence > 50) {
-    faction.influence = 'average'
+    faction.influence = `average`
   } else if (faction.roll.influence > 45) {
-    faction.influence = 'slightly below average'
+    faction.influence = `slightly below average`
   } else if (faction.roll.influence > 40) {
-    faction.influence = 'poor'
+    faction.influence = `poor`
   } else if (faction.roll.influence > 30) {
-    faction.influence = 'quite poor'
+    faction.influence = `quite poor`
   } else if (faction.roll.influence > 20) {
-    faction.influence = 'very poor'
+    faction.influence = `very poor`
   } else if (faction.roll.influence > 10) {
-    faction.influence = 'extremely poor'
+    faction.influence = `extremely poor`
   } else if (faction.roll.influence <= 5) {
-    faction.influence = 'abysmal'
+    faction.influence = `abysmal`
   } else {
-    faction.influence = 'average'
+    faction.influence = `average`
   }
 
   return faction

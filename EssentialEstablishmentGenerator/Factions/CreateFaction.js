@@ -1,6 +1,7 @@
 import { factionData } from "./factionData"
-import { createAllies } from "./allies"
 import { ageFaction } from "./age"
+import { influenceFaction } from "./influence"
+import { createAllies } from "./allies"
 
 export function createFaction (town, opts = {}) {
   const type = [`thieves`, `merchants`, `wizards`, `rangers`, `seers`, `priests`, `monks`, `assassins`, `artisans`, `nobles`, `bards`, `mercenaries`, `bandits`, `craftsmen`, `scholars`].seededrandom()
@@ -34,7 +35,7 @@ export function createFaction (town, opts = {}) {
 
   setup.sizeFaction(town, faction)
 
-  setup.influenceFaction(faction)
+  influenceFaction(faction)
 
   setup.resourcesFaction(faction)
 
