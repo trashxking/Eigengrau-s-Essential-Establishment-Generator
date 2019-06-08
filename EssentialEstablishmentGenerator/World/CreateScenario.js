@@ -1,12 +1,12 @@
-import { get, set } from '../../src/engine/story'
-import { listBox } from '../../src/engine/html'
+import { get, set, unset } from '../../src/engine/story'
+import { listBox, button, pragma, replace } from '../../src/engine/html'
 
 export function CreateScenario () {
-  const $currentSeason = set(`$currentSeason`, get(`$town.currentSeason`))
-
-  const selectSeason = value => {
-    set(`$currentSeason`, value)
-  }
+  let scenario
+  let currentSeason = get(`$town.currentSeason`)
+  let scenarioType
+  let rememberSeason
+  let scenarioWeather
 
   const seasons = {
     summer: `Summer`,
@@ -16,36 +16,64 @@ export function CreateScenario () {
     null: `No weather`
   }
 
-  return `\
-${listBox(seasons, selectSeason, $currentSeason)}<<listbox "$scenarioType">><<option "Town Encounter" "town">><<option "Forest" "forest">><<option "Desert" "desert">><<option "Mountain" "mountain">><<option "Road" "road">><</listbox>> -- <<button "Create scenario">>
-<<if def _newNPC>>
-  <<run delete $npcs[_newNPC.key]>>
-<</if>>
-<<if def _rememberSeason && _rememberSeason !== $currentSeason>>
-    <<set $scenarioWeather.timer.temperature to 0>>
-    <<set $scenarioWeather.timer.precipitation to 0>>
-    <<set $scenarioWeather.timer.cloud to 0>>
-<</if>>
-<<set _rememberSeason to $currentSeason>>
-<<if $currentSeason !== "null" && $currentSeason !== $town.currentSeason>>
-    <<set $town.currentSeason to $currentSeason>>
-<</if>>
-<<if def $scenario && $scenarioWeather && $currentSeason !==  "null">>
-    <<set $scenarioWeather.timer.temperature -= 4>>
-    <<set $scenarioWeather.timer.precipitation -= 4>>
-    <<set $scenarioWeather.timer.cloud -= 4>>
-    /* <<set $scenario to setup.createEncounter($town, $scenarioType)>> */
-    <<set $scenario to setup.misc[$scenarioType].create($town)>>
-    <<set _scenarioWeather to setup.createWeather($town, $scenarioType, $scenarioWeather, $currentSeason)>>
-    <<set $scenarioWeather to _scenarioWeather>>
-  <<else>>
-    <<set $scenario to setup.misc[$scenarioType].create($town)>>
-    /* <<set $scenario to setup.createEncounter($town, $scenarioType)>> */
-    <<if $currentSeason !== "null">>
-      <<set $scenarioWeather to setup.createWeather($town, $scenarioType, '', $currentSeason)>>
-    <</if>>
-<</if>>
-<<replace "#scenario">><<if $currentSeason !== "null">>$scenarioWeather.readout.full<</if>> $scenario<</replace>><</button>>
+  const selectSeason = value => {
+    currentSeason = value
+  }
+
+  const scenarioTypes = {
+    town: `Town Encounter`,
+    forest: `Forest`,
+    desert: `Desert`,
+    mountain: `Mountain`,
+    road: `Road`
+  }
+
+  const selectScenarioType = value => {
+    scenarioType = value
+  }
+
+  const createScenario = () => {
+    const _newNPC = get(`_newNPC`)
+    const $town = get(`$town`)
+
+    if (_newNPC) {
+      unset(`$npcs.${_newNPC.key}`)
+    }
+
+    if (rememberSeason && rememberSeason !== currentSeason) {
+      scenarioWeather.timer.temperature = 0
+      scenarioWeather.timer.precipitation = 0
+      scenarioWeather.timer.cloud = 0
+    }
+
+    rememberSeason = currentSeason
+
+    if (currentSeason !== `null` && currentSeason !== $town.currentSeason) {
+      set(`$town.currentSeason`, currentSeason)
+    }
+
+    if (scenario && scenarioWeather && currentSeason !== `null`) {
+      scenarioWeather.timer.temperature -= 4
+      scenarioWeather.timer.precipitation -= 4
+      scenarioWeather.timer.cloud -= 4
+      scenario = setup.misc[scenarioType].create($town)
+      scenarioWeather = setup.createWeather($town, scenarioType, scenarioWeather, currentSeason)
+    } else {
+      scenario = setup.misc[scenarioType].create($town)
+      if (currentSeason !== `null`) {
+        scenarioWeather = setup.createWeather($town, scenarioType, ``, currentSeason)
+      }
+    }
+
+    return pragma`${replace(`#scenario`, () => {
+      if (currentSeason !== `null`) {
+        return `${scenarioWeather.readout.full} ${scenario}`
+      }
+      return scenario
+    })}`
+  }
+
+  return pragma`${listBox(seasons, selectSeason, currentSeason)}${listBox(scenarioTypes, selectScenarioType)} -- ${button(`Create scenario`, createScenario)}
 <div id="scenario"><<if def $scenario>><<if $currentSeason !== "null">>$scenarioWeather.readout.full<</if>> $scenario<</if>></div>
 `
 }
