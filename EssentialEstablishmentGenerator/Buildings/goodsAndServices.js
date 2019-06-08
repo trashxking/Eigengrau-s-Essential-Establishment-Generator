@@ -1,6 +1,7 @@
 import { flora } from "../Dictionary/floraData"
 import { createNPC } from "../NPCGeneration/SetupNPC"
 import { createBuilding } from "./createBuilding"
+import { buildingData } from "./buildingData"
 
 setup.goodsAndServices = {
   default: {
@@ -20,7 +21,7 @@ setup.goodsAndServices = {
       building.wordNoun = (building.wordNoun || opts[`wordNoun`] || setup.goodsAndServices[building.type].name.wordNoun.seededrandom() || `building`)
       building.PassageFormat = (building.PassageFormat || opts[`PassageFormat`] || setup.goodsAndServices[building.type].PassageFormat)
       setup.goodsAndServices[building.type].create(town, building, opts)
-      setup.structure.create(town, building)
+      buildingData.create(town, building)
 
       console.groupEnd()
       return building

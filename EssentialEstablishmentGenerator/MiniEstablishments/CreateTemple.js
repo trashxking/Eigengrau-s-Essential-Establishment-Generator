@@ -1,6 +1,7 @@
 import { createBuilding } from "../Buildings/createBuilding"
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { buildingData } from "../Buildings/buildingData"
 
 setup.createTemple = function (town, opts = {}) {
   console.log(`Creating a temple...`)
@@ -29,7 +30,7 @@ setup.createTemple = function (town, opts = {}) {
     architect: data.architect.seededrandom()
 
   })
-  setup.structure.create(town, temple)
+  buildingData.create(town, temple)
   temple.structure.templeDescriptor = `a ${temple.structure.material.wealth} ${temple.structure.material.noun} ${temple.wordNoun} with a ${temple.structure.roof.verb} roof`
   temple.name = [
     `The ${data.name.adjective.seededrandom().toUpperFirst()} ${temple.wordNoun.toUpperFirst()} of ${data.name.plural.seededrandom().toUpperFirst()}`,

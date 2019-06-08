@@ -1,6 +1,6 @@
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 
-setup.structure = {
+export const buildingData = {
   create (town, building, opts) {
     if (!building) {
       building = {}
@@ -29,7 +29,7 @@ setup.structure = {
         roof: {}
       }
     }
-    let tempMaterial = setup.weightedRandomFetcher(town, setup.structure.material, ``, ``, `object`)
+    let tempMaterial = setup.weightedRandomFetcher(town, buildingData.material, ``, ``, `object`)
     if (Object.keys(tempMaterial).includes(`variations`)) {
       console.log(`Building material has variations. `)
       tempMaterial = setup.weightedRandomFetcher(town, tempMaterial.variations, ``, ``, `object`)
@@ -38,7 +38,7 @@ setup.structure = {
     console.log(tempMaterial)
     building.structure.material = tempMaterial.words
 
-    let tempRoof = setup.weightedRandomFetcher(town, setup.structure.roof.material, ``, ``, `object`)
+    let tempRoof = setup.weightedRandomFetcher(town, buildingData.roof.material, ``, ``, `object`)
     if (Object.keys(tempRoof).includes(`variations`)) {
       console.log(`Building roof has variations. `)
       tempRoof = setup.weightedRandomFetcher(town, tempMaterial.variations, ``, ``, `object`)
@@ -46,7 +46,7 @@ setup.structure = {
       console.log(tempRoof.words)
     }
     if (tempRoof.canBeColoured === true) {
-      const colour = setup.structure.data.colour.seededrandom()
+      const colour = buildingData.data.colour.seededrandom()
       Object.keys(tempRoof.words).forEach(function (roof) {
         tempRoof.words[roof] = `${colour} ${tempRoof.words[roof]}`
       })
@@ -56,9 +56,9 @@ setup.structure = {
     console.log({ building })
 
     console.log(`Roof getter:`)
-    defineRollDataGetter(building.structure.roof, setup.structure.roof.rollData, `wealth`, `wealth`, ``, building.roll)
+    defineRollDataGetter(building.structure.roof, buildingData.roof.rollData, `wealth`, `wealth`, ``, building.roll)
     console.log(`Material getter:`)
-    defineRollDataGetter(building.structure.material, setup.structure.material.rollData, `wealth`, `wealth`, ``, building.roll)
+    defineRollDataGetter(building.structure.material, buildingData.material.rollData, `wealth`, `wealth`, ``, building.roll)
 
     building.structure.descriptors = [
       `${building.structure.material.indefiniteArticle} ${building.structure.material.noun} ${[building.wordNoun, `building`].random()} with a ${building.structure.roof.wealth} ${building.structure.roof.verb} roof`,
