@@ -1,9 +1,10 @@
 import { createAlchemist } from '../../Alchemist/js/createAlchemist'
 import { createGeneralStore } from '../../GeneralStore/JS/createGeneralStore'
 import { createSmithy } from '../../Blacksmith/JS/createSmithy'
+import { createMarket } from '../../MiniEstablishments/createMarket'
 import { createDocks } from '../../Docks/createDocks'
-import { goodsAndServices } from '../../Buildings/goodsAndServices'
 import { createBrothel } from '../../MiniEstablishments/createBrothel'
+import { goodsAndServices } from '../../Buildings/goodsAndServices'
 
 export function createStartBuildings (town) {
   const buildingTypes = {
@@ -12,7 +13,7 @@ export function createStartBuildings (town) {
     alchemist: createAlchemist,
     GeneralStore: createGeneralStore,
     smithy: createSmithy,
-    market: setup.createMarket,
+    market: createMarket,
     temple: setup.createTemple,
     docks: createDocks
   }

@@ -1,6 +1,6 @@
 import { createBuilding } from "../Buildings/createBuilding"
 
-setup.createMarket = function (town, opts = {}) {
+export function createMarket (town, opts = {}) {
   const market = (opts.newBuilding || createBuilding)(town, `market`)
 
   Object.assign(market, {
