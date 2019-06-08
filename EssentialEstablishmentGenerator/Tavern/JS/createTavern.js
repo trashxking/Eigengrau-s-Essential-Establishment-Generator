@@ -2,7 +2,7 @@ import { createBuilding } from "../../Buildings/createBuilding"
 import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 
-setup.createTavern = function (town, opts = {}) {
+export function createTavern (town, opts = {}) {
   const tavern = (opts.newBuilding || createBuilding)(town, `tavern`)
 
   tavern.name = setup.createTavernName()
