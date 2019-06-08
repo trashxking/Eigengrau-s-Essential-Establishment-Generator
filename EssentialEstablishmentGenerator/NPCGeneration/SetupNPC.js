@@ -1,33 +1,4 @@
-/**
- * @typedef {object} NPCBase
- * @prop {any} [background]
- * @prop {boolean} [isThrowaway]
- * @prop {string} [profession]
- * @prop {string} [dndClass]
- * @prop {any} [canBeCustom]
- * @prop {string} [note]
- * @prop {string} [calmTrait]
- * @prop {string} [stressTrait]
- * @prop {string} [race]
- * @prop {string} [gender]
- * @prop {string} [ageStage]
- * @prop {boolean} [isShallow]
- * @prop {boolean} [hasHistory]
- * @prop {boolean} [hasClass]
- * @prop {string} [firstName]
- * @prop {string} [lastName]
- * @prop {string[]} [idle]
- * @prop {string} [owner]
- * @prop {string[]} [greeting]
- * @prop {string} [currentproject]
- * @prop {string} [associatedTown]
- */
-
-/**
- * @param {any} town
- * @param {NPCBase} [base]
- */
-export function createNPC (town, base) {
+setup.createNPC = function (town, base) {
   if (!town) {
     console.error(`Town is not defined! NPC cannot be created. Please report this bug.`)
   }
@@ -43,7 +14,7 @@ export function createNPC (town, base) {
   if (base.isShallow === true) {
     console.log(`NPC flagged as shallow.`)
     base.isThrowaway = base.isThrowaway || true
-    base.canBeCustom = base.canBeCustom || true
+    // base.canBeCustom = base.canBeCustom || true
     base.hasHistory = base.hasHistory || false
   }
 
@@ -158,7 +129,9 @@ export function createNPC (town, base) {
       }
     },
     knownLanguages: data.raceTraits[race].knownLanguages,
-    reading: data.reading.seededrandom()
+    reading: data.reading.seededrandom(),
+
+    family: undefined
     // pubRumour: setup.createPubRumour()
   }, base)
 
@@ -242,15 +215,12 @@ export function createNPC (town, base) {
   setup.createSocialClass(town, npc)
   setup.createLivingStandards(town, npc)
 
-  if (npc.hasHistory !== false) {
-    setup.createHistory(town, npc)
-    setup.createLifeEvents(town, npc)
-  }
+  if (npc.hasHistory !== false) setup.ExpandNPC(town, npc)
 
-  if (npc.partnerID) {
-    console.log(`assigning ${npc.name} ${State.variables.npcs[npc.partnerID].name} as a partner...`)
+  /* if (npc.partnerID) {
+    console.log('assigning ' + npc.name + ' ' + State.variables.npcs[npc.partnerID].name + ' as a partner...')
     setup.setAsPartners(npc, State.variables.npcs[npc.partnerID])
-  }
+  } */
   State.temporary.newNPC = npc
 
   if (npc.callbackFunction) {
