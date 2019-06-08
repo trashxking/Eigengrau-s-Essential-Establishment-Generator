@@ -360,7 +360,7 @@ setup.plothook = {
     //       gender: 'woman',
     //       dndClass: 'sorcerer'
     //     })
-    //     var cabin = setup.misc.cabin.create()
+    //     var cabin = misc.cabin.create()
     //     return 'Chicken Wrangler Needed! Some jerks smashed my coop and now 100 chickens are loose. 1GP/chicken to return them, no questions asked.’ (Poster is True Neutral ' + setup.profile(npc, 'witch') + ' that lives in a ' + cabin.tippyWord + ' in old haunted forest; all the chickens have been enlarged.)'
     //   }
     // },
@@ -478,7 +478,7 @@ setup.plothook = {
     //     return true
     //   },
     //   function: function (town) {
-    //     var goblins = setup.misc.goblins.create()
+    //     var goblins = misc.goblins.create()
     //     return 'Goblin encampment: A ' + goblins.tippy + '<b>goblin encampment</b></span> has appeared in the Southern part of town across the ravine. They’ve been there for days and don’t seem to be aggressive, but we can’t be so sure. Find out what they’re doing — if they’re a threat, please dispatch with them.'
     //   }
     // },

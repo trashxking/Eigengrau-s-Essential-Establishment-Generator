@@ -114,7 +114,7 @@ setup.temple = {
     `running the town's militia`,
     `offering free board and lodgings`,
     `its sadly incompetent healers`,
-    // 'the ancient relic ' + setup.misc.religion.createRelic(),
+    // 'the ancient relic ' + misc.religion.createRelic(),
     `cryptic prophecies`,
     `unusual prophecies`,
     `dancing monks`,

@@ -2,6 +2,7 @@ import { createBuilding } from "../Buildings/createBuilding"
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 import { createNPC } from "../NPCGeneration/SetupNPC"
 import { buildingData } from "../Buildings/buildingData"
+import { misc } from "../World/miscData"
 
 setup.createTemple = function (town, opts = {}) {
   console.log(`Creating a temple...`)
@@ -18,7 +19,7 @@ setup.createTemple = function (town, opts = {}) {
       profession: `priest`
     }),
     prayerSubject: data.prayerSubject.seededrandom(),
-    dedicated: [setup.misc.religion.namedGod.seededrandom(), setup.misc.religion.abstractGod.seededrandom(), setup.misc.religion.saint.seededrandom(), data.dedicated.seededrandom()].seededrandom(),
+    dedicated: [misc.religion.namedGod.seededrandom(), misc.religion.abstractGod.seededrandom(), misc.religion.saint.seededrandom(), data.dedicated.seededrandom()].seededrandom(),
     knownFor: data.knownFor.seededrandom(),
     guardedBy: data.guardedBy.seededrandom(),
     floorPlan: data.floorPlan.seededrandom(),

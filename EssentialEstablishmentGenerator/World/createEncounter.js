@@ -1,3 +1,5 @@
+import { misc } from "./miscData"
+
 export function createEncounter (town, biome) {
-  return setup.misc[biome].create(town)
+  return misc[biome].create(town)
 }

@@ -1,5 +1,6 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
 import { createTownName } from "../Town/js/createTownName"
+import { misc } from "../World/miscData"
 
 export const plothooks = {
   'Roleplay Questions': {
@@ -17,8 +18,8 @@ export const plothooks = {
         `Now would be a good time to give a player a chance to roleplay something from their past. Ask a question, such as `,
         `This is a great opportunity to get players to roleplay. Ask them questions like `,
         `This would be a good chance to build on player backstory. Ask them questions such as `
-      ].seededrandom()}'${setup.misc.roleplayQuestions.create()}'` +
-      `<<button "Create another question!">><<set _question to setup.misc.roleplayQuestions.create()>><<replace "#question">><<print _question.toUpperFirst()>><</replace>><</button>><div id="question"></div></blockquote>`
+      ].seededrandom()}'${misc.roleplayQuestions.create()}'` +
+      `<<button "Create another question!">><<set _question to misc.roleplayQuestions.create()>><<replace "#question">><<print _question.toUpperFirst()>><</replace>><</button>><div id="question"></div></blockquote>`
     }
   },
   'The Magic Duel': {
@@ -404,7 +405,7 @@ export const plothooks = {
         gender: `woman`,
         dndClass: `sorcerer`
       })
-      const cabin = setup.misc.cabin.create()
+      const cabin = misc.cabin.create()
       return `Chicken Wrangler Needed! Some jerks smashed my coop and now 100 chickens are loose. <<money 100>>/chicken to return them, no questions asked.’ (Poster is True Neutral ${setup.profile(npc, `witch`)} that lives in a ${cabin.tippyWord} in old haunted forest; all the chickens have been enlarged.)`
     }
   },
@@ -500,7 +501,7 @@ export const plothooks = {
   'Goblin Encampment': {
     type: [`paper`],
     function (town) {
-      const goblins = setup.misc.goblins.create()
+      const goblins = misc.goblins.create()
       return `Goblin encampment: A ${goblins.tippy}<b>goblin encampment</b></span> has appeared in the Southern part of town across the ravine. They’ve been there for days and don’t seem to be aggressive, but we can’t be so sure. Find out what they’re doing — if they’re a threat, please dispatch with them.`
     }
   },
@@ -634,7 +635,7 @@ export const plothooks = {
   'Magnificent Seven': {
     type: [`paper`],
     function (town) {
-      const bandits = setup.misc.bandits.create(town)
+      const bandits = misc.bandits.create(town)
       return `Magnificent Seven: Our villagers overheard ${bandits.tippyWord} who plan on raiding our town in one week’s town. We seek seven or more strong warriors who will help defend us.`
     }
   },
@@ -686,7 +687,7 @@ export const plothooks = {
   'Bucket Festival': {
     type: [`paper`],
     function (town) {
-      const house = setup.misc.cabin.create()
+      const house = misc.cabin.create()
       return `Come join us for the first annual bucket festival! Bring a bucket and you favourite drinks to join in the festivities. Meet out back the delapited ${house.tippyWord} on the edge of town at any time. You know the one, you’ve seen it in your dreams.`
     }
   },
@@ -806,7 +807,7 @@ export const plothooks = {
       return true
     },
     function (town) {
-      const map = setup.misc.treasureMap.create()
+      const map = misc.treasureMap.create()
       const npc = createNPC(town, {
         hasClass: false,
         background: `commoner`,
@@ -1283,7 +1284,7 @@ export const plothooks = {
   'Lost Cat': {
     type: [`paper`],
     function (town) {
-      const cat = setup.misc.cat.create()
+      const cat = misc.cat.create()
       const npc = createNPC(town, {
         hasClass: false,
         background: `commoner`
@@ -1455,7 +1456,7 @@ export const plothooks = {
   'A Lost Bunny': {
     type: [`paper`],
     function (town) {
-      const bunny = setup.misc.bunny.create()
+      const bunny = misc.bunny.create()
       const npc = createNPC(town, {
         hasClass: false,
         background: `commoner`

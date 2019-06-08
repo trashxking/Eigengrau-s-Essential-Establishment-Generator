@@ -1,3 +1,5 @@
+import { misc } from "../World/miscData"
+
 /**
  * @typedef {object} NPCBase
  * @prop {any} [background]
@@ -48,7 +50,7 @@ export function createNPC (town, base) {
   }
 
   if (base.canBeCustom === true && random(1, 100) > 99) {
-    base = setup.objectArrayFetcher(setup.misc.patreonCharacters, town)
+    base = setup.objectArrayFetcher(misc.patreonCharacters, town)
   }
   const gender = base.gender || [`man`, `woman`].seededrandom()
   const race = base.race || setup.fetchRace(town)

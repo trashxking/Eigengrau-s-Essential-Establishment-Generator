@@ -1,23 +1,21 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { misc } from "./miscData"
 
-if (!setup.misc) {
-  setup.misc = {}
-}
-setup.misc.encounters = {
+export const encounters = {
   'a group of bandits operating a toll road': town => {
-    const bandits = setup.misc.bandits.create(town, { business: `scamming people into paying a toll to use the trail (despite it clearly not being crown-maintained)` })
+    const bandits = misc.bandits.create(town, { business: `scamming people into paying a toll to use the trail (despite it clearly not being crown-maintained)` })
     return `a group of ${bandits.tippyWord} operating a toll road. `
   },
   'a band of robbers': town => {
-    const bandits = setup.misc.bandits.create(town, { business: `attacking people using the trail` })
+    const bandits = misc.bandits.create(town, { business: `attacking people using the trail` })
     return `${bandits.tippy}<b>a band of robbers.</b></span>`
   },
   'some robbers': town => {
-    const bandits = setup.misc.bandits.create(town, { business: `attacking people using the trail` })
+    const bandits = misc.bandits.create(town, { business: `attacking people using the trail` })
     return `${bandits.tippy}<b>some robbers.</b></span>`
   },
   'a party of raiders': town => {
-    const bandits = setup.misc.bandits.create(town)
+    const bandits = misc.bandits.create(town)
     return `${bandits.tippy}<b>a party of raiders.</b></span>`
   },
   'a pair of outlaws': town => {
@@ -32,15 +30,15 @@ setup.misc.encounters = {
     return `a pair of two outlaws; one ${setup.profile(npc, npc.descriptor)} and a ${setup.profile(secondNpc, secondNpc.descriptor)}`
   },
   'a band of desperate outlaws': town => {
-    const bandits = setup.misc.bandits.create(town)
+    const bandits = misc.bandits.create(town)
     return `${bandits.tippy}<b>a band of desperate outlaws.</b></span>`
   },
   'some bandits': town => {
-    const bandits = setup.misc.bandits.create(town, { business: `attacking people using the trail` })
+    const bandits = misc.bandits.create(town, { business: `attacking people using the trail` })
     return `${bandits.tippy}<b>some bandits.</b></span>`
   },
   'some outlaws’ hideout': town => {
-    const bandits = setup.misc.bandits.create(town)
+    const bandits = misc.bandits.create(town)
     return `${bandits.tippy}a hideout belonging to <b>some outlaws</b></span>`
   },
   'a disciplined military company': town => {
@@ -60,70 +58,70 @@ setup.misc.encounters = {
     return `a small army, armed to the teeth with ${mercenaries.weapon}, wearing ${mercenaries.colours} livery over their ${mercenaries.armour} with an insignia of ${mercenaries.insignia}. They are ${mercenaries.attitude} towards their <<profile \`$npcs[${JSON.stringify(mercenaries.captain.key)}]\` commander>>, who is ${mercenaries.commanderTrait}. They specialise in ${mercenaries.specializes}, and are notorious for ${mercenaries.notorious}. They are famous for their ${mercenaries.tactics}, and are currently ${mercenaries.currently}.`
   },
   'a small merchant caravan': town => {
-    const caravan = setup.misc.caravan.create(town)
+    const caravan = misc.caravan.create(town)
     return `a small merchant caravan. ${caravan.readout}`
   },
   'a merchant caravan': town => {
-    const caravan = setup.misc.caravan.create(town)
+    const caravan = misc.caravan.create(town)
     return `a merchant caravan. ${caravan.readout}`
   },
   'a clan of orcs': town => {
-    const orcs = setup.misc.orcs.create()
+    const orcs = misc.orcs.create()
     return `a clan of orcs. ${orcs.readout}`
   },
   'several orc raiders': town => {
-    const orcs = setup.misc.orcs.create()
+    const orcs = misc.orcs.create()
     return `several orc raiders. ${orcs.readout}`
   },
   'an orkish war band': () => {
-    const orcs = setup.misc.orcs.create()
+    const orcs = misc.orcs.create()
     return `an orc war band. ${orcs.readout}`
   },
   'an orc war band': town => {
-    const orcs = setup.misc.orcs.create(town)
+    const orcs = misc.orcs.create(town)
     return `an orc war band. ${orcs.readout}`
   },
   'a handful of ogres': () => {
-    const ogre = setup.misc.ogre.create()
+    const ogre = misc.ogre.create()
     return `a handful of ${ogre.tippyWord}s.`
   },
   'an ogre': () => {
-    const ogre = setup.misc.ogre.create()
+    const ogre = misc.ogre.create()
     return `a lone ${ogre.tippyWord}.`
   },
   "an ogre's lair": () => {
-    const ogre = setup.misc.ogre.create()
+    const ogre = misc.ogre.create()
     return `a lair belonging to an ${ogre.tippyWord}`
   },
   "some goblins' hideout": town => {
-    const goblins = setup.misc.goblins.create(town)
+    const goblins = misc.goblins.create(town)
     return `a goblin hideout. ${goblins.readout}`
   },
   'a pair of goblin scouts': () => `a pair of goblin scouts`,
   'a lone goblin': () => {
-    const goblin = setup.misc.goblin.create()
+    const goblin = misc.goblin.create()
     return `a lone ${goblin.tippyWord} ${[`trying to hide from you.`, `lying in wait for you.`, `lying down, asleep.`, `crawling away from you, clearly bleeding.`].seededrandom()}`
   },
   'a goblin war party': town => {
-    const goblins = setup.misc.goblins.create()
+    const goblins = misc.goblins.create()
     return `a goblin war party. ${goblins.readout}`
   },
   'a goblin patrol': () => `a goblin patrol ${[`lying in ambush.`, `squabbling over something.`, `in the middle of a meal.`, `arguing amongst themselves over something.`, `jumping up and down, for some reason.`].seededrandom()}`,
   'several giant spiders': () => {
-    const spider = setup.misc.spider.create()
+    const spider = misc.spider.create()
     return `several giant ${spider.tippyWord}<b>s</b>.`
   },
   'a pack of wolves': () => {
-    const wolf = setup.misc.wolf.create()
+    const wolf = misc.wolf.create()
     const wolves = `${wolf.tippy}<b>wolves</b></span>.`
     return `a pack of ${wolves}`
   },
   'a lone wolf': () => {
-    const wolf = setup.misc.wolf.create()
+    const wolf = misc.wolf.create()
     return `a lone ${wolf.tippyWord}.`
   },
   'a hunting cat': () => {
-    const cat = setup.misc.cat.create()
+    const cat = misc.cat.create()
     return `a hunting ${cat.tippyWord}.`
   },
   'an itinerant priest': town => {
@@ -209,7 +207,7 @@ setup.misc.encounters = {
     return `a solitary ${setup.profile(npc, `troubador`)}`
   },
   'an adventurer on a horse': town => {
-    const horse = setup.misc.horse.create()
+    const horse = misc.horse.create()
     const npc = createNPC(town, {
       dndClass: [`fighter`, `fighter`, `paladin`].seededrandom(),
       background: [`noble`, `soldier`, `soldier`].seededrandom(),
@@ -232,7 +230,7 @@ setup.misc.encounters = {
   'some graverobbers': () => `some graverobbers`,
   'some farmers': () => `some farmers`,
   'a plague-infested cabin': () => {
-    const cabin = setup.misc.cabin.create()
+    const cabin = misc.cabin.create()
     return `a plague-infested ${cabin.tippyWord}.`
   },
   'some beserkers': () => `some beserkers`,
@@ -274,7 +272,7 @@ setup.misc.encounters = {
   'a funeral procession': () => `a funeral procession`,
   'a plague cart': () => `a plague cart`,
   'a lone horse, trotting the other way': () => {
-    const horse = setup.misc.horse.create()
+    const horse = misc.horse.create()
     return `a lone ${horse.tippyWord}, trotting the other way`
   },
   'a traveling theatre troupe': () => `a traveling theatre troupe`,
@@ -337,12 +335,12 @@ setup.misc.encounters = {
     return `a mounted barbarian ${setup.profile(npc, `scout`)}`
   },
   'the ghost of a traveler': () => {
-    const ghost = setup.misc.ghost.create()
+    const ghost = misc.ghost.create()
     return `the ${ghost.tippyWord} of a traveler. `
   },
   'a poisonous snake': () => `a poisonous snake`,
   'a giant spider': () => {
-    const spider = setup.misc.spider.create()
+    const spider = misc.spider.create()
     return `a giant ${spider.tippyWord}`
   },
   'a giant scorpion': () => `a giant scorpion`,
@@ -527,7 +525,7 @@ setup.misc.encounters = {
     return `a reclusive ${setup.profile(npc, `shapeshifter`)}`
   },
   'a restless ghost': () => {
-    const ghost = setup.misc.ghost.create()
+    const ghost = misc.ghost.create()
     return `a restless ${ghost.tippyWord}`
   },
   'a dangerous fugitive': town => {
@@ -543,7 +541,7 @@ setup.misc.encounters = {
     return `a dangerous ${setup.profile(npc, `fugitive`)}`
   },
   'spiders and rats': () => {
-    const spider = setup.misc.spider.create()
+    const spider = misc.spider.create()
     return `${spider.tippyWord}<b>s</b>` + ` and rats`
   },
   'a treasure hunter': town => {
@@ -557,7 +555,7 @@ setup.misc.encounters = {
       isThrowaway: true,
       canBeCustom: true
     })
-    const map = setup.misc.treasureMap.create()
+    const map = misc.treasureMap.create()
     return `a ${setup.profile(npc, `treasure-hunter`)} with a ${map.tippyWord}`
   },
   'a wasteland druid': town => {
@@ -599,7 +597,7 @@ setup.misc.encounters = {
     return `a mad ${setup.profile(npc, `witch`)}`
   },
   'restless ghosts': () => {
-    const ghost = setup.misc.ghost.create()
+    const ghost = misc.ghost.create()
     return `a restless ${ghost.tippyWord}`
   },
   'an outcast orc': town => {
@@ -677,7 +675,7 @@ setup.misc.encounters = {
   'several homeless dwarves': town => `several homeless dwarves`,
   'an angry wraith': town => `an angry wraith`,
   'a malevolent ghost': () => {
-    const ghost = setup.misc.ghost.create({ reaction: `murderous and cruel` })
+    const ghost = misc.ghost.create({ reaction: `murderous and cruel` })
     return `a malevolent ${ghost.tippyWord}`
   },
   'a mated pair of manticores': town => `a mated pair of manticores`,
@@ -747,11 +745,11 @@ setup.misc.encounters = {
   'a large bear': () => `a large bear`,
   'a bear cub': () => `a bear cub`,
   'a wailing ghost': () => {
-    const ghost = setup.misc.ghost.create()
+    const ghost = misc.ghost.create()
     return `a wailing ${ghost.tippyWord}`
   },
   'giant spiders': () => {
-    const spider = setup.misc.spider.create()
+    const spider = misc.spider.create()
     return `giant ${spider.tippyWord}<b>s</b><<run setup.tippy("span")>>`
   },
   'hungry zombies': () => `hungry zombies`,

@@ -1,5 +1,6 @@
 import { flora } from "../Dictionary/floraData"
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { misc } from "../World/miscData"
 
 setup.townSquare = {
   rollData: {
@@ -299,7 +300,7 @@ setup.townSquare = {
     },
     map: {
       function (town) {
-        const map = setup.misc.treasureMap.create()
+        const map = misc.treasureMap.create()
         const npc = createNPC(town, {
           note: `Has a ${map.tippyWord}`
         })
@@ -335,7 +336,7 @@ setup.townSquare = {
     'stray cat': {
       type: [`event`],
       function () {
-        const cat = setup.misc.cat.create()
+        const cat = misc.cat.create()
         return `a stray ${cat.tippyWord} that wanders around.`
       }
     },
@@ -419,7 +420,7 @@ setup.townSquare = {
     'preacher': {
       type: [`event`],
       function (town) {
-        const god = [setup.misc.religion.namedGod.random(), setup.misc.religion.abstractGod.random()].random()
+        const god = [misc.religion.namedGod.random(), misc.religion.abstractGod.random()].random()
         const npc = createNPC(town, {
           hasClass: true,
           dndClass: `cleric`,

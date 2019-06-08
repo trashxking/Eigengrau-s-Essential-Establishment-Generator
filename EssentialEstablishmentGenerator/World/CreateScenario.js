@@ -1,6 +1,7 @@
 import { get, set, unset } from '../../src/engine/story'
 import { listBox, button, pragma, replace, replaceable } from '../../src/engine/html'
 import { createWeather } from '../Town/Weather/js/createWeather'
+import { misc } from './miscData'
 
 export function CreateScenario () {
   let scenario
@@ -64,10 +65,10 @@ export function CreateScenario () {
       scenarioWeather.timer.temperature -= 4
       scenarioWeather.timer.precipitation -= 4
       scenarioWeather.timer.cloud -= 4
-      scenario = setup.misc[scenarioType].create($town)
+      scenario = misc[scenarioType].create($town)
       scenarioWeather = createWeather($town, scenarioType, scenarioWeather, currentSeason)
     } else {
-      scenario = setup.misc[scenarioType].create($town)
+      scenario = misc[scenarioType].create($town)
       if (currentSeason !== `null`) {
         scenarioWeather = createWeather($town, scenarioType, ``, currentSeason)
       }
