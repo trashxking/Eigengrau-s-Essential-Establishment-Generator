@@ -1,6 +1,7 @@
 import { createBuilding } from "../Buildings/createBuilding"
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { brothelData } from "./brothelData"
 
 setup.createBrothel = function (town, tavern) {
   console.log(`Creating a brothel...`)
@@ -11,17 +12,17 @@ setup.createBrothel = function (town, tavern) {
   //   brothel = createBuilding(town, 'brothel')
   // }
   Object.assign(brothel, {
-    name: setup.brothel.name.seededrandom(),
+    name: brothelData.name.seededrandom(),
     passageName: `BrothelOutput`,
     initPassage: `BrothelOutput`,
     buildingType: `brothel`,
     wordNoun: [`brothel`, `whorehouse`, `gentleman's club`, `bordello`, `cathouse`, `house of ill-repute`, `massage parlor`, `den of vice`].seededrandom(),
-    specialty: setup.brothel.specialty.seededrandom(),
-    talk: setup.brothel.talk.seededrandom(),
-    rumour: setup.brothel.rumour.seededrandom(),
-    notice: setup.brothel.notice.seededrandom(),
-    idle: setup.brothel.idle.seededrandom(),
-    owner: Object.keys(setup.brothel.pimp).seededrandom()
+    specialty: brothelData.specialty.seededrandom(),
+    talk: brothelData.talk.seededrandom(),
+    rumour: brothelData.rumour.seededrandom(),
+    notice: brothelData.notice.seededrandom(),
+    idle: brothelData.idle.seededrandom(),
+    owner: Object.keys(brothelData.pimp).seededrandom()
   })
   brothel.notableFeature = `${brothel.specialty} and being owned by ${brothel.owner}`
 
@@ -31,10 +32,10 @@ setup.createBrothel = function (town, tavern) {
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`]
   rollDataVariables.forEach(function (propName) {
-    defineRollDataGetter(brothel, setup.brothel.rollData, propName)
+    defineRollDataGetter(brothel, brothelData.rollData, propName)
   })
   // as title is already a value in npcData.js the title for the brothel owner appears as altTitle
-  brothel.pimp = createNPC(town, Object.assign(setup.brothel.pimp[brothel.owner]), {
+  brothel.pimp = createNPC(town, Object.assign(brothelData.pimp[brothel.owner]), {
     isShallow: true,
     hasClass: false
   })

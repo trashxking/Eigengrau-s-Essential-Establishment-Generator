@@ -1,7 +1,6 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
 
-setup.brothel = {
-
+export const brothelData = {
   rollData: {
     wealth: [
       [95, `kingly`],
@@ -183,7 +182,7 @@ setup.brothel = {
     `the scent of lilac perfume in the air`,
     `the scent of ginger and cinnamon hanging in the air`,
     `the scent of roses in the air`,
-    `scented candles burning cheerily on a counter. The smell of ` + `<<print setup.brothel.brothelScents.random()>>` + ` wafts from where the candles burn`,
+    `scented candles burning cheerily on a counter. The smell of ` + `<<print brothelData.brothelScents.random()>>` + ` wafts from where the candles burn`,
 
     `the soft ${[`red`, `orange`, `golden`, `dark blue`, `blue`, `indigo`, `violet`, `jade`, `green`, `purple`, `maroon`, `pink`].random()} glow from a shaded lamp in the room`,
 
@@ -196,9 +195,9 @@ setup.brothel = {
     `a painting of a pair of lovers hanging on the wall`,
     `a tasteful nude of two women hanging on the wall`,
 
-    `several thick curtains of ` + `<<print setup.brothel.brothelColours.random()>>` + ` colored beads`,
-    `silky ` + `<<print setup.brothel.brothelColours.random()>>` + ` colored curtains lining the walls`,
-    `a plush and somewhat gaudy ` + `<<print setup.brothel.brothelColours.random()>>` + ` colored carpet beneath your feet`,
+    `several thick curtains of ` + `<<print brothelData.brothelColours.random()>>` + ` colored beads`,
+    `silky ` + `<<print brothelData.brothelColours.random()>>` + ` colored curtains lining the walls`,
+    `a plush and somewhat gaudy ` + `<<print brothelData.brothelColours.random()>>` + ` colored carpet beneath your feet`,
 
     `a thick fur carpet beneath your feet`,
     `the sound of distant, soft music playing in the background`,
@@ -211,7 +210,7 @@ setup.brothel = {
     `a rather distasteful tapestry hanging on the wall depicting ${[`a rather lewd act`, `a woman with both breasts hanging out`, `a man with his bits hanging out`, `some sort of sexual story`, `the greatest sexual deeds of the brothel owner`].random()}`,
     `the smell of sex lingering in the air`,
 
-    `the whole place smells oddly of ` + `<<print setup.brothel.brothelScents.random()>>`,
+    `the whole place smells oddly of ` + `<<print brothelData.brothelScents.random()>>`,
 
     `the people here all look to be on some sort of drugs`,
     `the sound of wood banging against wood echoing out from somewhere nearby`,
@@ -229,7 +228,7 @@ setup.brothel = {
     `several long metal poles with harlots dancing around them`,
     `beds laid out in the open showing off all sorts of lewd acts`,
     `several of the patrons of this establishment seem to be quite drunk`,
-    `a light ` + `<<print setup.brothel.brothelColours.random()>>` + ` colored smoke hangs in the air`,
+    `a light ` + `<<print brothelData.brothelColours.random()>>` + ` colored smoke hangs in the air`,
     `a small group of men eyeing up some women in the corner`,
     `a small group of women eyeing up some men in the corner`,
     `a board covered in pictures and names. It's all the different prostitutes currently available`,
@@ -252,8 +251,8 @@ setup.brothel = {
       `Sappho and the Other Raunchy Poets`, `The Complete Works of Archilochus`, `Poetica Erotica`, `50 Positions to Make Him Drop his Coin Sack`, `Sex and Sorcery`, `Toys for Boys`
     ].random()}`,
     `applying a generous layer of powdered makeup`,
-    `spraying a copious amount of ` + `<<print setup.brothel.brothelScents.random()>>` + ` scented perfume`,
-    `laying in a particularly plush looking ` + `<<print setup.brothel.brothelColours.random()>>` + ` chaise lounge`,
+    `spraying a copious amount of ` + `<<print brothelData.brothelScents.random()>>` + ` scented perfume`,
+    `laying in a particularly plush looking ` + `<<print brothelData.brothelColours.random()>>` + ` chaise lounge`,
     `taking a long drag from a nearby hookah`,
     `showing a few of the local girls how to use a new toy`,
     `giving tips to some of the workers on how to better please the patrons`,
@@ -266,7 +265,7 @@ setup.brothel = {
     `sitting and idly talking with an employee`,
     `idly chatting with a patron`,
     `telling a raunchy story to a few of the patrons`,
-    `putting on a long ` + `<<print setup.brothel.brothelColours.random()>>` + ` lacey shawl`,
+    `putting on a long ` + `<<print brothelData.brothelColours.random()>>` + ` lacey shawl`,
     `laying across a velvet sofa in the room being fed grapes by a beautiful woman`,
     `nowhere to be seen at first, but then emerges from a back room covered by thick curtains`,
     `sticking fake jewels on a feathery headdress`,
@@ -340,21 +339,21 @@ setup.brothel = {
   // this creates a new NPC with specific traits for readout in the BrothelOutput
   harlot: {
     'create' (town, brothel, base) {
-      const harlotType = Object.keys(setup.brothel.harlot.type).random()
+      const harlotType = Object.keys(brothelData.harlot.type).random()
       const readout = {
-        feature: setup.brothel.harlot.feature.random(),
-        flawSeverity: setup.brothel.harlot.flawSeverity.random(),
-        skill: setup.brothel.harlot.skill.random(),
-        looks: setup.brothel.harlot.looks.random()
+        feature: brothelData.harlot.feature.random(),
+        flawSeverity: brothelData.harlot.flawSeverity.random(),
+        skill: brothelData.harlot.skill.random(),
+        looks: brothelData.harlot.looks.random()
       }
       const harlotTraits = Object.assign({
-        physicalTrait: setup.brothel.harlot.physicalTrait.random(),
+        physicalTrait: brothelData.harlot.physicalTrait.random(),
         gender: `woman`,
         isShallow: true,
         hasClass: false,
         profession: `harlot`
       }, base)
-      Object.assign(harlotTraits, setup.brothel.harlot.type[harlotType])
+      Object.assign(harlotTraits, brothelData.harlot.type[harlotType])
       const harlot = createNPC(town, harlotTraits)
       setup.createRelationship(town, harlot, State.variables.npcs[brothel.pimp.key], `employer`, `employee`)
       return `This harlot is ${harlotType} called ${setup.profile(harlot)}. She has ${readout.feature} and is particularly good at ${readout.skill}. However, she has ${harlot.physicalTrait}, which is ${readout.flawSeverity}. She is looking to ${readout.looks}.`
