@@ -68,6 +68,15 @@ export const listBox = (options, onChange, selected) => () => {
     </select>
   )
 }
+/**
+ * Creates a placeholder, which is meant to be replaced.
+ *
+ * @param {string} id
+ * @param {Content} callback
+ */
+export const replaceable = (id, callback) => () => (
+  <div id={id}>{getContent(callback)}</div>
+)
 
 /**
  * Creates a link, which leads to a new page that displays the provided content.
