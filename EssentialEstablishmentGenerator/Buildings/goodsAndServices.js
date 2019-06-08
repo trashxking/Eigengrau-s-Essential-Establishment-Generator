@@ -1,3 +1,4 @@
+import { flora } from "../Dictionary/floraData"
 import { createBuilding } from "./createBuilding"
 
 setup.goodsAndServices = {
@@ -37,8 +38,8 @@ setup.goodsAndServices = {
       building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
       building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
 
-      building.fruit = setup.flora.fruit.fruitS.seededrandom()
-      building.fruits = setup.flora.fruit.fruitP.seededrandom()
+      building.fruit = flora.fruit.fruitS.seededrandom()
+      building.fruits = flora.fruit.fruitP.seededrandom()
 
       building.tippyDescription = `A ${building.type} on ${building.road}. Their specialty is ${building.specialty}.`
       return building
@@ -54,8 +55,8 @@ setup.goodsAndServices = {
           `${building.owner.firstName}'s ${name.wordNoun.seededrandom().toUpperFirst()}`,
           `The ${name.beast.seededrandom().toUpperFirst()}'s ${name.noun.seededrandom().toUpperFirst()}`,
           `${name.adjective.seededrandom().toUpperFirst()} ${[`${building.owner.firstName}'s `, name.beast.seededrandom().toUpperFirst()].seededrandom()} ${name.wordNoun.seededrandom().toUpperFirst()}`,
-          `The ${setup.flora.fruit.fruitS.seededrandom().toUpperFirst()} ${name.nounBakedGood.seededrandom().toUpperFirst()}`,
-          `The ${setup.flora.fruit.tree.seededrandom().toUpperFirst()} Tree ${name.wordNoun.seededrandom().toUpperFirst()}`,
+          `The ${flora.fruit.fruitS.seededrandom().toUpperFirst()} ${name.nounBakedGood.seededrandom().toUpperFirst()}`,
+          `The ${flora.fruit.tree.seededrandom().toUpperFirst()} Tree ${name.wordNoun.seededrandom().toUpperFirst()}`,
           unique
         ].seededrandom()
       },
@@ -422,9 +423,9 @@ setup.goodsAndServices = {
       building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
       building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
 
-      building.flowers1 = setup.flora.flowers.stemP.seededrandom()
-      building.flowers2 = setup.flora.flowers.stemP.seededrandom()
-      building.flower = setup.flora.flowers.stemS.seededrandom()
+      building.flowers1 = flora.flowers.stemP.seededrandom()
+      building.flowers2 = flora.flowers.stemP.seededrandom()
+      building.flower = flora.flowers.stemS.seededrandom()
 
       building.tippyDescription = `A ${building.type} on ${building.road}. Their specialty is ${building.specialty}.`
       return building
@@ -437,10 +438,10 @@ setup.goodsAndServices = {
           `The ${name.adjective.seededrandom().toUpperFirst()} ${[name.noun.seededrandom().toUpperFirst(), name.wordNoun.seededrandom().toUpperFirst()].seededrandom()}`,
           `The ${town.name} ${name.wordNoun.seededrandom().toUpperFirst()}`,
           `${building.owner.firstName}'s ${name.wordNoun.seededrandom().toUpperFirst()}`,
-          `The ${name.adjective.seededrandom().toUpperFirst()} ${setup.flora.flowers.stemS.seededrandom().toUpperFirst()}`,
-          `The ${setup.flora.flowers.stemS.seededrandom().toUpperFirst()}${[` Shop`, ` Petal`, ` Sprout`, ` Greenhouse`].seededrandom()}`,
-          `${setup.flora.flowers.stemS.seededrandom().toUpperFirst()} Petals ${name.wordNoun.seededrandom().toUpperFirst()}`,
-          `The ${setup.flora.flowers.bush.seededrandom().toUpperFirst()} Bush ${name.wordNoun.seededrandom().toUpperFirst()}`,
+          `The ${name.adjective.seededrandom().toUpperFirst()} ${flora.flowers.stemS.seededrandom().toUpperFirst()}`,
+          `The ${flora.flowers.stemS.seededrandom().toUpperFirst()}${[` Shop`, ` Petal`, ` Sprout`, ` Greenhouse`].seededrandom()}`,
+          `${flora.flowers.stemS.seededrandom().toUpperFirst()} Petals ${name.wordNoun.seededrandom().toUpperFirst()}`,
+          `The ${flora.flowers.bush.seededrandom().toUpperFirst()} Bush ${name.wordNoun.seededrandom().toUpperFirst()}`,
           `${name.adjectivePerson.seededrandom().toUpperFirst()} ${building.owner.firstName}'s ${name.wordNoun.seededrandom().toUpperFirst()}`,
           unique
         ].seededrandom()
