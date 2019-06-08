@@ -1,6 +1,6 @@
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 
-setup.createGeneralStoreName = function (town, GeneralStore) {
+export function createGeneralStoreName (town, GeneralStore) {
   // var name
   const roll = dice(1, 5)
   const adjective = [`Dependable`, `Reliable`, `Expendable`, `Indispensible`, `Incomparable`, `Incredible`, `Excellent`, `Important`, `Cheap`, `Affordable`, `Affable`, `Discount`, `Low-Cost`].seededrandom()

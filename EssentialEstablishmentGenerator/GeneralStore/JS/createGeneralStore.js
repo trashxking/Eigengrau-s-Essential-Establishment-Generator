@@ -1,6 +1,7 @@
 import { createBuilding } from "../../Buildings/createBuilding"
 import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
+import { createGeneralStoreName } from "./createGeneralStoreName"
 
 export function createGeneralStore (town, opts = {}) {
   const GeneralStore = (opts.newBuilding || createBuilding)(town, `GeneralStore`)
@@ -21,7 +22,7 @@ export function createGeneralStore (town, opts = {}) {
     buildingType: `GeneralStore`
   })
 
-  setup.createGeneralStoreName(town, GeneralStore)
+  createGeneralStoreName(town, GeneralStore)
   GeneralStore.wealth = ``
   GeneralStore.size = ``
   GeneralStore.cleanliness = ``
