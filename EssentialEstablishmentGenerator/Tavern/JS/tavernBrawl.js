@@ -1,12 +1,13 @@
+import { createNPC } from "../../NPCGeneration/SetupNPC"
 
 setup.tavernBrawl = function (town, tavern) {
-  var guardRoll = random(1, 100)
-  var brawlRoll = random(1, 100)
+  const guardRoll = random(1, 100)
+  let brawlRoll = random(1, 100)
 
   if (guardRoll >= 50) {
     tavern.guardPresent = true
     brawlRoll -= 20
-    var tavernGuard = setup.createNPC(town, { isShallow: true, dndClass: 'fighter', background: 'soldier', gender: ['man', 'man', 'man', 'woman'].seededrandom() })
+    var tavernGuard = createNPC(town, { isShallow: true, dndClass: `fighter`, background: `soldier`, gender: [`man`, `man`, `man`, `woman`].seededrandom() })
   } else {
     tavern.guardPresent = false
   }
@@ -53,33 +54,33 @@ setup.tavernBrawl = function (town, tavern) {
 
   if (brawlRoll > 50) {
     tavern.hasBrawl = true
-    var brawlInstigator = setup.createNPC(town, { isShallow: true, gender: ['man', 'man', 'man', 'woman'].seededrandom() })
-    var brawlResponder = setup.createNPC(town, { isShallow: true, gender: ['man', 'man', 'man', 'woman'].seededrandom() })
+    const brawlInstigator = createNPC(town, { isShallow: true, gender: [`man`, `man`, `man`, `woman`].seededrandom() })
+    const brawlResponder = createNPC(town, { isShallow: true, gender: [`man`, `man`, `man`, `woman`].seededrandom() })
     tavern.brawl = {
       start: [
-        'It seems that the ' + brawlInstigator.descriptor + ' that is currently wrestling with the ' + brawlResponder.descriptor + ' because of ',
-        'A ' + brawlInstigator.descriptor + ' has a ' + brawlResponder.descriptor + ' in a headlock. The cause seems to be ',
-        "There's some shouting, and then a " + brawlInstigator.descriptor + ' throws a punch at a ' + brawlResponder.descriptor + ', shouting that the  ' + brawlInstigator.descriptor + ' is a bastard. The cause seems to be '
+        `It seems that the ${brawlInstigator.descriptor} that is currently wrestling with the ${brawlResponder.descriptor} because of `,
+        `A ${brawlInstigator.descriptor} has a ${brawlResponder.descriptor} in a headlock. The cause seems to be `,
+        `There's some shouting, and then a ${brawlInstigator.descriptor} throws a punch at a ${brawlResponder.descriptor}, shouting that the  ${brawlInstigator.descriptor} is a bastard. The cause seems to be `
       ].seededrandom(),
       reason: [
-        'some silly misunderstanding between the two. ',
-        'a statement about a sports team that the other disagreed with. ',
-        'a botched bet',
-        'a business deal',
-        'a secret affair has come out. ',
-        'a joke was taken way too far. ',
-        'a joke was misunderstood, much to the ' + brawlResponder.descriptor + "'s dismay. "
+        `some silly misunderstanding between the two. `,
+        `a statement about a sports team that the other disagreed with. `,
+        `a botched bet`,
+        `a business deal`,
+        `a secret affair has come out. `,
+        `a joke was taken way too far. `,
+        `a joke was misunderstood, much to the ${brawlResponder.descriptor}'s dismay. `
       ].seededrandom()
     }
     if (tavern.guardPresent === true) {
       tavern.brawlEnd = [
-        'A ' + tavernGuard.descriptor + ' wearing the ' + town.guard.livery + ' signifying that they are a member of <<guard $town.guard>> is currently pulling the ' + brawlInstigator.descriptor + ' off the ' + brawlResponder.descriptor + '.',
-        'A member of <<guard $town.guard>> is currently trying to pull the two apart.'
+        `A ${tavernGuard.descriptor} wearing the ${town.guard.livery} signifying that they are a member of <<guard $town.guard>> is currently pulling the ${brawlInstigator.descriptor} off the ${brawlResponder.descriptor}.`,
+        `A member of <<guard $town.guard>> is currently trying to pull the two apart.`
       ].seededrandom()
     } else {
       tavern.brawlEnd = [
-        'It seems that the ' + brawlInstigator.descriptor + ' is winning.',
-        'It seems that the ' + brawlResponder.descriptor + ' is winning.'
+        `It seems that the ${brawlInstigator.descriptor} is winning.`,
+        `It seems that the ${brawlResponder.descriptor} is winning.`
       ].seededrandom()
     }
   } else {

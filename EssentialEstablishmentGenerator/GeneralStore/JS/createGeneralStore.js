@@ -1,10 +1,11 @@
 import { createBuilding } from "../../Buildings/createBuilding"
 import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
+import { createNPC } from "../../NPCGeneration/SetupNPC"
 
 setup.createGeneralStore = function (town, opts = {}) {
   const GeneralStore = (opts.newBuilding || createBuilding)(town, `GeneralStore`)
   console.groupCollapsed(`General Store loading...`)
-  GeneralStore.shopkeep = (opts[`newShopkeep`] || setup.createNPC)(town, {
+  GeneralStore.shopkeep = (opts[`newShopkeep`] || createNPC)(town, {
     profession: `merchant`,
     mundane: [`pliers`, `tins`, `twine`, `cups`, `spoons`, `pans`, `chairs`, `cushions`],
     greeting: [`nods at you`, `welcomes you warmly`, `smiles and greets you`, `raises a hand with a wave`, `checks you out for just a moment before smiling at you`],

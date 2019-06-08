@@ -1,3 +1,4 @@
+import { createNPC } from "../NPCGeneration/SetupNPC"
 
 export const docksData = {
   rollData: {
@@ -102,7 +103,7 @@ export const docksData = {
         event: docksData.ships.eventDetail.seededrandom()
       }
       Object.assign(ship, docksData.ships.type[ship.type])
-      ship.captain = setup.createNPC(town, docksData.ships.captain[ship.captainType])
+      ship.captain = createNPC(town, docksData.ships.captain[ship.captainType])
       docks.ships[ship.name] = ship
       ship.size = ``
       ship.cleanliness = ``
@@ -128,7 +129,7 @@ export const docksData = {
           profession: `sailor`
         })
         Object.assign(crewTraits, docksData.ships.crew.type[crewType])
-        const crew = setup.createNPC(town, crewTraits)
+        const crew = createNPC(town, crewTraits)
         const heShe = crew.heshe
         const hisHer = crew.hisher
         return `Out of the crew steps ${crewType} named ${setup.profile(crew)}. ${heShe.toUpperFirst()} ${readout.bodyFeature} and ${readout.itemFeature}. When asked about why ${heShe} took to the sea, ${hisHer} reason is "${readout.sailReason}".`

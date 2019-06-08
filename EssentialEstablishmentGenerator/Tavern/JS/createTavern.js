@@ -1,5 +1,6 @@
 import { createBuilding } from "../../Buildings/createBuilding"
 import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
+import { createNPC } from "../../NPCGeneration/SetupNPC"
 
 setup.createTavern = function (town, opts = {}) {
   const tavern = (opts.newBuilding || createBuilding)(town, `tavern`)
@@ -7,7 +8,7 @@ setup.createTavern = function (town, opts = {}) {
   tavern.name = setup.createTavernName()
   console.groupCollapsed(tavern.name)
   tavern.bartender = (opts[`newBartender`] || setup.createBartender)(town, tavern.name)
-  tavern.barmaid = setup.createNPC(town, {
+  tavern.barmaid = createNPC(town, {
     isShallow: true,
     gender: `woman`,
     background: `commoner`,

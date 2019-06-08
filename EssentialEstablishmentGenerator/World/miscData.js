@@ -1,4 +1,5 @@
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
+import { createNPC } from "../NPCGeneration/SetupNPC"
 
 setup.misc = {
   ...(setup.misc || {}), // keep any existing misc attributes, see "JS Spread Operator"
@@ -56,7 +57,7 @@ setup.misc = {
         masterAvoid: setup.misc.caravan.masterAvoid.seededrandom(),
         masterCarry: setup.misc.caravan.masterCarry.seededrandom()
       }, base)
-      caravan.master = setup.createNPC(town, setup.misc.caravan.masterType[caravan.masterType])
+      caravan.master = createNPC(town, setup.misc.caravan.masterType[caravan.masterType])
       caravan.readout = `The caravan is ${caravan.type}, with ${caravan.animals} as the pack animals. They are transporting ${caravan.transporting}, and the general mood seems to be ${caravan.mood} The master is ${setup.profile(caravan.master, JSON.stringify(caravan.masterType))}, who is looking for ${caravan.masterLooking}. ${caravan.master.heshe.toUpperFirst()} is taking special care to avoid ${caravan.masterAvoid} and is carrying ${caravan.masterCarry} with ${caravan.master.himher}.`
       caravan.tippy = `<span class=tip title=${JSON.stringify(caravan.readout)}><<run setup.tippy("span")>>`
       caravan.tippyWord = `${caravan.tippy}<b>caravan</b></span>`
@@ -578,7 +579,7 @@ setup.misc = {
         },
         'bedding': town => { return `You can see some bedding on the ground near the shrine. It's pretty obvious that the owner left in a hurry.` },
         'beddingWithNPC': town => {
-          const npc = setup.createNPC(town)
+          const npc = createNPC(town)
           return `You can see some bedding on the ground near the shrine. The ${setup.profile(npc, `owner`)} is out hunting.`
         }
       }

@@ -1,35 +1,36 @@
 import { set, get } from '../../src/engine/story'
+import { createNPC } from '../NPCGeneration/SetupNPC'
 
 export function PatreonCharacters () {
-  const $Birchbottom = get('$Birchbottom')
-  const $patreonContent = get('$patreonContent')
-  const $town = get('$town')
+  const $Birchbottom = get(`$Birchbottom`)
+  const $patreonContent = get(`$patreonContent`)
+  const $town = get(`$town`)
 
   if (!$Birchbottom || !$patreonContent) {
-    set('$Birchbottom', setup.createNPC($town, {
-      firstName: 'Tylien',
-      lastName: 'Birchbottom',
+    set(`$Birchbottom`, createNPC($town, {
+      firstName: `Tylien`,
+      lastName: `Birchbottom`,
       /* name: "Tylien Birchbottom", */
-      gender: 'man',
-      age: 'about twenty four',
-      race: 'halfling',
-      dndClass: 'warlock',
-      height: 'rather diminuitive',
-      weight: 'small and light',
-      idle: ['gently whispering to his petrified mouse', 'writing something in a well-worn notebook'],
-      background: 'outlander',
-      hairColour: 'brown',
-      scar: 'lashes on his back that have scarred over',
-      physicalTrait: 'lashes on his back that have scarred over',
-      trait: 'constantly forgets things, and has to write things down in his journal to be able to remember them properly.',
-      greeting: ['nods at you', 'welcomes you warmly', 'smiles and greets you', 'raises a hand with a wave'],
-      dndClassOrigin: "I've been making a decent living hunting game, selling the pelts to the blacksmith for spare change. I'm searching for a cure to my memory decay- every day, I have to write more things down. I need to learn why these things are happening to me... To find out who or whatever the beast of shadows that stalks me is.",
-      backgroundOrigin: "I was kidnapped by a cult at the age of 14. They used me in a ritual to summon an ancient being known as 'the beast of shadows'. Half-way through, guards rescued me. Things got better, and then got a lot worse- I woke speaking tongues, and found myself losing time. As my powers grew, so did my lost time, so I started to keep a journal. Nowadays I can barely remember more than a week into my past now.",
-      owner: 'owner',
-      calmTrait: 'unintentionally funny',
-      stressTrait: 'distant',
-      vocalPattern: 'speaks rather quickly',
-      note: "Tylien is Patreon supporter Jasher Drake's PC."
+      gender: `man`,
+      age: `about twenty four`,
+      race: `halfling`,
+      dndClass: `warlock`,
+      height: `rather diminuitive`,
+      weight: `small and light`,
+      idle: [`gently whispering to his petrified mouse`, `writing something in a well-worn notebook`],
+      background: `outlander`,
+      hairColour: `brown`,
+      scar: `lashes on his back that have scarred over`,
+      physicalTrait: `lashes on his back that have scarred over`,
+      trait: `constantly forgets things, and has to write things down in his journal to be able to remember them properly.`,
+      greeting: [`nods at you`, `welcomes you warmly`, `smiles and greets you`, `raises a hand with a wave`],
+      dndClassOrigin: `I've been making a decent living hunting game, selling the pelts to the blacksmith for spare change. I'm searching for a cure to my memory decay- every day, I have to write more things down. I need to learn why these things are happening to me... To find out who or whatever the beast of shadows that stalks me is.`,
+      backgroundOrigin: `I was kidnapped by a cult at the age of 14. They used me in a ritual to summon an ancient being known as 'the beast of shadows'. Half-way through, guards rescued me. Things got better, and then got a lot worse- I woke speaking tongues, and found myself losing time. As my powers grew, so did my lost time, so I started to keep a journal. Nowadays I can barely remember more than a week into my past now.`,
+      owner: `owner`,
+      calmTrait: `unintentionally funny`,
+      stressTrait: `distant`,
+      vocalPattern: `speaks rather quickly`,
+      note: `Tylien is Patreon supporter Jasher Drake's PC.`
     }))
 
     /*
@@ -38,7 +39,7 @@ export function PatreonCharacters () {
   }
 
   /*
-  <<set $galder to setup.createNPC($town, {
+  <<set $galder to createNPC($town, {
     firstName: "Galder",
     lastName: "Fendt",
     name: "Galder Fendt",

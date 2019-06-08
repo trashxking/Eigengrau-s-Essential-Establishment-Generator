@@ -1,5 +1,6 @@
 import { createBuilding } from "../Buildings/createBuilding"
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
+import { createNPC } from "../NPCGeneration/SetupNPC"
 
 setup.createTemple = function (town, opts = {}) {
   console.log(`Creating a temple...`)
@@ -10,7 +11,7 @@ setup.createTemple = function (town, opts = {}) {
     initPassage: `TempleOutput`,
     buildingType: `temple`,
     wordNoun: data.name.wordNoun.seededrandom(),
-    priest: setup.createNPC(town, {
+    priest: createNPC(town, {
       dndClass: [`cleric`, `cleric`, `cleric`, `cleric`, `druid`].seededrandom(),
       background: [`acolyte`, `acolyte`, `acolyte`, `acolyte`, `sage`, `sage`, `sage`].seededrandom(),
       profession: `priest`

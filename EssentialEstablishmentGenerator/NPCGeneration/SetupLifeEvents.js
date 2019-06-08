@@ -1,6 +1,6 @@
 
 setup.createLifeEvents = function (town, npc) {
-  console.groupCollapsed('creating life events for ' + npc.name + '...')
+  console.groupCollapsed(`creating life events for ${npc.name}...`)
   let lifeEventsNumber
 
   npc.lifeEvents = []
@@ -19,11 +19,11 @@ setup.createLifeEvents = function (town, npc) {
   } else if (npc.ageYears <= 15) {
     lifeEventsNumber = 0
     npc.lifeEvents = [[
-      "One time I got pushed over and nearly cried but I didn't",
-      'I once saw a really big dog',
-      'I found a cool stick that looks exactly like a sword',
-      "I made a new friend who is teaching me how to read using daddy's important papers",
-      'I made a kite!'
+      `One time I got pushed over and nearly cried but I didn't`,
+      `I once saw a really big dog`,
+      `I found a cool stick that looks exactly like a sword`,
+      `I made a new friend who is teaching me how to read using daddy's important papers`,
+      `I made a kite!`
     ].seededrandom()]
   }
 
@@ -113,7 +113,7 @@ setup.createLifeEvents = function (town, npc) {
   // function meetPartnerNPC (npc) {
   //   if (npc.partnerID !== undefined) {
   //     console.log('Making a baby!')
-  //     var child = setup.createNPC(town, {
+  //     var child = createNPC(town, {
   //       ageStage: 'child',
   //       race: npc.race,
   //       lastName: npc.lastName,
@@ -129,14 +129,14 @@ setup.createLifeEvents = function (town, npc) {
   //   } else if (npc.partnerID === undefined) {
   //     console.log(npc.name + ' met somebody!')
   //     if (npc.gender === 'man') {
-  //       npc.partnerID = setup.createNPC(town, {
+  //       npc.partnerID = createNPC(town, {
   //         gender: 'woman',
   //         lastName: npc.lastName,
   //         partnerID: npc.key
   //       })
   //       setup.createRelationship(town, npc, npc.partnerID, 'wife', 'husband')
   //     } else {
-  //       npc.partnerID = setup.createNPC(town, {
+  //       npc.partnerID = createNPC(town, {
   //         gender: 'man',
   //         lastName: npc.lastName,
   //         partnerID: npc.key

@@ -1,4 +1,5 @@
 import { randomValue, randomRange } from "../../../src/engine/rolls"
+import { createNPC } from "../../NPCGeneration/SetupNPC"
 
 export function createSmithyName (town, smithy) {
   const { blacksmith } = smithy
@@ -112,12 +113,12 @@ export function createSmithyName (town, smithy) {
       break
     case 2:
       smithy.name = `${blacksmith.firstName} and ${family.toUpperFirst()}`
-      smithy.assistant = setup.createNPC(town, fam[family])
+      smithy.assistant = createNPC(town, fam[family])
       setup.createRelationship(town, blacksmith, smithy.assistant, family, smithy.assistant.relationships[blacksmith.key])
       break
     case 3:
       smithy.name = `The ${noun} and ${family.toUpperFirst()}`
-      smithy.assistant = setup.createNPC(town, fam[family])
+      smithy.assistant = createNPC(town, fam[family])
       setup.createRelationship(town, blacksmith, smithy.assistant, family, smithy.assistant.relationships[blacksmith.key])
       break
     case 4:

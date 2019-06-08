@@ -1,7 +1,8 @@
 import { randomValue } from '../../../src/engine/rolls'
+import { createNPC } from '../../NPCGeneration/SetupNPC'
 
 export function createChemist (town) {
-  return setup.createNPC(town, {
+  return createNPC(town, {
     associatedTown: town.name,
     dndClass: randomValue([`wizard`, `wizard`, `druid`, `druid`, `cleric`, `warlock`]),
     background: randomValue([`sage`, `sage`, `sage`, `guild artisan`, `guild artisan`, `guild artisan`, `commoner`, `commoner`, `commoner`]),

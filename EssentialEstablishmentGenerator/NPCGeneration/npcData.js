@@ -1,4 +1,5 @@
 import { flora } from "../Dictionary/floraData"
+import { createNPC } from "./SetupNPC"
 
 setup.npcData = {
   gender: {
@@ -164,7 +165,7 @@ setup.npcData = {
         const apprenticeProfession = setup.npcData.lifeEvents.apprentice.profession.seededrandom()
         const reputation = setup.npcData.lifeEvents.apprentice.reputation.seededrandom()
         const learned = setup.npcData.lifeEvents.apprentice.learned.seededrandom()
-        const teacher = setup.createNPC(town, {
+        const teacher = createNPC(town, {
           profession: apprenticeProfession,
           isShallow: true
         })
@@ -258,7 +259,7 @@ setup.npcData = {
         }
       },
       function (town, npc) {
-        const noble = setup.createNPC(town, {
+        const noble = createNPC(town, {
           background: `noble`,
           isShallow: true
         })
@@ -578,13 +579,13 @@ setup.npcData = {
           })
           if (friend === undefined) {
             console.log(`Nobody was in the same caste as ${npc.name}`)
-            friend = setup.createNPC(town, {
+            friend = createNPC(town, {
               isShallow: true,
               socialClass: npc.socialClass
             })
           }
         } else {
-          friend = setup.createNPC(town, {
+          friend = createNPC(town, {
             isShallow: true
           })
         }
@@ -616,7 +617,7 @@ setup.npcData = {
       },
       function (town, npc) {
         console.log(`called lifeEvents.meetEnemyNPC function`)
-        const enemy = setup.createNPC(town, {
+        const enemy = createNPC(town, {
           gender: `man`,
           background: `noble`,
           isShallow: true
@@ -664,7 +665,7 @@ setup.npcData = {
           console.log(`Making a baby!`)
           const partner = State.variables.npcs[npc.partnerID]
           const child = setup.createRelative(town, npc, `child`)
-          // var child = setup.createNPC(town, {
+          // var child = createNPC(town, {
           //   ageStage: 'child',
           //   race: npc.race,
           //   lastName: npc.lastName,
@@ -682,7 +683,7 @@ setup.npcData = {
           console.log(`${npc.name} met somebody!`)
           // if (npc.gender === 'man') {
           setup.createRelative(town, npc, `partner`)
-          // partner = setup.createNPC(town, {
+          // partner = createNPC(town, {
           //   gender: npc.partnerGenderProbability(npc),
           //   lastName: npc.lastName,
           //   isShallow: true,
@@ -691,7 +692,7 @@ setup.npcData = {
           // setup.setAsPartners(npc, partner)
           // setup.createRelationship(town, npc, partner, State.variables.npcs[npc.partnerID].marriageNoun, npc.marriageNoun)
           // } else {
-          //   partner = setup.createNPC(town, {
+          //   partner = createNPC(town, {
           //     gender: 'man',
           //     lastName: npc.lastName,
           //     isShallow: true,

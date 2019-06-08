@@ -1,4 +1,5 @@
 import { flora } from "../Dictionary/floraData"
+import { createNPC } from "../NPCGeneration/SetupNPC"
 import { createBuilding } from "./createBuilding"
 
 setup.goodsAndServices = {
@@ -33,7 +34,7 @@ setup.goodsAndServices = {
         console.error(`A building was not passed!`)
         return
       }
-      building.owner = setup.createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
+      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
       building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
       building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
       building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
@@ -417,7 +418,7 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = setup.createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
+      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
       building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
 
       building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
@@ -700,7 +701,7 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = setup.createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
+      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
       building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
 
       building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
@@ -913,7 +914,7 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = setup.createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
+      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
       building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
 
       building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
@@ -1144,7 +1145,7 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = setup.createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
+      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
       building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
 
       building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()

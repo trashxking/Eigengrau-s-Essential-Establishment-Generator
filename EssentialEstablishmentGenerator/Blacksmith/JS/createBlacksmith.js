@@ -1,9 +1,10 @@
 import { randomValue } from "../../../src/engine/rolls"
+import { createNPC } from "../../NPCGeneration/SetupNPC"
 
 export function createBlacksmith (town, smithy) {
   const { blacksmith } = smithy
 
-  return setup.createNPC(town, {
+  return createNPC(town, {
     dndClass: `blacksmith`,
     hasClass: false,
     profession: `blacksmith`,
