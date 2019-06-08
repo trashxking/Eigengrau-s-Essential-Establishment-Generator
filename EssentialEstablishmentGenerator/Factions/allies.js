@@ -74,10 +74,7 @@ export function createAllies (faction) {
     if (tempGroup === faction.type) {
       tempGroup = `fellow ${tempGroup}`
     }
-    // while (alliedGroups.indexOf(tempGroup) !== -1) {
-    //   tempGroup = groupList.pluck()
-    // }
-    // alliedGroups.push(tempGroup)
+
     group = tempGroupSize + tempGroup
     // console.log('group - ' + group)
     allies.push(group)
