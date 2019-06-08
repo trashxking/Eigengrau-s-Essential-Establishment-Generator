@@ -1,6 +1,6 @@
 /**
  * Stores the story state.
- * @type {Object.<string, any>}
+ * @type {Record<string, any>}
  */
 const story = {}
 
@@ -11,7 +11,7 @@ const story = {}
  */
 export function get (name) {
   let object = story
-  const paths = name.split('.')
+  const paths = name.split(`.`)
 
   while (paths.length) {
     const path = paths.shift()
@@ -32,7 +32,7 @@ export function get (name) {
  * @param {any} value
  */
 export function set (name, value) {
-  const paths = name.split('.')
+  const paths = name.split(`.`)
   let object = story
 
   for (let i = 0; i < paths.length - 1; i++) {
@@ -56,7 +56,7 @@ export function set (name, value) {
  * @param {string} name
  */
 export function unset (name) {
-  const paths = name.split('.')
+  const paths = name.split(`.`)
   let object = story
 
   for (let i = 0; i < paths.length - 1; i++) {
