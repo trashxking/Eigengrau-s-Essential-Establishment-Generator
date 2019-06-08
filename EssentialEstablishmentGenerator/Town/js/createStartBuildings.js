@@ -3,7 +3,7 @@ import { createSmithy } from '../../Blacksmith/JS/createSmithy'
 import { createDocks } from '../../Docks/createDocks'
 import { goodsAndServices } from '../../Buildings/goodsAndServices'
 
-setup.createStartBuildings = function (town) {
+export function createStartBuildings (town) {
   const buildingTypes = {
     townSquare: setup.createTownSquare,
     tavern: setup.createTavern,

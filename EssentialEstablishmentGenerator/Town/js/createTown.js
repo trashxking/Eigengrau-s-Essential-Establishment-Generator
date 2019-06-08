@@ -2,6 +2,7 @@ import { clone } from '../../../src/engine/utils'
 import { townData } from './townData'
 import { createGuard } from './createGuard'
 import { createSocioPolitics } from './createSocioPolitics'
+import { createStartBuildings } from './createStartBuildings'
 
 export function createTown (base) {
   const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
@@ -221,7 +222,7 @@ export function createTown (base) {
   })
 
   setup.townRender(town)
-  setup.createStartBuildings(town)
+  createStartBuildings(town)
   setup.createStartFactions(town)
 
   console.log(town)
