@@ -1,8 +1,7 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
 import { marketData } from "./marketData"
 
-setup.createMarketSellers = function (town, obj, opts, number) {
-  opts = opts || {}
+export function createMarketSellers (town, obj, opts = {}, number) {
   let i
   for (i = 0; i < number; i++) {
     const npc = createNPC(town, Object.assign({
