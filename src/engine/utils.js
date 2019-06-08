@@ -113,5 +113,8 @@ export function clamp (value, min, max) {
  * @param {string} string
  */
 export function toUpperFirst (string) {
-  return String(string).charAt(0).toUpperCase() + String(string).slice(1)
+  if (typeof string === `string`) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+  throw new TypeError(`${string} is not a string.`)
 }
