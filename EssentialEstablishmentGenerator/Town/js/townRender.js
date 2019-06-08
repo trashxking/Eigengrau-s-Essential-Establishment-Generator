@@ -1,4 +1,4 @@
-setup.townRender = function (town) {
+export function townRender (town) {
   console.log(`Rendering ${town.name}...`)
   // town.economicIdeologyIC = townData.economicIdeology[town._economicIdeology].descriptors.economicIdeologyIC
   // town.economicIdeologyIST = townData.economicIdeology[town._economicIdeology].descriptors.economicIdeologyIST

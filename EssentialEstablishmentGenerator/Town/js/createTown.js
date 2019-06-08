@@ -5,6 +5,7 @@ import { createSocioPolitics } from './createSocioPolitics'
 import { createStartBuildings } from './createStartBuildings'
 import { createStartFactions } from './createStartFactions'
 import { createTownName } from './createTownName'
+import { townRender } from './townRender'
 
 export function createTown (base) {
   const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
@@ -223,7 +224,7 @@ export function createTown (base) {
     town.roll[roll].clamp(1, 100)
   })
 
-  setup.townRender(town)
+  townRender(town)
   createStartBuildings(town)
   createStartFactions(town)
 
