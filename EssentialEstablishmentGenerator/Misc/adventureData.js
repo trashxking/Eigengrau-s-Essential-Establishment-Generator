@@ -1,4 +1,5 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { createTownName } from "../Town/js/createTownName"
 
 setup.adventure = {
   'create' (town) {
@@ -127,12 +128,12 @@ setup.adventure = {
         return `stop monsters from raiding caravans and farms.`
       },
       'establish trade with a distant town.' (town, adventure) {
-        const otherTown = setup.createTownName()
+        const otherTown = createTownName()
         return `establish trade with the distant town ${otherTown}.`
       },
       'protect a caravan traveling to a distant town.' (town, adventure) {
         const caravan = setup.misc.caravan.create(town)
-        const otherTown = setup.createTownName()
+        const otherTown = createTownName()
         return `protect a ${caravan.tippyWord} traveling to the distant town ${otherTown}`
       },
       'map a new land.' (town, adventure) {
@@ -192,7 +193,7 @@ setup.adventure = {
         return `defend a location from attackers.`
       },
       'retrieve an object from inside a secure location in a settlement.' (town, adventure) {
-        const otherTown = setup.createTownName()
+        const otherTown = createTownName()
         return `retrieve an object from inside a secure location in the settlement ${otherTown}.`
       },
       'retrieve an object from a caravan.' (town, adventure) {

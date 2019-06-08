@@ -4,12 +4,13 @@ import { createGuard } from './createGuard'
 import { createSocioPolitics } from './createSocioPolitics'
 import { createStartBuildings } from './createStartBuildings'
 import { createStartFactions } from './createStartFactions'
+import { createTownName } from './createTownName'
 
 export function createTown (base) {
   const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
   const terrain = [`temperate`, `temperate`, `temperate`, `tropical`, `polar`, `arid`].seededrandom()
   const season = [`summer`, `autumn`, `winter`, `spring`]
-  const townName = setup.createTownName()
+  const townName = createTownName()
   console.groupCollapsed(`${townName} is loading...`)
   const economicIdeology = townData.type[type].economicIdeology.seededrandom()
   const politicalSource = townData.type[type].politicalSource.seededrandom()

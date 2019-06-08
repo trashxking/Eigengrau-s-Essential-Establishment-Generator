@@ -1,4 +1,5 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { createTownName } from "../Town/js/createTownName"
 
 export const plothooks = {
   'Roleplay Questions': {
@@ -536,7 +537,7 @@ export const plothooks = {
         hasClass: false,
         background: [`noble`, `commoner`].seededrandom()
       })
-      return `${setup.profile(npc, `Merchant`)} looking for armed security to escort us to ${setup.createTownName()}.`
+      return `${setup.profile(npc, `Merchant`)} looking for armed security to escort us to ${createTownName()}.`
     }
   },
   'Mushroom Forager': {
@@ -565,7 +566,7 @@ export const plothooks = {
       const npc = createNPC(town, {
         hasClass: false
       })
-      return `The town of ${setup.createTownName()} has challenged us to our annual match of Shinty (or similar sport). Let’s show them who’s best, and get that trophy back where it belongs! Contact ${setup.profile(npc)} for details.`
+      return `The town of ${createTownName()} has challenged us to our annual match of Shinty (or similar sport). Let’s show them who’s best, and get that trophy back where it belongs! Contact ${setup.profile(npc)} for details.`
     }
   },
   'Tarot Cards': {

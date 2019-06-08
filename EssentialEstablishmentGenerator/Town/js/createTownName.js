@@ -1,6 +1,6 @@
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 
-setup.createTownName = function (town) {
+export function createTownName (town) {
   const prefix = [`Green`, `Elms`, `Oak`, `Fair`, `Farren`, `Tall`, `Nar`, `Alla`, `Lans`, `San`, `Col`, `Fri`, `Plain`, `Hon`, `Far`, `Barrow`, `Shi`, `Mel`, `Mal`, `Bon`, `Bie`, `Can`, `Pol`, `Pan`,
     `Fald`, `Frior`, `Pol`, `Stone`, `Water`, `Leaf`, `Ice`, `Flame`, `Sol`, `Storm`, `Earth`, `Gleam`, `Star`, `Art`, `War`, `Heart`, `Hard`, `Fall`, `Rock`, `Doom`, `Oak`, `Tear`, `Raven`, `Badger`,
     `Snake`, `Lion`, `Hell`, `Rage`, `Brine`, `Rat`, `Buck`, `Lily`, `Core`, `Stench`, `Mage`, `God`, `Soil`, `Pure`, `Mal`, `Cam`, `Fen`, `Clear`, `Split`, `Founders`, `Heir`, `Fair`, `Spin`, `Aber`, `Acc`, `Ock`,
