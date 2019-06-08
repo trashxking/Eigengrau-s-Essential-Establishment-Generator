@@ -1,6 +1,6 @@
 import { townData } from "./townData"
 
-setup.createStartFactions = function (town) {
+export function createStartFactions (town) {
   console.log(`Creating starting factions...`)
   const factions = [`merchants`, `merchants`, `merchants`, `thieves`, `nobles`, `wizards`]
   let factionsNumber = townData.type[town.type].startFactionsNumber()

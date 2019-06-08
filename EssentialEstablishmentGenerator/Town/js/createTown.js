@@ -3,6 +3,7 @@ import { townData } from './townData'
 import { createGuard } from './createGuard'
 import { createSocioPolitics } from './createSocioPolitics'
 import { createStartBuildings } from './createStartBuildings'
+import { createStartFactions } from './createStartFactions'
 
 export function createTown (base) {
   const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
@@ -223,7 +224,7 @@ export function createTown (base) {
 
   setup.townRender(town)
   createStartBuildings(town)
-  setup.createStartFactions(town)
+  createStartFactions(town)
 
   console.log(town)
   console.groupEnd()
