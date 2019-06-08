@@ -32,9 +32,16 @@ export const image = (url, alt) => () => (
  * @param {React.ReactNode} title
  * @param {() => void} callback
  */
-export const button = (title, callback) => () => (
-  <button onClick={callback}>{title}</button>
-)
+export const button = (title, callback) => () => {
+  const [content, updateContent] = useContentUpdate(callback)
+
+  return (
+    <React.Fragment>
+      <button onClick={updateContent}>{title}</button>
+      {content}
+    </React.Fragment>
+  )
+}
 
 /**
  * Presents a dropdown list of choices.
@@ -71,13 +78,8 @@ export const listBox = (options, onChange, selected) => () => {
  */
 export const link = (title, callback) => () => {
   // eslint-disable-next-line no-unused-vars
-  const [content, setContent] = React.useState(null)
-
-  const handleClick = React.useCallback(() => {
-    setContent(getContent(callback))
-  }, [])
-
-  return <button onClick={handleClick}>{title}</button>
+  const [content, updateContent] = useContentUpdate(callback)
+  return <button onClick={updateContent}>{title}</button>
 }
 
 /**
