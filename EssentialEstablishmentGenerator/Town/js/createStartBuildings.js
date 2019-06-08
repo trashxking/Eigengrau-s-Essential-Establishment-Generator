@@ -1,5 +1,6 @@
 import { createAlchemist } from '../../Alchemist/js/createAlchemist'
 import { createSmithy } from '../../Blacksmith/JS/createSmithy'
+import { createDocks } from '../../Docks/createDocks'
 
 setup.createStartBuildings = function (town) {
   const buildingTypes = {
@@ -10,7 +11,7 @@ setup.createStartBuildings = function (town) {
     smithy: createSmithy,
     market: setup.createMarket,
     temple: setup.createTemple,
-    docks: setup.createDocks
+    docks: createDocks
   }
 
   if (town.hasBrothel) {

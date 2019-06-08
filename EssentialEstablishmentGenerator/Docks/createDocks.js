@@ -1,7 +1,7 @@
 import { createBuilding } from "../Buildings/createBuilding"
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 
-setup.createDocks = function (town, opts = {}) {
+export function createDocks (town, opts = {}) {
   const docks = (opts.newBuilding || createBuilding)(town, `docks`)
   Object.assign(docks, {
     notableFeature: setup.docks.notableFeature.seededrandom(),
