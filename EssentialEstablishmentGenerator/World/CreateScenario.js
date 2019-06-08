@@ -1,5 +1,5 @@
 import { get, set, unset } from '../../src/engine/story'
-import { listBox, button, pragma, replace } from '../../src/engine/html'
+import { listBox, button, pragma, replace, replaceable } from '../../src/engine/html'
 
 export function CreateScenario () {
   let scenario
@@ -30,6 +30,13 @@ export function CreateScenario () {
 
   const selectScenarioType = value => {
     scenarioType = value
+  }
+
+  const getScenarioText = () => {
+    if (currentSeason !== `null` && scenarioWeather) {
+      return `${scenarioWeather.readout.full} ${scenario}`
+    }
+    return scenario
   }
 
   const createScenario = () => {
@@ -65,15 +72,8 @@ export function CreateScenario () {
       }
     }
 
-    return pragma`${replace(`#scenario`, () => {
-      if (currentSeason !== `null`) {
-        return `${scenarioWeather.readout.full} ${scenario}`
-      }
-      return scenario
-    })}`
+    return pragma`${replace(`#scenario`, getScenarioText)}`
   }
 
-  return pragma`${listBox(seasons, selectSeason, currentSeason)}${listBox(scenarioTypes, selectScenarioType)} -- ${button(`Create scenario`, createScenario)}
-<div id="scenario"><<if def $scenario>><<if $currentSeason !== "null">>$scenarioWeather.readout.full<</if>> $scenario<</if>></div>
-`
+  return pragma`${listBox(seasons, selectSeason, currentSeason)}${listBox(scenarioTypes, selectScenarioType)} -- ${button(`Create scenario`, createScenario)}${replaceable(`scenario`, getScenarioText)}`
 }
