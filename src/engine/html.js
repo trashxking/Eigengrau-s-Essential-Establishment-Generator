@@ -52,10 +52,13 @@ export const button = (title, callback) => () => {
  */
 export const listBox = (options, onChange, selected) => () => {
   const entries = Object.entries(options)
+  const defaultValue = selected || entries[0][0]
 
   const handleChange = React.useCallback(event => {
     onChange(event.target.value)
   }, [])
+
+  React.useEffect(() => onChange(defaultValue), [defaultValue])
 
   return (
     <select onChange={handleChange} defaultValue={selected}>
