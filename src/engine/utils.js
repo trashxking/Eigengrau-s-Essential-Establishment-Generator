@@ -116,5 +116,5 @@ export function toUpperFirst (string) {
   if (typeof string === `string`) {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
-  throw new TypeError(`${string} is not a string.`)
+  throw new TypeError(`${JSON.stringify(string)} is not a string.`)
 }
