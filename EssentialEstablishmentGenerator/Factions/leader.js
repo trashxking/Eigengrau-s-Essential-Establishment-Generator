@@ -1,5 +1,6 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
 import { factionData } from "./factionData"
+import { createLeaderGroup } from "./leaderGroup"
 
 export function leaderFaction (town, faction) {
   console.log(`determining leaders...`)
@@ -63,7 +64,7 @@ export function leaderFaction (town, faction) {
       }
       break
     case `group`:
-      setup.createLeaderGroup(faction)
+      createLeaderGroup(faction)
   }
 
   if (faction.roll.stability <= 30) {
