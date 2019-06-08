@@ -1,4 +1,5 @@
 import { professions } from "../../NPCGeneration/professions"
+import { randomRange, randomFloatRange, randomValue } from "../../../src/engine/rolls"
 
 export const townData = {
   professions,
@@ -60,20 +61,20 @@ export const townData = {
     hamlet: {
       demographic: {
         // demographics must be in alphabetical order until I fix it to not be buggy
-        'dragonborn': randomFloat(1, 2),
-        'dwarf': randomFloat(1, 10),
-        'elf': randomFloat(1, 5),
-        'gnome': randomFloat(1, 5),
-        'half-elf': randomFloat(1, 5),
-        'half-orc': randomFloat(1, 3),
-        'halfling': randomFloat(5, 10),
-        'human': randomFloat(85, 95),
-        'tiefling': randomFloat(1, 2)
+        'dragonborn': randomFloatRange(1, 2),
+        'dwarf': randomFloatRange(1, 10),
+        'elf': randomFloatRange(1, 5),
+        'gnome': randomFloatRange(1, 5),
+        'half-elf': randomFloatRange(1, 5),
+        'half-orc': randomFloatRange(1, 3),
+        'halfling': randomFloatRange(5, 10),
+        'human': randomFloatRange(85, 95),
+        'tiefling': randomFloatRange(1, 2)
       },
       economicIdeology: [`feudalism`, `feudalism`, `feudalism`, `feudalism`, `capitalism`, `syndicalism`, `communism`, `primitivism`, `primitivism`],
       politicalSource: [`absolute monarchy`, `republic`, `republic`, `republic`, `anarchy`],
-      'population' () { return random(30, 300) },
-      'startFactionsNumber' () { return [1, 1, 1, 1, 1, 2].seededrandom() },
+      population () { return randomRange(30, 300) },
+      startFactionsNumber () { return randomValue([1, 1, 1, 1, 1, 2]) },
       // roadDuplication: d100 of whether to create a new road (new one if under).
       roadDuplication: 40,
       modifiers: {
@@ -86,20 +87,20 @@ export const townData = {
     village: {
       demographic: {
         // demographics must be in alphabetical order until I fix it to not be buggy
-        'dragonborn': randomFloat(1, 2),
-        'dwarf': randomFloat(1, 10),
-        'elf': randomFloat(1, 10),
-        'gnome': randomFloat(1, 10),
-        'half-elf': randomFloat(1, 10),
-        'half-orc': randomFloat(1, 5),
-        'halfling': randomFloat(5, 10),
-        'human': randomFloat(85, 95),
-        'tiefling': randomFloat(1, 2)
+        'dragonborn': randomFloatRange(1, 2),
+        'dwarf': randomFloatRange(1, 10),
+        'elf': randomFloatRange(1, 10),
+        'gnome': randomFloatRange(1, 10),
+        'half-elf': randomFloatRange(1, 10),
+        'half-orc': randomFloatRange(1, 5),
+        'halfling': randomFloatRange(5, 10),
+        'human': randomFloatRange(85, 95),
+        'tiefling': randomFloatRange(1, 2)
       },
       economicIdeology: [`feudalism`, `feudalism`, `feudalism`, `feudalism`, `capitalism`, `capitalism`, `syndicalism`, `communism`, `primitivism`, `primitivism`],
       politicalSource: [`constitutional monarchy`, `republic`, `republic`, `republic`, `anarchy`],
-      'population' () { return random(301, 1000) },
-      'startFactionsNumber' () { return [1, 1, 1, 2, 2, 2].seededrandom() },
+      population () { return randomRange(301, 1000) },
+      startFactionsNumber () { return randomValue([1, 1, 1, 2, 2, 2]) },
       roadDuplication: 50,
       modifiers: {
         wealth: -10,
@@ -111,20 +112,20 @@ export const townData = {
     town: {
       demographic: {
         // demographics must be in alphabetical order until I fix it to not be buggy
-        'dragonborn': randomFloat(1, 2),
-        'dwarf': randomFloat(1, 15),
-        'elf': randomFloat(1, 10),
-        'gnome': randomFloat(1, 10),
-        'half-elf': randomFloat(3, 15),
-        'half-orc': randomFloat(1, 5),
-        'halfling': randomFloat(5, 10),
-        'human': randomFloat(75, 95),
-        'tiefling': randomFloat(1, 2)
+        'dragonborn': randomFloatRange(1, 2),
+        'dwarf': randomFloatRange(1, 15),
+        'elf': randomFloatRange(1, 10),
+        'gnome': randomFloatRange(1, 10),
+        'half-elf': randomFloatRange(3, 15),
+        'half-orc': randomFloatRange(1, 5),
+        'halfling': randomFloatRange(5, 10),
+        'human': randomFloatRange(75, 95),
+        'tiefling': randomFloatRange(1, 2)
       },
       economicIdeology: [`feudalism`, `feudalism`, `feudalism`, `feudalism`, `capitalism`, `capitalism`, `capitalism`, `syndicalism`, `communism`, `primitivism`],
       politicalSource: [`absolute monarchy`, `constitutional monarchy`, `republic`, `republic`, `republic`, `anarchy`],
-      'population' () { return random(1001, 3000) },
-      'startFactionsNumber' () { return [1, 1, 2, 2, 2, 3, 3].seededrandom() },
+      population () { return randomRange(1001, 3000) },
+      startFactionsNumber () { return randomValue([1, 1, 2, 2, 2, 3, 3]) },
       roadDuplication: 70,
       modifiers: {
         wealth: 15,
@@ -136,20 +137,20 @@ export const townData = {
     city: {
       demographic: {
         // demographics must be in alphabetical order until I fix it to not be buggy
-        'dragonborn': randomFloat(1, 4),
-        'dwarf': randomFloat(1, 20),
-        'elf': randomFloat(1, 15),
-        'gnome': randomFloat(1, 15),
-        'half-elf': randomFloat(1, 20),
-        'half-orc': randomFloat(1, 10),
-        'halfling': randomFloat(5, 15),
-        'human': randomFloat(70, 95),
-        'tiefling': randomFloat(1, 2)
+        'dragonborn': randomFloatRange(1, 4),
+        'dwarf': randomFloatRange(1, 20),
+        'elf': randomFloatRange(1, 15),
+        'gnome': randomFloatRange(1, 15),
+        'half-elf': randomFloatRange(1, 20),
+        'half-orc': randomFloatRange(1, 10),
+        'halfling': randomFloatRange(5, 15),
+        'human': randomFloatRange(70, 95),
+        'tiefling': randomFloatRange(1, 2)
       },
       economicIdeology: [`feudalism`, `feudalism`, `capitalism`, `capitalism`, `capitalism`, `capitalism`, `syndicalism`, `communism`],
       politicalSource: [`absolute monarchy`, `absolute monarchy`, `absolute monarchy`, `constitutional monarchy`, `constitutional monarchy`, `republic`, `republic`, `republic`, `anarchy`],
-      'population' () { return random(3001, 6000) },
-      'startFactionsNumber' () { return [1, 1, 2, 2, 2, 3, 3, 3, 3, 4].seededrandom() },
+      population () { return randomRange(3001, 6000) },
+      startFactionsNumber () { return randomValue([1, 1, 2, 2, 2, 3, 3, 3, 3, 4]) },
       roadDuplication: 90,
       modifiers: {
         wealth: 5,
@@ -798,31 +799,31 @@ export const townData = {
         tempVariation: {
           95: {
             temperature: dice(3, 10),
-            temperatureTimer: random(24, 48)
+            temperatureTimer: randomRange(24, 48)
           },
           85: {
             temperature: dice(2, 10),
-            temperatureTimer: random(24, 96)
+            temperatureTimer: randomRange(24, 96)
           },
           65: {
-            temperature: random(1, 10),
-            temperatureTimer: random(48, 120)
+            temperature: randomRange(1, 10),
+            temperatureTimer: randomRange(48, 120)
           },
           35: {
-            temperature: random(-5, 5),
-            temperatureTimer: random(48, 144)
+            temperature: randomRange(-5, 5),
+            temperatureTimer: randomRange(48, 144)
           },
           15: {
-            temperature: random(-1, -10),
-            temperatureTimer: random(48, 120)
+            temperature: randomRange(-1, -10),
+            temperatureTimer: randomRange(48, 120)
           },
           5: {
             temperature: 0 - dice(2, 10),
-            temperatureTimer: random(24, 96)
+            temperatureTimer: randomRange(24, 96)
           },
           0: {
-            temperature: random(-1, -24),
-            temperatureTimer: random(24, 48)
+            temperature: randomRange(-1, -24),
+            temperatureTimer: randomRange(24, 48)
           }
         },
         season: {
@@ -940,23 +941,23 @@ export const townData = {
         tempVariation: {
           85: {
             temperature: dice(2, 10),
-            temperatureTimer: random(24, 48)
+            temperatureTimer: randomRange(24, 48)
           },
           55: {
-            temperature: random(1, 10),
-            temperatureTimer: random(48, 120)
+            temperature: randomRange(1, 10),
+            temperatureTimer: randomRange(48, 120)
           },
           25: {
-            temperature: 0 - random(-5, 5),
-            temperatureTimer: random(48, 120)
+            temperature: 0 - randomRange(-5, 5),
+            temperatureTimer: randomRange(48, 120)
           },
           10: {
-            temperature: 0 - random(1, 10),
-            temperatureTimer: random(24, 48)
+            temperature: 0 - randomRange(1, 10),
+            temperatureTimer: randomRange(24, 48)
           },
           0: {
             temperature: 0 - dice(2, 10),
-            temperatureTimer: random(24, 48)
+            temperatureTimer: randomRange(24, 48)
           }
         },
         season: {
@@ -1090,31 +1091,31 @@ export const townData = {
         tempVariation: {
           95: {
             temperature: dice(3, 10),
-            temperatureTimer: random(24, 48)
+            temperatureTimer: randomRange(24, 48)
           },
           85: {
             temperature: dice(2, 10),
-            temperatureTimer: random(24, 96)
+            temperatureTimer: randomRange(24, 96)
           },
           65: {
-            temperature: random(1, 10),
-            temperatureTimer: random(48, 120)
+            temperature: randomRange(1, 10),
+            temperatureTimer: randomRange(48, 120)
           },
           35: {
-            temperature: 0 - random(-5, 5),
-            temperatureTimer: random(48, 144)
+            temperature: 0 - randomRange(-5, 5),
+            temperatureTimer: randomRange(48, 144)
           },
           15: {
-            temperature: 0 - random(1, 4),
-            temperatureTimer: random(48, 120)
+            temperature: 0 - randomRange(1, 4),
+            temperatureTimer: randomRange(48, 120)
           },
           5: {
             temperature: 0 - dice(1, 10),
-            temperatureTimer: random(24, 96)
+            temperatureTimer: randomRange(24, 96)
           },
           0: {
             temperature: 0 - dice(2, 6),
-            temperatureTimer: random(24, 48)
+            temperatureTimer: randomRange(24, 48)
           }
         },
         season: {
@@ -1246,31 +1247,31 @@ export const townData = {
         tempVariation: {
           100: {
             temperature: dice(3, 10),
-            temperatureTimer: random(24, 48)
+            temperatureTimer: randomRange(24, 48)
           },
           95: {
             temperature: dice(2, 10),
-            temperatureTimer: random(24, 96)
+            temperatureTimer: randomRange(24, 96)
           },
           80: {
-            temperature: random(1, 10),
-            temperatureTimer: random(48, 120)
+            temperature: randomRange(1, 10),
+            temperatureTimer: randomRange(48, 120)
           },
           60: {
-            temperature: random(-5, 5),
-            temperatureTimer: random(48, 144)
+            temperature: randomRange(-5, 5),
+            temperatureTimer: randomRange(48, 144)
           },
           40: {
-            temperature: random(0, -10),
-            temperatureTimer: random(48, 120)
+            temperature: randomRange(0, -10),
+            temperatureTimer: randomRange(48, 120)
           },
           20: {
-            temperature: random(-2, -20),
-            temperatureTimer: random(24, 96)
+            temperature: randomRange(-2, -20),
+            temperatureTimer: randomRange(24, 96)
           },
           0: {
-            temperature: random(-3, -30),
-            temperatureTimer: random(24, 48)
+            temperature: randomRange(-3, -30),
+            temperatureTimer: randomRange(24, 48)
           }
         },
         season: {

@@ -32,6 +32,15 @@ export function randomRange (min, max) {
 }
 
 /**
+ * Returns a random floating point number between zero and the defined maximum value.
+ * @param {number} min
+ * @param {number} max
+ */
+export function randomFloatRange (min, max) {
+  return seeded.floatInRange(min, max)
+}
+
+/**
  * Returns a random value from an array.
  * @template T
  * @param {T[]} array
