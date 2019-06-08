@@ -5,7 +5,7 @@ import { townData } from "../Town/js/townData"
 /**
  * @param {object} town
  * @param {string} type
- * @param {any} base
+ * @param {any} [base]
  */
 export function createBuilding (town, type, base) {
   let roadName = randomValue(townData.roads.name)
