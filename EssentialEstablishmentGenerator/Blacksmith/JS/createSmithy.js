@@ -9,8 +9,7 @@ import { createSmithyName } from "./createSmithyName"
 export function createSmithy (town, opts = {}) {
   const smithy = (opts.newBuilding || createBuilding)(town, `smithy`)
   console.groupCollapsed(`Smithy loading...`)
-  smithy.blacksmith = createBlacksmith(town, smithy)
-  createSmithyName(town, smithy)
+
   Object.assign(smithy, {
     wordNoun: randomValue([`smithy`, `blacksmith`, `smithery`, `farrier shop`]),
     passageName: `SmithyOutput`,
@@ -25,6 +24,9 @@ export function createSmithy (town, opts = {}) {
   smithy.cleanliness = ``
   smithy.expertise = ``
   smithy.activity = ``
+
+  smithy.blacksmith = createBlacksmith(town, smithy)
+  createSmithyName(town, smithy)
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `expertise`, `activity`]
   for (const propName of rollDataVariables) {
