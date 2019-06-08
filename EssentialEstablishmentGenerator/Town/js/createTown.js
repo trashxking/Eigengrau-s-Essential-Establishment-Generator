@@ -230,7 +230,7 @@ export function createTown (base) {
 
   console.log(town)
   console.groupEnd()
-  // setup.createWeather(town)
+  // createWeather(town)
   console.log(`${town.name} has loaded.`)
 
   return town

@@ -1,4 +1,5 @@
 import { townData } from "../../js/townData"
+import { createWeather } from "./createWeather"
 
 setup.renderWeather = function (town, biome, weather) {
   console.log(`Rendering weather...`)
@@ -6,7 +7,7 @@ setup.renderWeather = function (town, biome, weather) {
 
   // if weather is undefined, call the createWeather function
   if (!weather) {
-    weather = setup.createWeather(town, biome)
+    weather = createWeather(town, biome)
   }
   weather.precipitationLevel = Math.clamp(weather.precipitationLevel, 1, 4)
   weather.precipitationIntensity = Math.clamp(weather.precipitationIntensity, 1, 4)

@@ -1,6 +1,6 @@
 import { townData } from "../../js/townData"
 
-setup.createWeather = function (town, biome, weather, season, time) {
+export function createWeather (town, biome, weather, season, time) {
   console.groupCollapsed(`Creating weather...`)
   // this weather function is pretty complex. Basically, temperature, precipitation, and precipitation intensity are each independently tracked.
 
