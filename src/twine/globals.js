@@ -1,7 +1,7 @@
 window.setup = {}
 
 window.version = {
-  title: 'SugarCube',
+  title: `SugarCube`,
   major: 2,
   minor: 19
 }

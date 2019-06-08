@@ -11,13 +11,13 @@ import './twine/scripting'
 const requireAll = (requires) => requires.keys().map(requires)
 
 // @ts-ignore
-requireAll(require.context('../EssentialEstablishmentGenerator/', true, /\.js$/))
+requireAll(require.context(`../EssentialEstablishmentGenerator/`, true, /\.js$/))
 // @ts-ignore
-requireAll(require.context('../EssentialEstablishmentGenerator/', true, /\.css$/))
+requireAll(require.context(`../EssentialEstablishmentGenerator/`, true, /\.css$/))
 // @ts-ignore
-requireAll(require.context('../EssentialEstablishmentGenerator/', true, /\.tw(ee)?$/))
+requireAll(require.context(`../EssentialEstablishmentGenerator/`, true, /\.tw(ee)?$/))
 
-ReactDOM.render(<App>Hello!</App>, document.getElementById('app'))
+ReactDOM.render(<App>Hello!</App>, document.getElementById(`app`))
 
 // eslint-disable-next-line import/first
 import './css/reset.css'
