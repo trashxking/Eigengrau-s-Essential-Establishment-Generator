@@ -1,5 +1,6 @@
 import { clone } from '../../../src/engine/utils'
 import { townData } from './townData'
+import { createGuard } from './createGuard'
 
 export function createTown (base) {
   const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
@@ -193,7 +194,7 @@ export function createTown (base) {
     town.roll[modifier] = Math.fm(town.roll[modifier], townData.type[town.type].modifiers[modifier])
   })
 
-  town.guard = setup.createGuard(town)
+  town.guard = createGuard(town)
 
   console.log(`Assigning economic modifiers (btw ${town.name} is a ${town.economicIdeology})`)
   // economic ideology attribute modifiers

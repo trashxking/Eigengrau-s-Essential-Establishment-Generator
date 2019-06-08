@@ -1,7 +1,7 @@
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 import { guardData } from "./guardData"
 
-setup.createGuard = function (town) {
+export function createGuard (town) {
   console.groupCollapsed(`creating the guard...`)
   // console.log(townName + ' is the townName passed to the guard.')
   const guard = {
