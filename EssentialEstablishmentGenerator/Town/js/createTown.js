@@ -1,6 +1,7 @@
 import { clone } from '../../../src/engine/utils'
 import { townData } from './townData'
 import { createGuard } from './createGuard'
+import { createSocioPolitics } from './createSocioPolitics'
 
 export function createTown (base) {
   const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
@@ -213,7 +214,7 @@ export function createTown (base) {
   })
   // Object.assign(town.leader, townData.politicalIdeology[town.politicalIdeology].data)
 
-  setup.createSocioPolitics(town)
+  createSocioPolitics(town)
 
   Object.keys(town.roll).forEach(function (roll) {
     town.roll[roll].clamp(1, 100)

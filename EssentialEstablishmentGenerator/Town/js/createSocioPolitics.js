@@ -1,7 +1,7 @@
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 import { townData } from "./townData"
 
-setup.createSocioPolitics = function (town) {
+export function createSocioPolitics (town) {
   console.groupCollapsed(`Creating sociopolitics!`)
   // ecoIde and polSource are now set in the createTown.js function
 
