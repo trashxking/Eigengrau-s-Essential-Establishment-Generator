@@ -1,4 +1,5 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { marketData } from "./marketData"
 
 setup.createMarketSellers = function (town, obj, opts, number) {
   opts = opts || {}
@@ -8,7 +9,7 @@ setup.createMarketSellers = function (town, obj, opts, number) {
       profession: `merchant`,
       merchant: {
         selling: [
-          `selling ${setup.market.vendors.selling.seededrandom()}`,
+          `selling ${marketData.vendors.selling.seededrandom()}`,
           `${[
             `shouting out `,
             `calling `,
@@ -18,9 +19,9 @@ setup.createMarketSellers = function (town, obj, opts, number) {
             `beckoning `,
             `saying loudly `
           ].seededrandom()}"${
-            setup.market.vendors.shouts.seededrandom()} ${setup.market.vendors.suffix.seededrandom()}"`
+            marketData.vendors.shouts.seededrandom()} ${marketData.vendors.suffix.seededrandom()}"`
         ].seededrandom(),
-        tent: setup.market.vendors.tent.seededrandom()
+        tent: marketData.vendors.tent.seededrandom()
       },
       hasClass: false,
       isThrowaway: true,

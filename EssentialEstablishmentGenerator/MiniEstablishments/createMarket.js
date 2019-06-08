@@ -1,4 +1,5 @@
 import { createBuilding } from "../Buildings/createBuilding"
+import marketData from "./marketData"
 
 export function createMarket (town, opts = {}) {
   const market = (opts.newBuilding || createBuilding)(town, `market`)
@@ -11,11 +12,11 @@ export function createMarket (town, opts = {}) {
     buildingType: `market`,
     wordNoun: `market`,
     needsWordNoun: false,
-    location: setup.market.location.seededrandom(),
-    size: setup.market.size.seededrandom(),
-    cleanliness: setup.market.cleanliness.seededrandom(),
-    draw: setup.market.draw.seededrandom(),
-    organisation: setup.market.organisation.seededrandom()
+    location: marketData.location.seededrandom(),
+    size: marketData.size.seededrandom(),
+    cleanliness: marketData.cleanliness.seededrandom(),
+    draw: marketData.draw.seededrandom(),
+    organisation: marketData.organisation.seededrandom()
   })
   market.notableFeature = market.draw
   // setup.townBinder(town, market, 'market')
