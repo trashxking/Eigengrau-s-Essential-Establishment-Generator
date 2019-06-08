@@ -238,31 +238,11 @@ export const weatherData = {
     }
   },
   precipitationLevel: {
-    1 (weather) {
-      if (weather.roll.precipitation >= 95) {
-        return true
-      }
-    },
-    2 (weather) {
-      if (weather.roll.precipitation >= 85) {
-        return true
-      }
-    },
-    3 (weather) {
-      if (weather.roll.precipitation >= 70) {
-        return true
-      }
-    },
-    4 (weather) {
-      if (weather.roll.precipitation >= 40) {
-        return true
-      }
-    },
-    5 (weather) {
-      if (weather.roll.precipitation >= 5) {
-        return true
-      }
-    }
+    1: weather => weather.roll.precipitation >= 95,
+    2: weather => weather.roll.precipitation >= 85,
+    3: weather => weather.roll.precipitation >= 70,
+    4: weather => weather.roll.precipitation >= 40,
+    5: weather => weather.roll.precipitation >= 5
   },
   precipitationDescriptors: {
     'no precipitation': [
