@@ -1,6 +1,6 @@
 import { factionData } from "./factionData"
 
-setup.resourcesFaction = function (faction) {
+export function resourcesFaction (faction) {
   console.log(`assigning resources...`)
   const resourcesList = [`old favours`, `chests of gold`, `gems`, `contacts`, `shinies`, `debtors`, `trade goods`, `artifacts`, `magic trinkets`, `magic weapons`, `magic scrolls`, `bits of blackmail material`]
   const groupSizeModifier = ((faction.roll.resources - 50) + ((faction.roll.reputation - 50) + (faction.roll.size - 50)) / 2)

@@ -1,12 +1,13 @@
 import { factionData } from "./factionData"
 import { nameFaction } from "./names"
 import { ageFaction } from "./age"
+import { reputationFaction } from "./reputation"
 import { influenceFaction } from "./influence"
+import { resourcesFaction } from "./resources"
 import { leaderFaction } from "./leader"
 import { joinFaction } from "./joining"
 import { createAllies } from "./allies"
 import { createMisc } from "./misc"
-import { reputationFaction } from "./reputation"
 
 export function createFaction (town, opts = {}) {
   const type = [`thieves`, `merchants`, `wizards`, `rangers`, `seers`, `priests`, `monks`, `assassins`, `artisans`, `nobles`, `bards`, `mercenaries`, `bandits`, `craftsmen`, `scholars`].seededrandom()
@@ -42,7 +43,7 @@ export function createFaction (town, opts = {}) {
 
   influenceFaction(faction)
 
-  setup.resourcesFaction(faction)
+  resourcesFaction(faction)
 
   setup.stabilityFaction(faction)
 
