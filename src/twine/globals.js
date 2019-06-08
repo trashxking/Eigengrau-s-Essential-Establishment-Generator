@@ -12,9 +12,13 @@ window.Macro = {
 
 window.Setting = {
   addHeader () {},
-  addToggle () {},
+  addToggle (name, options) {
+    window.settings[name] = false
+  },
   save () {}
 }
+
+window.settings = {}
 
 window.passages = {}
 
