@@ -3,6 +3,7 @@ import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 import { createGeneralStoreName } from "./createGeneralStoreName"
 import { GeneralStoreData } from "./GeneralStoreData"
+import { GeneralStoreModifiers } from "./GeneralStoreModifiers"
 
 export function createGeneralStore (town, opts = {}) {
   const GeneralStore = (opts.newBuilding || createBuilding)(town, `GeneralStore`)
@@ -28,7 +29,7 @@ export function createGeneralStore (town, opts = {}) {
   GeneralStore.size = ``
   GeneralStore.cleanliness = ``
   GeneralStore.expertise = ``
-  setup.GeneralStoreModifiers(town, GeneralStore)
+  GeneralStoreModifiers(town, GeneralStore)
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `expertise`]
   rollDataVariables.forEach(function (propName) {
