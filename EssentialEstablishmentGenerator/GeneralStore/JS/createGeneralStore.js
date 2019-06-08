@@ -2,7 +2,7 @@ import { createBuilding } from "../../Buildings/createBuilding"
 import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 
-setup.createGeneralStore = function (town, opts = {}) {
+export function createGeneralStore (town, opts = {}) {
   const GeneralStore = (opts.newBuilding || createBuilding)(town, `GeneralStore`)
   console.groupCollapsed(`General Store loading...`)
   GeneralStore.shopkeep = (opts[`newShopkeep`] || createNPC)(town, {

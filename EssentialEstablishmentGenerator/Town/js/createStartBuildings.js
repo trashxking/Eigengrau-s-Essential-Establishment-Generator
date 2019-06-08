@@ -1,4 +1,5 @@
 import { createAlchemist } from '../../Alchemist/js/createAlchemist'
+import { createGeneralStore } from '../../GeneralStore/JS/createGeneralStore'
 import { createSmithy } from '../../Blacksmith/JS/createSmithy'
 import { createDocks } from '../../Docks/createDocks'
 import { goodsAndServices } from '../../Buildings/goodsAndServices'
@@ -8,7 +9,7 @@ export function createStartBuildings (town) {
     townSquare: setup.createTownSquare,
     tavern: setup.createTavern,
     alchemist: createAlchemist,
-    GeneralStore: setup.createGeneralStore,
+    GeneralStore: createGeneralStore,
     smithy: createSmithy,
     market: setup.createMarket,
     temple: setup.createTemple,
