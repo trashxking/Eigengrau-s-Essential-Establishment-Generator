@@ -13,6 +13,7 @@
  * @prop {string} [ageStage]
  * @prop {boolean} [isShallow]
  * @prop {boolean} [hasHistory]
+ * @prop {boolean} [hasClass]
  * @prop {string} [firstName]
  * @prop {string} [lastName]
  */
