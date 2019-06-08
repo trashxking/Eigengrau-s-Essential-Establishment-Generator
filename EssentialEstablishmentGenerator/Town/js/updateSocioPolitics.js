@@ -1,8 +1,9 @@
 import { townData } from "./townData"
 
-setup.updateSocioPolitics = function (town) {
-  const economicIdeologyIST = town.economicIdeologyIST
+export function updateSocioPolitics (town) {
   const politicalIdeologyIC = town.politicalIdeologyIC
+  const economicIdeologyIST = town.economicIdeologyIST
+
   const economicPairs = {
     feudalist: `feudalism`,
     capitalist: `capitalism`,
@@ -23,6 +24,7 @@ setup.updateSocioPolitics = function (town) {
     theocratic: `theocracy`,
     technocratic: `technocracy`
   }
+
   if (economicIdeologyIST !== townData.economicIdeology[town.economicIdeology].descriptors.economicIdeologyIST) {
     town.economicIdeology = economicPairs[economicIdeologyIST]
   }
