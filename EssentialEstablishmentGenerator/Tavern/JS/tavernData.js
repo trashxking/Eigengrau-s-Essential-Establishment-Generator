@@ -529,7 +529,7 @@ setup.tavern = {
         },
         {
           draw: `proximity to the thieves' guild headquarters`,
-          // drawFunction: setup.createFaction({'type': "thieves"}),
+          // drawFunction: createFaction({'type': "thieves"}),
           drawFeature: `You can see a sign by the door stating 'REPEATED PICKPOCKETING WILL RESULT IN THE THIEVES' GUILD BEING BANNED FROM THESE PREMISES'. Clearly, ${tavern.name} has an issue with the thieves guild.`
         },
         {

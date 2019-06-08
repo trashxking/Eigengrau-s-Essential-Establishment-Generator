@@ -1,3 +1,4 @@
+import { createFaction } from "../../Factions/CreateFaction"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 import { townData } from "./townData"
 
@@ -141,13 +142,13 @@ export function createSocioPolitics (town) {
     const type = townData.politicalIdeology[town.politicalIdeology].data.governmentType
     if (townData.politicalIdeology[town.politicalIdeology].data.governmentType !== setup.factionData.type[type]) {
       console.log(`No faction that matches ${townData.politicalIdeology[town.politicalIdeology].data.governmentType}. Creating random faction instead...`)
-      town.factions[`leader`] = setup.createFaction(town, {
+      town.factions[`leader`] = createFaction(town, {
         leadershipType: `individual`,
         isPoliticalPower: true,
         key: `leader`
       })
     } else {
-      town.factions[`leader`] = setup.createFaction(town, {
+      town.factions[`leader`] = createFaction(town, {
         leadershipType: `individual`,
         isPoliticalPower: true,
         type: townData.politicalIdeology[town.politicalIdeology].data.governmentType,

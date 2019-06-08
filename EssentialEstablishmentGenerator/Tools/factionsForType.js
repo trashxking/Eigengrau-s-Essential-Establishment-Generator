@@ -1,4 +1,5 @@
 import { clone } from "../../src/engine/utils"
+import { createFaction } from "../Factions/CreateFaction"
 
 /**
  * Returns a random of factions for a leadership type.
@@ -20,7 +21,7 @@ export function factionsForType (town, variable, value) {
     }
   }
   if (found.length === 0) {
-    const tempFaction = setup.createFaction(town, {
+    const tempFaction = createFaction(town, {
       [variable]: value,
       isThrowaway: true
     })

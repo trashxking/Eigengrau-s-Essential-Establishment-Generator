@@ -6,7 +6,7 @@ export function Town () {
 }
 
 /* <<set $lord to createNPC($town, {background: "noble"})>> */
-/* <<set $merchantGuild to setup.createFaction({type: "merchants"})>> */
+/* <<set $merchantGuild to createFaction({type: "merchants"})>> */
 
 /* <<set $town.scenery to either([
   "Children play in the street, calling after one another.",

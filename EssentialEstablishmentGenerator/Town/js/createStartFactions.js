@@ -1,4 +1,5 @@
 import { townData } from "./townData"
+import { createFaction } from "../../Factions/CreateFaction"
 
 export function createStartFactions (town) {
   console.log(`Creating starting factions...`)
@@ -13,7 +14,7 @@ export function createStartFactions (town) {
 
   for (let i = 0; i <= factionsNumber; i++) {
     const tempFactionType = factions.pluck()
-    const tempFaction = setup.createFaction(town, {
+    const tempFaction = createFaction(town, {
       type: tempFactionType
     })
     town.factions[tempFaction.key] = tempFaction
@@ -21,7 +22,7 @@ export function createStartFactions (town) {
     // if (!town.factions[tempFaction]) {
     //   town.factions[tempFaction] = []
     // }
-    // town.factions[tempFaction].push(setup.createFaction(town, {
+    // town.factions[tempFaction].push(createFaction(town, {
     //   type: tempFaction
     // }))
   }
