@@ -3,6 +3,7 @@ import { createGeneralStore } from '../../GeneralStore/JS/createGeneralStore'
 import { createSmithy } from '../../Blacksmith/JS/createSmithy'
 import { createDocks } from '../../Docks/createDocks'
 import { goodsAndServices } from '../../Buildings/goodsAndServices'
+import { createBrothel } from '../../MiniEstablishments/createBrothel'
 
 export function createStartBuildings (town) {
   const buildingTypes = {
@@ -17,7 +18,7 @@ export function createStartBuildings (town) {
   }
 
   if (town.hasBrothel) {
-    buildingTypes.brothel = setup.createBrothel
+    buildingTypes.brothel = createBrothel
   }
 
   for (const [type, createBuilding] of Object.entries(buildingTypes)) {

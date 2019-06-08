@@ -3,7 +3,7 @@ import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 import { createNPC } from "../NPCGeneration/SetupNPC"
 import { brothelData } from "./brothelData"
 
-setup.createBrothel = function (town, tavern) {
+export function createBrothel (town, tavern) {
   console.log(`Creating a brothel...`)
   const brothel = createBuilding(town, `brothel`)
   // if (tavern.hasBrothel) {
