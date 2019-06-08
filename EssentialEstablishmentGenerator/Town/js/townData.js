@@ -1,5 +1,5 @@
 import { professions } from "../../NPCGeneration/professions"
-import { randomRange, randomFloatRange, randomValue } from "../../../src/engine/rolls"
+import { randomRange, randomFloatRange, randomValue, dice } from "../../../src/engine/rolls"
 
 export const townData = {
   professions,

@@ -57,3 +57,17 @@ export function randomValue (array) {
 export function either (...values) {
   return seeded.arrayItem(values)
 }
+
+/**
+ * Rolls a number of dices with n-number of sides.
+ *
+ * @param {number} amount
+ * @param {number} sides
+ */
+export function dice (amount, sides) {
+  const rolls = []
+  while (amount > rolls.length) {
+    rolls.push(seeded.integerInRange(0, sides))
+  }
+  return rolls.reduce((result, roll) => result + roll)
+}
