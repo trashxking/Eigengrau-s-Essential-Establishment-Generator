@@ -16,6 +16,11 @@
  * @prop {boolean} [hasClass]
  * @prop {string} [firstName]
  * @prop {string} [lastName]
+ * @prop {string[]} [idle]
+ * @prop {string} [owner]
+ * @prop {string[]} [greeting]
+ * @prop {string} [currentproject]
+ * @prop {string} [associatedTown]
  */
 
 /**
