@@ -2,7 +2,7 @@ import { thievesMission } from "./thievesMission"
 import { alchemistMission } from "./alchemistMissions"
 import { merchantMission } from "./merchantMission"
 
-setup.createMission = function (town, base) {
+export function createMission (town, base) {
   // var category = ['thieves', 'wizards', 'bartender', 'alchemist', 'merchant']
   const difficulty = [`easy`, `easy`, `easy`, `medium`, `medium`, `hard`]
   // var difficultyText
