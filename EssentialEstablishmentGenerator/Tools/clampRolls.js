@@ -1,15 +1,15 @@
-setup.clampRolls = function (rolls) {
-  // this clamps every value presented to the 1-100 range. Most useful for rolls.
-  Object.keys(rolls).forEach(function (roll) {
-    rolls[roll].clamp(1, 100)
-    Math.clamp(rolls[roll], 1, 100)
-    if (rolls[roll] > 100) {
-      console.log(rolls[roll] + ' was over 100.')
+/**
+ * Clamps every value presented to the 1-100 range. Most useful for rolls.
+ */
+export function clampRolls (rolls) {
+  for (const [roll, result] of Object.entries(rolls)) {
+    if (result > 100) {
+      console.log(`${result} was over 100.`)
       rolls[roll] = 100
-    } else if (rolls[roll] < 1) {
-      console.log(rolls[roll] + ' was under 1.')
+    } else if (result < 1) {
+      console.log(`${result} was under 1.`)
       rolls[roll] = 1
     }
-  })
+  }
   return rolls
 }
