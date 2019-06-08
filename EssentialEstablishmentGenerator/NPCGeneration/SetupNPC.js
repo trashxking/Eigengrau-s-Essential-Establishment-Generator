@@ -1,4 +1,33 @@
-setup.createNPC = function (town, base) {
+/**
+ * @typedef {object} NPCBase
+ * @prop {any} [background]
+ * @prop {boolean} [isThrowaway]
+ * @prop {string} [profession]
+ * @prop {string} [dndClass]
+ * @prop {any} [canBeCustom]
+ * @prop {string} [note]
+ * @prop {string} [calmTrait]
+ * @prop {string} [stressTrait]
+ * @prop {string} [race]
+ * @prop {string} [gender]
+ * @prop {string} [ageStage]
+ * @prop {boolean} [isShallow]
+ * @prop {boolean} [hasHistory]
+ * @prop {boolean} [hasClass]
+ * @prop {string} [firstName]
+ * @prop {string} [lastName]
+ * @prop {string[]} [idle]
+ * @prop {string} [owner]
+ * @prop {string[]} [greeting]
+ * @prop {string} [currentproject]
+ * @prop {string} [associatedTown]
+ */
+
+/**
+ * @param {any} town
+ * @param {NPCBase} [base]
+ */
+export function createNPC (town, base) {
   if (!town) {
     console.error(`Town is not defined! NPC cannot be created. Please report this bug.`)
   }
