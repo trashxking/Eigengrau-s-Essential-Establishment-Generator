@@ -1,43 +1,43 @@
-setup.reputationFaction = function (faction) {
-  console.log('assigning a reputation...')
+export function reputationFaction (faction) {
+  console.log(`assigning a reputation...`)
   switch (faction.age) {
-    case 'ancient':
+    case `ancient`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, 30)
       break
-    case 'extremely old':
+    case `extremely old`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, 25)
       break
-    case 'very old':
+    case `very old`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, 20)
       break
-    case 'quite old':
+    case `quite old`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, 15)
       break
-    case 'well established':
+    case `well established`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, 10)
       break
-    case 'somewhat old':
+    case `somewhat old`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, 5)
       break
-    case 'relatively new':
+    case `relatively new`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, -5)
       break
-    case 'recently established':
+    case `recently established`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, -10)
       break
-    case 'new':
+    case `new`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, -15)
       break
-    case 'quite new':
+    case `quite new`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, -20)
       break
-    case 'very new':
+    case `very new`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, -25)
       break
-    case 'brand new':
+    case `brand new`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, -25)
       break
-    case 'unknown':
+    case `unknown`:
       faction.roll.reputation += Math.fm(faction.roll.reputation, 15)
   }
 
@@ -83,33 +83,33 @@ setup.reputationFaction = function (faction) {
   // }
 
   if (faction.roll.reputation > 95) {
-    faction.reputation = 'excellent'
+    faction.reputation = `excellent`
   } else if (faction.roll.reputation > 90) {
-    faction.reputation = 'very good'
+    faction.reputation = `very good`
   } else if (faction.roll.reputation > 80) {
-    faction.reputation = 'quite good'
+    faction.reputation = `quite good`
   } else if (faction.roll.reputation > 70) {
-    faction.reputation = 'good'
+    faction.reputation = `good`
   } else if (faction.roll.reputation > 60) {
-    faction.reputation = 'above average'
+    faction.reputation = `above average`
   } else if (faction.roll.reputation > 55) {
-    faction.reputation = 'slightly above average'
+    faction.reputation = `slightly above average`
   } else if (faction.roll.reputation > 50) {
-    faction.reputation = 'average'
+    faction.reputation = `average`
   } else if (faction.roll.reputation > 45) {
-    faction.reputation = 'slightly below average'
+    faction.reputation = `slightly below average`
   } else if (faction.roll.reputation > 40) {
-    faction.reputation = 'poor'
+    faction.reputation = `poor`
   } else if (faction.roll.reputation > 30) {
-    faction.reputation = 'quite poor'
+    faction.reputation = `quite poor`
   } else if (faction.roll.reputation > 20) {
-    faction.reputation = 'very poor'
+    faction.reputation = `very poor`
   } else if (faction.roll.reputation > 10) {
-    faction.reputation = 'extremely poor'
+    faction.reputation = `extremely poor`
   } else if (faction.roll.reputation <= 5) {
-    faction.reputation = 'abysmal'
+    faction.reputation = `abysmal`
   } else {
-    faction.reputation = 'average'
+    faction.reputation = `average`
   }
 
   return faction

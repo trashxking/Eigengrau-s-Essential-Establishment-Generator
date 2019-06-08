@@ -6,6 +6,7 @@ import { leaderFaction } from "./leader"
 import { joinFaction } from "./joining"
 import { createAllies } from "./allies"
 import { createMisc } from "./misc"
+import { reputationFaction } from "./reputation"
 
 export function createFaction (town, opts = {}) {
   const type = [`thieves`, `merchants`, `wizards`, `rangers`, `seers`, `priests`, `monks`, `assassins`, `artisans`, `nobles`, `bards`, `mercenaries`, `bandits`, `craftsmen`, `scholars`].seededrandom()
@@ -35,7 +36,7 @@ export function createFaction (town, opts = {}) {
 
   ageFaction(faction)
 
-  setup.reputationFaction(faction)
+  reputationFaction(faction)
 
   setup.sizeFaction(town, faction)
 
