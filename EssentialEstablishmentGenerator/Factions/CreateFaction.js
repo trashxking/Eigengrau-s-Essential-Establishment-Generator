@@ -1,4 +1,5 @@
 import { ageFaction } from "./age"
+import { createAllies } from "./allies"
 
 setup.createFaction = function (town, opts) {
   opts = opts || {}
@@ -43,7 +44,7 @@ setup.createFaction = function (town, opts) {
 
   setup.joinFaction(faction)
 
-  setup.createAllies(faction)
+  createAllies(faction)
 
   setup.createRivals(faction)
   console.log(`other cool bits...`)
