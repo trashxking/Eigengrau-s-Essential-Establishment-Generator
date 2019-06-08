@@ -3,13 +3,13 @@ import { createNPC } from "../NPCGeneration/SetupNPC"
 import { createBuilding } from "./createBuilding"
 import { buildingData } from "./buildingData"
 
-setup.goodsAndServices = {
+export const goodsAndServices = {
   default: {
     create (town, type, opts) {
       // this is the template for the creation of generic buildings; i.e. those that are present in this list.
       // It is *not* for taverns, town squares, castles, or anything large scale.
-      // this is why it is distinct from the createBuilding() function; everything needs createBuilding, not everything needs setup.goodsAndServices.default.create()
-      console.groupCollapsed(`setup.goodsAndServices.default.create()ing a ${type}`)
+      // this is why it is distinct from the createBuilding() function; everything needs createBuilding, not everything needs goodsAndServices.default.create()
+      console.groupCollapsed(`goodsAndServices.default.create()ing a ${type}`)
       opts = opts || {}
       const building = {
         type,
@@ -18,9 +18,9 @@ setup.goodsAndServices = {
         initPassage: `GenericPassage`
       }
       Object.assign(building, (opts[`newBuilding`] || createBuilding)(town, building.type))
-      building.wordNoun = (building.wordNoun || opts[`wordNoun`] || setup.goodsAndServices[building.type].name.wordNoun.seededrandom() || `building`)
-      building.PassageFormat = (building.PassageFormat || opts[`PassageFormat`] || setup.goodsAndServices[building.type].PassageFormat)
-      setup.goodsAndServices[building.type].create(town, building, opts)
+      building.wordNoun = (building.wordNoun || opts[`wordNoun`] || goodsAndServices[building.type].name.wordNoun.seededrandom() || `building`)
+      building.PassageFormat = (building.PassageFormat || opts[`PassageFormat`] || goodsAndServices[building.type].PassageFormat)
+      goodsAndServices[building.type].create(town, building, opts)
       buildingData.create(town, building)
 
       console.groupEnd()
@@ -35,10 +35,10 @@ setup.goodsAndServices = {
         console.error(`A building was not passed!`)
         return
       }
-      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
-      building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
-      building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
-      building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
+      building.owner = createNPC(town, (opts[`professionOpts`] || goodsAndServices[building.type].profession.opts))
+      building.name = (building.name || opts[`name`] || goodsAndServices[building.type].name.function(town, building))
+      building.notableFeature = goodsAndServices[building.type].notableFeature.seededrandom()
+      building.specialty = goodsAndServices[building.type].specialty.seededrandom()
 
       building.fruit = flora.fruit.fruitS.seededrandom()
       building.fruits = flora.fruit.fruitP.seededrandom()
@@ -48,7 +48,7 @@ setup.goodsAndServices = {
     },
     name: {
       function (town, building) {
-        const name = setup.goodsAndServices[building.type].name
+        const name = goodsAndServices[building.type].name
         const unique = name.unique.seededrandom() || `The ${town.name} ${name.wordNoun.seededrandom().toUpperFirst()}`
         return [
           `The ${name.adjective.seededrandom().toUpperFirst()} ${[name.noun.seededrandom().toUpperFirst(), name.wordNoun.seededrandom().toUpperFirst()].seededrandom()}`,
@@ -209,7 +209,7 @@ setup.goodsAndServices = {
       ].random()} You notice $building.notableFeature`,
       ``,
       `This $building.wordNoun is known for $building.specialty There is a <<profile $owner $owner.descriptor>> currently <<print $building.owner.idle.random()>>. <<print $building.owner.heshe.toUpperFirst()>> welcomes you, and asks what you are after.`,
-      `<<goods $building setup.goodsAndServices[$building.type].goods>>`
+      `<<goods $building goodsAndServices[$building.type].goods>>`
     ],
     profession: {
       name: `baker`,
@@ -419,11 +419,11 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
-      building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
+      building.owner = createNPC(town, (opts[`professionOpts`] || goodsAndServices[building.type].profession.opts))
+      building.name = (building.name || opts[`name`] || goodsAndServices[building.type].name.function(town, building))
 
-      building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
-      building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
+      building.notableFeature = goodsAndServices[building.type].notableFeature.seededrandom()
+      building.specialty = goodsAndServices[building.type].specialty.seededrandom()
 
       building.flowers1 = flora.flowers.stemP.seededrandom()
       building.flowers2 = flora.flowers.stemP.seededrandom()
@@ -434,7 +434,7 @@ setup.goodsAndServices = {
     },
     name: {
       function (town, building) {
-        const name = setup.goodsAndServices[building.type].name
+        const name = goodsAndServices[building.type].name
         const unique = name.unique.seededrandom() || `The ${town.name} ${name.wordNoun.seededrandom().toUpperFirst()}`
         return [
           `The ${name.adjective.seededrandom().toUpperFirst()} ${[name.noun.seededrandom().toUpperFirst(), name.wordNoun.seededrandom().toUpperFirst()].seededrandom()}`,
@@ -564,7 +564,7 @@ setup.goodsAndServices = {
       ].random()} You notice $building.notableFeature`,
       ``,
       `This $building.wordNoun is known for $building.specialty There is a <<profile $owner $owner.descriptor>> currently <<print $building.owner.idle.random()>>. <<print $building.owner.heshe.toUpperFirst()>> welcomes you, and asks what you are after.`,
-      `<<goods $building setup.goodsAndServices[$building.type].goods>>`
+      `<<goods $building goodsAndServices[$building.type].goods>>`
     ],
     profession: {
       name: `florist`,
@@ -702,18 +702,18 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
-      building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
+      building.owner = createNPC(town, (opts[`professionOpts`] || goodsAndServices[building.type].profession.opts))
+      building.name = (building.name || opts[`name`] || goodsAndServices[building.type].name.function(town, building))
 
-      building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
-      building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
+      building.notableFeature = goodsAndServices[building.type].notableFeature.seededrandom()
+      building.specialty = goodsAndServices[building.type].specialty.seededrandom()
 
       building.tippyDescription = `A ${building.type} on ${building.road}. Their specialty is ${building.specialty}.`
       return building
     },
     name: {
       function (town, building) {
-        const name = setup.goodsAndServices[building.type].name
+        const name = goodsAndServices[building.type].name
         const unique = name.unique.seededrandom() || `The ${town.name} ${name.wordNoun.seededrandom().toUpperFirst()}`
         return [
           `The ${name.adjective.seededrandom().toUpperFirst()} ${[name.noun.seededrandom().toUpperFirst(), name.wordNoun.seededrandom().toUpperFirst()].seededrandom()}`,
@@ -813,7 +813,7 @@ setup.goodsAndServices = {
       ].random()} You notice $building.notableFeature`,
       ``,
       `This $building.wordNoun is known for $building.specialty There is a <<profile $owner $owner.descriptor>> currently <<print $building.owner.idle.random()>>. <<print $building.owner.heshe.toUpperFirst()>> welcomes you, and asks what you are after.`,
-      `<<goods $building setup.goodsAndServices[$building.type].goods>>`
+      `<<goods $building goodsAndServices[$building.type].goods>>`
     ],
     profession: {
       name: `tailor`,
@@ -915,18 +915,18 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
-      building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
+      building.owner = createNPC(town, (opts[`professionOpts`] || goodsAndServices[building.type].profession.opts))
+      building.name = (building.name || opts[`name`] || goodsAndServices[building.type].name.function(town, building))
 
-      building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
-      building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
+      building.notableFeature = goodsAndServices[building.type].notableFeature.seededrandom()
+      building.specialty = goodsAndServices[building.type].specialty.seededrandom()
 
       building.tippyDescription = `A ${building.type} on ${building.road}. Their specialty is ${building.specialty}.`
       return building
     },
     name: {
       function (town, building) {
-        const name = setup.goodsAndServices[building.type].name
+        const name = goodsAndServices[building.type].name
         const unique = name.unique.seededrandom() || `The ${town.name} ${name.wordNoun.seededrandom().toUpperFirst()}`
         return [
           `The ${name.adjective.seededrandom().toUpperFirst()} ${name.noun.seededrandom().toUpperFirst()}`,
@@ -1033,7 +1033,7 @@ setup.goodsAndServices = {
       ].random()} You notice $building.notableFeature.`,
       ``,
       `This $building.wordNoun is known for $building.specialty. There is a <<profile $owner $owner.descriptor>> currently <<print $building.owner.idle.random()>>. <<print $building.owner.heshe.toUpperFirst()>> welcomes you, and asks what you are after.`,
-      `<<goods $building setup.goodsAndServices[$building.type].goods>>`
+      `<<goods $building goodsAndServices[$building.type].goods>>`
     ],
     profession: {
       name: `butcher`,
@@ -1146,18 +1146,18 @@ setup.goodsAndServices = {
         return
       }
 
-      building.owner = createNPC(town, (opts[`professionOpts`] || setup.goodsAndServices[building.type].profession.opts))
-      building.name = (building.name || opts[`name`] || setup.goodsAndServices[building.type].name.function(town, building))
+      building.owner = createNPC(town, (opts[`professionOpts`] || goodsAndServices[building.type].profession.opts))
+      building.name = (building.name || opts[`name`] || goodsAndServices[building.type].name.function(town, building))
 
-      building.notableFeature = setup.goodsAndServices[building.type].notableFeature.seededrandom()
-      building.specialty = setup.goodsAndServices[building.type].specialty.seededrandom()
+      building.notableFeature = goodsAndServices[building.type].notableFeature.seededrandom()
+      building.specialty = goodsAndServices[building.type].specialty.seededrandom()
 
       building.tippyDescription = `A ${building.type} on ${building.road}. Their specialty is ${building.specialty}.`
       return building
     },
     name: {
       function (town, building) {
-        const name = setup.goodsAndServices[building.type].name
+        const name = goodsAndServices[building.type].name
         const unique = name.unique.seededrandom() || `The ${town.name} ${name.wordNoun.seededrandom().toUpperFirst()}`
         return [
           `The ${name.adjective.seededrandom().toUpperFirst()} ${name.noun.seededrandom().toUpperFirst()}`,
@@ -1274,7 +1274,7 @@ setup.goodsAndServices = {
       ].random()} You notice $building.notableFeature.`,
       ``,
       `This $building.wordNoun is known for $building.specialty. There is a <<profile $owner $owner.descriptor>> currently <<print $building.owner.idle.random()>>. <<print $building.owner.heshe.toUpperFirst()>> welcomes you, and asks what you are after.`,
-      `<<goods $building setup.goodsAndServices[$building.type].goods>>`
+      `<<goods $building goodsAndServices[$building.type].goods>>`
     ],
     profession: {
       name: `cobbler`,
