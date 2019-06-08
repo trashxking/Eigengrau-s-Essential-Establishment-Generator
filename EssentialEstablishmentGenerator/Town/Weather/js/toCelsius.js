@@ -1,4 +1,4 @@
-setup.toCelsius = function (temp) {
+export function toCelsius (temp) {
   if (settings.showCelsius) {
     console.log(`${temp} in Fahrenheit`)
     temp -= 32
