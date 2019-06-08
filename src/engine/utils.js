@@ -107,3 +107,11 @@ export function slugify (str) {
 export function clamp (value, min, max) {
   return Math.min(Math.max(value, min), max)
 }
+
+/**
+ * Capitalizesthe first letter in a string.
+ * @param {string} string
+ */
+export function toUpperFirst (string) {
+  return String(string).charAt(0).toUpperCase() + String(string).slice(1)
+}
