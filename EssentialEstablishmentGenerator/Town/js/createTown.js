@@ -1,4 +1,5 @@
 import { clone } from '../../../src/engine/utils'
+import { townData } from './townData'
 
 export function createTown (base) {
   const type = [`hamlet`, `hamlet`, `village`, `village`, `village`, `town`, `town`, `town`, `city`, `city`].seededrandom()
@@ -6,9 +7,9 @@ export function createTown (base) {
   const season = [`summer`, `autumn`, `winter`, `spring`]
   const townName = setup.createTownName()
   console.groupCollapsed(`${townName} is loading...`)
-  const economicIdeology = setup.townData.type[type].economicIdeology.seededrandom()
-  const politicalSource = setup.townData.type[type].politicalSource.seededrandom()
-  const politicalIdeology = setup.townData.politicalSource[politicalSource].politicalIdeology.seededrandom()
+  const economicIdeology = townData.type[type].economicIdeology.seededrandom()
+  const politicalSource = townData.type[type].politicalSource.seededrandom()
+  const politicalIdeology = townData.politicalSource[politicalSource].politicalIdeology.seededrandom()
   const town = Object.assign({
     passageName: `TownOutput`,
     name: townName,
@@ -62,10 +63,10 @@ export function createTown (base) {
     },
     families: {
     },
-    population: setup.townData.type[type].population(),
+    population: townData.type[type].population(),
     _demographic: {},
     // Clone the raw demographic data for the town type.
-    _baseDemographics: clone(setup.townData.type[type].demographic),
+    _baseDemographics: clone(townData.type[type].demographic),
     get baseDemographics () {
       console.log(`Getting base demographics.`)
       return this._baseDemographics
@@ -105,7 +106,7 @@ export function createTown (base) {
     set economicIdeology (value) {
       console.log(`Setting town economic ideology.`)
       this._economicIdeology = value
-      Object.assign(this, setup.townData.economicIdeology[this._economicIdeology].descriptors)
+      Object.assign(this, townData.economicIdeology[this._economicIdeology].descriptors)
     },
     get politicalSource () {
       console.log(`Getting town political source.`)
@@ -122,28 +123,28 @@ export function createTown (base) {
     set politicalIdeology (value) {
       console.log(`Setting town political ideology.`)
       this._politicalIdeology = value
-      Object.assign(this, setup.townData.politicalIdeology[this._politicalIdeology].data)
+      Object.assign(this, townData.politicalIdeology[this._politicalIdeology].data)
     },
     get politicalSourceDescription () {
       console.log(`Getting town political source description.`)
       if (this._politicalSource === `absolute monarchy` || this._politicalSource === `constitutional monarchy`) {
         if (this.politicalIdeology === `autocracy`) {
-          return setup.townData.politicalSource[this._politicalSource].autocracy.politicalSourceDescription
+          return townData.politicalSource[this._politicalSource].autocracy.politicalSourceDescription
         } else {
-          return setup.townData.politicalSource[this._politicalSource].default.politicalSourceDescription
+          return townData.politicalSource[this._politicalSource].default.politicalSourceDescription
         }
       } else {
-        return setup.townData.politicalSource[this._politicalSource].politicalSourceDescription
+        return townData.politicalSource[this._politicalSource].politicalSourceDescription
       }
     },
     get wealth () {
       console.log(`Getting town wealth.`)
-      let wealth = setup.townData.rollData.wealth.find(function (descriptor) {
+      let wealth = townData.rollData.wealth.find(function (descriptor) {
         return descriptor[0] <= this.roll.wealth
       }, this)
       if (wealth === undefined) {
         console.log(`Could not find a wealthRoll descriptor that was appropriate for a roll of ${this.roll.wealth} for ${this.name}`)
-        wealth = setup.townData.rollData.wealth[setup.townData.rollData.wealth.length - 1]
+        wealth = townData.rollData.wealth[townData.rollData.wealth.length - 1]
       }
       this._wealth = wealth[1]
       return this._wealth
@@ -153,12 +154,12 @@ export function createTown (base) {
       this._wealth = value
     },
     roads: {},
-    location: setup.townData.terrain[terrain].start.seededrandom(),
-    primaryCrop: setup.townData.misc.primaryCrop.seededrandom(),
-    primaryExport: setup.townData.misc.primaryExport.seededrandom(),
-    landmark: setup.townData.misc.landmark.seededrandom(),
-    currentEvent: setup.townData.misc.currentEvent.seededrandom(),
-    microEvent: setup.townData.misc.microEvent,
+    location: townData.terrain[terrain].start.seededrandom(),
+    primaryCrop: townData.misc.primaryCrop.seededrandom(),
+    primaryExport: townData.misc.primaryExport.seededrandom(),
+    landmark: townData.misc.landmark.seededrandom(),
+    currentEvent: townData.misc.currentEvent.seededrandom(),
+    microEvent: townData.misc.microEvent,
     roll: {
       wealth: random(1, 100),
       reputation: random(1, 100),
@@ -180,16 +181,16 @@ export function createTown (base) {
   town.economicIdeology = town.economicIdeology || town._economicIdeology
   town.politicalIdeology = town.politicalIdeology || town._politicalIdeology
   town.politicalSource = town.politicalSource || town._politicalSource
-  town.origin = setup.townData.terrain[town.terrain].location[town.location].origin.seededrandom()
-  town.vegetation = setup.townData.terrain[town.terrain].location[town.location].vegetation.seededrandom()
+  town.origin = townData.terrain[town.terrain].location[town.location].origin.seededrandom()
+  town.vegetation = townData.terrain[town.terrain].location[town.location].vegetation.seededrandom()
 
   Object.keys(town.roll).forEach(function (roll) {
     town.roll[roll].clamp(1, 100)
   })
 
   console.log(`Assigning town size modifiers (btw ${town.name} is a ${town.type})`)
-  Object.keys(setup.townData.type[town.type].modifiers).forEach(function (modifier) {
-    town.roll[modifier] = Math.fm(town.roll[modifier], setup.townData.type[town.type].modifiers[modifier])
+  Object.keys(townData.type[town.type].modifiers).forEach(function (modifier) {
+    town.roll[modifier] = Math.fm(town.roll[modifier], townData.type[town.type].modifiers[modifier])
   })
 
   town.guard = setup.createGuard(town)
@@ -197,19 +198,19 @@ export function createTown (base) {
   console.log(`Assigning economic modifiers (btw ${town.name} is a ${town.economicIdeology})`)
   // economic ideology attribute modifiers
 
-  Object.keys(setup.townData.economicIdeology[town.economicIdeology].modifiers).forEach(function (modifier) {
-    console.log(setup.townData.economicIdeology[town.economicIdeology].modifiers[modifier])
-    town.roll[modifier] = Math.fm(town.roll[modifier], setup.townData.economicIdeology[town.economicIdeology].modifiers[modifier])
+  Object.keys(townData.economicIdeology[town.economicIdeology].modifiers).forEach(function (modifier) {
+    console.log(townData.economicIdeology[town.economicIdeology].modifiers[modifier])
+    town.roll[modifier] = Math.fm(town.roll[modifier], townData.economicIdeology[town.economicIdeology].modifiers[modifier])
   })
   // political ideology modifiers
   console.log(`Assigning political ideology modifiers (btw ${town.name} is a ${town.politicalIdeology})`)
 
-  Object.keys(setup.townData.politicalIdeology[town.politicalIdeology].modifiers).forEach(function (modifier) {
+  Object.keys(townData.politicalIdeology[town.politicalIdeology].modifiers).forEach(function (modifier) {
     console.log(modifier)
-    console.log(setup.townData.politicalIdeology[town.politicalIdeology].modifiers[modifier])
-    town.roll[modifier] = Math.fm(town.roll[modifier], setup.townData.politicalIdeology[town.politicalIdeology].modifiers[modifier])
+    console.log(townData.politicalIdeology[town.politicalIdeology].modifiers[modifier])
+    town.roll[modifier] = Math.fm(town.roll[modifier], townData.politicalIdeology[town.politicalIdeology].modifiers[modifier])
   })
-  // Object.assign(town.leader, setup.townData.politicalIdeology[town.politicalIdeology].data)
+  // Object.assign(town.leader, townData.politicalIdeology[town.politicalIdeology].data)
 
   setup.createSocioPolitics(town)
 

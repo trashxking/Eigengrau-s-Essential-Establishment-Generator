@@ -1,5 +1,4 @@
-if (!setup.townData) { setup.townData = {} }
-setup.townData.professions = {
+export const professions = {
   'child': {
     sv: 10000,
     type: `family`,

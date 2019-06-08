@@ -1,3 +1,5 @@
+import { townData } from "../Town/js/townData"
+
 setup.findProfession = function (town, npc, profession) {
   profession = profession || npc.dndClass || npc.profession
   if (!profession && npc.socialClass) { profession = setup.fetchProfessionChance(town, npc) }
@@ -7,13 +9,13 @@ setup.findProfession = function (town, npc, profession) {
     npc,
     profession
   })
-  if (Object.keys(setup.townData.professions).includes(profession)) {
+  if (Object.keys(townData.professions).includes(profession)) {
     console.log(`${profession} is defined!`)
     console.groupEnd()
-    return setup.townData.professions[profession]
+    return townData.professions[profession]
   } else {
     console.log(`could not find it. Looking for synonyms...`)
-    const find = setup.findInContainer(setup.townData.professions, `synonyms`, profession)
+    const find = setup.findInContainer(townData.professions, `synonyms`, profession)
     if (typeof find !== `undefined`) {
       console.log(`Found a synonym!`)
       console.log({ find })
@@ -22,7 +24,7 @@ setup.findProfession = function (town, npc, profession) {
     } else {
       console.error(`${profession} not found!`)
       console.groupEnd()
-      return setup.townData.professions[`peasant`]
+      return townData.professions[`peasant`]
     }
   }
 }

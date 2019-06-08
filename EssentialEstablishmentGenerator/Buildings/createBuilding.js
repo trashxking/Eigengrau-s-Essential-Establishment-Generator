@@ -1,5 +1,6 @@
 import { random, randomRange, randomFloat, randomValue } from "../../src/engine/rolls"
 import { clamp } from "../../src/engine/utils"
+import { townData } from "../Town/js/townData"
 
 /**
  * @param {object} town
@@ -7,11 +8,11 @@ import { clamp } from "../../src/engine/utils"
  * @param {any} base
  */
 export function createBuilding (town, type, base) {
-  let roadName = randomValue(setup.townData.roads.name)
-  let roadType = randomValue(setup.townData.roads.type)
+  let roadName = randomValue(townData.roads.name)
+  let roadType = randomValue(townData.roads.type)
 
   // Tables used later
-  if (random(100) < setup.townData.type[town.type].roadDuplication && Object.keys(town.roads).length > 0) {
+  if (random(100) < townData.type[town.type].roadDuplication && Object.keys(town.roads).length > 0) {
     // Roads are currently only supported with two words
     const randRoad = randomValue(Object.keys(town.roads))
     const roads = town.roads[randRoad].split(` `)

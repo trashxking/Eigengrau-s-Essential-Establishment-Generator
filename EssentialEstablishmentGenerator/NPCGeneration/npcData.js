@@ -1,4 +1,5 @@
 import { flora } from "../Dictionary/floraData"
+import { townData } from "../Town/js/townData"
 import { createNPC } from "./SetupNPC"
 
 setup.npcData = {
@@ -157,7 +158,7 @@ setup.npcData = {
     apprentice: {
       probability: 6,
       exclusions (town, npc) {
-        if (setup.townData.professions[npc.profession].socialClass === `nobility`) {
+        if (townData.professions[npc.profession].socialClass === `nobility`) {
           return false
         } else { return true }
       },
@@ -254,7 +255,7 @@ setup.npcData = {
     nobleEvent: {
       probability: 5,
       exclusion (town, npc) {
-        if (setup.townData.professions[npc.profession].socialClass === `commoner` || setup.townData.professions[npc.profession].socialClass === `peasantry`) {
+        if (townData.professions[npc.profession].socialClass === `commoner` || townData.professions[npc.profession].socialClass === `peasantry`) {
           return true
         }
       },
@@ -507,7 +508,7 @@ setup.npcData = {
     pilgrimage: {
       probability: 5,
       exclusions (town, npc) {
-        if (setup.townData.professions[npc.profession].sector === `religion` || random(100) > 75) {
+        if (townData.professions[npc.profession].sector === `religion` || random(100) > 75) {
           return true
         } else return false
       },
@@ -909,7 +910,7 @@ setup.npcData = {
     crime: {
       probability: 10,
       exclusions (town, npc) {
-        if (setup.townData.professions[npc.profession].sector === `crime` || random(100) > 60) {
+        if (townData.professions[npc.profession].sector === `crime` || random(100) > 60) {
           return true
         }
       },
