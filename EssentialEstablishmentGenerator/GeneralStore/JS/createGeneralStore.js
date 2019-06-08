@@ -2,6 +2,7 @@ import { createBuilding } from "../../Buildings/createBuilding"
 import { defineRollDataGetter } from "../../Tools/defineRollDataGetter"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
 import { createGeneralStoreName } from "./createGeneralStoreName"
+import { GeneralStoreData } from "./GeneralStoreData"
 
 export function createGeneralStore (town, opts = {}) {
   const GeneralStore = (opts.newBuilding || createBuilding)(town, `GeneralStore`)
@@ -13,9 +14,9 @@ export function createGeneralStore (town, opts = {}) {
     owner: [`owner`, `caretaker`, `proud owner`, `proprietor`, `current owner`, `manager`, `assistant manager`, `acting manager`].seededrandom()
   })
   Object.assign(GeneralStore, {
-    note: setup.GeneralStore.get.note(GeneralStore),
+    note: GeneralStoreData.get.note(GeneralStore),
     wordNoun: [`general store`, `shop`].seededrandom(),
-    crud: setup.GeneralStore.crud,
+    crud: GeneralStoreData.crud,
     notableFeature: `wide range of goods on sale`,
     passageName: `GeneralStoreOutput`,
     initPassage: `InitGeneralStore`,
@@ -31,7 +32,7 @@ export function createGeneralStore (town, opts = {}) {
 
   const rollDataVariables = [`wealth`, `size`, `cleanliness`, `expertise`]
   rollDataVariables.forEach(function (propName) {
-    defineRollDataGetter(GeneralStore, setup.GeneralStore.rollData, propName)
+    defineRollDataGetter(GeneralStore, GeneralStoreData.rollData, propName)
   })
   // setup.GeneralStoreRenders(GeneralStore)
   console.log(GeneralStore)
