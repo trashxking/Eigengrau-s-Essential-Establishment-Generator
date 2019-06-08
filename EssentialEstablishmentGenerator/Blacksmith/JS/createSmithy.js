@@ -6,10 +6,6 @@ import { blacksmithData } from "./blacksmithData"
 import { createBlacksmith } from "./createBlacksmith"
 import { createSmithyName } from "./createSmithyName"
 
-/**
- * @param {object} town
- * @param {object} [opts]
- */
 export function createSmithy (town, opts = {}) {
   const smithy = (opts.newBuilding || createBuilding)(town, `smithy`)
   console.groupCollapsed(`Smithy loading...`)

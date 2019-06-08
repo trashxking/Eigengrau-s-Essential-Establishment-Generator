@@ -1,9 +1,5 @@
 import { randomValue, randomRange } from "../../../src/engine/rolls"
 
-/**
- * @param {object} town
- * @param {object} smithy
- */
 export function createSmithyName (town, smithy) {
   const { blacksmith } = smithy
 
