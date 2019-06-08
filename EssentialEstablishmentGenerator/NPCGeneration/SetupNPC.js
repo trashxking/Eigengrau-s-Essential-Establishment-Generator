@@ -1,8 +1,8 @@
 setup.createNPC = function (town, base) {
   if (!town) {
-    console.error('Town is not defined! NPC cannot be created. Please report this bug.')
+    console.error(`Town is not defined! NPC cannot be created. Please report this bug.`)
   }
-  console.log('Base:')
+  console.log(`Base:`)
   console.log({ base })
   // These are the very basic bits that need to be defined first- race, gender, and then names using those local variables.
   const data = setup.npcData
@@ -12,7 +12,7 @@ setup.createNPC = function (town, base) {
     }
   }
   if (base.isShallow === true) {
-    console.log('NPC flagged as shallow.')
+    console.log(`NPC flagged as shallow.`)
     base.isThrowaway = base.isThrowaway || true
     base.canBeCustom = base.canBeCustom || true
     base.hasHistory = base.hasHistory || false
@@ -21,15 +21,15 @@ setup.createNPC = function (town, base) {
   if (base.canBeCustom === true && random(1, 100) > 99) {
     base = setup.objectArrayFetcher(setup.misc.patreonCharacters, town)
   }
-  const gender = base.gender || ['man', 'woman'].seededrandom()
+  const gender = base.gender || [`man`, `woman`].seededrandom()
   const race = base.race || setup.fetchRace(town)
-  console.log('Loading profession:')
+  console.log(`Loading profession:`)
   const profession = base.profession || setup.fetchProfessionChance(town, base)
 
   const firstName = base.firstName || data.raceTraits[race].genderTraits[gender].firstName.seededrandom().toUpperFirst()
   const lastName = base.lastName || data.raceTraits[race].lastName.seededrandom().toUpperFirst()
-  console.groupCollapsed(firstName + ' ' + lastName)
-  const ageStage = base.ageStage || ['young adult', 'young adult', 'young adult', 'young adult', 'settled adult', 'settled adult', 'settled adult', 'elderly'].seededrandom()
+  console.groupCollapsed(`${firstName} ${lastName}`)
+  const ageStage = base.ageStage || [`young adult`, `young adult`, `young adult`, `young adult`, `settled adult`, `settled adult`, `settled adult`, `elderly`].seededrandom()
   const dndClass = base.dndClass || data.dndClass.seededrandom()
   if (base.dndClass) {
     base.hasClass = true
@@ -37,18 +37,18 @@ setup.createNPC = function (town, base) {
 
   // the local variables are then assigned to npc. We don't need to initialise npc to do the stuff that's race & gender dependent because we've got the local variables.
   const npc = Object.assign({
-    passageName: 'NPCProfile',
+    passageName: `NPCProfile`,
     _gender: gender,
     _race: race,
     firstName,
     lastName,
     get name () {
-      return this.firstName + ' ' + this.lastName
+      return `${this.firstName} ${this.lastName}`
     },
     set name (name) {
-      const words = name.toString().split(' ')
-      this.firstName = words[0] || ''
-      this.lastName = words[1] || ''
+      const words = name.toString().split(` `)
+      this.firstName = words[0] || ``
+      this.lastName = words[1] || ``
     },
     ageStage,
     ageYears: data.raceTraits[race].ageTraits[ageStage].baseAge + data.raceTraits[race].ageTraits[ageStage].ageModifier(),
@@ -66,7 +66,7 @@ setup.createNPC = function (town, base) {
 
     },
     finances: {
-      dailyWage: ''
+      dailyWage: ``
     },
     // value: data.value.seededrandom(),
     // drive: data.drive.seededrandom(),
@@ -74,26 +74,26 @@ setup.createNPC = function (town, base) {
     hairColour: data.hairColour.seededrandom(),
     hairType: data.hairType.seededrandom(),
     get hair () {
-      return this.hairType + ' ' + this.hairColour + ' hair'
+      return `${this.hairType} ${this.hairColour} hair`
     },
     set hair (hair) {
-      const hairs = hair.toString().split(' ')
-      this.hairType = hairs[0] || ''
-      this.hairColour = hairs[1] || ''
+      const hairs = hair.toString().split(` `)
+      this.hairType = hairs[0] || ``
+      this.hairColour = hairs[1] || ``
     },
     get descriptor () {
       return this.descriptors.seededrandom()
     },
     set descriptorsAdd (description) {
-      if (typeof description === 'string') {
+      if (typeof description === `string`) {
         console.log(this.descriptors)
         if (this.descriptors.includes(description)) {
-          console.log('Throwing out duplicate description...')
+          console.log(`Throwing out duplicate description...`)
         } else {
           this.descriptors.push(description)
         }
       } else {
-        console.log('Expected a string operand and received ' + description)
+        console.log(`Expected a string operand and received ${description}`)
       }
     },
     eyes: data.raceTraits[race].eyes.seededrandom(),
@@ -122,8 +122,8 @@ setup.createNPC = function (town, base) {
       Object.assign(this, data.raceTraits[race].raceWords)
     },
     get raceNote () {
-      if (this._race === 'human') {
-        return this.height + ' ' + this.gender
+      if (this._race === `human`) {
+        return `${this.height} ${this.gender}`
       } else {
         return data.raceTraits[this._race].raceWords.raceName
       }
@@ -135,7 +135,7 @@ setup.createNPC = function (town, base) {
 
   npc.gender = npc.gender || npc._gender
   npc.race = npc.race || npc._race
-  npc.key = npc.firstName + ' ' + npc.lastName
+  npc.key = `${npc.firstName} ${npc.lastName}`
   Object.assign(npc, data.gender[npc.gender])
   Object.assign(npc.pronouns, data.gender[npc.gender])
 
@@ -147,13 +147,13 @@ setup.createNPC = function (town, base) {
       npc.hasClass = false
       npc.dndClass = npc.profession
     } else {
-      npc.adventure = data.adventure.seededrandom() || 'looking for work'
+      npc.adventure = data.adventure.seededrandom() || `looking for work`
       npc.hasClass = true
     }
   } else if (!npc.hasClass) {
     npc.dndClass = npc.profession
   } else if (npc.hasClass) {
-    npc.adventure = data.adventure.seededrandom() || 'looking for work'
+    npc.adventure = data.adventure.seededrandom() || `looking for work`
   }
 
   if (!npc.vocalPattern) {
@@ -201,12 +201,12 @@ setup.createNPC = function (town, base) {
   setup.createBackground(npc)
 
   setup.createDescriptors(npc)
-  npc.formalName = npc.formalName || npc.title + ' ' + npc.lastName
+  npc.formalName = npc.formalName || `${npc.title} ${npc.lastName}`
   // npc.key = npc.name
   State.variables.npcs[npc.key] = npc
   npc.profile = function (npc, base) {
     base = npc.name || base
-    return '<<profile `$npcs[' + JSON.stringify(npc.key) + '] `' + JSON.stringify(base) + '>>'
+    return `<<profile \`$npcs[${JSON.stringify(npc.key)}] \`${JSON.stringify(base)}>>`
   }
 
   setup.createSexuality(npc)
@@ -219,7 +219,7 @@ setup.createNPC = function (town, base) {
   }
 
   if (npc.partnerID) {
-    console.log('assigning ' + npc.name + ' ' + State.variables.npcs[npc.partnerID].name + ' as a partner...')
+    console.log(`assigning ${npc.name} ${State.variables.npcs[npc.partnerID].name} as a partner...`)
     setup.setAsPartners(npc, State.variables.npcs[npc.partnerID])
   }
   State.temporary.newNPC = npc
