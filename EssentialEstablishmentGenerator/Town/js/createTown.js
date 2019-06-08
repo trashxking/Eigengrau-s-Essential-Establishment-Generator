@@ -1,4 +1,6 @@
 import { clone } from '../../../src/engine/utils'
+import { fetchProfessions } from '../../Tools/fetchProfessions'
+
 import { townData } from './townData'
 import { createGuard } from './createGuard'
 import { createSocioPolitics } from './createSocioPolitics'
@@ -182,7 +184,7 @@ export function createTown (base) {
     }
   }, base)
 
-  town.professions = setup.fetchProfessions(town)
+  town.professions = fetchProfessions(town)
 
   town.economicIdeology = town.economicIdeology || town._economicIdeology
   town.politicalIdeology = town.politicalIdeology || town._politicalIdeology

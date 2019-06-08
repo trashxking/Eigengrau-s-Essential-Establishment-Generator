@@ -7,7 +7,7 @@ import { townData } from "../Town/js/townData"
  * Individual professions are returned by the `fetchProfessionChance()`
  * function located in `NPCGeneration/fetchProfessionChance.js`
  */
-setup.fetchProfessions = function (town) {
+export function fetchProfessions (town) {
   town = town || State.variables.town
   town.professions = {}
   const professionNames = Object.keys(townData.professions)
