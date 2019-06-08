@@ -4,6 +4,7 @@ import { influenceFaction } from "./influence"
 import { leaderFaction } from "./leader"
 import { joinFaction } from "./joining"
 import { createAllies } from "./allies"
+import { createMisc } from "./misc"
 
 export function createFaction (town, opts = {}) {
   const type = [`thieves`, `merchants`, `wizards`, `rangers`, `seers`, `priests`, `monks`, `assassins`, `artisans`, `nobles`, `bards`, `mercenaries`, `bandits`, `craftsmen`, `scholars`].seededrandom()
@@ -51,7 +52,7 @@ export function createFaction (town, opts = {}) {
 
   setup.createRivals(faction)
   console.log(`other cool bits...`)
-  setup.createMisc(faction)
+  createMisc(faction)
 
   faction.tippyDescription = `A ${faction.size} ${faction.type} ${faction.wordNoun} called ${faction.name}`
 

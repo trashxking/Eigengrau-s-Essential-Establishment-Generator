@@ -1,4 +1,4 @@
-setup.createMisc = function (faction) {
+export function createMisc (faction) {
   const miscList = [
     `currently recruiting`,
     `adjusting to a change in leadership`,
