@@ -1,6 +1,6 @@
 import React from 'react'
-import patreon from '../../EssentialEstablishmentGenerator/Resources/patreonbutton.png'
-import kofi from '../../EssentialEstablishmentGenerator/Resources/kofi.png'
+import patreon from '../../EssentialEstablishmentGenerator/Resources/patreon.svg'
+import kofi from '../../EssentialEstablishmentGenerator/Resources/kofi.svg'
 
 /**
  * The navigation menu.
