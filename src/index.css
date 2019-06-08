@@ -34,3 +34,16 @@
   padding: 1.5em;
   overflow: auto;
 }
+
+.note {
+  font-family: "Scaly Sans", sans-serif;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  padding: 5px 10px;
+  background: #e0e5c1;
+  border-style: solid;
+  border-width: 11px;
+  border-image: url("../../Resources/note-wrap.png") 11;
+  border-image-outset: 9px 0;
+  box-shadow: 1px 4px 14px #888;
+}
