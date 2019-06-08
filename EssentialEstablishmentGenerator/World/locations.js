@@ -1,19 +1,20 @@
+import { contentsFetcher } from "../Tools/contentsFetcher"
 import { misc } from "./miscData"
 
 export const locations = {
   'a cavern behind a waterfall': (town, biome) => {
     const cavern = misc.cavern.create({ entrance: `somewhat hidden behind a roaring waterfall` })
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
     return `a cavern. ${cavern.readout} <blockquote>The cavern is now home to ${contents}.</blockquote>`
   },
   'a small cave in the bank of a creek': (town, biome) => {
     const cavern = misc.cavern.create({ entrance: `in the bank of a creek` })
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
     return `a small cave. ${cavern.readout} <blockquote>The cave is home to ${contents}.</blockquote>`
   },
   'an entrance to a rocky cave': (town, biome) => {
     const cavern = misc.cavern.create()
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
     return `a rocky cave. ${cavern.readout} <blockquote>The cave is home to ${contents}.</blockquote>`
   },
   'a hole under a large tree': (town, biome) => {
@@ -24,7 +25,7 @@ export const locations = {
       contents = `a ${spider.tippyWord}.`
     }
     const tree = misc.tree.create(town, biome)
-    // let contents = setup.contentsFetcher(town, biome, misc[biome].hole, misc[biome].hole)
+    // let contents = contentsFetcher(town, biome, misc[biome].hole, misc[biome].hole)
     return `a hole under a large ${tree.tippyWord}. <blockquote>Inside is ${contents}.</blockquote>`
   },
   'a hole under a sheer cliff': (town, biome) => {
@@ -37,23 +38,23 @@ export const locations = {
   },
   'a large burrow': (town, biome) => {
     const contents = misc[biome].hole.seededrandom()
-    // let contents = setup.contentsFetcher(town, biome, misc[biome].hole, misc[biome].hole)
+    // let contents = contentsFetcher(town, biome, misc[biome].hole, misc[biome].hole)
     return `a large burrow <blockquote>Inside is ${contents}.</blockquote>`
   },
   'a peculiar cottage': (town, biome) => {
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cottageLives, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cottageLives, misc.encounters)
     const cabin = misc.cabin.create(town, biome, {
       wordNoun: `cottage`
     })
     return `a peculiar ${cabin.tippyWord}. <blockquote>${contents} lives here.</blockquote>`
   },
   "a woodsman's cabin": (town, biome) => {
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cabinLives, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cabinLives, misc.encounters)
     const cabin = misc.cabin.create(town, biome)
     return `a woodsman's ${cabin.tippyWord}. <blockquote>${misc[biome].cabinLived.seededrandom()} once lived here. Now, ${contents} lives here.</blockquote>`
   },
   'a cozy little cabin': (town, biome) => {
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cabinLives, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cabinLives, misc.encounters)
     const cabin = misc.cabin.create(town, biome, {
       wordNoun: `cabin`,
       size: `little`
@@ -61,12 +62,12 @@ export const locations = {
     return `a cozy little ${cabin.tippyWord}. <blockquote>${misc[biome].cabinLived.seededrandom()} once lived here. Now, ${contents} lives here.</blockquote>`
   },
   'an abandoned cabin': (town, biome) => {
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cabinLives, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cabinLives, misc.encounters)
     const cabin = misc.cabin.create(town, biome)
     return `an abandoned ${cabin.tippyWord}. <blockquote>${misc[biome].cabinLived.seededrandom()} once lived here. Now, ${contents} lives here.</blockquote>`
   },
   'an abandoned campsite': (town, biome) => {
-    const contents = setup.contentsFetcher(town, biome, misc[biome].camped, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].camped, misc.encounters)
     return `an abandoned campsite, which looks to have been occupied previously by ${contents}`
   },
   'a sacred grove': () => `a sacred grove.`,
@@ -76,27 +77,27 @@ export const locations = {
   },
   'a grave with an illegible headstone': () => `a grave with an illegible headstone.`,
   'ancient ruins': (town, biome) => {
-    const contents = setup.contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
     return `ancient ruins. <blockquote>The ruins were built by ${misc[biome].ruinsLived.seededrandom()}. Now, ${contents} lives here.</blockquote>`
   },
   'a cavern in a canyon wall': (town, biome) => {
     const cavern = misc.cavern.create({ entrance: `in a canyon wall` })
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].encounter, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].encounter, misc.encounters)
     return `a cavern. ${cavern.readout} <blockquote>The cavern is home to ${encounter}.</blockquote>`
   },
   'a cave entrance, hidden by a boulder': (town, biome) => {
     const cavern = misc.cavern.create({ entrance: `hidden by a boulder` })
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].encounter, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].encounter, misc.encounters)
     return `a cavern. ${cavern.readout} <blockquote>The cavern is home to ${encounter}.</blockquote>`
   },
   'a small cave in the crook of a rock wall': (town, biome) => {
     const cavern = misc.cavern.create({ entrance: `in the crook of a rock wall` })
-    const contents = setup.contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
+    const contents = contentsFetcher(town, biome, misc[biome].cave, misc.encounters)
     return `a small cave. ${cavern.readout} <blockquote>The cave is home to ${contents}.</blockquote>`
   },
   'a small cave next to a dry river bed': (town, biome) => {
     const cavern = misc.cavern.create()
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].encounter, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].encounter, misc.encounters)
     return `a cavern. ${cavern.readout} <blockquote>The cavern is home to ${encounter}.</blockquote>`
   },
   // mining is intentionally using the mountain biome
@@ -105,7 +106,7 @@ export const locations = {
   'a hole under a large boulder': (town, biome) => `a hole under a large boulder <blockquote> Inside is ${misc.desert.hole.seededrandom()}</blockquote>`,
   'an abandoned stone house': (town, biome) => {
     const lived = misc[biome].houseLived.seededrandom()
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].houseLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].houseLives, misc.encounters)
     const cabin = misc.cabin.create(town, biome, {
       material: `stone`,
       wordNoun: `house`
@@ -114,7 +115,7 @@ export const locations = {
   },
   'a stone house': (town, biome) => {
     const lived = misc[biome].houseLived.seededrandom()
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].houseLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].houseLives, misc.encounters)
     const cabin = misc.cabin.create(town, biome, {
       material: `stone`,
       wordNoun: `house`
@@ -131,25 +132,25 @@ export const locations = {
   },
   'an old watchtower': (town, biome) => {
     // intentionally uses the mountain biome
-    const encounter = setup.contentsFetcher(town, biome, misc.mountain.watchtowerLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc.mountain.watchtowerLives, misc.encounters)
     return `an old, weathered watchtower. <blockquote>The watchtower was built by ${misc.mountain.watchtowerBuilt.seededrandom()}. Now, it is controlled by ${encounter} .</blockquote>`
   },
   'an abandoned watchtower': (town, biome) => {
     // intentionally uses the mountain biome
-    const encounter = setup.contentsFetcher(town, biome, misc.mountain.watchtowerLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc.mountain.watchtowerLives, misc.encounters)
     return `a run down, abandoned watchtower. <blockquote>The watchtower was built by ${misc.mountain.watchtowerBuilt.seededrandom()}. Now, it is inhabited by ${encounter} .</blockquote>`
   },
   'a strategically located watchtower': (town, biome) => {
     // intentionally uses the mountain biome
-    const encounter = setup.contentsFetcher(town, biome, misc.mountain.watchtowerLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc.mountain.watchtowerLives, misc.encounters)
     return `a strategically located watchtower. <blockquote>The watchtower was built by ${misc.mountain.watchtowerBuilt.seededrandom()}. Now, it is controlled by ${encounter} .</blockquote>`
   },
   'ruins of an ancient city': (town, biome) => {
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
     return `ruins of an ancient city. <blockquote>The city was built by ${misc[biome].ruinsLived.seededrandom()} Now, ${encounter} lives here.</blockquote>`
   },
   'a temple ruin': (town, biome) => {
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
     return `a temple ruin. <blockquote>The city was built by ${misc[biome].ruinsLived.seededrandom()} Now, ${encounter} lives here.</blockquote>`
   },
   'an isolated monastery': (town, biome) => {
@@ -165,7 +166,7 @@ export const locations = {
     return `an incredibly ancient temple. <blockquote>This ancient place has housed many things, but it is currently home to ${lives}.</blockquote>`
   },
   'a ruined monastery': (town, biome) => {
-    const encounter = setup.contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
+    const encounter = contentsFetcher(town, biome, misc[biome].ruinsLives, misc.encounters)
     return `a ruined monastery. <blockquote>These ruins are currently occupied by ${encounter}.</blockquote>`
   },
   'a village of primitive canyon dwellers': (town, biome) => { return `a village of primitive canyon dwellers` },
