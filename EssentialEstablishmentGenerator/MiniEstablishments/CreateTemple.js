@@ -4,7 +4,7 @@ import { createNPC } from "../NPCGeneration/SetupNPC"
 import { buildingData } from "../Buildings/buildingData"
 import { misc } from "../World/miscData"
 
-setup.createTemple = function (town, opts = {}) {
+export function createTemple (town, opts = {}) {
   console.log(`Creating a temple...`)
   const temple = (opts[`newBuilding`] || createBuilding)(town, `temple`)
   const data = setup.temple

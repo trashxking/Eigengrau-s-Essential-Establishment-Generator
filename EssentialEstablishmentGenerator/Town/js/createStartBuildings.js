@@ -2,6 +2,7 @@ import { createAlchemist } from '../../Alchemist/js/createAlchemist'
 import { createGeneralStore } from '../../GeneralStore/JS/createGeneralStore'
 import { createSmithy } from '../../Blacksmith/JS/createSmithy'
 import { createMarket } from '../../MiniEstablishments/createMarket'
+import { createTemple } from '../../MiniEstablishments/CreateTemple'
 import { createDocks } from '../../Docks/createDocks'
 import { createBrothel } from '../../MiniEstablishments/createBrothel'
 import { goodsAndServices } from '../../Buildings/goodsAndServices'
@@ -14,7 +15,7 @@ export function createStartBuildings (town) {
     GeneralStore: createGeneralStore,
     smithy: createSmithy,
     market: createMarket,
-    temple: setup.createTemple,
+    temple: createTemple,
     docks: createDocks
   }
 
