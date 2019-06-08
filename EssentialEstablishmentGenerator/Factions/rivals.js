@@ -1,6 +1,6 @@
 import { factionData } from "./factionData"
 
-setup.createRivals = function (faction) {
+export function createRivals (faction) {
   console.log(`accruing enemies...`)
   const _sizeRoll = dice(2, 50)
   let group

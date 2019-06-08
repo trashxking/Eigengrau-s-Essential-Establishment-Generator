@@ -7,6 +7,7 @@ import { resourcesFaction } from "./resources"
 import { leaderFaction } from "./leader"
 import { joinFaction } from "./joining"
 import { createAllies } from "./allies"
+import { createRivals } from "./rivals"
 import { createMisc } from "./misc"
 
 export function createFaction (town, opts = {}) {
@@ -53,7 +54,7 @@ export function createFaction (town, opts = {}) {
 
   createAllies(faction)
 
-  setup.createRivals(faction)
+  createRivals(faction)
   console.log(`other cool bits...`)
   createMisc(faction)
 
