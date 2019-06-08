@@ -1,4 +1,5 @@
 import { bmiDescriptions } from "./bmiDescriptions"
+import { closestMatch } from "../Tools/closestMatch"
 
 setup.createRace = function (npc) {
   console.log(`assigning racial traits to ${npc.name}...`)
@@ -9,7 +10,7 @@ setup.createRace = function (npc) {
   npc.heightRoll = setup.npcData.raceTraits[npc.race].genderTraits[npc.gender].baseHeight + setup.npcData.raceTraits[npc.race].genderTraits[npc.gender].heightModifier()
   npc.weightRoll = setup.npcData.raceTraits[npc.race].genderTraits[npc.gender].baseWeight + (setup.npcData.raceTraits[npc.race].genderTraits[npc.gender].heightModifier() * setup.npcData.raceTraits[npc.race].genderTraits[npc.gender].weightModifier())
   npc.bmi = (Math.trunc((npc.weightRoll / (npc.heightRoll * npc.heightRoll)) * setup.npcData.raceTraits[npc.race].bmiModifier))
-  npc.weight = npc.weight || setup.closestMatch(bmiDescriptions, `weight`, `bmi`, `muscleMass`, npc.bmi, npc.muscleMass)
+  npc.weight = npc.weight || closestMatch(bmiDescriptions, `weight`, `bmi`, `muscleMass`, npc.bmi, npc.muscleMass)
 
   npc.height = setup.npcData.heightChart.find(function (descriptor) {
     return descriptor[0] <= npc.heightRoll
