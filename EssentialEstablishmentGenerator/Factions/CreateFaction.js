@@ -2,6 +2,7 @@ import { factionData } from "./factionData"
 import { nameFaction } from "./names"
 import { ageFaction } from "./age"
 import { reputationFaction } from "./reputation"
+import { sizeFaction } from "./size"
 import { influenceFaction } from "./influence"
 import { resourcesFaction } from "./resources"
 import { leaderFaction } from "./leader"
@@ -40,7 +41,7 @@ export function createFaction (town, opts = {}) {
 
   reputationFaction(faction)
 
-  setup.sizeFaction(town, faction)
+  sizeFaction(town, faction)
 
   influenceFaction(faction)
 

@@ -1,5 +1,5 @@
-setup.sizeFaction = function (town, faction) {
-  console.log('giving it a size...')
+export function sizeFaction (town, faction) {
+  console.log(`giving it a size...`)
   // if (faction.roll.age > 95) {
   //   Math.fm(faction.roll.size, 30)
   // } else if (faction.roll.age > 90) {
@@ -121,33 +121,33 @@ setup.sizeFaction = function (town, faction) {
   }
 
   if (faction.roll.size > 95) {
-    faction.size = 'huge'
+    faction.size = `huge`
   } else if (faction.roll.size > 90) {
-    faction.size = 'very large'
+    faction.size = `very large`
   } else if (faction.roll.size > 80) {
-    faction.size = 'quite large'
+    faction.size = `quite large`
   } else if (faction.roll.size > 70) {
-    faction.size = 'large'
+    faction.size = `large`
   } else if (faction.roll.size > 60) {
-    faction.size = 'above average sized'
+    faction.size = `above average sized`
   } else if (faction.roll.size > 55) {
-    faction.size = 'slightly above average sized'
+    faction.size = `slightly above average sized`
   } else if (faction.roll.size > 50) {
-    faction.size = 'average sized'
+    faction.size = `average sized`
   } else if (faction.roll.size > 45) {
-    faction.size = 'slightly below average sized'
+    faction.size = `slightly below average sized`
   } else if (faction.roll.size > 40) {
-    faction.size = 'somewhat small'
+    faction.size = `somewhat small`
   } else if (faction.roll.size > 30) {
-    faction.size = 'quite small'
+    faction.size = `quite small`
   } else if (faction.roll.size > 20) {
-    faction.size = 'very small'
+    faction.size = `very small`
   } else if (faction.roll.size > 10) {
-    faction.size = 'tiny'
+    faction.size = `tiny`
   } else if (faction.roll.size <= 5) {
-    faction.size = 'miniscule'
+    faction.size = `miniscule`
   } else {
-    faction.size = 'average'
+    faction.size = `average`
   }
 
   return faction
