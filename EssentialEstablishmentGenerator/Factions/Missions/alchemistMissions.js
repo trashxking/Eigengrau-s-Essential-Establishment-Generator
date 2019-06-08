@@ -1,4 +1,5 @@
 import { createNPC } from "../../NPCGeneration/SetupNPC"
+import { random } from "../../../src/engine/rolls"
 
 const missions = {
   disappearingPotions (town) {
@@ -33,7 +34,7 @@ const missions = {
   }
 }
 
-setup.alchemistMission = function (town) {
+export function alchemistMission (town) {
   const keys = Object.keys(missions)
-  return missions[keys[random(0, keys.length)]](town)
+  return missions[keys[random(keys.length)]](town)
 }

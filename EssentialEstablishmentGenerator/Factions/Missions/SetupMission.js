@@ -1,4 +1,5 @@
 import { thievesMission } from "./thievesMission"
+import { alchemistMission } from "./alchemistMissions"
 import { merchantMission } from "./merchantMission"
 
 setup.createMission = function (town, base) {
@@ -23,7 +24,7 @@ setup.createMission = function (town, base) {
       thievesMission(mission)
       break
     case `alchemist`:
-      setup.alchemistMission(mission)
+      alchemistMission(mission)
       break
     case `bartender`:
       setup.bartenderMission(mission)

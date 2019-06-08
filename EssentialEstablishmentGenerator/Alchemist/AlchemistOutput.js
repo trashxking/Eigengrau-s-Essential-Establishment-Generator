@@ -2,9 +2,11 @@ import { link, replace, linkReplace, pragma } from '../../src/engine/html'
 import { randomValue } from '../../src/engine/rolls'
 import { set, get, unset } from '../../src/engine/story'
 
+import { alchemistMission } from '../Factions/Missions/alchemistMissions'
+import { closestMatch } from '../Tools/closestMatch'
+
 import { alchemistData } from './js/alchemistData'
 import { ChemistTalk } from './ChemistTalk'
-import { closestMatch } from '../Tools/closestMatch'
 
 const TownMicroEventsOutput = () => ``
 const RandomPotion = () => ``
@@ -26,7 +28,7 @@ export function AlchemistOutput () {
   const $chemist = set(`$chemist`, get(`$npcs`)[$alchemist.chemist.key])
 
   function generatePlothook () {
-    const $chemistPlot = set(`$chemistPlot`, setup.alchemistMission($town))
+    const $chemistPlot = set(`$chemistPlot`, alchemistMission($town))
 
     return replace(`#chemistMission`, pragma`${randomValue([`When you say that you're adventurers, ${$chemist.hisher} ${$chemist.eyes} eyes light up, and ${$chemist.heshe} says`, `You chat for a while, and then ${$chemist.firstName} says `, `You discuss business, and when you talk about your adventures, ${$chemist.firstName} asks `])} ${$chemistPlot}`)
   }
