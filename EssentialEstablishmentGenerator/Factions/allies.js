@@ -1,3 +1,4 @@
+import { factionData } from "./factionData"
 
 export function createAllies (faction) {
   console.log(`finding allies...`)
@@ -9,7 +10,7 @@ export function createAllies (faction) {
   let i
 
   // this is where weighting different groups happens. Needs updating with each new faction.
-  groupList.concat(setup.factionData.type[faction.type].alliesList)
+  groupList.concat(factionData.type[faction.type].alliesList)
 
   if (_sizeRoll >= 90) {
     faction.alliesDescription = `an immense number of people to rely on for aid`

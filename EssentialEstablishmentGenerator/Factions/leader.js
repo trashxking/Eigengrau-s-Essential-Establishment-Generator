@@ -1,4 +1,5 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { factionData } from "./factionData"
 
 setup.leaderFaction = function (town, faction) {
   console.log(`determining leaders...`)
@@ -12,7 +13,7 @@ setup.leaderFaction = function (town, faction) {
       faction.leaderQualification = [`the original founder`, `the original founder`, `the first appointed leader`].seededrandom()
     }
   } else {
-    faction.leaderQualification = setup.factionData.type[faction.type].leaderQualification.seededrandom()
+    faction.leaderQualification = factionData.type[faction.type].leaderQualification.seededrandom()
   }
 
   faction.leaderBribes = setup.matchFirst.largerThan(faction.roll.leaderBribes, {
@@ -49,7 +50,7 @@ setup.leaderFaction = function (town, faction) {
 
   switch (faction.leadershipType) {
     case `individual`:
-      var leaderTraits = setup.factionData.type[faction.type].leaderTraits
+      var leaderTraits = factionData.type[faction.type].leaderTraits
       var key
       for (key in leaderTraits) {
         if (Array.isArray(leaderTraits[key])) {

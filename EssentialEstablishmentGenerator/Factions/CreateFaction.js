@@ -1,5 +1,6 @@
-import { ageFaction } from "./age"
+import { factionData } from "./factionData"
 import { createAllies } from "./allies"
+import { ageFaction } from "./age"
 
 export function createFaction (town, opts = {}) {
   const type = [`thieves`, `merchants`, `wizards`, `rangers`, `seers`, `priests`, `monks`, `assassins`, `artisans`, `nobles`, `bards`, `mercenaries`, `bandits`, `craftsmen`, `scholars`].seededrandom()
@@ -11,9 +12,9 @@ export function createFaction (town, opts = {}) {
     passageName: `FactionProfile`,
     associatedTown: town.name,
     type,
-    wordNoun: setup.factionData.type[type].wordNoun,
-    motivation: setup.factionData.type[type].motivation.seededrandom(),
-    membersTrait: setup.factionData.type[type].membersTrait.seededrandom(),
+    wordNoun: factionData.type[type].wordNoun,
+    motivation: factionData.type[type].motivation.seededrandom(),
+    membersTrait: factionData.type[type].membersTrait.seededrandom(),
     leadershipType: [`individual`, `individual`, `individual`, `group`, `group`].seededrandom(),
     roll: {
       influence: dice(2, 50),
