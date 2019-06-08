@@ -111,7 +111,7 @@ export const linkAppend = (title, callback) => () => {
  */
 export const replace = (selector, callback) => () => {
   const element = document.querySelector(selector)
-  const content = useContent(callback)
+  const content = getContent(callback)
 
   if (element) {
     return ReactDOM.createPortal(content, element)
@@ -135,7 +135,7 @@ export const linkReplace = (title, callback) => () => {
  */
 export const note = callback => () => (
   <blockquote className="note">
-    {useContent(callback)}
+    {getContent(callback)}
   </blockquote>
 )
 
@@ -146,7 +146,7 @@ export const note = callback => () => (
  */
 export const tip = (title, callback) => () => (
   <span className="tip" title={title}>
-    {useContent(callback)}
+    {getContent(callback)}
   </span>
 )
 
@@ -162,15 +162,6 @@ export const fancyFirstLetter = (content) => () => (
 )
 
 // Utility Functions
-
-/**
- * @param {Content} callback
- */
-function useContent (callback) {
-  return React.useMemo(() =>
-    getContent(callback)
-  , [callback])
-}
 
 /**
  * @param {Content} callback
