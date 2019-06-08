@@ -1,4 +1,5 @@
 import { createNPC } from "../../NPCGeneration/SetupNPC"
+import { factionsForType } from "../../Tools/factionsForType"
 
 setup.tavern = {
   rollData: {
@@ -178,12 +179,12 @@ setup.tavern = {
         streaking (tavern) { return `Streaking naked down ${tavern.road} seemed like a good idea.` },
         nickname () { return `Everyone is calling you "${[`puddle drinker`, `boot licker`, `a good boy`, `friendo`, `a real hoopy frood`, `mutton chops`].seededrandom()}", but nobody will tell you why.` },
         insult (town, tavern) {
-          const faction = setup.factionsForType(town, `leadershipType`, `individual`)
+          const faction = factionsForType(town, `leadershipType`, `individual`)
           console.log(faction)
           return `You accidentally insulted the <<profile \`$npcs[${JSON.stringify(faction.leader.key)}]\` leader>> of the ${faction.type} ${faction.wordNoun}, ${setup.profile(faction, ``, `town.factions`)}, and only a public apology will let you do business with them again.`
         },
         anotherQuest (town) {
-          const faction = setup.factionsForType(town, `leadershipType`, `individual`)
+          const faction = factionsForType(town, `leadershipType`, `individual`)
           console.log(faction)
           return `You swore to complete some quest on behalf of the ${faction.type} ${faction.wordNoun}, ${setup.profile(faction, ``, `town.factions`)}.`
         },
