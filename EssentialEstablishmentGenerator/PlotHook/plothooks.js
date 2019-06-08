@@ -1,6 +1,6 @@
 import { createNPC } from "../NPCGeneration/SetupNPC"
 
-setup.plothooks = {
+export const plothooks = {
   'Roleplay Questions': {
     probability: 50,
     type: [`event`],

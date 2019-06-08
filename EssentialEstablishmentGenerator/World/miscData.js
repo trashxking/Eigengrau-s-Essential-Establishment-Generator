@@ -1,5 +1,6 @@
 import { defineRollDataGetter } from "../Tools/defineRollDataGetter"
 import { createNPC } from "../NPCGeneration/SetupNPC"
+import { plothooks } from "../PlotHook/plothooks"
 
 setup.misc = {
   ...(setup.misc || {}), // keep any existing misc attributes, see "JS Spread Operator"
@@ -1001,7 +1002,7 @@ setup.misc = {
   },
   town: {
     create: town => {
-      return setup.weightedRandomFetcher(town, setup.plothooks, ``, setup.misc.town.type.event)
+      return setup.weightedRandomFetcher(town, plothooks, ``, setup.misc.town.type.event)
     },
     type: {
       event: (town, arg) => {
