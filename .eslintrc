@@ -7,6 +7,7 @@
   "globals": {
     "setup": true,
     "random": true,
+    "either": true,
     "dice": true,
     "State": true,
     "randomFloat": true,

@@ -1,12 +1,6 @@
-import { link, replace, linkReplace, pragma } from '../../src/engine/html'
-import { randomValue } from '../../src/engine/rolls'
+import { link, replace, linkReplace, pragma, replaceable } from '../../src/engine/html'
 import { set, get, unset } from '../../src/engine/story'
 
-import { alchemistMission } from '../Factions/Missions/alchemistMissions'
-import { closestMatch } from '../Tools/closestMatch'
-import { createAlchemy } from '../Misc/createAlchemy'
-
-import { alchemistData } from './js/alchemistData'
 import { ChemistTalk } from './ChemistTalk'
 
 const TownMicroEventsOutput = () => ``
@@ -14,7 +8,7 @@ const RandomPotion = () => ``
 const AlchemistSell = () => ``
 
 export function AlchemistOutput () {
-  set(`$brew`, createAlchemy({ type: `brewing potion` }))
+  set(`$brew`, setup.createAlchemy({ type: `brewing potion` }))
 
   unset(`$selectedBuilding`)
 
@@ -29,16 +23,16 @@ export function AlchemistOutput () {
   const $chemist = set(`$chemist`, get(`$npcs`)[$alchemist.chemist.key])
 
   function generatePlothook () {
-    const $chemistPlot = set(`$chemistPlot`, alchemistMission($town))
+    const $chemistPlot = set(`$chemistPlot`, setup.alchemistMission($town))
 
-    return replace(`#chemistMission`, pragma`${randomValue([`When you say that you're adventurers, ${$chemist.hisher} ${$chemist.eyes} eyes light up, and ${$chemist.heshe} says`, `You chat for a while, and then ${$chemist.firstName} says `, `You discuss business, and when you talk about your adventures, ${$chemist.firstName} asks `])} ${$chemistPlot}`)
+    return replace(`#chemistMission`, pragma`${either([`When you say that you're adventurers, ${$chemist.hisher} ${$chemist.eyes} eyes light up, and ${$chemist.heshe} says`, `You chat for a while, and then ${$chemist.firstName} says `, `You discuss business, and when you talk about your adventures, ${$chemist.firstName} asks `])} ${$chemistPlot}`)
   }
 
-  return pragma`<h1>${$alchemist.name}</h1>${TownMicroEventsOutput()}<span class="firstcharacter">Y</span>ou enter ${$alchemist.name} and see the ${$chemist.descriptor} chemist is ${$chemist.idle.seededrandom()}. The ${$alchemist.size} room is ${$alchemist.cleanliness}. The ${$chemist.weight} chemist ${randomValue($chemist.greeting)}, and ${randomValue([`saunters`, `walks`, `strolls`, `walks`, `slowly walks`, `drags ${$chemist.hisher} feet`, `swaggers`, `shuffles`, `quickly walks`, `struts`, `comes`])} over to you and introduces ${$chemist.himherself} as <<profile $chemist>>, the ${$chemist.owner} of the shop, and asks what ${$chemist.heshe} can do for you.
+  return pragma`<h1>${$alchemist.name}</h1>${TownMicroEventsOutput()}<span class="firstcharacter">Y</span>ou enter ${$alchemist.name} and see the ${$chemist.descriptor} chemist is ${$chemist.idle.seededrandom()}. The ${$alchemist.size} room is ${$alchemist.cleanliness}. The ${$chemist.weight} chemist ${either($chemist.greeting)}, and ${either([`saunters`, `walks`, `strolls`, `walks`, `slowly walks`, `drags ${$chemist.hisher} feet`, `swaggers`, `shuffles`, `quickly walks`, `struts`, `comes`])} over to you and introduces ${$chemist.himherself} as <<profile $chemist>>, the ${$chemist.owner} of the shop, and asks what ${$chemist.heshe} can do for you.
 
-${closestMatch(alchemistData.get.lookAround($alchemist), `note`, `cleanliness`, `wealth`, $alchemist.roll.cleanliness, $alchemist.roll.wealth)}
+${setup.closestMatch(setup.alchemist.get.lookAround($alchemist), `note`, `cleanliness`, `wealth`, $alchemist.roll.cleanliness, $alchemist.roll.wealth)}
 ${linkReplace(`<h4>Talk with ${$chemist.name}</h4>`, () => `<h3>${$chemist.name}</h3>${ChemistTalk()}`)}
-${link(`<h4>Generate plothook</h4>`, generatePlothook)}<span id="chemistMission"></span>
+${link(`<h4>Generate plothook</h4>`, generatePlothook)}${replaceable('chemistMission')}
 ${RandomPotion()}
 ${AlchemistSell()}`
 }

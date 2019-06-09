@@ -74,7 +74,7 @@ export const listBox = (options, onChange, selected) => () => {
  * @param {string} id
  * @param {Content} callback
  */
-export const replaceable = (id, callback) => () => (
+export const replaceable = (id, callback = null) => () => (
   <div id={id}>{getContent(callback)}</div>
 )
 
