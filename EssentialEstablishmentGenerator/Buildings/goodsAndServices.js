@@ -5,12 +5,11 @@ import { buildingData } from "./buildingData"
 
 export const goodsAndServices = {
   default: {
-    create (town, type, opts) {
+    create (town, type, opts = {}) {
       // this is the template for the creation of generic buildings; i.e. those that are present in this list.
       // It is *not* for taverns, town squares, castles, or anything large scale.
       // this is why it is distinct from the createBuilding() function; everything needs createBuilding, not everything needs goodsAndServices.default.create()
       console.groupCollapsed(`goodsAndServices.default.create()ing a ${type}`)
-      opts = opts || {}
       const building = {
         type,
         buildingType: type,
@@ -29,8 +28,7 @@ export const goodsAndServices = {
   },
   bakery: {
     // the bakery can be used as an example of how to add more features to a building.
-    create (town, building, opts) {
-      opts = opts || {}
+    create (town, building, opts = {}) {
       if (!building) {
         console.error(`A building was not passed!`)
         return
@@ -412,8 +410,7 @@ export const goodsAndServices = {
     ]
   },
   florist: {
-    create (town, building, opts) {
-      opts = opts || {}
+    create (town, building, opts = {}) {
       if (!building) {
         console.error(`A building was not passed!`)
         return
@@ -695,8 +692,7 @@ export const goodsAndServices = {
     ]
   },
   tailor: {
-    create (town, building, opts) {
-      opts = opts || {}
+    create (town, building, opts = {}) {
       if (!building) {
         console.error(`A building was not passed!`)
         return
@@ -908,8 +904,7 @@ export const goodsAndServices = {
     ]
   },
   butcher: {
-    create (town, building, opts) {
-      opts = opts || {}
+    create (town, building, opts = {}) {
       if (!building) {
         console.error(`A building was not passed!`)
         return
@@ -1139,8 +1134,7 @@ export const goodsAndServices = {
     ]
   },
   cobbler: {
-    create (town, building, opts) {
-      opts = opts || {}
+    create (town, building, opts = {}) {
       if (!building) {
         console.error(`A building was not passed!`)
         return
