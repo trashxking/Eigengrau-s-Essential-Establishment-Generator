@@ -1,8 +1,7 @@
 import { set } from '../../src/engine/story'
-import { createTown } from './js/createTown'
 
 export function Town () {
-  set(`$town`, createTown())
+  set(`$town`, setup.createTown())
 }
 
 /* <<set $lord to createNPC($town, {background: "noble"})>> */
