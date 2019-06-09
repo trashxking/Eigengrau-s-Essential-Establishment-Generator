@@ -1,5 +1,3 @@
-import { townData } from "../Town/js/townData"
-
 /**
  * This is run on start up.
  * It returns the available town professions, with their support values.
@@ -7,17 +5,17 @@ import { townData } from "../Town/js/townData"
  * Individual professions are returned by the `fetchProfessionChance()`
  * function located in `NPCGeneration/fetchProfessionChance.js`
  */
-export function fetchProfessions (town) {
+setup.fetchProfessions = function (town) {
   town = town || State.variables.town
   town.professions = {}
-  const professionNames = Object.keys(townData.professions)
+  const professionNames = Object.keys(setup.townData.professions)
   const professions = professionNames
     .map(function (profession) {
-      return townData.professions[profession]
+      return setup.townData.professions[profession]
     }, town)
   for (const profession of professions) {
     const townPop = town.population
-    const newSv = profession.sv + (dice(`4d4-10`) * 10)
+    const newSv = profession.sv + (dice('4d4-10') * 10)
     // console.log('sV: ' + profession.sv)
     // console.log('new sV: ' + newSv)
     const professionRoll = townPop / newSv /* Set the number of professions equal = the town's population divided by how many people are needed = support that type of business */

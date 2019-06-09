@@ -21,10 +21,11 @@
  * @param {number} [indexNumber]
  * @param {object} [rollLocation]
  */
-export function defineRollDataGetter (baseObj, rollDataObj, propName, keyName, indexNumber = 1, rollLocation) {
+setup.defineRollDataGetter = function (baseObj, rollDataObj, propName, keyName, indexNumber, rollLocation) {
   keyName = keyName || propName
-
-  console.groupCollapsed(`DefineRollDataGetters`)
+  indexNumber = indexNumber || 1
+  // rollLocation = rollLocation || baseObj.roll
+  console.groupCollapsed('DefineRollDataGetters')
   console.log({
     baseObj,
     rollDataObj,
@@ -34,12 +35,12 @@ export function defineRollDataGetter (baseObj, rollDataObj, propName, keyName, i
     rollLocation
   })
   if (!baseObj[propName]) {
-    baseObj[propName] = ``
+    baseObj[propName] = ''
   }
 
   Object.defineProperty(baseObj, propName, {
     get () {
-      console.log(`Fetching ${this.name} ${propName}.`)
+      console.log('Fetching ' + this.name + ' ' + propName + '.')
       const rollArray = rollDataObj[keyName]
       let result = rollArray.find(function (desc) {
         if (rollLocation) {
@@ -49,17 +50,17 @@ export function defineRollDataGetter (baseObj, rollDataObj, propName, keyName, i
         }
       }, this)
       if (result === undefined) {
-        console.log(`Failed to get a descriptor that matched the roll of ${this.roll[propName]} for ${propName}.`)
+        console.log('Failed to get a descriptor that matched the roll of ' + this.roll[propName] + ' for ' + propName + '.')
         result = rollArray[rollArray.length - 1]
       }
       if (Array.isArray(result[indexNumber])) {
         result = result.seededrandom(0, result.length)
       }
-      this[`_${propName}`] = result[indexNumber]
-      return this[`_${propName}`]
+      this['_' + propName] = result[indexNumber]
+      return this['_' + propName]
     },
     set (val) {
-      console.log(`Setting ${this.name} ${propName}.`)
+      console.log('Setting ' + this.name + ' ' + propName + '.')
       const rollArray = rollDataObj[keyName]
       let result = rollArray.find(function (desc) {
         if (rollLocation) {
@@ -69,11 +70,11 @@ export function defineRollDataGetter (baseObj, rollDataObj, propName, keyName, i
         }
       }, this)
       if (result === undefined) {
-        console.log(`Failed to set a descriptor that matched the roll of ${this.roll[propName]} for ${propName}.`)
+        console.log('Failed to set a descriptor that matched the roll of ' + this.roll[propName] + ' for ' + propName + '.')
         result = rollArray[rollArray.length - 1]
       }
-      this[`_${propName}`] = val || result[indexNumber]
-      return this[`_${propName}`]
+      this['_' + propName] = val || result[indexNumber]
+      return this['_' + propName]
     }
   })
   console.groupEnd()

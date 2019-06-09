@@ -1,6 +1,3 @@
-import { clone } from "../../src/engine/utils"
-import { createFaction } from "../Factions/CreateFaction"
-
 /**
  * Returns a random of factions for a leadership type.
  *
@@ -13,7 +10,7 @@ import { createFaction } from "../Factions/CreateFaction"
  * if it doesn't find any, it creates a matching faction.
  * This is for plot hooks that require a wizard's college, etc.
  */
-export function factionsForType (town, variable, value) {
+setup.factionsForType = function (town, variable, value) {
   const found = []
   for (const faction in town.factions) {
     if (faction[variable] === value) {
@@ -21,7 +18,7 @@ export function factionsForType (town, variable, value) {
     }
   }
   if (found.length === 0) {
-    const tempFaction = createFaction(town, {
+    const tempFaction = setup.createFaction(town, {
       [variable]: value,
       isThrowaway: true
     })

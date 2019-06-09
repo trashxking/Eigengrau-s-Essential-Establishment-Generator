@@ -15,7 +15,7 @@
  */
 setup.weightedRandomFetcher = function (town, args, obj, exclusionFunction, output, defaultProbability) {
   // console.log(args)
-  console.groupCollapsed(`Running a weighted random search...`)
+  console.groupCollapsed('Running a weighted random search...')
   console.log({
     args,
     obj,
@@ -25,7 +25,7 @@ setup.weightedRandomFetcher = function (town, args, obj, exclusionFunction, outp
   })
 
   if (!output) {
-    output = `function`
+    output = 'function'
   }
   if (!defaultProbability) {
     defaultProbability = 10
@@ -37,14 +37,14 @@ setup.weightedRandomFetcher = function (town, args, obj, exclusionFunction, outp
 
   for (const arg in args) {
     // console.log(args[arg])
-    if (args[arg].exclusions && typeof (args[arg].exclusions) === `function`) {
+    if (args[arg].exclusions && typeof (args[arg].exclusions) === 'function') {
       var isValid = args[arg].exclusions(town, obj)
     } else {
       isValid = true
     }
     // console.log('fnValid: ')
     // console.log(args[arg])
-    if (typeof (exclusionFunction) === `function`) {
+    if (typeof (exclusionFunction) === 'function') {
       var fnValid = exclusionFunction(town, args[arg])
     } else {
       fnValid = true
@@ -70,16 +70,16 @@ setup.weightedRandomFetcher = function (town, args, obj, exclusionFunction, outp
   }
 
   console.log(selected)
-  if (!selected[output] && output !== `object`) {
-    console.error(`The randomly fetched object does not have the attribute ${output}.`)
+  if (!selected[output] && output !== 'object') {
+    console.error('The randomly fetched object does not have the attribute ' + output + '.')
     console.log({ selected })
   }
   console.groupEnd()
-  if (output === `object`) {
+  if (output === 'object') {
     // if the string 'object' is passed, then it returns the object itself.
     console.log(selected)
     return selected
-  } else if (typeof (selected[output]) === `function`) {
+  } else if (typeof (selected[output]) === 'function') {
     console.log(selected[output](town, obj))
     return selected[output](town, obj)
   } else {
