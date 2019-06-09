@@ -4,19 +4,19 @@ setup.colours = {
     isPlant: true,
     isMineral: true,
     colour: [
-      `ivory`,
-      `cream`,
-      `yellow`,
-      `beige`,
-      `peridot`,
-      `citrine`
+      'ivory',
+      'cream',
+      'yellow',
+      'beige',
+      'peridot',
+      'citrine'
     ],
     coloured: [
-      `daffodil`,
-      `lemon`,
-      `dandelion`,
-      `straw`,
-      `brass`
+      'daffodil',
+      'lemon',
+      'dandelion',
+      'straw',
+      'brass'
     ]
   },
   orange: {
@@ -24,22 +24,22 @@ setup.colours = {
     isPlant: false,
     isMineral: false,
     colour: [
-      `vermillion`,
-      `ochre`,
-      `orange`,
-      `burnt orange`,
-      `sherbert orange`,
-      `ginger`,
-      `amber`
+      'vermillion',
+      'ochre',
+      'orange',
+      'burnt orange',
+      'sherbert orange',
+      'ginger',
+      'amber'
     ],
     coloured: [
-      `orangutan`,
-      `carrot`,
-      `tangerine`,
-      `apricot`,
-      `sandstone`,
-      `honey`,
-      `marmalade`
+      'orangutan',
+      'carrot',
+      'tangerine',
+      'apricot',
+      'sandstone',
+      'honey',
+      'marmalade'
     ]
   },
   red: {
@@ -47,23 +47,23 @@ setup.colours = {
     isPlant: false,
     isMineral: true,
     colour: [
-      `red`,
-      `bright red`,
-      `firey red`,
-      `auburn`,
-      `crimson`,
-      `oxblood red`,
-      `vermillion`,
-      `maroon`,
-      `carmine`
+      'red',
+      'bright red',
+      'firey red',
+      'auburn',
+      'crimson',
+      'oxblood red',
+      'vermillion',
+      'maroon',
+      'carmine'
     ],
     coloured: [
-      `rose`,
-      `tomato`,
-      `blood`,
-      `fire`,
-      `rust`,
-      `coral`
+      'rose',
+      'tomato',
+      'blood',
+      'fire',
+      'rust',
+      'coral'
     ]
   },
   purple: {
@@ -71,16 +71,16 @@ setup.colours = {
     isPlant: false,
     isMineral: true,
     colour: [
-      `tyrian purple`,
-      `royal purple`,
-      `electric purple`,
-      `purple`,
-      `mauve`
+      'tyrian purple',
+      'royal purple',
+      'electric purple',
+      'purple',
+      'mauve'
     ],
     coloured: [
-      `thistle`,
-      `orchid`,
-      `blackberry`
+      'thistle',
+      'orchid',
+      'blackberry'
     ]
   },
   blue: {
@@ -88,23 +88,23 @@ setup.colours = {
     isPlant: false,
     isMineral: true,
     colour: [
-      `light blue`,
-      `blue`,
-      `dark blue`,
-      `deep blue`,
-      `navy blue`,
-      `cerulean`,
-      `azure`,
-      `indigo`,
-      `turquoise`,
-      `periwinkle`,
-      `teal`
+      'light blue',
+      'blue',
+      'dark blue',
+      'deep blue',
+      'navy blue',
+      'cerulean',
+      'azure',
+      'indigo',
+      'turquoise',
+      'periwinkle',
+      'teal'
     ],
     coloured: [
-      `denim`,
-      `sapphire`,
-      `sea`,
-      `storm`
+      'denim',
+      'sapphire',
+      'sea',
+      'storm'
     ]
   },
   green: {
@@ -112,19 +112,19 @@ setup.colours = {
     isPlant: true,
     isMineral: true,
     colour: [
-      `green`,
-      `olive`,
-      `sage`,
-      `emerald`,
-      `lime`,
-      `chartreuse`
+      'green',
+      'olive',
+      'sage',
+      'emerald',
+      'lime',
+      'chartreuse'
     ],
     coloured: [
-      `seafoam`,
-      `shamrock`,
-      `seaweed`,
-      `pear`,
-      `pickle`
+      'seafoam',
+      'shamrock',
+      'seaweed',
+      'pear',
+      'pickle'
     ]
   },
   brown: {
@@ -132,23 +132,23 @@ setup.colours = {
     isPlant: true,
     isMineral: true,
     colour: [
-      `brown`,
-      `umber`,
-      `chocolate`,
-      `caramel`,
-      `burnt butter`,
-      `mud brown`
+      'brown',
+      'umber',
+      'chocolate',
+      'caramel',
+      'burnt butter',
+      'mud brown'
     ],
     coloured: [
-      `acorn`,
-      `almond`,
-      `baked bread`,
-      `bark`,
-      `beeswax`,
-      `coffee`,
-      `ale`,
-      `pecan`,
-      `mocha`
+      'acorn',
+      'almond',
+      'baked bread',
+      'bark',
+      'beeswax',
+      'coffee',
+      'ale',
+      'pecan',
+      'mocha'
     ]
   },
   black: {
@@ -156,18 +156,18 @@ setup.colours = {
     isPlant: false,
     isMineral: true,
     colour: [
-      `onyx`,
-      `ebony`,
-      `charcoal`,
-      `licorice`,
-      `black`,
-      `slate`
+      'onyx',
+      'ebony',
+      'charcoal',
+      'licorice',
+      'black',
+      'slate'
     ],
     coloured: [
-      `charcoal`,
-      `licorice`,
-      `iron`,
-      `burnt bread`
+      'charcoal',
+      'licorice',
+      'iron',
+      'burnt bread'
     ]
   },
   white: {
@@ -175,17 +175,17 @@ setup.colours = {
     isPlant: false,
     isMineral: false,
     colour: [
-      `white`,
-      `ghost white`,
-      `pure white`
+      'white',
+      'ghost white',
+      'pure white'
     ],
     coloured: [
-      `cloud`,
-      `eggshell`,
-      `champagne`,
-      `bone`,
-      `snow`,
-      `tooth`
+      'cloud',
+      'eggshell',
+      'champagne',
+      'bone',
+      'snow',
+      'tooth'
     ]
   }
 }
