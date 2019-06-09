@@ -1,48 +1,56 @@
-import { random, randomRange, randomFloat, randomValue } from "../../src/engine/rolls"
-import { clamp } from "../../src/engine/utils"
-import { townData } from "../Town/js/townData"
-
-/**
- * @param {object} town
- * @param {string} type
- * @param {any} [base]
- */
-export function createBuilding (town, type, base) {
-  let roadName = randomValue(townData.roads.name)
-  let roadType = randomValue(townData.roads.type)
-
-  // Tables used later
-  if (random(100) < townData.type[town.type].roadDuplication && Object.keys(town.roads).length > 0) {
-    // Roads are currently only supported with two words
-    const randRoad = randomValue(Object.keys(town.roads))
-    const roads = town.roads[randRoad].split(` `)
-    roadName = roads[0] || roadName
-    roadType = roads[1] || roadName
+setup.createBuilding = function (town, type, base) {
+// Tables used later
+  if (random(100) < setup.townData.type[town.type].roadDuplication && Object.keys(town.roads).length > 0) {
+    // roads are currently only supported with two words
+    const randRoad = Object.keys(town.roads).seededrandom()
+    const roads = town.roads[randRoad].split(' ')
+    var roadName = roads[0] || setup.townData.roads.name.seededrandom()
+    var roadType = roads[1] || setup.townData.roads.type.seededrandom()
+  } else {
+    roadName = setup.townData.roads.name.seededrandom()
+    roadType = setup.townData.roads.type.seededrandom()
   }
 
-  const lighting = randomValue([`poorly lit`, `somewhat dark`, `dimly lit`, `well lit`, `brightly lit`, `well lit`, `brightly lit`, `bright and welcoming`, `fire-lit`])
-  const outside = randomValue([
-    `a horse grazing on the bushes nearby`,
-    `a rusted shovel near a somewhat overgrown flowerbed`,
-    `a well with an old rope, but no bucket to go on the end`,
-    `a dog panting by the door`,
-    `a cat lazily lounging in the shade`,
-    `a muddy pair of boots by the door`,
-    `a sign from the local paper which reads '$newspaperheadline'`
-  ])
-  const material = [`wooden`, `wooden`, `wooden`, `wooden`, `wooden`, `stone`, `stone`, `stone`, `stone`, `hewn rock`, `chiseled stone`, `wooden`, `wooden`, `wooden`, `wooden`, `wooden`, `stone`, `stone`, `stone`, `stone`, `hewn rock`, `chiseled stone`, `marble`].seededrandom()
+  const lighting = ['poorly lit', 'somewhat dark', 'dimly lit', 'well lit', 'brightly lit', 'well lit', 'brightly lit', 'bright and welcoming', 'fire-lit'].seededrandom()
+  const outside = [
+    'a horse grazing on the bushes nearby',
+    'a rusted shovel near a somewhat overgrown flowerbed',
+    'a well with an old rope, but no bucket to go on the end',
+    'a dog panting by the door',
+    'a cat lazily lounging in the shade',
+    'a muddy pair of boots by the door',
+    "a sign from the local paper which reads '$newspaperheadline'"
+  ].seededrandom()
+  const material = ['wooden', 'wooden', 'wooden', 'wooden', 'wooden', 'stone', 'stone', 'stone', 'stone', 'hewn rock', 'chiseled stone', 'wooden', 'wooden', 'wooden', 'wooden', 'wooden', 'stone', 'stone', 'stone', 'stone', 'hewn rock', 'chiseled stone', 'marble'].seededrandom()
   const building = Object.assign({
+    // index: State.variables.buildings.length - 1,
+    // index: Math.floor(randomFloat(1) * 0x10000),
     key: randomFloat(1).toString(16),
     roadName,
     roadType,
     get road () {
-      return `${this.roadName} ${this.roadType}`
+      return this.roadName + ' ' + this.roadType
     },
     set road (road) {
-      const roads = road.toString().split(` `)
-      this.roadName = roads[0] || ``
-      this.roadType = roads[1] || ``
+      const roads = road.toString().split(' ')
+      this.roadName = roads[0] || ''
+      this.roadType = roads[1] || ''
     },
+    // get descriptor () {
+    //   return this.descriptors.seededrandom()
+    // },
+    // set descriptorsAdd (description) {
+    //   if (typeof description === 'string') {
+    //     console.log(this.descriptors)
+    //     if (this.descriptors.includes(description)) {
+    //       console.log('Throwing out duplicate description...')
+    //     } else {
+    //       this.descriptors.push(description)
+    //     }
+    //   } else {
+    //     console.log('Expected a string operand and received ' + description)
+    //   }
+    // },
     associatedTown: town.name,
     type,
     lighting,
@@ -52,36 +60,43 @@ export function createBuilding (town, type, base) {
       magic: (Math.floor(randomFloat(1) * 80) + 20),
       size: (Math.floor(randomFloat(1) * 80) + 20),
       diversity: (Math.floor(randomFloat(1) * 80) + 20),
-      wealth: randomRange(1, 100),
-      population: randomRange(1, 100),
-      reputation: randomRange(1, 100),
-      sin: randomRange(1, 100),
-      roughness: randomRange(1, 100),
-      cleanliness: randomRange(1, 100),
-      expertise: randomRange(1, 100),
-      activity: randomRange(1, 100)
+      wealth: random(1, 100),
+      population: random(1, 100),
+      reputation: random(1, 100),
+      sin: random(1, 100),
+      roughness: random(1, 100),
+      cleanliness: random(1, 100),
+      expertise: random(1, 100),
+      activity: random(1, 100)
     },
     // magicRoll: (Math.floor(randomFloat(1) * 80) + 20),
-    priceModifier: Math.floor(randomFloat(1) * 10) - randomValue([0, 10])
+    priceModifier: (Math.floor(randomFloat(1) * 10) - [0, 10].seededrandom())
+    // sizeRoll: (Math.floor(randomFloat(1) * 80) + 20),
     // diversityRoll: (Math.floor(randomFloat(1) * 80) + 20),
     // wealthRoll: random(1, 100),
+    // populationRoll: random(1, 100),
+    // reputationRoll: random(1, 100),
+    // sinRoll: random(1, 100),
     // roughnessRoll: random(1, 100),
+    // cleanlinessRoll: random(1, 100),
+    // expertiseRoll: random(1, 100),
+    // activityRoll: random(1, 100)
   }, base)
 
   town.roads[building.key] = building.road
 
-  building.roll.wealth = clamp(building.roll.wealth, 1, 100)
-  building.priceModifier = clamp(building.priceModifier, -10, 10)
-  building.roll.reputation = clamp(building.roll.reputation, 1, 100)
-  building.roll.sin = clamp(building.roll.sin, 1, 100)
-  building.roll.diversity = clamp(building.roll.diversity, 1, 100)
-  building.roll.magic = clamp(building.roll.magic, 1, 100)
-  building.roll.size = clamp(building.roll.size, 1, 100)
-  building.roll.population = clamp(building.roll.population, 1, 100)
-  building.roll.roughness = clamp(building.roll.roughness, 1, 100)
-  building.roll.cleanliness = clamp(building.roll.cleanliness, 1, 100)
-  building.roll.expertise = clamp(building.roll.expertise, 1, 100)
-  building.roll.activity = clamp(building.roll.activity, 1, 100)
+  building.roll.wealth = Math.clamp(building.roll.wealth, 1, 100)
+  building.priceModifier = Math.clamp(building.priceModifier, -10, 10)
+  building.roll.reputation = Math.clamp(building.roll.reputation, 1, 100)
+  building.roll.sin = Math.clamp(building.roll.sin, 1, 100)
+  building.roll.diversity = Math.clamp(building.roll.diversity, 1, 100)
+  building.roll.magic = Math.clamp(building.roll.magic, 1, 100)
+  building.roll.size = Math.clamp(building.roll.size, 1, 100)
+  building.roll.population = Math.clamp(building.roll.population, 1, 100)
+  building.roll.roughness = Math.clamp(building.roll.roughness, 1, 100)
+  building.roll.cleanliness = Math.clamp(building.roll.cleanliness, 1, 100)
+  building.roll.expertise = Math.clamp(building.roll.expertise, 1, 100)
+  building.roll.activity = Math.clamp(building.roll.activity, 1, 100)
 
   // if (building.roll.size > 80) {
   //   building.size = 'huge'
