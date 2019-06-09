@@ -1,5 +1,4 @@
 import { set } from '../../src/engine/story'
-import { randomValue } from '../../src/engine/rolls'
 import { Town } from '../Town/Town'
 import { TownWeather } from '../Town/Weather/TownWeather'
 import { Books } from '../Misc/Books'
@@ -20,7 +19,7 @@ export function StoryInit () {
   Town()
 
   set(`$weather`, {
-    season: randomValue([`winter`, `spring`, `summer`, `autumn`]),
+    season: either([`winter`, `spring`, `summer`, `autumn`]),
     seasonPool: [`winter`, `spring`, `summer`, `autumn`]
   })
 

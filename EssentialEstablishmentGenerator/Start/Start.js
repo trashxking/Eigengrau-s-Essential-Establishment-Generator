@@ -1,8 +1,8 @@
 import { pragma, image, replace, button, listBox, link, tip } from '../../src/engine/html'
 import { get, set } from '../../src/engine/story'
-import { createNewBuilding } from '../Town/js/createNewBuilding'
-import { CreateScenario } from '../World/CreateScenario'
 import banner from '../Resources/Banner.png'
+
+import { CreateScenario } from '../World/CreateScenario'
 import { Popup } from './Popup'
 import { BuildingsList } from './buildingsList'
 
@@ -19,7 +19,7 @@ export function Start () {
 
   const createBuilding = () => {
     console.log(`Creating a new ${$newBuilding}`)
-    createNewBuilding($town, $newBuilding)
+    setup.createNewBuilding($town, $newBuilding)
     replace(`#buildings`, BuildingsList)
   }
 
