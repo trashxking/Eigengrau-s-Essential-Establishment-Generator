@@ -1,3 +1,5 @@
+import { npcData } from "./npcData"
+
 setup.familyData = {
 
   // These numbers are all made up, feel free to change them
@@ -26,20 +28,20 @@ setup.familyData = {
 
   parentAgeDelta: (npc) => {
     const race = npc.race || `human`
-    const { baseAge, ageModifier } = setup.npcData.raceTraits[race].ageTraits[setup.familyData.parentStage()]
+    const { baseAge, ageModifier } = npcData.raceTraits[race].ageTraits[setup.familyData.parentStage()]
     return baseAge + ageModifier()
   },
   childAgeDelta: (npc) => (-setup.familyData.parentAgeDelta(npc)),
 
   siblingAgeDelta: (npc) => {
     const race = npc.race || `human`
-    const { baseAge } = setup.npcData.raceTraits[race].ageTraits[`young adult`]
+    const { baseAge } = npcData.raceTraits[race].ageTraits[`young adult`]
     return random(-baseAge, baseAge)
   },
 
   partnerAgeDelta: (npc) => {
     const race = npc.race || `human`
-    const { baseAge } = setup.npcData.raceTraits[race].ageTraits[`young adult`]
+    const { baseAge } = npcData.raceTraits[race].ageTraits[`young adult`]
     return random(-baseAge, baseAge)
   },
 

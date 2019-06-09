@@ -1,3 +1,5 @@
+import { npcData } from "./npcData"
+
 setup.createSexuality = function (npc) {
   // this is just one person's efforts to increase diversity and make an attempt at relatively realistic sexuality modeling
   // I cannot guarantee exact representation, and make no promises for such a thing- this is, at the end of the day, meant to be a tool for DMs.
@@ -37,63 +39,63 @@ setup.createSexuality = function (npc) {
   const kinsey = {
     // true = male, false = female. Very basic function, am aware.
     0: {
-      sexuality: 'heterosexual',
+      sexuality: `heterosexual`,
       partnerGenderProbability (npc) {
-        return setup.npcData.gender[npc.gender].oppositeGender
+        return npcData.gender[npc.gender].oppositeGender
       }
     },
     1: {
-      sexuality: 'heterosexual with passing interest in other $currentNPC.menwomen',
+      sexuality: `heterosexual with passing interest in other $currentNPC.menwomen`,
       partnerGenderProbability (npc) {
         if (random(100) < 90) {
-          return setup.npcData.gender[npc.gender].oppositeGender
+          return npcData.gender[npc.gender].oppositeGender
         } else {
           return npc.gender
         }
       }
     },
     2: {
-      sexuality: 'predominantly heterosexual, but with more than a passing interest in $currentNPC.menwomen',
+      sexuality: `predominantly heterosexual, but with more than a passing interest in $currentNPC.menwomen`,
       partnerGenderProbability (npc) {
         if (random(100) < 70) {
-          return setup.npcData.gender[npc.gender].oppositeGender
+          return npcData.gender[npc.gender].oppositeGender
         } else {
           return npc.gender
         }
       }
     },
     3: {
-      sexuality: 'bisexual',
+      sexuality: `bisexual`,
       partnerGenderProbability (npc) {
         if (random(100) < 50) {
-          return setup.npcData.gender[npc.gender].oppositeGender
+          return npcData.gender[npc.gender].oppositeGender
         } else {
           return npc.gender
         }
       }
     },
     4: {
-      sexuality: 'mostly homosexual, but with more than a passing interest in the opposite sex',
+      sexuality: `mostly homosexual, but with more than a passing interest in the opposite sex`,
       partnerGenderProbability (npc) {
         if (random(100) < 70) {
           return npc.gender
         } else {
-          return setup.npcData.gender[npc.gender].oppositeGender
+          return npcData.gender[npc.gender].oppositeGender
         }
       }
     },
     5: {
-      sexuality: 'homosexual with passing interest in the opposite sex',
+      sexuality: `homosexual with passing interest in the opposite sex`,
       partnerGenderProbability (npc) {
         if (random(100) < 90) {
           return npc.gender
         } else {
-          return setup.npcData.gender[npc.gender].oppositeGender
+          return npcData.gender[npc.gender].oppositeGender
         }
       }
     },
     6: {
-      sexuality: 'homosexual',
+      sexuality: `homosexual`,
       partnerGenderProbability (npc) {
         return npc.gender
       }

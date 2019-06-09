@@ -2,7 +2,7 @@ import { flora } from "../Dictionary/floraData"
 import { townData } from "../Town/js/townData"
 import { createNPC } from "./SetupNPC"
 
-setup.npcData = {
+export const npcData = {
   gender: {
     man: {
       title: `Mr`,
@@ -95,13 +95,13 @@ setup.npcData = {
         return true
       },
       function (town, npc) {
-        const placement = setup.npcData.lifeEvents.festival.placement.seededrandom()
-        const foodTrait = setup.npcData.lifeEvents.festival.foodTrait.seededrandom()
-        const flowerTrait = setup.npcData.lifeEvents.festival.flowerTrait.seededrandom()
+        const placement = npcData.lifeEvents.festival.placement.seededrandom()
+        const foodTrait = npcData.lifeEvents.festival.foodTrait.seededrandom()
+        const flowerTrait = npcData.lifeEvents.festival.flowerTrait.seededrandom()
         const fruit = flora.fruit.fruitP.seededrandom()
         const vegetable = flora.vegetable.vegetableP.seededrandom()
         const flower = flora.flowers.stemP.seededrandom()
-        const festivalDid = setup.npcData.lifeEvents.festival.festivalDid.seededrandom()
+        const festivalDid = npcData.lifeEvents.festival.festivalDid.seededrandom()
         return [`${[`I won`, `I got`].seededrandom()} ${placement} at ${[`a garden festival`, `a farmer's market`, `an agriculture festival`, `a garden tournament`].seededrandom()} for my ${foodTrait} ${[fruit, vegetable].seededrandom()}.`,
           `${[`I won`, `I got`].seededrandom()} ${placement} at ${[`a garden festival`, `a flower festival`, `a farmer's market`, `a garden tournament`].seededrandom()} for my ${flowerTrait} ${flower}.`,
           `${[`some friends and I went to`, `I went to`, `I spent a day at`].seededrandom()} ${[`a garden festival`, `a farmer's market`, `an agriculture festival`, `a garden tournament`].seededrandom()} where I saw some ${foodTrait} ${[fruit, vegetable].seededrandom()}. I think they won ${placement} in the growers competition.`,
@@ -163,9 +163,9 @@ setup.npcData = {
         } else { return true }
       },
       function (town, npc) {
-        const apprenticeProfession = setup.npcData.lifeEvents.apprentice.profession.seededrandom()
-        const reputation = setup.npcData.lifeEvents.apprentice.reputation.seededrandom()
-        const learned = setup.npcData.lifeEvents.apprentice.learned.seededrandom()
+        const apprenticeProfession = npcData.lifeEvents.apprentice.profession.seededrandom()
+        const reputation = npcData.lifeEvents.apprentice.reputation.seededrandom()
+        const learned = npcData.lifeEvents.apprentice.learned.seededrandom()
         const teacher = createNPC(town, {
           profession: apprenticeProfession,
           isShallow: true
@@ -249,7 +249,7 @@ setup.npcData = {
           `I met up with an adventurer who generously gave me a `,
           `I came across a trinket in a field- It's a `,
           `I was on a long journey when I found a `
-        ].seededrandom() + trinket.name}.` + `<blockquote>` + `<h4>${trinket.name}</h4>${trinket.description}</blockquote>`
+        ].seededrandom() + trinket.name}.<blockquote><h4>${trinket.name}</h4>${trinket.description}</blockquote>`
       }
     },
     nobleEvent: {
@@ -264,11 +264,11 @@ setup.npcData = {
           background: `noble`,
           isShallow: true
         })
-        const prefix = setup.npcData.lifeEvents.nobleEvent.prefix.seededrandom()
-        const banquetCelebrate = setup.npcData.lifeEvents.nobleEvent.banquetCelebrate.seededrandom()
-        const ballCelebrate = setup.npcData.lifeEvents.nobleEvent.ballCelebrate.seededrandom()
-        const carriage = setup.npcData.lifeEvents.nobleEvent.carriage.seededrandom()
-        const handshake = setup.npcData.lifeEvents.nobleEvent.handshake.seededrandom()
+        const prefix = npcData.lifeEvents.nobleEvent.prefix.seededrandom()
+        const banquetCelebrate = npcData.lifeEvents.nobleEvent.banquetCelebrate.seededrandom()
+        const ballCelebrate = npcData.lifeEvents.nobleEvent.ballCelebrate.seededrandom()
+        const carriage = npcData.lifeEvents.nobleEvent.carriage.seededrandom()
+        const handshake = npcData.lifeEvents.nobleEvent.handshake.seededrandom()
         return [`${prefix} the royal wedding of a local ${setup.profile(noble, `noble`)}.`,
           `${prefix} the royal ${[`banquet`, `feast`, `gathering`].seededrandom()} of a local ${setup.profile(noble, `noble`)} in celebration of ${banquetCelebrate}.`,
           `${prefix} the royal ${[`ball`, `dance`, `gala`, `masquerade ball`].seededrandom()} hosted by a local ${setup.profile(noble, `noble`)} in honor of ${ballCelebrate}.`,
@@ -341,11 +341,11 @@ setup.npcData = {
       },
       function (town, npc) {
         console.log(`called lifeEvents.journey function`)
-        const prefix = setup.npcData.lifeEvents.journey.prefix.seededrandom()
-        const location = setup.npcData.lifeEvents.journey.location.seededrandom()
-        const locationLocation = setup.npcData.lifeEvents.journey.locationLocation.seededrandom()
-        const found = setup.npcData.lifeEvents.journey.found.seededrandom()
-        const notFound = setup.npcData.lifeEvents.journey.notFound.seededrandom()
+        const prefix = npcData.lifeEvents.journey.prefix.seededrandom()
+        const location = npcData.lifeEvents.journey.location.seededrandom()
+        const locationLocation = npcData.lifeEvents.journey.locationLocation.seededrandom()
+        const found = npcData.lifeEvents.journey.found.seededrandom()
+        const notFound = npcData.lifeEvents.journey.notFound.seededrandom()
         return `${[`${prefix} ${location} ${locationLocation}. ${[`I really did make it there, `, `I got to see that place, `, `My journey was succesful, `].seededrandom()}${found}`,
           `${prefix} ${location} ${locationLocation}. ${[`I never found it, `, `I never got to see that place, `, `My journey was a failure, `, `I got lost along the way and never made it there, `].seededrandom()}${notFound}`].seededrandom()}.`
       },
@@ -441,10 +441,10 @@ setup.npcData = {
       function (town, npc) {
         console.log(`called lifeEvents.lostChild function`)
         const treeType = flora.tree.typeArticle.seededrandom()
-        const location = setup.npcData.lifeEvents.lostChild.location.seededrandom()
-        const time = setup.npcData.lifeEvents.lostChild.time.seededrandom()
-        const finder = setup.npcData.lifeEvents.lostChild.finder.seededrandom()
-        const ending = setup.npcData.lifeEvents.lostChild.ending.seededrandom()
+        const location = npcData.lifeEvents.lostChild.location.seededrandom()
+        const time = npcData.lifeEvents.lostChild.time.seededrandom()
+        const finder = npcData.lifeEvents.lostChild.finder.seededrandom()
+        const ending = npcData.lifeEvents.lostChild.ending.seededrandom()
         return `${[`when I was young`, `as a young child`, `while I was still a kid`].seededrandom()} I got lost in ${[location, `${treeType} tree forest`].seededrandom()} ${time}. ${[`I was found by ${finder}`, `I was found by ${finder}`, `I was found by ${finder}`, `I was found by ${finder}`, `I was found by ${finder}`, `I found my own way back`, `I eventually found ${finder}`].seededrandom()} ${ending}.`
       },
       location: [
@@ -514,10 +514,10 @@ setup.npcData = {
       },
       function (town, npc) {
         console.log(`called lifeEvents.pilgrimage function`)
-        const prefix = setup.npcData.lifeEvents.pilgrimage.prefix.seededrandom()
-        const location = setup.npcData.lifeEvents.pilgrimage.location.seededrandom()
-        const journey = setup.npcData.lifeEvents.pilgrimage.journey.seededrandom()
-        const result = setup.npcData.lifeEvents.pilgrimage.result.seededrandom()
+        const prefix = npcData.lifeEvents.pilgrimage.prefix.seededrandom()
+        const location = npcData.lifeEvents.pilgrimage.location.seededrandom()
+        const journey = npcData.lifeEvents.pilgrimage.journey.seededrandom()
+        const result = npcData.lifeEvents.pilgrimage.result.seededrandom()
         return `${prefix} ${location}. ${journey}, ${result}.`
       },
       prefix: [
@@ -748,7 +748,7 @@ setup.npcData = {
         let adventureResults
         if (npc.hasClass === false) {
           // Descriptions and stuff goes here
-          return setup.npcData.lifeEvents.backgroundWork.function(town, npc)
+          return npcData.lifeEvents.backgroundWork.function(town, npc)
         } else {
           // eslint-disable-next-line no-var
           var adventurePrefix = [
@@ -760,7 +760,7 @@ setup.npcData = {
           if (adventureRoll === 100) {
             const weapon = setup.createMagicWeapon()
             console.log(`Called weapon function.`)
-            adventureResults = `came across a magical weapon- this is my trusty ${weapon.name}<blockquote>` + `<h4>${weapon.name}</h4>${weapon.description}</blockquote>`
+            adventureResults = `came across a magical weapon- this is my trusty ${weapon.name}<blockquote><h4>${weapon.name}</h4>${weapon.description}</blockquote>`
           } else if (adventureRoll >= 91) {
             adventureResults = `found a considerable amount of treasure.`
             npc.wealth += random(5100, 7150)
@@ -814,11 +814,11 @@ setup.npcData = {
       },
       function (town, npc) {
         console.log(`called lifeEvents.miracle function`)
-        const miracleGiver = setup.npcData.lifeEvents.miracle.miracleGiver.seededrandom()
-        const trueBelief = setup.npcData.lifeEvents.miracle.trueBelief.seededrandom()
-        const falseBelief = setup.npcData.lifeEvents.miracle.falseBelief.seededrandom()
-        const miracle = setup.npcData.lifeEvents.miracle.miracle.seededrandom()
-        const curse = setup.npcData.lifeEvents.miracle.curse.seededrandom()
+        const miracleGiver = npcData.lifeEvents.miracle.miracleGiver.seededrandom()
+        const trueBelief = npcData.lifeEvents.miracle.trueBelief.seededrandom()
+        const falseBelief = npcData.lifeEvents.miracle.falseBelief.seededrandom()
+        const miracle = npcData.lifeEvents.miracle.miracle.seededrandom()
+        const curse = npcData.lifeEvents.miracle.curse.seededrandom()
         return [`${[`I witnessed a miracle once- Honest to god. `, `I once saw a true miracle. `, `one time, I was part of a real miracle. `].seededrandom() + miracleGiver}, ${[trueBelief, falseBelief].seededrandom()} ${miracle}.`,
           `${[`I witnessed a terrible curse once- Honest to god. `, `I once saw a true curse. `, `one time, I was part of a real curse. `].seededrandom() + miracleGiver}, ${[falseBelief].seededrandom()} ${curse}.`
         ].seededrandom()
@@ -996,7 +996,7 @@ setup.npcData = {
         }
       },
       function (town, npc) {
-        return `${npc.name} doesn't say ${npc.heshe} no longer loves ${npc.hisher} ${npc.partnerID.marriageNoun}, ` + `<<profile \`$npcs[${JSON.stringify(npc.partnerID)}]\`>>`
+        return `${npc.name} doesn't say ${npc.heshe} no longer loves ${npc.hisher} ${npc.partnerID.marriageNoun}, <<profile \`$npcs[${JSON.stringify(npc.partnerID)}]\`>>`
       }
     },
     'has a sizeable inheritance': {
@@ -2001,7 +2001,7 @@ setup.npcData = {
   backgroundTraits: {
     'acolyte': {
       // 'knownLanguages': function (npc) {
-      //   var allLanguages = setup.npcData.standardLanguages.concatUnique(setup.npcData.exoticLanguages)
+      //   var allLanguages = npcData.standardLanguages.concatUnique(npcData.exoticLanguages)
       //   var availableLanguages = allLanguages.delete(npc.knownLanguages)
       //   return availableLanguages.pluck()
       // },
@@ -2070,11 +2070,11 @@ setup.npcData = {
         `I pocket anything I see that might have some value.`
       ],
       bond: [
-        `I fleeced the wrong person, a lord called <<print setup.npcData.raceTraits["human"].genderTraits["man"].firstName.seededrandom()>>, and must work to ensure that he never crosses paths with me or those I care about.`,
-        `I owe everything to my mentor <<print setup.npcData.raceTraits['human'].genderTraits['man'].firstName.seededrandom()>>--a horrible person who's probably rotting in jail somewhere.`,
-        `Somewhere out there I have a child, litte <<print setup.npcData.raceTraits['human'].genderTraits['man'].firstName.seededrandom()>>, who doesn't know me. I'm going to try and make the world better for him.`,
+        `I fleeced the wrong person, a lord called <<print npcData.raceTraits["human"].genderTraits["man"].firstName.seededrandom()>>, and must work to ensure that he never crosses paths with me or those I care about.`,
+        `I owe everything to my mentor <<print npcData.raceTraits['human'].genderTraits['man'].firstName.seededrandom()>>--a horrible person who's probably rotting in jail somewhere.`,
+        `Somewhere out there I have a child, litte <<print npcData.raceTraits['human'].genderTraits['man'].firstName.seededrandom()>>, who doesn't know me. I'm going to try and make the world better for him.`,
         `I come from a noble family, and one day I'll reclaim my lands and title from those who stole them from me.`,
-        `A powerful person, Lord <<print setup.npcData.raceTraits['human'].genderTraits['man'].firstName.seededrandom()>>, killed someone I love. Some day soon, I'll have my revenge.`,
+        `A powerful person, Lord <<print npcData.raceTraits['human'].genderTraits['man'].firstName.seededrandom()>>, killed someone I love. Some day soon, I'll have my revenge.`,
         `I swindled and ruined a person who didn't deserve it, and now I seek to atone for my misdeeds but might never be able to forgive myself.`
       ],
       wealth: 1500
@@ -2263,7 +2263,7 @@ setup.npcData = {
     },
     'noble': {
       // 'knownLanguages': function (npc) {
-      //   var allLanguages = setup.npcData.standardLanguages.concatUnique(setup.npcData.exoticLanguages)
+      //   var allLanguages = npcData.standardLanguages.concatUnique(npcData.exoticLanguages)
       //   var availableLanguages = allLanguages.delete(npc.knownLanguages)
       //   return availableLanguages.pluck()
       // },
@@ -2330,7 +2330,7 @@ setup.npcData = {
     },
     'sage': {
       // 'knownLanguages': function (npc) {
-      //   var allLanguages = setup.npcData.standardLanguages.concatUnique(setup.npcData.exoticLanguages)
+      //   var allLanguages = npcData.standardLanguages.concatUnique(npcData.exoticLanguages)
       //   var availableLanguages = allLanguages.delete(npc.knownLanguages)
       //   return availableLanguages.pluck()
       // },

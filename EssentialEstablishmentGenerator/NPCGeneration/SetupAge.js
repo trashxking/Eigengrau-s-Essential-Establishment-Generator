@@ -1,8 +1,9 @@
+import { npcData } from "./npcData"
 
 setup.createAge = function (npc) {
   console.log(`ageing ${npc.name}...`)
-  if (typeof setup.npcData.raceTraits[npc.race].ageTraits.ageDescriptors !== `undefined`) {
-    npc.age = setup.npcData.raceTraits[npc.race].ageTraits.ageDescriptors.find(function (descriptor) {
+  if (typeof npcData.raceTraits[npc.race].ageTraits.ageDescriptors !== `undefined`) {
+    npc.age = npcData.raceTraits[npc.race].ageTraits.ageDescriptors.find(function (descriptor) {
       return descriptor[0] <= npc.ageYears
     })[1]
   } else {
@@ -19,5 +20,5 @@ setup.createAge = function (npc) {
 }
 
 setup.isOfAge = function (ageStage, race, ageYears) {
-  return ageYears >= setup.npcData.raceTraits[race].ageTraits[ageStage].baseAge
+  return ageYears >= npcData.raceTraits[race].ageTraits[ageStage].baseAge
 }

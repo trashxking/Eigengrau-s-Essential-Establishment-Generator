@@ -1,5 +1,6 @@
 import { random, randomValue } from "../../../src/engine/rolls"
 import { createNPC } from "../../NPCGeneration/SetupNPC"
+import { npcData } from "../../NPCGeneration/npcData"
 import { linguisticDrift } from "./linguisticDrift"
 
 export function createTownName (town) {
@@ -25,7 +26,7 @@ export function createTownName (town) {
       town.founder = npc.key
       name = town.founder.lastName + randomValue(suffix)
     } else {
-      name = randomValue(setup.npcData.raceTraits[`human`].lastName) + randomValue(suffix)
+      name = randomValue(npcData.raceTraits[`human`].lastName) + randomValue(suffix)
     }
   } else {
     name = randomValue(prefix) + randomValue(suffix)

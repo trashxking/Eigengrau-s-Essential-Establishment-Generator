@@ -1,4 +1,5 @@
 import { misc } from "../World/miscData"
+import { npcData } from "./npcData"
 
 /**
  * @typedef {object} NPCBase
@@ -36,7 +37,7 @@ export function createNPC (town, base) {
   console.log(`Base:`)
   console.log({ base })
   // These are the very basic bits that need to be defined first- race, gender, and then names using those local variables.
-  const data = setup.npcData
+  const data = npcData
   if (!base) {
     base = {
       isShallow: true
@@ -201,16 +202,16 @@ export function createNPC (town, base) {
 
   setup.createRace(npc)
   // This sets up the physical traits of NPCs
-  const hair = setup.npcData.bodyParts.head.hair.seededrandom()
-  const eyes = setup.npcData.bodyParts.head.eyes.seededrandom()
-  const nose = setup.npcData.bodyParts.head.nose.seededrandom()
-  const mouth = setup.npcData.bodyParts.head.mouth.seededrandom()
-  const chin = setup.npcData.bodyParts.head.chin.seededrandom()
-  const ears = setup.npcData.bodyParts.head.ears.seededrandom()
-  const headMisc = setup.npcData.bodyParts.head.misc.seededrandom()
-  const torso = setup.npcData.bodyParts.torso.descriptions.seededrandom()
-  const arms = setup.npcData.bodyParts.arms.descriptions.seededrandom()
-  const legs = setup.npcData.bodyParts.legs.descriptions.seededrandom()
+  const hair = npcData.bodyParts.head.hair.seededrandom()
+  const eyes = npcData.bodyParts.head.eyes.seededrandom()
+  const nose = npcData.bodyParts.head.nose.seededrandom()
+  const mouth = npcData.bodyParts.head.mouth.seededrandom()
+  const chin = npcData.bodyParts.head.chin.seededrandom()
+  const ears = npcData.bodyParts.head.ears.seededrandom()
+  const headMisc = npcData.bodyParts.head.misc.seededrandom()
+  const torso = npcData.bodyParts.torso.descriptions.seededrandom()
+  const arms = npcData.bodyParts.arms.descriptions.seededrandom()
+  const legs = npcData.bodyParts.legs.descriptions.seededrandom()
 
   const physicalTraitRoll = random(1, 100)
   if (physicalTraitRoll > 40) {
@@ -258,7 +259,7 @@ export function createNPC (town, base) {
     npc.callbackFunction(town, npc, base)
   }
 
-  // npc.doesnt = setup.weightedRandomFetcher(town, setup.npcData.doesnt, npc)
+  // npc.doesnt = setup.weightedRandomFetcher(town, npcData.doesnt, npc)
 
   console.log(npc)
   console.groupEnd()

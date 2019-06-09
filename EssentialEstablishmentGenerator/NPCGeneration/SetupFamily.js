@@ -1,3 +1,6 @@
+/* eslint-disable no-loop-func */
+import { npcData } from "./npcData"
+
 setup.createFamily = function (town, npc) {
   const key = `${npc.lastName} family`
   const family = {
@@ -21,7 +24,7 @@ setup.ExpandFamily = function (town, npc) {
   setup.createParentage(town, family, npc)
 
   // Marriages and descendants
-  const marriageMin = setup.npcData.raceTraits[npc.race].ageTraits[`young adult`].baseAge
+  const marriageMin = npcData.raceTraits[npc.race].ageTraits[`young adult`].baseAge
   if (npc.ageYears <= marriageMin) {
     node.marriages = []
     node.canRemarry = false

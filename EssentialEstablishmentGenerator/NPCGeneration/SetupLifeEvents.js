@@ -1,3 +1,4 @@
+import { npcData } from "./npcData"
 
 setup.createLifeEvents = function (town, npc) {
   console.groupCollapsed(`creating life events for ${npc.name}...`)
@@ -37,7 +38,7 @@ setup.createLifeEvents = function (town, npc) {
 
   let i
   for (i = 0; i < lifeEventsNumber; i++) {
-    npc.lifeEvents.push(setup.weightedRandomFetcher(town, setup.npcData.lifeEvents, npc))
+    npc.lifeEvents.push(setup.weightedRandomFetcher(town, npcData.lifeEvents, npc))
     // lifeEventsRoll = random(1, 100)
     // console.log('rolling for a life event resulted in a ' + lifeEventsRoll)
     // if (lifeEventsRoll === 100) {

@@ -1,3 +1,5 @@
+import { npcData } from "./npcData"
+
 // General function for inserting individual relatives.
 // Returns the corresponding relative, or undefined
 setup.createRelative = function (town, family, base, force = false) {
@@ -13,7 +15,7 @@ setup.createRelative = function (town, family, base, force = false) {
     }
     if (setup.isOfAge(`elderly`, base.race, base.ageYears)) {
       if (random(1, 100) <= setup.familyData.oldAbsencePercent) return undefined
-      if (base.ageYears >= setup.npcData.raceTraits[base.race].ageTraits.ageDescriptors[0]) {
+      if (base.ageYears >= npcData.raceTraits[base.race].ageTraits.ageDescriptors[0]) {
         if (random(1, 100) <= setup.familyData.veryOldAbsencePercent) return undefined
       }
     }
@@ -114,7 +116,7 @@ setup.createChildren = function (town, family, npc, marriage, motherRace, father
 }
 
 setup.createMarriage = function (town, family, npc, force = false) {
-  const marriageMin = setup.npcData.raceTraits[npc.race].ageTraits[`young adult`].baseAge
+  const marriageMin = npcData.raceTraits[npc.race].ageTraits[`young adult`].baseAge
   const newMarriage = {
     parents: [npc.key],
     children: []
@@ -122,7 +124,7 @@ setup.createMarriage = function (town, family, npc, force = false) {
 
   // TODO finish support for non-heterosexual marriages
   const partnerBase = Object.assign({}, setup.familyData.relativeBase(npc), {
-    gender: setup.npcData.gender[npc.gender].oppositeGender,
+    gender: npcData.gender[npc.gender].oppositeGender,
     ageYears: npc.ageYears + setup.familyData.partnerAgeDelta(npc),
     race: setup.findPartnerRace(town, npc),
     socialClass: setup.relativeSocialClass(setup.relativeSocialClass(npc.socialClass))
