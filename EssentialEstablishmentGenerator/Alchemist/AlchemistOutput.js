@@ -4,6 +4,7 @@ import { set, get, unset } from '../../src/engine/story'
 
 import { alchemistMission } from '../Factions/Missions/alchemistMissions'
 import { closestMatch } from '../Tools/closestMatch'
+import { createAlchemy } from '../Misc/createAlchemy'
 
 import { alchemistData } from './js/alchemistData'
 import { ChemistTalk } from './ChemistTalk'
@@ -13,7 +14,7 @@ const RandomPotion = () => ``
 const AlchemistSell = () => ``
 
 export function AlchemistOutput () {
-  set(`$brew`, setup.createAlchemy({ type: `brewing potion` }))
+  set(`$brew`, createAlchemy({ type: `brewing potion` }))
 
   unset(`$selectedBuilding`)
 
