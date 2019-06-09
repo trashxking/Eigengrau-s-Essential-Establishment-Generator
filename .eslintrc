@@ -1,5 +1,9 @@
 {
-  "extends": ["react-app", "standard"],
+  "extends": ["standard"],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
   "globals": {
     "setup": true,
     "random": true,
@@ -14,9 +18,6 @@
     "no-var": "warn",
     "prefer-const": "warn",
     "object-shorthand": ["warn", "always"],
-    "quote-props": ["warn", "consistent-as-needed"],
-    "default-case": "off",
-    "quotes": ["warn", "backtick"],
-    "prefer-template": "warn"
+    "quote-props": ["warn", "consistent-as-needed"]
   }
 }
