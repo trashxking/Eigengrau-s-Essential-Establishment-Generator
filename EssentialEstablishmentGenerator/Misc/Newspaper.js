@@ -1,8 +1,7 @@
 import { set } from '../../src/engine/story'
-import { randomValue } from '../../src/engine/rolls'
 
 export function Newspaper () {
-  set('$newspaperheadline', randomValue([
+  set('$newspaperheadline', either([
     'NPC attempts to become player, ridiculed.',
     'Underground homunculi fights discovered - homunculi sales increase.',
     'Wizard house vanishes in the night, locals suspect shenanigans.',

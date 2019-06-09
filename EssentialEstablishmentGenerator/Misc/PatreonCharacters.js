@@ -1,5 +1,4 @@
 import { set, get } from '../../src/engine/story'
-import { createNPC } from '../NPCGeneration/SetupNPC'
 
 export function PatreonCharacters () {
   const $Birchbottom = get(`$Birchbottom`)
@@ -7,7 +6,7 @@ export function PatreonCharacters () {
   const $town = get(`$town`)
 
   if (!$Birchbottom || !$patreonContent) {
-    set(`$Birchbottom`, createNPC($town, {
+    set(`$Birchbottom`, setup.createNPC($town, {
       firstName: `Tylien`,
       lastName: `Birchbottom`,
       /* name: "Tylien Birchbottom", */
