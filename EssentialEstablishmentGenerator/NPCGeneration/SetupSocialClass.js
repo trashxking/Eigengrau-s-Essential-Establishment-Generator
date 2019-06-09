@@ -22,7 +22,7 @@ setup.socialClassKeys = {
   'indentured servitude': 0
 }
 
-setup.createSocialClass = function (town, npc) {
+export function createSocialClass (town, npc) {
   console.log(`Creating social class...`)
 
   if (!npc.roll) {

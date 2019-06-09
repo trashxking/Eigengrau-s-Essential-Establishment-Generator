@@ -1,6 +1,7 @@
 import { misc } from "../World/miscData"
 import { npcData } from "./npcData"
 import { fetchProfessionChance } from "./fetchProfessionChance"
+import { createSocialClass } from "./SetupSocialClass"
 
 /**
  * @typedef {object} NPCBase
@@ -245,7 +246,7 @@ export function createNPC (town, base) {
   }
 
   setup.createSexuality(npc)
-  setup.createSocialClass(town, npc)
+  createSocialClass(town, npc)
   setup.createLivingStandards(town, npc)
 
   if (npc.hasHistory !== false) setup.ExpandNPC(town, npc)
