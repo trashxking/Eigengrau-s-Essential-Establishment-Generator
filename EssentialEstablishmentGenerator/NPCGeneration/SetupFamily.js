@@ -1,6 +1,3 @@
-/* eslint-disable no-loop-func */
-import { npcData } from "./npcData"
-
 setup.createFamily = function (town, npc) {
   const key = `${npc.lastName} family`
   const family = {
@@ -24,7 +21,7 @@ setup.ExpandFamily = function (town, npc) {
   setup.createParentage(town, family, npc)
 
   // Marriages and descendants
-  const marriageMin = npcData.raceTraits[npc.race].ageTraits[`young adult`].baseAge
+  const marriageMin = setup.npcData.raceTraits[npc.race].ageTraits['young adult'].baseAge
   if (npc.ageYears <= marriageMin) {
     node.marriages = []
     node.canRemarry = false
@@ -50,7 +47,7 @@ setup.ExpandFamily = function (town, npc) {
 
 setup.fetchFamily = function (town, npc, depth = 2) {
   // We fetch nodes in breadth-first order.
-  const relativeList = [{ key: npc.key, depth: 0, relationship: ``, gender: npc.gender }]
+  const relativeList = [{ key: npc.key, depth: 0, relationship: '', gender: npc.gender }]
   const relatives = {}
   let ptr = 0
   console.log(`fetching ${npc.key} relativeList...`)

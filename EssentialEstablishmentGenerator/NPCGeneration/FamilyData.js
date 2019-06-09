@@ -1,5 +1,3 @@
-import { npcData } from "./npcData"
-
 setup.familyData = {
 
   // These numbers are all made up, feel free to change them
@@ -11,9 +9,9 @@ setup.familyData = {
   remarriagePercent: 6,
 
   childAgePercentiles: [
-    [55, `young adult`],
-    [90, `settled adult`],
-    [100, `elderly`]
+    [55, 'young adult'],
+    [90, 'settled adult'],
+    [100, 'elderly']
   ],
 
   parentStage: () => {
@@ -23,25 +21,25 @@ setup.familyData = {
       if (roll <= percentile) return stage
     }
 
-    return `young adult`
+    return 'young adult'
   },
 
   parentAgeDelta: (npc) => {
-    const race = npc.race || `human`
-    const { baseAge, ageModifier } = npcData.raceTraits[race].ageTraits[setup.familyData.parentStage()]
+    const race = npc.race || 'human'
+    const { baseAge, ageModifier } = setup.npcData.raceTraits[race].ageTraits[setup.familyData.parentStage()]
     return baseAge + ageModifier()
   },
   childAgeDelta: (npc) => (-setup.familyData.parentAgeDelta(npc)),
 
   siblingAgeDelta: (npc) => {
-    const race = npc.race || `human`
-    const { baseAge } = npcData.raceTraits[race].ageTraits[`young adult`]
+    const race = npc.race || 'human'
+    const { baseAge } = setup.npcData.raceTraits[race].ageTraits['young adult']
     return random(-baseAge, baseAge)
   },
 
   partnerAgeDelta: (npc) => {
-    const race = npc.race || `human`
-    const { baseAge } = npcData.raceTraits[race].ageTraits[`young adult`]
+    const race = npc.race || 'human'
+    const { baseAge } = setup.npcData.raceTraits[race].ageTraits['young adult']
     return random(-baseAge, baseAge)
   },
 

@@ -1,7 +1,6 @@
-import { npcData } from "./npcData"
 
 setup.createLifeEvents = function (town, npc) {
-  console.groupCollapsed(`creating life events for ${npc.name}...`)
+  console.groupCollapsed('creating life events for ' + npc.name + '...')
   let lifeEventsNumber
 
   npc.lifeEvents = []
@@ -20,11 +19,11 @@ setup.createLifeEvents = function (town, npc) {
   } else if (npc.ageYears <= 15) {
     lifeEventsNumber = 0
     npc.lifeEvents = [[
-      `One time I got pushed over and nearly cried but I didn't`,
-      `I once saw a really big dog`,
-      `I found a cool stick that looks exactly like a sword`,
-      `I made a new friend who is teaching me how to read using daddy's important papers`,
-      `I made a kite!`
+      "One time I got pushed over and nearly cried but I didn't",
+      'I once saw a really big dog',
+      'I found a cool stick that looks exactly like a sword',
+      "I made a new friend who is teaching me how to read using daddy's important papers",
+      'I made a kite!'
     ].seededrandom()]
   }
 
@@ -38,7 +37,7 @@ setup.createLifeEvents = function (town, npc) {
 
   let i
   for (i = 0; i < lifeEventsNumber; i++) {
-    npc.lifeEvents.push(setup.weightedRandomFetcher(town, npcData.lifeEvents, npc))
+    npc.lifeEvents.push(setup.weightedRandomFetcher(town, setup.npcData.lifeEvents, npc))
     // lifeEventsRoll = random(1, 100)
     // console.log('rolling for a life event resulted in a ' + lifeEventsRoll)
     // if (lifeEventsRoll === 100) {
@@ -114,7 +113,7 @@ setup.createLifeEvents = function (town, npc) {
   // function meetPartnerNPC (npc) {
   //   if (npc.partnerID !== undefined) {
   //     console.log('Making a baby!')
-  //     var child = createNPC(town, {
+  //     var child = setup.createNPC(town, {
   //       ageStage: 'child',
   //       race: npc.race,
   //       lastName: npc.lastName,
@@ -130,14 +129,14 @@ setup.createLifeEvents = function (town, npc) {
   //   } else if (npc.partnerID === undefined) {
   //     console.log(npc.name + ' met somebody!')
   //     if (npc.gender === 'man') {
-  //       npc.partnerID = createNPC(town, {
+  //       npc.partnerID = setup.createNPC(town, {
   //         gender: 'woman',
   //         lastName: npc.lastName,
   //         partnerID: npc.key
   //       })
   //       setup.createRelationship(town, npc, npc.partnerID, 'wife', 'husband')
   //     } else {
-  //       npc.partnerID = createNPC(town, {
+  //       npc.partnerID = setup.createNPC(town, {
   //         gender: 'man',
   //         lastName: npc.lastName,
   //         partnerID: npc.key
