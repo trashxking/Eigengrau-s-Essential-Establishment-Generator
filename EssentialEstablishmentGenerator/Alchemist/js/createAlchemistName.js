@@ -1,27 +1,29 @@
-import { randomValue } from "../../../src/engine/rolls"
-
-/**
- * @param {string} chemistFirstName
- * @returns {string}
- */
-export function createAlchemistName (chemistFirstName) {
-  const adjective = randomValue([`Bubbling`, `Spicy`, `Soggy`, `Fizzy`, `Liquid`, `Fluorescent`, `Clear`, `Alcoholic`, `Abyssal`, `Angelic`, `Elven`, `Measured`, `Marked`, `Glass`, `Glass`, `Copper`, `Corked`, `Burning`, `Red`, `Blue`, `Green`, `Gold`, `Yellow`, `Vile`, `Genuine`, `Original`])
-  const noun = randomValue([`Potion`, `Liquid`, `Fumes`, `Bottle`, `Vial`, `Firewater`, `Mortar and Pestle`, `Lab`, `Laboratory`, `Chemist`, `Alchemist`, `Brewer`, `Lotion`, `Wishes`])
-  const adjective2 = randomValue([`Bubbling`, `Spicy`, `Soggy`, `Fizzy`, `Liquid`, `Fluorescent`, `Clear`, `Alcoholic`, `Abyssal`, `Angelic`, `Elven`, `Measured`, `Marked`, `Glass`, `Glass`, `Copper`, `Corked`, `Burning`, `Red`, `Blue`, `Green`, `Gold`, `Yellow`, `Vile`, `Genuine`, `Original`])
-  const rider = randomValue([`Chemist`, `Alchemist`, `Potion Shop`, `Potionery`, `Ointmentary`, `Juice Bar`, `Lab`, `Laboratory`, `Secret Lair`])
-
-  switch (dice(1, 5)) {
+setup.createAlchemistName = function (chemistFirstName) {
+  const alchemistNameRoll = dice(1, 5)
+  let name
+  const adjective = ['Bubbling', 'Spicy', 'Soggy', 'Fizzy', 'Liquid', 'Fluorescent', 'Clear', 'Alcoholic', 'Abyssal', 'Angelic', 'Elven', 'Measured', 'Marked', 'Glass', 'Glass', 'Copper', 'Corked', 'Burning', 'Red', 'Blue', 'Green', 'Gold', 'Yellow', 'Vile', 'Genuine', 'Original'].seededrandom()
+  const noun = ['Potion', 'Liquid', 'Fumes', 'Bottle', 'Vial', 'Firewater', 'Mortar and Pestle', 'Lab', 'Laboratory', 'Chemist', 'Alchemist', 'Brewer', 'Lotion', 'Wishes'].seededrandom()
+  const adjective2 = ['Bubbling', 'Spicy', 'Soggy', 'Fizzy', 'Liquid', 'Fluorescent', 'Clear', 'Alcoholic', 'Abyssal', 'Angelic', 'Elven', 'Measured', 'Marked', 'Glass', 'Glass', 'Copper', 'Corked', 'Burning', 'Red', 'Blue', 'Green', 'Gold', 'Yellow', 'Vile', 'Genuine', 'Original'].seededrandom()
+  const rider = ['Chemist', 'Alchemist', 'Potion Shop', 'Potionery', 'Ointmentary', 'Juice Bar', 'Lab', 'Laboratory', 'Secret Lair'].seededrandom()
+  switch (alchemistNameRoll) {
     case 1:
-      return `The ${adjective} ${noun}`
+      name = 'The ' + adjective + ' ' + noun
+      break
     case 2:
-      return `${chemistFirstName} and ${adjective2}`
+      name = chemistFirstName + ' and ' + adjective2
+      // name = 'The ' + adjective + ' ' + noun
+      break
     case 3:
-      return `The ${noun} and ${adjective2}`
+      name = 'The ' + noun + ' and ' + adjective2
+      break
     case 4:
-      return `The ${adjective} ${rider}`
+      name = 'The ' + adjective + ' ' + rider
+      break
     case 5:
-      return `${adjective} ${noun}`
+      name = adjective + ' ' + noun
+      break
     default:
-      return `The ${adjective} Alchemist`
+      name = 'The ' + adjective + ' Alchemist'
   }
+  return name
 }
