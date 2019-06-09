@@ -1,20 +1,25 @@
-export const books = {
-  create (town) {
-    const bookType = ['detailedTitles', 'titles', 'titles', 'puns'].seededrandom()
+if (!setup.misc) { setup.misc = {} }
+setup.misc.books = {
+  create: town => {
+    const bookType = [
+      'detailedTitles',
+      'titles',
+      'titles',
+      'puns'].seededrandom()
 
     const book = bookType === 'detailedTitles'
-      ? books.detailedTitles.seededrandom()
-      : books.misc.book[bookType].seededrandom()
+      ? setup.misc.book.detailedTitles.seededrandom()
+      : setup.misc.book[bookType].seededrandom()
 
     Object.assign(book, {
-      condition: books.condition.seededrandom(),
-      cover: books.cover.seededrandom()
+      condition: setup.misc.book.condition.seededrandom(),
+      cover: setup.misc.book.cover.seededrandom()
     })
 
     if (bookType === 'detailedTitles') {
-      book.readout = `'${book.title} is ${book.condition} The cover is ${book.cover} ${book.contents}`
+      book.readout = "'" + book.title + "'" + ' is ' + book.condition + ' The cover is ' + book.cover + book.contents
     } else {
-      book.readout = `'${book.title} is ${book.condition} The cover is ${book.cover}`
+      book.readout = "'" + book.title + "'" + ' is ' + book.condition + ' The cover is ' + book.cover
     }
     book.tippy = '<span class=tip title=' + JSON.stringify(book.readout) + '><<run setup.tippy("span")>>'
     book.tippyWord = '"' + book.tippy + book.title + '"</span>'
