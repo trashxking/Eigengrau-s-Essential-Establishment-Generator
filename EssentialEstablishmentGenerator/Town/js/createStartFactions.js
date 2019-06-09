@@ -1,10 +1,8 @@
-import { townData } from "./townData"
-import { createFaction } from "../../Factions/CreateFaction"
 
-export function createStartFactions (town) {
-  console.log(`Creating starting factions...`)
-  const factions = [`merchants`, `merchants`, `merchants`, `thieves`, `nobles`, `wizards`]
-  let factionsNumber = townData.type[town.type].startFactionsNumber()
+setup.createStartFactions = function (town) {
+  console.log('Creating starting factions...')
+  const factions = ['merchants', 'merchants', 'merchants', 'thieves', 'nobles', 'wizards']
+  let factionsNumber = setup.townData.type[town.type].startFactionsNumber()
 
   if (town.roll.wealth > 90) {
     factionsNumber += 2
@@ -14,7 +12,7 @@ export function createStartFactions (town) {
 
   for (let i = 0; i <= factionsNumber; i++) {
     const tempFactionType = factions.pluck()
-    const tempFaction = createFaction(town, {
+    const tempFaction = setup.createFaction(town, {
       type: tempFactionType
     })
     town.factions[tempFaction.key] = tempFaction
@@ -22,10 +20,10 @@ export function createStartFactions (town) {
     // if (!town.factions[tempFaction]) {
     //   town.factions[tempFaction] = []
     // }
-    // town.factions[tempFaction].push(createFaction(town, {
+    // town.factions[tempFaction].push(setup.createFaction(town, {
     //   type: tempFaction
     // }))
   }
-  console.log(`Finished creating start factions!`)
+  console.log('Finished creating start factions!')
   return town
 }
