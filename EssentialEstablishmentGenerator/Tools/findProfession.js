@@ -2,10 +2,10 @@ import { townData } from "../Town/js/townData"
 import { fetchProfessionChance } from "../NPCGeneration/fetchProfessionChance"
 import { findInContainer } from "./FindInContainer"
 
-setup.findProfession = function (town, npc, profession) {
+export function findProfession (town, npc, profession) {
   profession = profession || npc.dndClass || npc.profession
   if (!profession && npc.socialClass) { profession = fetchProfessionChance(town, npc) }
-  console.groupCollapsed(`running setup.findProfession; looking for a ${profession}`)
+  console.groupCollapsed(`running findProfession; looking for a ${profession}`)
   console.log({
     town,
     npc,

@@ -1,25 +1,27 @@
+import { findProfession } from "../Tools/findProfession"
+
 setup.createLivingStandards = function (town, npc) {
   // eslint-disable-next-line no-unused-vars
-  const profession = setup.findProfession(town, npc)
+  const profession = findProfession(town, npc)
   setup.livingStandards = [
-    [1000, 'aristocratic'],
-    [400, 'wealthy'],
-    [200, 'comfortable'],
-    [100, 'modest'],
-    [20, 'poor'],
-    [10, 'squalid'],
-    [0, 'wretched']
+    [1000, `aristocratic`],
+    [400, `wealthy`],
+    [200, `comfortable`],
+    [100, `modest`],
+    [20, `poor`],
+    [10, `squalid`],
+    [0, `wretched`]
   ]
 
   npc.finances.wageVariation = (dice(10, 10) - 55)
   const wageVarianceNotes = [
-    [-25, 'unbelievably unsuccessful as a ' + npc.profession],
-    [-12, 'unsuccessful as a ' + npc.profession],
-    [-5, 'somewhat unsuccessful as a ' + npc.profession],
-    [0, ''],
-    [5, 'mildly successful as a ' + npc.profession],
-    [12, 'successful as a ' + npc.profession],
-    [25, 'extremely successful as a ' + npc.profession]
+    [-25, `unbelievably unsuccessful as a ${npc.profession}`],
+    [-12, `unsuccessful as a ${npc.profession}`],
+    [-5, `somewhat unsuccessful as a ${npc.profession}`],
+    [0, ``],
+    [5, `mildly successful as a ${npc.profession}`],
+    [12, `successful as a ${npc.profession}`],
+    [25, `extremely successful as a ${npc.profession}`]
   ]
   const note = wageVarianceNotes.find(function (desc) {
     return desc[0] <= npc.finances.wageVariation

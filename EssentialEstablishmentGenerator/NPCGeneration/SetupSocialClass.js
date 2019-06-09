@@ -1,3 +1,4 @@
+import { findProfession } from "../Tools/findProfession"
 
 setup.socialClasses = [
   [195, `aristocracy`, 5],
@@ -27,7 +28,7 @@ setup.createSocialClass = function (town, npc) {
   if (!npc.roll) {
     npc.roll = {}
   }
-  const profession = setup.findProfession(town, npc)
+  const profession = findProfession(town, npc)
 
   npc.roll.socialClass = npc.roll.socialClass || profession.socialClassRoll || 40 + dice(8, 6)
 
