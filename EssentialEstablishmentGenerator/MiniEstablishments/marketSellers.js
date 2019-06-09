@@ -1,26 +1,24 @@
-import { createNPC } from "../NPCGeneration/SetupNPC"
-import { marketData } from "./marketData"
-
-export function createMarketSellers (town, obj, opts = {}, number) {
+setup.createMarketSellers = function (town, obj, opts, number) {
+  opts = opts || {}
   let i
   for (i = 0; i < number; i++) {
-    const npc = createNPC(town, Object.assign({
-      profession: `merchant`,
+    const npc = setup.createNPC(town, Object.assign({
+      profession: 'merchant',
       merchant: {
         selling: [
-          `selling ${marketData.vendors.selling.seededrandom()}`,
-          `${[
-            `shouting out `,
-            `calling `,
-            `calling to any who would listen: `,
-            `hawking goods, saying `,
-            `shouting `,
-            `beckoning `,
-            `saying loudly `
-          ].seededrandom()}"${
-            marketData.vendors.shouts.seededrandom()} ${marketData.vendors.suffix.seededrandom()}"`
+          'selling ' + setup.market.vendors.selling.seededrandom(),
+          [
+            'shouting out ',
+            'calling ',
+            'calling to any who would listen: ',
+            'hawking goods, saying ',
+            'shouting ',
+            'beckoning ',
+            'saying loudly '
+          ].seededrandom() + '"' +
+            setup.market.vendors.shouts.seededrandom() + ' ' + setup.market.vendors.suffix.seededrandom() + '"'
         ].seededrandom(),
-        tent: marketData.vendors.tent.seededrandom()
+        tent: setup.market.vendors.tent.seededrandom()
       },
       hasClass: false,
       isThrowaway: true,
