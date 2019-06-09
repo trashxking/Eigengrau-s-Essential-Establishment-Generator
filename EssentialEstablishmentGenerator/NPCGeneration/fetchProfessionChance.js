@@ -1,4 +1,4 @@
-setup.fetchProfessionChance = function (town, npc) {
+export function fetchProfessionChance (town, npc) {
   console.log(`Fetching profession...`)
   town = town || State.variables.town
   const professions = Object.keys(town.professions)

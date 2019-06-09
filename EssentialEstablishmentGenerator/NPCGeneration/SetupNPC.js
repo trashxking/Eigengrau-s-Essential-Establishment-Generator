@@ -1,5 +1,6 @@
 import { misc } from "../World/miscData"
 import { npcData } from "./npcData"
+import { fetchProfessionChance } from "./fetchProfessionChance"
 
 /**
  * @typedef {object} NPCBase
@@ -56,7 +57,7 @@ export function createNPC (town, base) {
   const gender = base.gender || [`man`, `woman`].seededrandom()
   const race = base.race || setup.fetchRace(town)
   console.log(`Loading profession:`)
-  const profession = base.profession || setup.fetchProfessionChance(town, base)
+  const profession = base.profession || fetchProfessionChance(town, base)
 
   const firstName = base.firstName || data.raceTraits[race].genderTraits[gender].firstName.seededrandom().toUpperFirst()
   const lastName = base.lastName || data.raceTraits[race].lastName.seededrandom().toUpperFirst()
