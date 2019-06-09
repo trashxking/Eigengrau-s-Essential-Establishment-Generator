@@ -1,4 +1,4 @@
-import { pragma, image, replace, button, listBox, link, tip, fancyFirstLetter } from '../../src/engine/html'
+import { pragma, image, replace, button, listBox, link, tip } from '../../src/engine/html'
 import { get, set } from '../../src/engine/story'
 import { createNewBuilding } from '../Town/js/createNewBuilding'
 import { CreateScenario } from '../World/CreateScenario'
@@ -16,7 +16,6 @@ set(`$versionNumber`, `0.0.0`)
 export function Start () {
   const $town = get(`$town`)
   const $newBuilding = get(`$newBuilding`)
-  const $versionNumber = get(`$versionNumber`)
 
   const createBuilding = () => {
     console.log(`Creating a new ${$newBuilding}`)
@@ -37,8 +36,6 @@ export function Start () {
 
   return pragma`\
 ${image(banner)}
-
-${fancyFirstLetter(`Welcome to Eigengrau's Essential Establishment Generator, v${$versionNumber}! This is still in active development.`)}
 
 <h3>Quick scenario generator</h3>
 ${CreateScenario()}

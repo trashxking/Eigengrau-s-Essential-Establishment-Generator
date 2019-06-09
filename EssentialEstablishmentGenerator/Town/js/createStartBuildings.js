@@ -1,38 +1,22 @@
-import { createTownSquare } from '../../MiniEstablishments/createTownSquare'
-import { createTavern } from '../../Tavern/JS/createTavern'
-import { createAlchemist } from '../../Alchemist/js/createAlchemist'
-import { createGeneralStore } from '../../GeneralStore/JS/createGeneralStore'
-import { createSmithy } from '../../Blacksmith/JS/createSmithy'
-import { createMarket } from '../../MiniEstablishments/createMarket'
-import { createTemple } from '../../MiniEstablishments/CreateTemple'
-import { createDocks } from '../../Docks/createDocks'
-import { createBrothel } from '../../MiniEstablishments/createBrothel'
 import { goodsAndServices } from '../../Buildings/goodsAndServices'
 
 export function createStartBuildings (town) {
-  const buildingTypes = {
-    townSquare: createTownSquare,
-    tavern: createTavern,
-    alchemist: createAlchemist,
-    GeneralStore: createGeneralStore,
-    smithy: createSmithy,
-    market: createMarket,
-    temple: createTemple,
-    docks: createDocks
-  }
+  const buildingType = [`townSquare`, `tavern`, `alchemist`, `GeneralStore`, `smithy`, `market`, `temple`]
 
+  if (town.location === `seashore` || town.location === `river coast`) {
+    buildingType.push(`docks`)
+  }
   if (town.hasBrothel) {
-    buildingTypes.brothel = createBrothel
+    buildingType.push(`brothel`)
   }
 
-  for (const [type, createBuilding] of Object.entries(buildingTypes)) {
+  buildingType.forEach(function (type) {
     if (!town.buildings[type]) {
       town.buildings[type] = {}
     }
-    console.log(type)
-    const building = createBuilding(town)
+    const building = setup[`create${type.toUpperFirst()}`](town)
     town.buildings[type][building.key] = building
-  }
+  })
 
   if (town.population > 100 || town.roll.wealth > 40) {
     const bakery = goodsAndServices.default.create(town, `bakery`)
