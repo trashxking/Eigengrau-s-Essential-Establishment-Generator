@@ -1,6 +1,6 @@
 import { npcData } from "./npcData"
 
-setup.createSexuality = function (npc) {
+export function createSexuality (npc) {
   // this is just one person's efforts to increase diversity and make an attempt at relatively realistic sexuality modeling
   // I cannot guarantee exact representation, and make no promises for such a thing- this is, at the end of the day, meant to be a tool for DMs.
   // I would, however, be very open to feedback and ways that I could improve the system.

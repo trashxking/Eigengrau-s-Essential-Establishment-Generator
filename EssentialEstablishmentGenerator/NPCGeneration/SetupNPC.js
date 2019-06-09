@@ -2,6 +2,7 @@ import { misc } from "../World/miscData"
 import { npcData } from "./npcData"
 import { fetchProfessionChance } from "./fetchProfessionChance"
 import { createSocialClass } from "./SetupSocialClass"
+import { createSexuality } from "./SetupSexuality"
 
 /**
  * @typedef {object} NPCBase
@@ -245,7 +246,7 @@ export function createNPC (town, base) {
     return `<<profile \`$npcs[${JSON.stringify(npc.key)}] \`${JSON.stringify(base)}>>`
   }
 
-  setup.createSexuality(npc)
+  createSexuality(npc)
   createSocialClass(town, npc)
   setup.createLivingStandards(town, npc)
 
