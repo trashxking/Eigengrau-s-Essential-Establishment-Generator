@@ -1,5 +1,4 @@
 import { get, set } from '../../../src/engine/story'
-import { randomRange } from '../../../src/engine/rolls'
 
 export function TownWeather () {
   const $town = get(`$town`)
@@ -130,11 +129,11 @@ export function TownWeather () {
    */
 
   if ([`seacoast`, `volcanic field`, `ice sheet`].includes($town.location)) {
-    set(`$weather.temperature`, temperature + randomRange(8, 12))
+    set(`$weather.temperature`, temperature + random(8, 12))
   }
 
   if ([`hills`, `mountains`].includes($town.location)) {
-    set(`$weather.temperature`, temperature - randomRange(8, 12))
+    set(`$weather.temperature`, temperature - random(8, 12))
     set(`$weather.precipitationLevel`, precipitationLevel - 1)
   }
 
