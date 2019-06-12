@@ -61,7 +61,9 @@ export const listBox = (options, onChange, selected) => () => {
     onChange(event.target.value)
   }, [])
 
-  React.useEffect(() => onChange(defaultValue), [defaultValue])
+  React.useEffect(() => {
+    onChange(defaultValue)
+  }, [defaultValue])
 
   return (
     <select onChange={handleChange} defaultValue={selected}>
