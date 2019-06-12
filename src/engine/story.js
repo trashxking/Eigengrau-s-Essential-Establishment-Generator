@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * Holds the story state.
  * @type {Record<string, any>}
@@ -7,7 +9,6 @@ const story = {}
 /**
  * Gets a value from the story.
  * @param {string} name
- * @returns {*}
  */
 export function get (name) {
   let object = story
@@ -28,8 +29,9 @@ export function get (name) {
 
 /**
  * Stores a value in the story.
+ * @template TValue
  * @param {string} name
- * @param {any} value
+ * @param {TValue} value
  */
 export function set (name, value) {
   const paths = name.split(`.`)
