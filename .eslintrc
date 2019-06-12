@@ -13,7 +13,9 @@
     "randomFloat": true,
     "clone": true,
     "Util": true,
-    "settings": true
+    "settings": true,
+    "tippy": true,
+    "$": true
   },
   "rules": {
     "no-var": "warn",

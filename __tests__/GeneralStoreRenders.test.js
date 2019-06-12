@@ -20,11 +20,11 @@ test(`Testing general store rendering...`, () => {
       activity: 50,
       warmth: 65.5
     },
-    size: `slightly cramped`,
-    warmth: `uncomfortably warm`,
-    cleanliness: `somewhat messy`,
-    expertise: `well-crafted`,
-    activity: `not terribly busy`
+    size: 'slightly cramped',
+    warmth: 'uncomfortably warm',
+    cleanliness: 'somewhat messy',
+    expertise: 'well-crafted',
+    activity: 'not terribly busy'
   }
   expect(GeneralStoreRenders(store)).toEqual(expected) // use toEqual to test object value equality
 })

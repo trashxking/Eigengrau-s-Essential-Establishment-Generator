@@ -23,16 +23,10 @@ export function Start () {
     replace(`#buildings`, BuildingsList)
   }
 
-  const newBuildingsOptions = {
-    tavern: `Tavern`,
-    alchemist: `Alchemist`,
-    GeneralStore: `General Store`,
-    smithy: `Blacksmith`,
-    market: `Market`,
-    temple: `Temple`,
-    brothel: `Brothel`,
-    docks: `Docks`
-  }
+  const newBuildingsOptions = Object.keys(setup.buildingTypes).reduce((options, type) => {
+    options[type] = type
+    return options
+  }, {})
 
   return pragma`\
 ${image(banner)}

@@ -17,15 +17,14 @@ setup.renderWeather = function (town, biome, weather) {
 
   const tempVariationKeys = Object.keys(setup.townData.terrain[biome].weather.tempVariation).reverse()
   const intKeys = []
-  let finalKey
 
   // interpret the key for each tempVariation object as an integer
-  tempVariationKeys.forEach(function (key) {
+  for (const key of tempVariationKeys) {
     intKeys.push(parseInt(key))
-  })
+  }
 
   // find one that's equal or lesser than tempVariationRoll to use as the final key
-  finalKey = intKeys.find(function (key) {
+  const finalKey = intKeys.find(function (key) {
     if (tempVariationRoll >= key) {
       console.log({ key })
       return key
