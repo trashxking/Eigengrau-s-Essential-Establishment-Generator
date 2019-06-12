@@ -1,5 +1,5 @@
 import { set, get } from '../../src/engine/story'
-import { pragma, link } from '../../src/engine/html'
+import { pragma, link, tip } from '../../src/engine/html'
 import { slugify } from '../../src/engine/utils'
 
 export function BuildingsList () {
@@ -33,11 +33,7 @@ export function BuildingsList () {
         }
       }
 
-      result.push(pragma`\
-        <span id="${building.tooltip}" class="tip">
-          ${link(building.name, setSelected)}
-        </span>
-      `)
+      result.push(pragma`${tip(building.tippyDescription, link(building.name, setSelected))}`)
 
       setup.buildingTooltip(building.tooltip, building)
       setup.tippy(`.btn`)
