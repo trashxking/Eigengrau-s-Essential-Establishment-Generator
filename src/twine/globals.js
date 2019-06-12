@@ -1,3 +1,5 @@
+import { clone } from '../engine/utils'
+
 window.setup = {}
 
 window.version = {
@@ -30,3 +32,5 @@ window.State = {
     buildings: []
   }
 }
+
+window.clone = clone
