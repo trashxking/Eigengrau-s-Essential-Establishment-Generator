@@ -73,6 +73,7 @@ export const listBox = (options, onChange, selected) => () => {
     </select>
   )
 }
+
 /**
  * Creates a placeholder, which is meant to be replaced.
  *
@@ -129,6 +130,14 @@ export const linkAppend = (title, callback) => () => {
 export const replace = (selector, callback) => () => {
   const element = document.querySelector(selector)
   const content = getContent(callback)
+
+  React.useEffect(() => {
+    if (element) {
+      while (element.hasChildNodes()) {
+        element.removeChild(element.lastChild)
+      }
+    }
+  }, [element])
 
   if (element) {
     return ReactDOM.createPortal(content, element)
