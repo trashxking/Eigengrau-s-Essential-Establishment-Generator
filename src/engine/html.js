@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { get } from './story'
 
 /**
  * Converts a template literal into a react node array.
@@ -10,7 +11,9 @@ import ReactDOM from 'react-dom'
  */
 export function pragma (strings, ...values) {
   return strings.reduce((children, string, i) => {
-    return [...children, string, getContent(values[i])]
+    string = string.replace(/\$[a-z.]+/ig, get)
+    children.push(string, getContent(values[i]))
+    return children
   }, [])
 }
 
