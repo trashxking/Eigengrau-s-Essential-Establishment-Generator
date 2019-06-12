@@ -33,6 +33,7 @@
   flex: 1;
   padding: 1.5em;
   overflow: auto;
+  background: url("../EssentialEstablishmentGenerator/Resources/backgroundpaper.webp");
 }
 
 .note {
