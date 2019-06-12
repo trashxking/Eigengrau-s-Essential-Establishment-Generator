@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Tippy from '@tippy.js/react'
+
 import { get } from './story'
 
 /**
@@ -167,14 +169,23 @@ export const note = callback => () => (
 
 /**
  * Displays a tooltip.
- * @param {string} title
+ * @param {Content} title
  * @param {Content} callback
  */
-export const tip = (title, callback) => () => (
-  <span className="tip" title={title}>
-    {getContent(callback)}
-  </span>
-)
+export const tip = (title, callback) => () => {
+  const tooltip = getContent(title)
+  const content = getContent(callback)
+
+  if (!tooltip) {
+    return content
+  }
+
+  return (
+    <Tippy content={tooltip}>
+      {content}
+    </Tippy>
+  )
+}
 
 /**
  * Makes the first latter in a string into a fansy schmancy letter.
