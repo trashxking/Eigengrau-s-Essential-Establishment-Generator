@@ -36,7 +36,6 @@ export function BuildingsList () {
       result.push(pragma`${tip(building.tippyDescription, link(building.name, setSelected))}`)
 
       setup.buildingTooltip(building.tooltip, building)
-      setup.tippy(`.btn`)
 
       previousBuilding = building
     }
