@@ -1,5 +1,5 @@
 /**
- * Stores the story state.
+ * Holds the story state.
  * @type {Record<string, any>}
  */
 const story = {}
@@ -47,6 +47,7 @@ export function set (name, value) {
 
   const path = paths[paths.length - 1]
   object[path] = value
+
   return value
 }
 
