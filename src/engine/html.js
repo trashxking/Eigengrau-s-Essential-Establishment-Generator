@@ -13,11 +13,12 @@ import { get } from './story'
  * @return {React.ReactNodeArray}
  */
 export function pragma (strings, ...values) {
-  return strings.reduce((children, string, i) => {
-    string = string.replace(/\$[a-z.]+/ig, get)
-    children.push(string, getContent(values[i]))
-    return children
-  }, [])
+  return strings.map((string, i) => (
+    <React.Fragment key={i}>
+      {string.replace(/\$[a-z.]+/ig, get)}
+      {getContent(values[i])}
+    </React.Fragment>
+  ))
 }
 
 /**
