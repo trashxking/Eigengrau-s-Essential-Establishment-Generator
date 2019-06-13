@@ -30,15 +30,23 @@ export function pragma (strings, ...values) {
  * @param {string} url
  * @param {string} [alt]
  */
-export const image = (url, alt) => () => (
-  <img src={url} alt={alt} />
-)
+export const image = (url, alt) => {
+  return Image({ url, alt })
+}
+
+function Image ({ url, alt }) {
+  return <img src={url} alt={alt} />
+}
 
 /**
  * @param {React.ReactNode} title
  * @param {() => void} callback
  */
-export const button = (title, callback) => () => {
+export const button = (title, callback) => {
+  return Button({ title, callback })
+}
+
+function Button ({ title, callback }) {
   const [content, updateContent] = useContentUpdate(callback)
 
   return (
@@ -56,17 +64,21 @@ export const button = (title, callback) => () => {
  * @param {(value: string) => void} onChange
  * @param {string} [selected] - The default selection
  */
-export const listBox = (options, onChange, selected) => () => {
+export function listBox (options, onChange, selected) {
+  return ListBox({ options, onChange, selected })
+}
+
+function ListBox ({ options, onChange, selected }) {
   const entries = Object.entries(options)
   const defaultValue = selected || entries[0][0]
 
-  const handleChange = React.useCallback(event => {
+  const handleChange = event => {
     onChange(event.target.value)
-  }, [])
+  }
 
   React.useEffect(() => {
     onChange(defaultValue)
-  }, [defaultValue])
+  }, [defaultValue, onChange])
 
   return (
     <select onChange={handleChange} defaultValue={selected}>
@@ -83,9 +95,13 @@ export const listBox = (options, onChange, selected) => () => {
  * @param {string} id
  * @param {Content} callback
  */
-export const replaceable = (id, callback = null) => () => (
-  <div id={id}>{getContent(callback)}</div>
-)
+export function replaceable (id, callback) {
+  return Replaceable({ id, callback })
+}
+
+function Replaceable ({ id, callback }) {
+  return <div id={id}>{getContent(callback)}</div>
+}
 
 /**
  * Creates a link, which leads to a new page that displays the provided content.
@@ -97,7 +113,11 @@ export const replaceable = (id, callback = null) => () => (
  * @param {React.ReactNode} title
  * @param {Content} callback
  */
-export const link = (title, callback) => () => {
+export function link (title, callback) {
+  return Link({ title, callback })
+}
+
+function Link ({ title, callback }) {
   // eslint-disable-next-line no-unused-vars
   const [content, updateContent] = useContentUpdate(callback)
   return <button onClick={updateContent}>{title}</button>
@@ -110,7 +130,11 @@ export const link = (title, callback) => () => {
  * @param {React.ReactNode} title
  * @param {Content} callback
  */
-export const linkAppend = (title, callback) => () => {
+export function linkAppend (title, callback) {
+  return LinkAppend({ title, callback })
+}
+
+function LinkAppend ({ title, callback }) {
   const [content, updateContent] = useContentUpdate(callback)
 
   return (
@@ -130,7 +154,11 @@ export const linkAppend = (title, callback) => () => {
  * @param {string} selector
  * @param {Content} callback
  */
-export const replace = (selector, callback) => () => {
+export function replace (selector, callback) {
+  return Replace({ selector, callback })
+}
+
+function Replace ({ selector, callback }) {
   const element = document.querySelector(selector)
   const content = getContent(callback)
 
@@ -153,7 +181,11 @@ export const replace = (selector, callback) => () => {
  * @param {React.ReactNode} title
  * @param {Content} callback
  */
-export const linkReplace = (title, callback) => () => {
+export function linkReplace (title, callback) {
+  return LinkReplace({ title, callback })
+}
+
+function LinkReplace ({ title, callback }) {
   const [content, updateContent] = useContentUpdate(callback)
   return content || <button onClick={updateContent}>{title}</button>
 }
@@ -162,23 +194,33 @@ export const linkReplace = (title, callback) => () => {
  * Displays a note block.
  * @param {Content} callback
  */
-export const note = callback => () => (
-  <blockquote className="note">
-    {getContent(callback)}
-  </blockquote>
-)
+export function note (callback) {
+  return Note({ callback })
+}
+
+function Note ({ callback }) {
+  return (
+    <blockquote className="note">
+      {getContent(callback)}
+    </blockquote>
+  )
+}
 
 /**
  * Displays a tooltip.
  * @param {Content} title
  * @param {Content} callback
  */
-export const tip = (title, callback) => () => {
+export function tip (title, callback) {
+  return Tip({ title, callback })
+}
+
+const Tip = ({ title, callback }) => {
   const tooltip = getContent(title)
   const content = getContent(callback)
 
   if (!tooltip) {
-    return content
+    return <React.Fragment>{content}</React.Fragment>
   }
 
   // @ts-ignore
@@ -189,12 +231,18 @@ export const tip = (title, callback) => () => {
  * Makes the first latter in a string into a fansy schmancy letter.
  * @param {string} content
  */
-export const fancyFirstLetter = (content) => () => (
-  <React.Fragment>
-    <span className="firstcharacter">{content.substring(0, 1)}</span>
-    {content.substring(1)}
-  </React.Fragment>
-)
+export function fancyFirstLetter (content) {
+  return FancyFirstLetter({ content })
+}
+
+function FancyFirstLetter ({ content }) {
+  return (
+    <React.Fragment>
+      <span className="firstcharacter">{content.substring(0, 1)}</span>
+      {content.substring(1)}
+    </React.Fragment>
+  )
+}
 
 // Utility Functions
 
