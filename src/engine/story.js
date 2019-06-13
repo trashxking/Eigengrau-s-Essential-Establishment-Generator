@@ -9,6 +9,7 @@ const story = {}
 /**
  * Gets a value from the story.
  * @param {string} name
+ * @returns {any}
  */
 export function get (name) {
   let object = story

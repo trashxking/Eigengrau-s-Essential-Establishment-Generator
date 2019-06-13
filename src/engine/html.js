@@ -1,3 +1,4 @@
+// @ts-check
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Tippy from '@tippy.js/react'
@@ -180,11 +181,8 @@ export const tip = (title, callback) => () => {
     return content
   }
 
-  return (
-    <Tippy content={tooltip}>
-      {content}
-    </Tippy>
-  )
+  // @ts-ignore
+  return <Tippy content={tooltip}>{content}</Tippy>
 }
 
 /**
