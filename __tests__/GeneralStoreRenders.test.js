@@ -1,7 +1,7 @@
 // Attaches itself to the *global* node object.
 global.setup = {}
 global.random = (min, max) => { return (min + max) / 2 } // mock random global func to be deterministic
-const { GeneralStoreRenders } = require(`../EssentialEstablishmentGenerator/GeneralStore/JS/GeneralStoreRenders`)
+require('../EssentialEstablishmentGenerator/GeneralStore/JS/GeneralStoreRenders')
 
 const store = {
   roll: {
@@ -26,5 +26,5 @@ test(`Testing general store rendering...`, () => {
     expertise: 'well-crafted',
     activity: 'not terribly busy'
   }
-  expect(GeneralStoreRenders(store)).toEqual(expected) // use toEqual to test object value equality
+  expect(setup.generalStoreRenders(store)).toEqual(expected) // use toEqual to test object value equality
 })

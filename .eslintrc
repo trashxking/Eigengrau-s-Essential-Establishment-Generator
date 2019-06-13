@@ -21,6 +21,9 @@
     "no-var": "warn",
     "prefer-const": "warn",
     "object-shorthand": ["warn", "always"],
-    "quote-props": ["warn", "consistent-as-needed"]
+    "quote-props": ["warn", "consistent-as-needed"],
+
+    "default-case": "off",
+    "no-useless-concat": "off"
   }
 }
