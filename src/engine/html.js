@@ -30,7 +30,7 @@ export function pragma (strings, ...values) {
  * @param {string} url
  * @param {string} [alt]
  */
-export const image = (url, alt) => {
+export function image (url, alt) {
   return Image({ url, alt })
 }
 
@@ -42,7 +42,7 @@ function Image ({ url, alt }) {
  * @param {React.ReactNode} title
  * @param {() => void} callback
  */
-export const button = (title, callback) => {
+export function button (title, callback) {
   return Button({ title, callback })
 }
 
