@@ -4,7 +4,7 @@ import banner from '../Resources/banner.svg'
 
 import { CreateScenario } from '../World/CreateScenario'
 import { Popup } from './Popup'
-import { BuildingsList } from './buildingsList'
+import { BuildingsList } from './BuildingsList'
 
 const TownOutput = () => {}
 const goTo = (...args) => {}
