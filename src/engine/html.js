@@ -271,6 +271,5 @@ function useContentUpdate (callback) {
  * @returns {React.ReactNode}
  */
 function getContent (callback) {
-  console.log(typeof callback === `function` ? callback() : callback)
   return typeof callback === `function` ? callback() : callback
 }
