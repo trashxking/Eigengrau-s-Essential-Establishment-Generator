@@ -1,13 +1,14 @@
 
 setup.goodsAndServices = {
   default: {
-    create (town, type, opts) {
+    // this function is curried to be compatible with the buildingTypes array
+    create: (type) => (town, opts) => {
       // this is the template for the creation of generic buildings; i.e. those that are present in this list.
       // It is *not* for taverns, town squares, castles, or anything large scale.
       // this is why it is distinct from the setup.createBuilding() function; everything needs setup.createBuilding, not everything needs setup.goodsAndServices.default.create()
       console.groupCollapsed('setup.goodsAndServices.default.create()ing a ' + type)
       opts = opts || {}
-      const building = {
+      let building = {
         type,
         buildingType: type,
         passageName: 'GenericPassage',
@@ -16,8 +17,15 @@ setup.goodsAndServices = {
       Object.assign(building, (opts['newBuilding'] || setup.createBuilding)(town, building.type))
       building.wordNoun = (building.wordNoun || opts['wordNoun'] || setup.goodsAndServices[building.type].name.wordNoun.seededrandom() || 'building')
       building.PassageFormat = (building.PassageFormat || opts['PassageFormat'] || setup.goodsAndServices[building.type].PassageFormat)
-      setup.goodsAndServices[building.type].create(town, building, opts)
-      setup.structure.create(town, building)
+      setup.goodsAndServices[type].create(town, building, opts)
+      building = setup.structure.create(town, building)
+
+      if (type) {
+        if (!town.buildings[type]) {
+          town.buildings[type] = {}
+        }
+        town.buildings[type][building.key] = building
+      }
 
       console.groupEnd()
       return building
