@@ -221,7 +221,7 @@ export function tip (title, callback) {
   return <Tip {...{ title, callback }} />
 }
 
-const Tip = ({ title, callback }) => {
+function Tip ({ title, callback }) {
   const tooltip = getContent(title)
   const content = getContent(callback)
 
