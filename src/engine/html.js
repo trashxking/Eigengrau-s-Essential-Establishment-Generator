@@ -163,14 +163,6 @@ function Replace ({ selector, callback }) {
   const element = document.querySelector(selector)
   const content = getContent(callback)
 
-  React.useEffect(() => {
-    if (element) {
-      while (element.hasChildNodes()) {
-        element.removeChild(element.lastChild)
-      }
-    }
-  }, [element])
-
   if (element) {
     return ReactDOM.createPortal(content, element)
   }
