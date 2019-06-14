@@ -230,7 +230,7 @@ function Tip ({ title, callback }) {
   }
 
   // @ts-ignore
-  return <Tippy content={tooltip}>{content}</Tippy>
+  return <Tippy content={tooltip}><span>{content}</span></Tippy>
 }
 
 /**
