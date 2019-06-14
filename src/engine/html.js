@@ -32,7 +32,7 @@ export function pragma (strings, ...values) {
  * @param {string} [alt]
  */
 export function image (url, alt) {
-  return Image({ url, alt })
+  return <Image {...{ url, alt }} />
 }
 
 function Image ({ url, alt }) {
@@ -44,7 +44,7 @@ function Image ({ url, alt }) {
  * @param {() => void} callback
  */
 export function button (title, callback) {
-  return Button({ title, callback })
+  return <Button {...{ title, callback }} />
 }
 
 function Button ({ title, callback }) {
@@ -66,7 +66,7 @@ function Button ({ title, callback }) {
  * @param {string} [selected] - The default selection
  */
 export function listBox (options, onChange, selected) {
-  return ListBox({ options, onChange, selected })
+  return <ListBox {...{ options, onChange, selected }} />
 }
 
 function ListBox ({ options, onChange, selected }) {
@@ -97,7 +97,7 @@ function ListBox ({ options, onChange, selected }) {
  * @param {Content} callback
  */
 export function replaceable (id, callback) {
-  return Replaceable({ id, callback })
+  return <Replaceable {...{ id, callback }} />
 }
 
 function Replaceable ({ id, callback }) {
@@ -115,7 +115,7 @@ function Replaceable ({ id, callback }) {
  * @param {Content} callback
  */
 export function link (title, callback) {
-  return Link({ title, callback })
+  return <Link {...{ title, callback }} />
 }
 
 function Link ({ title, callback }) {
@@ -132,7 +132,7 @@ function Link ({ title, callback }) {
  * @param {Content} callback
  */
 export function linkAppend (title, callback) {
-  return LinkAppend({ title, callback })
+  return <LinkAppend {...{ title, callback }} />
 }
 
 function LinkAppend ({ title, callback }) {
@@ -156,7 +156,7 @@ function LinkAppend ({ title, callback }) {
  * @param {Content} callback
  */
 export function replace (selector, callback) {
-  return Replace({ selector, callback })
+  return <Replace {...{ selector, callback }} />
 }
 
 function Replace ({ selector, callback }) {
@@ -183,12 +183,17 @@ function Replace ({ selector, callback }) {
  * @param {Content} callback
  */
 export function linkReplace (title, callback) {
-  return LinkReplace({ title, callback })
+  return <LinkReplace {...{ title, callback }} />
 }
 
 function LinkReplace ({ title, callback }) {
   const [content, updateContent] = useContentUpdate(callback)
-  return content || <button onClick={updateContent}>{title}</button>
+
+  if (content != null) {
+    return <React.Fragment>{content}</React.Fragment>
+  }
+
+  return <button onClick={updateContent}>{title}</button>
 }
 
 /**
@@ -196,7 +201,7 @@ function LinkReplace ({ title, callback }) {
  * @param {Content} callback
  */
 export function note (callback) {
-  return Note({ callback })
+  return <Note {...{ callback }} />
 }
 
 function Note ({ callback }) {
@@ -213,7 +218,7 @@ function Note ({ callback }) {
  * @param {Content} callback
  */
 export function tip (title, callback) {
-  return Tip({ title, callback })
+  return <Tip {...{ title, callback }} />
 }
 
 const Tip = ({ title, callback }) => {
@@ -233,7 +238,7 @@ const Tip = ({ title, callback }) => {
  * @param {string} content
  */
 export function fancyFirstLetter (content) {
-  return FancyFirstLetter({ content })
+  return <FancyFirstLetter {...{ content }} />
 }
 
 function FancyFirstLetter ({ content }) {
@@ -266,5 +271,6 @@ function useContentUpdate (callback) {
  * @returns {React.ReactNode}
  */
 function getContent (callback) {
+  console.log(typeof callback === `function` ? callback() : callback)
   return typeof callback === `function` ? callback() : callback
 }
