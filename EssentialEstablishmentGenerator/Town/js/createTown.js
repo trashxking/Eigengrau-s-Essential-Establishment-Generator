@@ -13,7 +13,7 @@ setup.createTown = function (base) {
     taxes: {
       base: 7,
       welfare: 1,
-      guard: 1,
+      military: 1,
       tithe: 1
     },
     taxRate (town) {
@@ -28,7 +28,7 @@ setup.createTown = function (base) {
           console.log('non-integer tax! ' + town.taxes[tax])
         }
       })
-      return totalTax
+      return Math.round(totalTax * 100) / 100
     },
     get type () {
       console.log('Getting town type.')
@@ -160,6 +160,7 @@ setup.createTown = function (base) {
     roll: {
       wealth: random(1, 100),
       reputation: random(1, 100),
+      religiosity: random(1, 100),
       sin: random(1, 100),
       diversity: random(1, 100),
       magic: random(1, 100),
