@@ -121,10 +121,8 @@ export function link (title, callback) {
 function Link ({ title, callback }) {
   // eslint-disable-next-line no-unused-vars
   const [content, updateContent] = useContentUpdate(callback)
-  return <React.Fragment>
-    <button onClick={updateContent}>{title}</button>
-    {content}
-  </React.Fragment>
+  console.log(content)
+  return <button onClick={updateContent}>{title}</button>
 }
 
 /**
