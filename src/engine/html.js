@@ -242,6 +242,18 @@ function FancyFirstLetter ({ content }) {
   )
 }
 
+/**
+ * Displays an error message.
+ * @param {Error} error
+ */
+export function errorMessage (error) {
+  return <ErrorMessage {...{ error }} />
+}
+
+function ErrorMessage ({ error }) {
+  return <span className={'error'}>{error.message}</span>
+}
+
 // Utility Functions
 
 /**
@@ -263,5 +275,9 @@ function useContentUpdate (callback) {
  * @returns {React.ReactNode}
  */
 function getContent (callback) {
-  return typeof callback === `function` ? callback() : callback
+  try {
+    return typeof callback === `function` ? callback() : callback
+  } catch (error) {
+    return errorMessage(error)
+  }
 }

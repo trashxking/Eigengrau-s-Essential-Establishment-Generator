@@ -48,3 +48,12 @@
   border-image-outset: 9px 0;
   box-shadow: 1px 4px 14px #888;
 }
+
+.error {
+    background-color: #eaa;
+    border-left-color: #d77;
+    border-left: 0.5em solid #c22;
+    display: inline-block;
+    margin: 0.1em;
+    padding: 0 0.25em;
+}
