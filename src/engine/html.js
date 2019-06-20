@@ -121,7 +121,10 @@ export function link (title, callback) {
 function Link ({ title, callback }) {
   // eslint-disable-next-line no-unused-vars
   const [content, updateContent] = useContentUpdate(callback)
-  return <button onClick={updateContent}>{title}</button>
+  return <React.Fragment>
+    <button onClick={updateContent}>{title}</button>
+    {content}
+  </React.Fragment>
 }
 
 /**
@@ -251,7 +254,12 @@ export function errorMessage (error) {
 }
 
 function ErrorMessage ({ error }) {
-  return <span className={'error'}>{error.message}</span>
+  return (
+    <span className={'error'}>
+      <span>{error.name}</span>
+      <span>{error.message}</span>
+    </span>
+  )
 }
 
 // Utility Functions
@@ -278,6 +286,7 @@ function getContent (callback) {
   try {
     return typeof callback === `function` ? callback() : callback
   } catch (error) {
+    console.error(error)
     return errorMessage(error)
   }
 }
