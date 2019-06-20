@@ -52,12 +52,12 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@craco/craco": "^5.2.1",
+    "@craco/craco": "^5.2.3",
     "@dvhb/craco-extend-scope": "^1.0.1",
     "craco-plugin-react-hot-reload": "^0.0.3",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-jest": "^22.7.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
