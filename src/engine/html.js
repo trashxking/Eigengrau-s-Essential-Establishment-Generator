@@ -91,20 +91,6 @@ function ListBox ({ options, onChange, selected }) {
 }
 
 /**
- * Creates a placeholder, which is meant to be replaced.
- *
- * @param {string} id
- * @param {Content} callback
- */
-export function replaceable (id, callback) {
-  return <Replaceable {...{ id, callback }} />
-}
-
-function Replaceable ({ id, callback }) {
-  return <div id={id}>{getContent(callback)}</div>
-}
-
-/**
  * Creates a link, which leads to a new page that displays the provided content.
  * Or alteratively, executed the content as a callback and goes to a new page
  * to display the result.
@@ -144,6 +130,20 @@ function LinkAppend ({ title, callback }) {
       {content}
     </React.Fragment>
   )
+}
+
+/**
+ * Creates a placeholder, which is meant to be replaced.
+ *
+ * @param {string} id
+ * @param {Content} callback
+ */
+export function replaceable (id, callback) {
+  return <Replaceable {...{ id, callback }} />
+}
+
+function Replaceable ({ id, callback }) {
+  return <div id={id}>{getContent(callback)}</div>
 }
 
 /**
