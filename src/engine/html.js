@@ -121,7 +121,6 @@ export function link (title, callback) {
 function Link ({ title, callback }) {
   // eslint-disable-next-line no-unused-vars
   const [content, updateContent] = useContentUpdate(callback)
-  console.log(content)
   return <button onClick={updateContent}>{title}</button>
 }
 
@@ -161,7 +160,7 @@ export function replace (selector, callback) {
 }
 
 function Replace ({ selector, callback }) {
-  const element = document.querySelector(selector)
+  const element = document.querySelector(`#${selector}`)
   const content = getContent(callback)
 
   if (element) {

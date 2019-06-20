@@ -1,4 +1,4 @@
-import { pragma, image, replace, button, listBox, link, tip } from '../../src/engine/html'
+import { pragma, image, replace, button, listBox, link, tip, replaceable } from '../../src/engine/html'
 import { get, set } from '../../src/engine/story'
 import banner from '../Resources/banner.svg'
 
@@ -14,13 +14,10 @@ set(`$newBuilding`, {})
 set(`$versionNumber`, `0.0.0`)
 
 export function Start () {
-  const $town = get(`$town`)
-  const $newBuilding = get(`$newBuilding`)
-
   const createBuilding = () => {
-    console.log(`Creating a new ${$newBuilding}`)
-    setup.createNewBuilding($town, $newBuilding)
-    replace(`#buildings`, BuildingsList)
+    console.log(`Creating a new ${get('$newBuilding')}`)
+    setup.createNewBuilding(get('$town'), get('$newBuilding'))
+    return replace('buildings', BuildingsList)
   }
 
   const newBuildingsOptions = Object.keys(setup.buildingTypes).reduce((options, type) => {
@@ -35,15 +32,15 @@ ${image(banner)}
 ${CreateScenario()}
 
 <h3>The $town.type of $town.name</h3>
-${tip(`Find the overview of the town and its sociopolitical structure here!`,
-    link(`Description of ${$town.name}`, () => {
-      set(`$currentPassage`, $town)
+${tip('Find the overview of the town and its sociopolitical structure here!',
+    link(`Description of ${get('$town').name}`, () => {
+      set(`$currentPassage`, get('$town'))
       goTo(TownOutput)
     })
   )}
 
-${listBox(newBuildingsOptions, value => set(`$newBuilding`, value))} -- ${button(`Create new building`, createBuilding)}
-<span id="buildings">${BuildingsList()}</span>
+${listBox(newBuildingsOptions, value => set('$newBuilding', value))} -- ${button('Create new building', createBuilding)}
+${replaceable('buildings', BuildingsList())}
 
 ${Popup()}`
 }
