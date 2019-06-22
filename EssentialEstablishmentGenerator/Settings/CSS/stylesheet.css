@@ -34,10 +34,15 @@ img, embed, object, video {
     min-width: auto;
 }
 
-.patreon {
+/*.patreon {
   padding: 1.5em;
   width: 95%;
+}*/
+.support {
+  width: 50%;
+  display: inline-block;
 }
+
 #passages button {
   border-radius: 4px;
 }
