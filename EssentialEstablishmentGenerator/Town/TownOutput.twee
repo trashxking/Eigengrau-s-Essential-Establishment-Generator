@@ -45,7 +45,9 @@ _listbox -- <<button "Create new faction">>
  /* - A _faction.size _faction.type _faction.wordNoun */
 <</capture>><</for>></table><</nobr>></div>
 
-<h3>List of NPCs</h3><<nobr>>
+<h3>List of NPCs</h3>
+
+<div class='classTable'><<nobr>>
 <table>
   <tr>
     <th>Name</th>
@@ -60,7 +62,7 @@ _listbox -- <<button "Create new faction">>
   <td><<link "x">><<set _deleted to $npcs[_npc.key]>><<run delete $npcs[_npc.key]>><<notify 5000>>Deleted _deleted.name<</notify>><<goto "TownOutput">><</link>></td>
   </tr>
   <</if>><</capture>><</for>>
-  </table><</nobr>>
+  </table><</nobr>></div>
 
   <<nobr>>
   /* <<set _throwaway>><<run for (var key in $npcs) {
@@ -68,7 +70,7 @@ _listbox -- <<button "Create new faction">>
       State.temporary.throwaway === true
     }
     }>><<if _throwaway !== true>><span class="tip" title="There are no more throwaway NPCs!"><h3>Throwaway NPCs</h3></span><<else>> */
-    <<linkappend "<h3>Throwaway NPCs</h3>">><<button "Wipe all throwaway NPCs">>
+    <<linkappend "<h3>Throwaway NPCs</h3>">><<button "Clear Throwaway NPCs">>
   <<run for (var key in $npcs) {
      if ($npcs.hasOwnProperty(key)) {
        if ($npcs[key].isThrowaway === true) {
@@ -77,7 +79,7 @@ _listbox -- <<button "Create new faction">>
      }
   }>>
   <<goto "TownOutput">><</button>>
-  <p><table>
+  <div class='classTable' style='margin-top: 2.5em;'><table>
     <tr>
       <th>Name</th>
       <th>Race</th>
@@ -92,9 +94,10 @@ _listbox -- <<button "Create new faction">>
     </tr>
     <</if>>
     <</capture>><</for>>
-    </table></p><</linkappend>><</nobr>>
+    </table></div><</linkappend>><</nobr>>
 
-<<linkappend "<h3>Racial demographics in $town.name</h3>">><div class='classTable'><<nobr>><table>
+<<linkappend "<h3>Racial demographics in $town.name</h3>">>
+<div class='classTable' style='margin-top: 2em;'><<nobr>><table>
     <tr>
         <th>Race</th>
         <th>Population</th>
@@ -112,6 +115,7 @@ _listbox -- <<button "Create new faction">>
 </table><</nobr>></div><</linkappend>>
 
 <<linkappend "<h3>Businesses in $town.name</h3>">>
+<div class='classTable' style='margin-top: 2em;'>
 <<nobr>>
 <table>
   <tr>
@@ -122,7 +126,7 @@ _listbox -- <<button "Create new faction">>
   <<for _name, _profession range $town.professions>>
   <tr><td><<print _profession.name>></td>
 <td>_profession.population</td></tr><</for>>
-</table><</nobr>>
+</table><</nobr>></div>
 <</linkappend>>
 
 <<back>>
