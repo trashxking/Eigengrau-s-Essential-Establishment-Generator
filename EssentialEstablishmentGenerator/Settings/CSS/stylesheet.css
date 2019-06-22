@@ -387,17 +387,20 @@ input#mce-EMAIL.required.email:hover {
 }
 
 #ui-bar {
-	background-color: #eee;
-  border-right-width: 10px;
-  border-right-color: #c9ad6a;
-  border-right-style: double;
+	background-color: #f9f8f4;
+  border: none;
 }
 #ui-bar hr {
 	border-color: #ccc;
 }
 #ui-bar-toggle{
   color: #111;
-	border-color: #ccc;
+  background-color: #f9f8f4;
+  border-color: #ccc;
+  border-right: solid 1px #ccc;
+  margin-right: -2em;
+  padding: 0.4em !important;
+  margin-top: 0;
 }
 #ui-bar-history [id|="history"] {
 	color: #111;
@@ -412,6 +415,21 @@ input#mce-EMAIL.required.email:hover {
 	color: #ccc;
 	background-color: transparent;
 	border-color: #ccc;
+}
+#ui-bar-body {
+  padding: 0 0.75em;
+}
+#ui-bar-toggle:before {
+  content: "⏴";
+}
+#ui-bar.stowed  #ui-bar-toggle:before {
+  content: "⏵";
+}
+#ui-bar.stowed {
+  left: -17.5em;
+}
+#ui-bar.stowed~#story {
+  margin-left: 2em;
 }
 #menu ul {
 	border-color: #ccc;
