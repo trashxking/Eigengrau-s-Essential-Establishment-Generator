@@ -28,10 +28,10 @@ export function Start () {
   return pragma`\
 ${image(banner)}
 
-<h3>Quick scenario generator</h3>
+<h3>Quick Scenario Generator</h3>
 ${CreateScenario()}
 
-<h3>The $town.type of $town.name</h3>
+<h3>The ${get('$town').type.toUpperFirst()} of $town.name</h3>
 ${tip('Find the overview of the town and its sociopolitical structure here!',
     link(`Description of ${get('$town').name}`, () => {
       set(`$currentPassage`, get('$town'))
@@ -39,7 +39,7 @@ ${tip('Find the overview of the town and its sociopolitical structure here!',
     })
   )}
 
-${listBox(newBuildingsOptions, value => set('$newBuilding', value))} -- ${button('Create new building', createBuilding)}
+${listBox(newBuildingsOptions, value => set('$newBuilding', value))} -- ${button('Create New Building', createBuilding)}
 ${replaceable('buildings', BuildingsList())}
 
 ${Popup()}`

@@ -75,5 +75,5 @@ export function CreateScenario () {
     return pragma`${replace(`scenario`, getScenarioText)}`
   }
 
-  return pragma`${listBox(seasons, selectSeason, currentSeason)}${listBox(scenarioTypes, selectScenarioType)} -- ${button(`Create scenario`, createScenario)}${replaceable(`scenario`, getScenarioText)}`
+  return pragma`${listBox(seasons, selectSeason, currentSeason)}${listBox(scenarioTypes, selectScenarioType)} -- ${button(`Create Scenario`, createScenario)}${replaceable(`scenario`, getScenarioText)}`
 }

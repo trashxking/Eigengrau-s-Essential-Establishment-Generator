@@ -8,7 +8,7 @@ import { ShitPlotHooks } from '../ShitPlotHooks'
 import { Newspaper } from '../Misc/Newspaper'
 
 export function StoryInit () {
-  set(`$versionNumber`, `2.2.1`)
+  set(`$versionNumber`, `2.3`)
 
   set(`$towns`, [])
   set(`$factions`, [])
