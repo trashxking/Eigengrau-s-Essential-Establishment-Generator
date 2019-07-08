@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Florists
 - Butchers
 - Cobblers
+- Barbers
 - Taxation
 - Living standards
 - Daily wage
@@ -30,6 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Physical traits based on body parts
 - 10 new potential life events
 - Expanded Family Trees
+- Blacksmith Plothooks
+- Temple Blessings
+- Tavern Unique Features
 
 ### Changed
 
@@ -39,11 +43,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bug fixes for Mountain scenarios
 - Dock ship descriptions expanded
 - Market vendors no longer persist between different markets
-- Minor UI tweaks
+- Minor UI Rework
 - Button reskinning
 - Minor temple readout reformat
 - Minor Brothel readout reformat
+- Minor Tavern Reformat
 - Share button in sidebar
+- Main Shops output rework
+- New entertainers in tavern
+- Blacksmith current projects now reflect the blacksmith's skills
+- Tons of bug squashing
+
 
 ### Removed
 
