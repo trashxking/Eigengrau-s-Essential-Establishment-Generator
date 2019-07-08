@@ -70,6 +70,6 @@ $npcs[$selected.key].firstName is a _class, with a background of being a _backgr
 
 <<button "Save changes">>
   <<run console.log('Saving changes to ' + $npcs[$selected.key].name + '...')>>
-  <<goto "NPCProfileEdit">>
+  <<goto "NPCProfile">>
 <</button>>
 [[Return|previous()]]

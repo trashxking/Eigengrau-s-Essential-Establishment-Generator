@@ -83,7 +83,7 @@ setup.createlifestyleStandards = function (town, npc) {
     [0, 'is a ' + tippy],
     [5, [
       isCurrently + ' mildly successful as a ',
-      isHaving + ' mild success as a'
+      isHaving + ' mild success as a '
     ].seededrandom() + tippy],
     [8, [
       isCurrently + ' reasonably successful as a ',
