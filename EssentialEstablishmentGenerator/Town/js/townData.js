@@ -148,7 +148,7 @@ setup.townData = {
       'population' () { return random(30, 300) },
       'startFactionsNumber' () { return [1, 1, 1, 1, 1, 2].seededrandom() },
       // roadDuplication: d100 of whether to create a new road (new one if under).
-      roadDuplication: 40,
+      roadDuplication: 30,
       modifiers: {
         wealth: -20,
         reputation: -40,
@@ -248,7 +248,7 @@ setup.townData = {
       politicalSource: ['constitutional monarchy', 'republic', 'republic', 'republic', 'anarchy'],
       'population' () { return random(301, 1000) },
       'startFactionsNumber' () { return [1, 1, 1, 2, 2, 2].seededrandom() },
-      roadDuplication: 50,
+      roadDuplication: 40,
       modifiers: {
         wealth: -10,
         reputation: -20,
@@ -346,9 +346,9 @@ setup.townData = {
       ],
       economicIdeology: ['feudalism', 'feudalism', 'feudalism', 'feudalism', 'capitalism', 'capitalism', 'capitalism', 'syndicalism', 'communism', 'primitivism'],
       politicalSource: ['absolute monarchy', 'constitutional monarchy', 'republic', 'republic', 'republic', 'anarchy'],
-      'population' () { return random(1001, 3000) },
-      'startFactionsNumber' () { return [1, 1, 2, 2, 2, 3, 3].seededrandom() },
-      roadDuplication: 70,
+      'population' () { return random(1001, 6000) },
+      'startFactionsNumber' () { return [1, 1, 2, 2, 2, 3, 3, 3, 4].seededrandom() },
+      roadDuplication: 60,
       modifiers: {
         wealth: 15,
         reputation: 5,
@@ -446,14 +446,156 @@ setup.townData = {
       ],
       economicIdeology: ['feudalism', 'feudalism', 'capitalism', 'capitalism', 'capitalism', 'capitalism', 'syndicalism', 'communism'],
       politicalSource: ['absolute monarchy', 'absolute monarchy', 'absolute monarchy', 'constitutional monarchy', 'constitutional monarchy', 'republic', 'republic', 'republic', 'anarchy'],
-      'population' () { return random(3001, 6000) },
-      'startFactionsNumber' () { return [1, 1, 2, 2, 2, 3, 3, 3, 3, 4].seededrandom() },
-      roadDuplication: 90,
+      'population' () { return random(6001, 18000) },
+      'startFactionsNumber' () { return [1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4].seededrandom() },
+      roadDuplication: 80,
       modifiers: {
         wealth: 5,
         reputation: 20,
         sin: 25,
         diversity: 25
+      }
+    },
+    metropolis: {
+      demographics: [
+        {
+          // demographics must be in alphabetical order until I fix it to not be buggy
+          probability: 35,
+          popPercentages: {
+            'dragonborn': randomFloat(5, 15),
+            'dwarf': randomFloat(10, 35),
+            'elf': randomFloat(10, 35),
+            'gnome': randomFloat(1, 15),
+            'half-elf': randomFloat(5, 20),
+            'half-orc': randomFloat(5, 20),
+            'halfling': randomFloat(5, 15),
+            'human': randomFloat(20, 45),
+            'tiefling': randomFloat(5, 15)
+          }
+        },
+        {
+          probability: 2,
+          popPercentages: {
+            'dragonborn': randomFloat(1, 7),
+            'dwarf': randomFloat(5, 15),
+            'elf': randomFloat(1, 3),
+            'gnome': randomFloat(1, 10),
+            'half-elf': randomFloat(1, 3),
+            'half-orc': randomFloat(85, 95),
+            'halfling': randomFloat(5, 7),
+            'human': randomFloat(8, 25),
+            'tiefling': randomFloat(4, 10)
+          }
+        },
+        {
+          probability: 2,
+          popPercentages: {
+            'dragonborn': randomFloat(1, 5),
+            'dwarf': randomFloat(1, 10),
+            'elf': randomFloat(1, 5),
+            'gnome': randomFloat(1, 5),
+            'half-elf': randomFloat(1, 5),
+            'half-orc': randomFloat(5, 10),
+            'halfling': randomFloat(5, 10),
+            'human': randomFloat(5, 20),
+            'tiefling': randomFloat(3, 10)
+          }
+        },
+        {
+          probability: 3,
+          popPercentages: {
+            'dragonborn': randomFloat(1, 2),
+            'dwarf': randomFloat(1, 10),
+            'elf': randomFloat(5, 30),
+            'gnome': randomFloat(5, 15),
+            'half-elf': randomFloat(1, 25),
+            'half-orc': randomFloat(1, 4),
+            'halfling': randomFloat(50, 60),
+            'human': randomFloat(25, 40),
+            'tiefling': randomFloat(1, 10)
+          }
+        },
+        {
+          probability: 15,
+          popPercentages: {
+            'dragonborn': randomFloat(1, 5),
+            'dwarf': randomFloat(3, 10),
+            'elf': randomFloat(70, 95),
+            'gnome': randomFloat(2, 7),
+            'half-elf': randomFloat(10, 25),
+            'half-orc': randomFloat(1, 2),
+            'halfling': randomFloat(5, 15),
+            'human': randomFloat(5, 25),
+            'tiefling': randomFloat(1, 5)
+          }
+        },
+        {
+          probability: 20,
+          popPercentages: {
+            'dragonborn': randomFloat(1, 10),
+            'dwarf': randomFloat(1, 20),
+            'elf': randomFloat(1, 15),
+            'gnome': randomFloat(1, 15),
+            'half-elf': randomFloat(1, 20),
+            'half-orc': randomFloat(1, 10),
+            'halfling': randomFloat(5, 15),
+            'human': randomFloat(60, 85),
+            'tiefling': randomFloat(1, 7)
+          }
+        },
+        {
+          probability: 20,
+          popPercentages: {
+            'dragonborn': randomFloat(7, 12),
+            'dwarf': randomFloat(10, 20),
+            'elf': randomFloat(3, 8),
+            'gnome': randomFloat(1, 10),
+            'half-elf': randomFloat(8, 15),
+            'half-orc': randomFloat(5, 10),
+            'halfling': randomFloat(10, 15),
+            'human': randomFloat(10, 40),
+            'tiefling': randomFloat(7, 12)
+          }
+        },
+        {
+          probability: 12,
+          popPercentages: {
+            'dragonborn': randomFloat(1, 7),
+            'dwarf': randomFloat(7, 20),
+            'elf': randomFloat(1, 3),
+            'gnome': randomFloat(10, 30),
+            'half-elf': randomFloat(1, 7),
+            'half-orc': randomFloat(15, 45),
+            'halfling': randomFloat(2, 5),
+            'human': randomFloat(10, 35),
+            'tiefling': randomFloat(4, 10)
+          }
+        },
+        {
+          probability: 15,
+          popPercentages: {
+            'dragonborn': randomFloat(1, 3),
+            'dwarf': randomFloat(80, 95),
+            'elf': randomFloat(1, 4),
+            'gnome': randomFloat(25, 35),
+            'half-elf': randomFloat(1, 6),
+            'half-orc': randomFloat(1, 5),
+            'halfling': randomFloat(3, 7),
+            'human': randomFloat(10, 25),
+            'tiefling': randomFloat(1, 3)
+          }
+        }
+      ],
+      economicIdeology: ['feudalism', 'capitalism', 'capitalism', 'capitalism', 'capitalism', 'syndicalism', 'syndicalism', 'communism', 'communism'],
+      politicalSource: ['absolute monarchy', 'absolute monarchy', 'constitutional monarchy', 'constitutional monarchy', 'republic', 'republic', 'republic', 'republic', 'republic', 'anarchy'],
+      'population' () { return random(18001, 25000) },
+      'startFactionsNumber' () { return [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5].seededrandom() },
+      roadDuplication: 90,
+      modifiers: {
+        wealth: 10,
+        reputation: 20,
+        sin: 30,
+        diversity: 45
       }
     }
   },
@@ -555,7 +697,7 @@ setup.townData = {
     'republic': {
       politicalIdeology: ['meritocracy', 'meritocracy', 'democracy', 'democracy', 'democracy', 'democracy', 'kleptocracy', 'magocracy', 'militocracy', 'oligarchy', 'pedocracy', 'theocracy', 'technocracy'],
       politicalSourceDescription: 'Affairs are handled by $town.leaderType, the head of whom is $town.leader.title <<profile $npcs[$town.leader.key]>>',
-      description: 'The crown holds both supreme executive and judicial powers.'
+      description: 'Select groups hold executive and judicial powers.'
     },
     'anarchy': {
       politicalIdeology: ['meritocracy', 'meritocracy', 'democracy', 'democracy', 'democracy', 'democracy', 'kleptocracy', 'magocracy', 'militocracy', 'oligarchy', 'pedocracy', 'theocracy', 'technocracy'],

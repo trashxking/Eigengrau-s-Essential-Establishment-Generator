@@ -1,5 +1,5 @@
 setup.createTown = function (base) {
-  const type = ['hamlet', 'hamlet', 'village', 'village', 'village', 'town', 'town', 'town', 'city', 'city'].seededrandom()
+  const type = ['hamlet', 'hamlet', 'village', 'village', 'village', 'town', 'town', 'town', 'town', 'city', 'city', 'city', 'metropolis'].seededrandom()
   const terrain = ['temperate', 'temperate', 'temperate', 'tropical', 'polar', 'arid'].seededrandom()
   const season = ['summer', 'autumn', 'winter', 'spring']
   const townName = setup.createTownName()
@@ -32,7 +32,9 @@ setup.createTown = function (base) {
     },
     get type () {
       console.log('Getting town type.')
-      if (this.population > 3000) {
+      if (this.population > 18000) {
+        return 'metropolis'
+      } else if (this.population > 6000) {
         return 'city'
       } else if (this.population > 1000) {
         return 'town'

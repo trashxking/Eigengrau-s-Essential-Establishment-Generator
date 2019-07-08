@@ -6,7 +6,9 @@ setup.townRender = function (town) {
 
   town.roll.guardFunding = 0
 
-  if (town.population > 3000) {
+  if (town.population > 18000) {
+    town.type = 'metropolis'
+  } else if (town.population > 6000) {
     town.type = 'city'
   } else if (town.population > 1000) {
     town.type = 'town'

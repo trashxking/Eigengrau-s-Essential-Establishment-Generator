@@ -12,7 +12,7 @@
             \<<set $town.name to setup.createTownName()>><<textbox "$town.name" $town.name>>
     <</replace>><</link>>
 <span id="townName"><<textbox "$town.name" $town.name>></span><</nobr>>
-<span class="tip" title="How many people live here?">Town Population: <<numberslider "$town.population" $town.population 30 6000 10>></span>
+<span class="tip" title="How many people live here?">Town Population: <<numberslider "$town.population" $town.population 30 25000 10>></span>
 
 <span class="tip" title="How wealthy is the town?">Town Wealth: <<numberslider "$town.roll.wealth" $town.roll.wealth 1 100 1>></span>
 
