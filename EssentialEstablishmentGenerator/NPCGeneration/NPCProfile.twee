@@ -10,38 +10,15 @@
 <<if def $currentNPC.doesnt>><p>$currentNPC.doesnt</p><</if>>
 
 <<if $currentNPC.sexuality !== 'heterosexual'>><p>
-    <<print $currentNPC.heshe.toUpperFirst()>> is $currentNPC.sexuality
-    <<if $currentNPC.partnerID>>
-        , and has a <<print $npcs[$currentNPC.partnerID].marriageNoun>>, <<profile $npcs[$currentNPC.partnerID]>>
-    </p><</if>>.
-  <<elseif $currentNPC.partnerID>><p>$currentNPC.firstName has a <<print $npcs[$currentNPC.partnerID].marriageNoun>>, <<profile $npcs[$currentNPC.partnerID]>>.
+    <<print $currentNPC.heshe.toUpperFirst()>> is $currentNPC.sexuality<<if $currentNPC.partnerID>>, and has a <<print $npcs[$currentNPC.partnerID].marriageNoun>>, <<profile $npcs[$currentNPC.partnerID]>><</if>>.</p>
+  <<elseif $currentNPC.partnerID>><p>$currentNPC.firstName has a <<print $npcs[$currentNPC.partnerID].marriageNoun>>, <<profile $npcs[$currentNPC.partnerID]>>.</p>
   <</if>>
 
-<<if def $currentNPC.note >><p>$currentNPC.note</p><</if>><<nobr>>
+<<if def $currentNPC.note >><p>$currentNPC.note</p><</if>>
 
-<<set _finances to {}>><<for _key, _value range $currentNPC.finances>><<set _finances[_key] to _value($town, $currentNPC)>>
-<</for>><<set _finances.tax to _finances.grossIncome - _finances.netIncome,
-_finances.totalLifestyleExpenses to _finances.lifestyleStandard[0] + _finances.lifestyleExpenses>>
-
-<</nobr>><p>$currentNPC.firstName currently earns <<money _finances.netIncome>> per day.</p>
-<</nobr>>
-<<nobr>><div class="classTable">
-<table>
-    <tr>
-        <th>Type</th>
-        <th>Amount</th>
-    </tr>
-    <tr><td>Gross Income</td><td><<money _finances.grossIncome>></td></tr>
-    <tr><td><i>Tax</i></td><td><i><<money _finances.tax>></i></td></tr>
-    <tr><td>Net Income</td><td><<money _finances.netIncome>></td></tr>
-    <tr><td>Total Lifestyle Expenses (_finances.lifestyleStandard[1])</td><td><<money _finances.totalLifestyleExpenses>></td></tr>
-    <tr><td>Profit</td><td><<money _finances.profit>></td></tr>
-</table>
-</div><</nobr>>
-
-<<linkreplace "Early Life">><div class='npcReplace'>Early Life</div><div class='descriptive'>I was born $currentNPC.birthplace, and was raised by $currentNPC.familyUnit<<if $currentNPC.siblingNumber == 0>> as an only child.<<elseif $currentNPC.siblingNumber == 1>> with my brother.<<else>>, along with my $currentNPC.siblingNumber siblings.<</if>> I had a $currentNPC.familyLifestyle upbringing in $currentNPC.familyHome. <<if $currentNPC.knewParents is false>>I didn't know my parents growing up.<</if>><<if $currentNPC.parentalLineage>>$currentNPC.parentalLineage.<</if>> $currentNPC.childhoodMemories.</div><</linkreplace>>
-<<linkreplace "Becoming a $currentNPC.dndClass">><div class='npcReplace'>Becoming a $currentNPC.dndClass</div><div class='descriptive'>"$currentNPC.backgroundOrigin $currentNPC.dndClassOrigin $currentNPC.bond $currentNPC.ideal"</div><</linkreplace>>
-<<linkreplace "Life events">><div class='npcReplace'>Life Events</div><div class='descriptive'>Well, I certainly have a tale or two...
+<</nobr>><<linkreplace "Early Life">><div class='npcReplace'>Early Life</div><div class='descriptive'>I was born $currentNPC.birthplace, and was raised by $currentNPC.familyUnit<<if $currentNPC.siblingNumber == 0>> as an only child.<<elseif $currentNPC.siblingNumber == 1>> with my sibling.<<else>>, along with my $currentNPC.siblingNumber siblings.<</if>> I had a $currentNPC.familyLifestyle upbringing in $currentNPC.familyHome. <<if $currentNPC.knewParents is false>>I didn't know my parents growing up.<</if>><<if $currentNPC.parentalLineage>>$currentNPC.parentalLineage.<</if>> $currentNPC.childhoodMemories.</div><</linkreplace>>
+<<linkreplace "Becoming a <<print $currentNPC.dndClass.toUpperFirst()>>">><div class='npcReplace'>Becoming a <<print $currentNPC.dndClass.toUpperFirst()>></div><div class='descriptive'>"$currentNPC.backgroundOrigin $currentNPC.dndClassOrigin $currentNPC.bond $currentNPC.ideal"</div><</linkreplace>>
+<<linkreplace "Life Events">><div class='npcReplace'>Life Events</div><div class='descriptive'>Well, I certainly have a tale or two... 
 \<<if $currentNPC.lifeEvents.length == 2>>
     When I was younger, <<print $currentNPC.lifeEvents[0]>> Later in my life, <<print $currentNPC.lifeEvents[1]>>
   \<<elseif $currentNPC.lifeEvents.length == 1>>
@@ -53,22 +30,23 @@ _finances.totalLifestyleExpenses to _finances.lifestyleStandard[0] + _finances.l
           "<<print _lifeEvents.toUpperFirst()>>",
           "<<print _lifeEvents.toUpperFirst()>>",
           "How could I ever forget the time _lifeEvents ",
-          "After that, _lifeEvents",
-          "Not to mention there was the time _lifeEvents",
+          "After that, _lifeEvents ",
+          "Not to mention there was the time _lifeEvents ",
           "Oh, and I can't forget the time _lifeEvents ",
           "There was this one time, _lifeEvents ",
-          "Once _lifeEvents",
-          "One time _lifeEvents",
-          "You might not believe it, but _lifeEvents",
+          "Once _lifeEvents ",
+          "One time _lifeEvents ",
+          "You might not believe it, but _lifeEvents ",
           "I forget exactly when, but at one point, _lifeEvents ",
-          "At one point _lifeEvents",
-          "I'll always remember the time _lifeEvents"
+          "At one point _lifeEvents ",
+          "I'll always remember the time _lifeEvents "
           )>>
     \<</for>>
     At one point, <<print $currentNPC.lifeEvents[$currentNPC.lifeEvents.length - 1]>>
-<</if>></div><</linkreplace>>
+<</if>></div><</linkreplace>><<if Object.getOwnPropertyNames($currentNPC.relationships).length !== 0>>
 
-<<if Object.getOwnPropertyNames($currentNPC.relationships).length !== 0>><div class='classTable'><<nobr>><table>
+
+<div class='classTable'><<nobr>><table>
     <tr>
         <th>Name</th>
         <th>Relationship</th>
