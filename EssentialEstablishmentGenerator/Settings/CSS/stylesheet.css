@@ -18,14 +18,15 @@ body {
   margin-top: 4px;
 }
 
-.npcReplace{
-font-family: MrJeeves;
+.npcReplace, #passages > #passage-npcprofile .macro-linkreplace, #passages > #passage-npcprofileedit .macro-linkreplace {
+font-family: Bookinsanity;
 font-weight: 800;
 color: #58180D;
 font-size: 20px;
 text-decoration: underline;
 text-decoration-color: #c9ad6a;
 }
+
 .version{
  color: rgba(94, 72, 69, 0.651);
  font-size: 16px;
@@ -156,6 +157,8 @@ span.macro-linkreplace-insert{
   margin-top: 0;
   margin-bottom: 10px;
 }
+
+
 /* H5 */
 
 h5{
@@ -283,8 +286,8 @@ blockquote h5 {
     margin-top: 0}
 
     .descriptive{
-        display:block-inline;
-        margin-bottom:1em;
+        display:inline-block;
+        margin-bottom:1.5em;
         background-color:#faf7ea;
         font-family:ScalySans;
         border-style:solid;
