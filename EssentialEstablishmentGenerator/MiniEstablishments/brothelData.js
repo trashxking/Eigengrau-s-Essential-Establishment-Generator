@@ -83,9 +83,9 @@ setup.brothel = {
     'performances involving food',
     'an outlet to live out violent fantasies',
     'exotic races',
-    'slave trading. All the people here have a price.',
+    'slave trading. All the people here have a price',
     'the most beautiful women and men. Not just a claim, it’s the gods’ honest truth',
-    'an all-inclusive lump-sum deal—all the harlots, food, and drink you can handle!',
+    'an all-inclusive lump-sum deal—all the harlots, food, and drink you can handle',
     'the sale of mind-altering drugs',
     'stuff with exotic/magical ingredients, potions, etc',
     'magical delights',
@@ -356,7 +356,7 @@ setup.brothel = {
       Object.assign(harlotTraits, setup.brothel.harlot.type[harlotType])
       const harlot = setup.createNPC(town, harlotTraits)
       setup.createRelationship(town, harlot, State.variables.npcs[brothel.pimp.key], 'employer', 'employee')
-      return 'This harlot is ' + harlotType + ' called ' + setup.profile(harlot) + '. She has ' + readout.feature + ' and is particularly good at ' + readout.skill + '. However, she has ' + harlot.physicalTrait + ', which is ' + readout.flawSeverity + '. She is looking to ' + readout.looks + '.'
+      return 'This harlot is ' + harlotType + ' named ' + setup.profile(harlot) + '. She has ' + readout.feature + ' and is particularly good at ' + readout.skill + '. She has ' + harlot.physicalTrait + ', which is ' + readout.flawSeverity + '. She is looking to ' + readout.looks + '.'
     },
     type: {
       'a veteran who may have been beautiful': {
@@ -418,13 +418,13 @@ setup.brothel = {
       }
     },
     // She has __
-    feature: ['a pretty smile', 'beautiful eyes', 'lovely, long eyelashes', 'lush, curly locks', 'short-cropped hair', 'a clean satin gown', 'broad shoulders', 'a slender jaw', 'thick, long hair', 'a very large bosom', 'a very curvaceous body', 'long slender hands'],
+    feature: ['a pretty smile', 'beautiful eyes', 'lovely, long eyelashes', 'lush, curly locks', 'short-cropped hair', 'a clean satin gown', 'broad shoulders', 'a slender jaw', 'thick, long hair', 'a large bosom', 'a curvaceous figure', 'long, slender hands', 'a delicate frame'],
     // and is particularly good at __
-    skill: ['listening and offering emotional support', 'bringing a smile to her clients’ faces as soon as she touches them', 'embroidery and sewing', 'cooking and cleaning', 'drinking and swearing', 'certain lewd oral activities', 'getting clients in the mood', 'juggling'],
-    // However, she has __
-    physicalTrait: ['a gimpy leg', 'trout lips', 'a missing hand', 'dirty, matted hair', 'quite strong body odor', 'a very hairy body', 'crooked teeth', 'an unsightly scar', 'an unfortunately shaped nose', 'a large mole on her face', 'crossed-eyes', 'a mustache', 'a large beauty mark', 'a large number of freckles'],
-    // whish is __.
-    flawSeverity: ['barely noticeable', 'well-concealed by make-up or practice', 'something you can look past', 'intimidating', 'not easily ignored', 'very prominent', 'incredibly distracting'],
+    skill: ['listening and offering emotional support', 'bringing a smile to her clients’ faces as soon as she touches them', 'embroidery and sewing', 'cooking and cleaning', 'drinking and swearing', 'certain lewd oral activities', 'getting clients in the mood', 'juggling', 'making clients laugh'],
+    // She has __
+    physicalTrait: ['a bad leg', 'trout lips', 'a missing hand', 'dirty, matted hair', 'a strong body odor', 'dark body hair', 'crooked teeth', 'an unsightly scar', 'an unfortunately-shaped nose', 'a large mole on her face', 'a lazy eye', 'a mustache', 'a large beauty mark', 'a large number of freckles'],
+    // which is __.
+    flawSeverity: ['barely noticeable', 'well-concealed by make-up', 'something you can look past', 'intimidating', 'not easily ignored', 'very prominent', 'incredibly distracting', 'kind of charming', 'surprisingly easy to miss', 'appropriate to her character'],
     // She is looking to __
     looks: [
       'earn enough coin to get out of this place', 'bring to light a scandal involving a rival', 'secure a marriage to get out of this place', 'hear word of a child given away', 'hatch a plan for revenge against the man who ruined her life', 'drink some wine and have a laugh', 'seduce a noble and live a life of luxury', 'learn more about the whorehouse practice for her erotic fiction', 'leave this place with her bastard children', 'learn a trade and get out of this dreadful line of work', 'simply have all the sex her heart desires, and the gold is a nice bonus', 'make connections with powerful people'

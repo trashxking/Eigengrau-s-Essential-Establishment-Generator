@@ -2178,7 +2178,7 @@ setup.npcData = {
         'I stumbled into a portal and took refuge in a strange monastery, where I learned how to defend mysel fagainst the forces of darkness.',
         'I was chosen to study at a secluded monastery, where I learnt the fundamental techniques to set me on the path to eventual mastery.',
         'I sought out the instruction of a monk to gain a greater understanding of my world, and my purpose in it.',
-        'I was overwhelmed with grief when I lost my sister, and found solace in meditation with the monks.',
+        'I was overwhelmed with grief when I lost a loved one, and found solace in meditation with the monks.',
         'I always felt a power within me, and sought out an order of monks to help me understand it and harness that energy for good.',
         'I was wild, and undisciplined as a child, until I realised the error of my ways. I sought out the monks to atone for my sins.'
       ],
@@ -2360,7 +2360,7 @@ setup.npcData = {
         'I am definitely a fan of freedom- Chains are meant to be broken',
         'I steal from the wealthy so that I can help people in need.',
         'I will do whatever it takes to become wealthy.',
-        "I'm loyal to my friends",
+        "I'm loyal to my friends.",
         "I believe that there's a spark of good in everyone."
       ],
       personalityTrait: [
@@ -2379,7 +2379,7 @@ setup.npcData = {
     'entertainer': {
       // 'knownLanguages': function (npc) { return npc },
       backgroundOrigin: [
-        'Members of my family made ends meet by performing, so it was fitting for me to follow their example',
+        'Members of my family made ends meet by performing, so it was fitting for me to follow their example.',
         'I always had a keen insight into what made other people laugh and cry. A life as an entertainer seemed to be the natural continuation of that.',
         'I saw a bard perform once, and it inspired me so much that I decided to follow in his footsteps.',
         'I ran away from home to join a minstrel troupe.',
@@ -2387,7 +2387,7 @@ setup.npcData = {
         'A traveling entertainer took me in to teach me the trade, and I learned to love it.'
       ],
       ideal: [
-        'When I perform, I want to make beautiful things for the pleasure of my audience',
+        'When I perform, I want to make beautiful things for the pleasure of my audience.',
         'The stories I tell have a lot of history which I wish to preserve.',
         'The world is in need of new ideas and bold action.',
         "I'm only in it for the money and fame.",
@@ -2419,7 +2419,7 @@ setup.npcData = {
       ],
       ideal: [
         'I have the radical belief that people deserve to be treated with dignity and respect.',
-        'I believe that no one should get preferential treatment before the law',
+        'I believe that no one should get preferential treatment before the law.',
         'Tyrants must not be allowed to oppress the people.',
         'If I become strong, I will be better able to protect people.',
         "There's no good in pretending to be something I'm not.",
@@ -2507,8 +2507,8 @@ setup.npcData = {
         'I felt compelled to forsake my past, and did so with great reluctane. Even now, I sometimes regret my decisions.'
       ],
       ideal: [
-        'My gifts are meant to be shared with all',
-        'I believe that motions must not cloud our sense of what is right and true',
+        'My gifts are meant to be shared with all.',
+        'I believe that motions must not cloud our sense of what is right and true.',
         'I believe that inquiry and curiosity are the pillars of progress.',
         'I think that solitude and contemplation are paths toward mystical or magical power.',
         'I believe that meddling in the affairs of others only causes trouble.',
@@ -2543,7 +2543,7 @@ setup.npcData = {
         "I hope to increase my family's power and influence."
       ],
       ideal: [
-        'Respect is due to me because of my position',
+        'Respect is due to me because of my position.',
         'It is my duty to respect the authority of those above me',
         'I must prove that I can handle myself without the coddling of my family.',
         'If I can attain more power, I will be able to protect my family',
@@ -2576,7 +2576,7 @@ setup.npcData = {
       ideal: [
         'I think that life is like the seasons, change should be embraced!',
         "It is each person's responsibility to make the most happiness for the whole tribe.",
-        'If I dishonor myself, I bring dishonor to my whole tribe',
+        'If I dishonor myself, I bring dishonor to my whole tribe.',
         'I believe that the strongest are meant to rule.',
         'The natural world is more important than all the constructs of civilization.',
         'I must earn glory in battle.'
@@ -2735,9 +2735,9 @@ setup.npcData = {
       ],
       ideal: [
         'Everyone needs to pitch in for the greater good.',
-        'You have to respect all people',
-        'We have to take care of each other',
-        'The low are lifted up',
+        'You have to respect all people.',
+        'We have to take care of each other.',
+        'The low are lifted up.',
         'The rich need to be shown what life and death are like in the gutters.',
         "I help the people who help me– that's what keeps us alive.",
         "I'm going to prove that I'm worthy of a better life."
@@ -2786,12 +2786,12 @@ setup.npcData = {
   professionTraits: {
     bartender: {
       dndClassOrigin: [
-        'I came across $tavern.name as a youngster, and spent many a night here drinking with my buddies. When the old owner died, it went to auction, and I tried to kep the dream alive by buying it. One by one all my friends grew out of it, or moved away.',
+        'I came across $tavern.name as a youngster, and spent many a night here drinking with my buddies. When the old owner died, it went to auction, and I tried to keep the dream alive by buying it. One by one all my friends grew out of it, or moved away.',
         "Before I ran $tavern.name, it was my dad's. I kept the family business going to support him in his old age.",
         "When I first got to $town.name, it was practically a ghost town. We built $tavern.name as a social hub for the folk, and it's now what it is today.",
-        'The old owner was a problem gambler, and when they auctioned off $tavern.name, I jumped at it.',
+        'The old owner was a problem gambler, and when they auctioned off $tavern.name, I jumped at the chance.',
         "The old owner thought that $tavern.name wasn't profitable. In the first six months of my stewardship, I turned it around, and have made it the best bloody pub in $town.name!",
-        "Running $tavern.name was the family business, and it was always going to be my lot in life. I'm not angry or disappointed or anything, but I would like to see the world one day, and it stops me from doing that.",
+        "Running $tavern.name was the family business, and it was always going to be my lot in life. I'm not angry or disappointed, but I would like to see the world one day, and it stops me from doing that.",
         'I was just a kitchen hand when this place started. The owner and I worked through thick and thin, and when his daughter died, he had nobody to leave it to, except for me.',
         "My parents bought this place as an investment. I don't know what they were thinking- when have you ever heard of a pub being profitable?"
       ],
